@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ChatMessage = require('../models/ChatMessage');
+const ChatMessage = require('../models/ChatMessages');
 const { authenticateToken } = require('../middleware/auth');
 
 // Get or create chat session
