@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css"><!-- Chat Widget CSS -->
+<link rel="stylesheet" href="/css/chat-widget.css">
+<!-- Add this in your header.ejs file, before closing </head> tag -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<!-- Callback Widget CSS -->
+<link rel="stylesheet" href="/css/callback-widget.css">
+
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Edu<span>Path</span></a></div>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/universities">Universities</a></li>
+        <li><a href="/quiz">Career Quiz</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+            <button class="menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="/" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="/universities" onclick="toggleMobileMenu()">Universities</a></li>
+            <li><a href="/contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Floating Contact Widget -->
+    <div class="floating-contact-widget">
+        <div class="contact-options">
+            <button class="contact-option whatsapp" onclick="window.open('https://wa.me/<%= process.env.CA_WHATSAPP %>', '_blank')">
+                <i class="fab fa-whatsapp"></i>
+            </button>
+            <button class="contact-option phone" onclick="window.location.href='tel:<%= process.env.CA_PHONE %>'">
+                <i class="fas fa-phone"></i>
+            </button>
+            <button class="contact-option email" onclick="window.location.href='mailto:<%= process.env.CA_EMAIL %>'">
+                <i class="fas fa-envelope"></i>
+            </button>
+        </div>
+        <button class="contact-main-button">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>

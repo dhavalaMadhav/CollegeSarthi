@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .admin-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .logout-btn, .refresh-btn {
+            background: white;
+            color: #2c5282;
+            padding: 12px 25px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logout-btn:hover, .refresh-btn:hover {
+            background: #f0f7ff;
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+            transform: translate(-1px, -1px);
+        }
+
+        .refresh-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dashboard-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5282, #1a365d);
+        }
+        
+        .stat-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 0 rgba(44, 82, 130, 0.2);
+            border-color: #2c5282;
+        }
+        
+        .stat-card .stat-icon {
+            font-size: 42px;
+            color: #2c5282;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1a365d;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .stat-card .stat-label {
+            font-size: 18px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .stat-card .stat-trend {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #28a745;
+        }
+        
+        .leads-section {
+            background: white;
+            padding: 30px;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+        
+        .leads-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .leads-header h2 {
+            font-size: 32px;
+            color: #1a365d;
+            font-weight: 800;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #2c5282;
+            background: white;
+            color: #2c5282;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #2c5282;
+            color: white;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .leads-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            min-width: 1000px;
+        }
+        
+        .leads-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            color: #1a365d;
+            border-bottom: 2px solid #e0e0e0;
+            white-space: nowrap;
+        }
+        
+        .leads-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: middle;
+        }
+        
+        .leads-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.new {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-badge.contacted {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-badge.followup {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-badge.converted {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-badge.closed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .action-btn.view {
+            background: #2c5282;
+        }
+        
+        .action-btn.call {
+            background: #28a745;
+        }
+        
+        .action-btn.email {
+            background: #17a2b8;
+        }
+
+        .action-btn.whatsapp {
+            background: #25D366;
+        }
+        
+        .action-btn:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        
+        .export-btn {
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .export-btn:hover {
+            background: #218838;
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .lead-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .lead-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2c5282;
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .modal-header h2 {
+            color: #1a365d;
+            font-weight: 800;
+            font-size: 32px;
+        }
+        
+        .lead-details {
+            margin-top: 30px;
+        }
+        
+        .detail-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: #1a365d;
+        }
+        
+        .detail-value {
+            color: #333;
+        }
+
+        .universities-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .universities-list li {
+            padding: 10px;
+            background: #f8f9fa;
+            margin: 5px 0;
+            border-left: 4px solid #2c5282;
+        }
+        
+        .status-update {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #2c5282;
+        }
+        
+        .status-update h3 {
+            margin-bottom: 15px;
+            color: #1a365d;
+        }
+        
+        .status-select {
+            padding: 12px;
+            width: 100%;
+            border: 2px solid #e0e0e0;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .status-select:focus {
+            outline: none;
+            border-color: #2c5282;
+        }
+        
+        .update-btn {
+            padding: 12px 30px;
+            background: #2c5282;
+            color: white;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .update-btn:hover {
+            background: #1a365d;
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .no-leads {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .no-leads i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2c5282;
+        }
+        
+        @media (max-width: 1200px) {
+            .leads-table {
+                font-size: 14px;
+            }
+            
+            .leads-table th,
+            .leads-table td {
+                padding: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 20px;
+            }
+
+            .admin-header {
+                padding: 15px 20px;
+            }
+
+            .admin-header h1 {
+                font-size: 20px;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .logout-btn, .refresh-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            .detail-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1><i class="fas fa-shield-alt"></i> Admin Dashboard - EduPath</h1>
+        <div class="header-actions">
+            <button class="refresh-btn" onclick="location.reload()">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+    
+    <div class="dashboard-container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number"><%= stats.total %></div>
+                <div class="stat-label">Total Leads</div>
+                <div class="stat-trend"><i class="fas fa-chart-line"></i> All time</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                <div class="stat-number"><%= stats.new %></div>
+                <div class="stat-label">New Leads</div>
+                <div class="stat-trend"><i class="fas fa-clock"></i> Awaiting contact</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-phone"></i></div>
+                <div class="stat-number"><%= stats.contacted %></div>
+                <div class="stat-label">Contacted</div>
+                <div class="stat-trend"><i class="fas fa-user-check"></i> In progress</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-number"><%= stats.converted %></div>
+                <div class="stat-label">Converted</div>
+                <div class="stat-trend"><i class="fas fa-trophy"></i> Success rate</div>
+            </div>
+        </div>
+        
+        <!-- Leads Section -->
+        <div class="leads-section">
+            <div class="leads-header">
+                <h2><i class="fas fa-list"></i> Student Enquiries</h2>
+                <div>
+                    <button class="export-btn" onclick="exportLeads()">
+                        <i class="fas fa-download"></i> Export to CSV
+                    </button>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search by name, email, phone, or stream..." onkeyup="searchLeads()">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterLeads('all', event)">
+                    All (<%= stats.total %>)
+                </button>
+                <button class="filter-btn" onclick="filterLeads('new', event)">
+                    <i class="fas fa-star"></i> New (<%= stats.new %>)
+                </button>
+                <button class="filter-btn" onclick="filterLeads('contacted', event)">
+                    <i class="fas fa-phone"></i> Contacted (<%= stats.contacted %>)
+                </button>
+                <button class="filter-btn" onclick="filterLeads('followup', event)">
+                    <i class="fas fa-clock"></i> Follow-up
+                </button>
+                <button class="filter-btn" onclick="filterLeads('converted', event)">
+                    <i class="fas fa-check"></i> Converted (<%= stats.converted %>)
+                </button>
+                <button class="filter-btn" onclick="filterLeads('closed', event)">
+                    <i class="fas fa-times"></i> Closed
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <% if (leads.length === 0) { %>
+                    <div class="no-leads">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No leads yet</h3>
+                        <p>Student enquiries will appear here</p>
+                    </div>
+                <% } else { %>
+                    <table class="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Stream</th>
+                                <th>Source</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <% leads.forEach(lead => { %>
+                                <tr data-status="<%= lead.status %>" data-search="<%= lead.studentName.toLowerCase() %> <%= lead.email.toLowerCase() %> <%= lead.phone %> <%= lead.stream.toLowerCase() %>">
+                                    <td>
+                                        <strong><%= new Date(lead.createdAt).toLocaleDateString('en-IN') %></strong><br>
+                                        <small style="color: #666;"><%= new Date(lead.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) %></small>
+                                    </td>
+                                    <td><strong><%= lead.studentName %></strong></td>
+                                    <td><%= lead.phone %></td>
+                                    <td><%= lead.email %></td>
+                                    <td>
+                                        <span style="text-transform: capitalize; font-weight: 600;">
+                                            <%= lead.stream %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span style="text-transform: uppercase; font-size: 12px; color: #666;">
+                                            <%= lead.source.replace('_', ' ') %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge <%= lead.status %>"><%= lead.status %></span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn view" onclick='viewLead(<%= JSON.stringify(lead) %>)' title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn call" onclick="window.location.href='tel:<%= lead.phone %>'" title="Call">
+                                                <i class="fas fa-phone"></i>
+                                            </button>
+                                            <button class="action-btn email" onclick="window.location.href='mailto:<%= lead.email %>'" title="Email">
+                                                <i class="fas fa-envelope"></i>
+                                            </button>
+                                            <button class="action-btn whatsapp" onclick="window.open('https://wa.me/<%= lead.phone.replace(/\D/g, '') %>', '_blank')" title="WhatsApp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lead Details Modal -->
+    <div class="lead-modal" id="leadModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-header">
+                <h2><i class="fas fa-user-circle"></i> Lead Details</h2>
+            </div>
+            
+            <div class="lead-details" id="leadDetails">
+                <!-- Details will be populated by JS -->
+            </div>
+            
+<div class="status-update">
+    <h3><i class="fas fa-edit"></i> Update Status & Add Notes</h3>
+    <select id="statusSelect" class="status-select">
+        <option value="new">New</option>
+        <option value="contacted">Contacted</option>
+        <option value="followup">Follow-up Required</option>
+        <option value="converted">Converted</option>
+        <option value="closed">Closed</option>
+    </select>
+    <textarea id="notesTextarea" class="status-select" placeholder="Add internal notes..." style="min-height: 80px; margin-top: 10px; resize: vertical;"></textarea>
+    <button class="update-btn" onclick="updateLeadStatus()">
+        <i class="fas fa-save"></i> Update Status & Notes
+    </button>
+</div>
+
+        </div>
+    </div>
+    
+<script>
+    let currentLead = null;
+    
+    function logout() {
+        if (confirm('Are you sure you want to logout?')) {
+            window.location.href = '/admin/logout';
+        }
+    }
+    
+    function filterLeads(status, event) {
+        const rows = document.querySelectorAll('#leadsTableBody tr');
+        const buttons = document.querySelectorAll('.filter-btn');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        if (event) event.target.classList.add('active');
+        
+        rows.forEach(row => {
+            if (status === 'all' || row.dataset.status === status) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    function searchLeads() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#leadsTableBody tr');
+        
+        rows.forEach(row => {
+            const searchData = row.dataset.search;
+            if (searchData.includes(searchTerm)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+    // MAIN VIEW FUNCTION
+    function viewLead(lead) {
+        currentLead = lead;
+        const modal = document.getElementById('leadModal');
+        const detailsDiv = document.getElementById('leadDetails');
+        
+        // Build universities list
+        let universitiesHTML = '';
+        if (lead.interestedUniversities && lead.interestedUniversities.length > 0) {
+            universitiesHTML = `
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-university"></i> Interested Universities:</div>
+                    <div class="detail-value">
+                        <ul class="universities-list">
+                            ${lead.interestedUniversities.map(uni => `<li>${uni}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Recommended universities (from quiz)
+        let recommendedHTML = '';
+        if (lead.recommendedUniversities && lead.recommendedUniversities.length > 0) {
+            recommendedHTML = `
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-award"></i> Recommended (Quiz):</div>
+                    <div class="detail-value">
+                        <ul class="universities-list">
+            `;
+            lead.recommendedUniversities.forEach(uni => {
+                if (uni.universityId && uni.universityId.name) {
+                    recommendedHTML += `<li><strong>${uni.universityId.name}</strong> - ${uni.matchPercentage}% match</li>`;
+                }
+            });
+            recommendedHTML += '</ul></div></div>';
+        }
+        
+        // Quiz results
+        let quizResultsHTML = '';
+        if (lead.quizResults && lead.quizResults.stream) {
+            quizResultsHTML = `
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-chart-pie"></i> Quiz Results:</div>
+                    <div class="detail-value" style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2c5282;">
+                        <strong>Stream:</strong> ${lead.quizResults.stream}<br>
+                        <strong>Match:</strong> ${lead.quizResults.percentage || 0}%
+                        ${lead.quizResults.recommendedUniversities ? `<br><strong>Unis:</strong> ${lead.quizResults.recommendedUniversities.join(', ')}` : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Callback info
+        let callbackHTML = '';
+        if (lead.preferredCallbackTime || lead.urgency) {
+            callbackHTML = `
+                <div class="detail-row">
+                    <div class="detail-label"><i class="fas fa-phone-alt"></i> Callback Info:</div>
+                    <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;">
+                        ${lead.preferredCallbackTime ? `<strong>Time:</strong> ${lead.preferredCallbackTime}<br>` : ''}
+                        ${lead.urgency ? `<strong>Urgency:</strong> <span style="text-transform: uppercase; font-weight: 700; color: #EA4335;">${lead.urgency}</span>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Build complete details HTML
+        detailsDiv.innerHTML = `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-user"></i> Name:</div>
+                <div class="detail-value"><strong style="font-size: 20px; color: #1a365d;">${lead.studentName}</strong></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-phone"></i> Phone:</div>
+                <div class="detail-value">
+                    <a href="tel:${lead.phone}" style="color: #2c5282; text-decoration: none; font-weight: 700; font-size: 18px;">
+                        ${lead.phone}
+                    </a>
+                    <a href="https://wa.me/${lead.phone.replace(/\D/g, '')}" target="_blank" style="margin-left: 15px; color: #25D366; text-decoration: none;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-envelope"></i> Email:</div>
+                <div class="detail-value">
+                    <a href="mailto:${lead.email}" style="color: #2c5282; text-decoration: none; font-weight: 600;">
+                        ${lead.email}
+                    </a>
+                </div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-map-marker-alt"></i> City:</div>
+                <div class="detail-value">${lead.city || 'Not provided'}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-graduation-cap"></i> Stream:</div>
+                <div class="detail-value"><strong style="text-transform: capitalize; font-size: 18px; color: #2c5282;">${lead.stream}</strong></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-book"></i> Course:</div>
+                <div class="detail-value">${lead.courseInterested || 'Not specified'}</div>
+            </div>
+            ${universitiesHTML}
+            ${lead.currentEducation ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-user-graduate"></i> Current Education:</div>
+                <div class="detail-value">${lead.currentEducation}</div>
+            </div>
+            ` : ''}
+            ${lead.targetYear ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-calendar-alt"></i> Target Year:</div>
+                <div class="detail-value">${lead.targetYear}</div>
+            </div>
+            ` : ''}
+            ${lead.budgetRange ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-rupee-sign"></i> Budget:</div>
+                <div class="detail-value"><strong>${lead.budgetRange}</strong></div>
+            </div>
+            ` : ''}
+            ${lead.message ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-comment-dots"></i> Message:</div>
+                <div class="detail-value" style="background: #f8f9fa; padding: 15px; border-left: 4px solid #2c5282; line-height: 1.6;">
+                    ${lead.message}
+                </div>
+            </div>
+            ` : ''}
+            ${callbackHTML}
+            ${lead.quizScore ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-chart-bar"></i> Quiz Score:</div>
+                <div class="detail-value"><strong style="color: #2c5282; font-size: 24px;">${lead.quizScore}/100</strong></div>
+            </div>
+            ` : ''}
+            ${quizResultsHTML}
+            ${recommendedHTML}
+            ${lead.notes ? `
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-sticky-note"></i> Notes:</div>
+                <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;">
+                    ${lead.notes}
+                </div>
+            </div>
+            ` : ''}
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-tag"></i> Source:</div>
+                <div class="detail-value">
+                    <span style="text-transform: uppercase; font-weight: 700; background: #e3f2fd; padding: 8px 15px; border-radius: 5px;">
+                        ${lead.source.replace(/_/g, ' ')}
+                    </span>
+                </div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-clock"></i> Received:</div>
+                <div class="detail-value"><strong>${new Date(lead.createdAt).toLocaleString('en-IN')}</strong></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label"><i class="fas fa-info-circle"></i> Status:</div>
+                <div class="detail-value"><span class="status-badge ${lead.status}">${lead.status}</span></div>
+            </div>
+        `;
+        
+        // Set current values
+        document.getElementById('statusSelect').value = lead.status;
+        document.getElementById('notesTextarea').value = lead.notes || '';
+        
+        // Show modal
+        modal.classList.add('active');
+    }
+    
+    function closeModal() {
+        document.getElementById('leadModal').classList.remove('active');
+    }
+    
+    async function updateLeadStatus() {
+        if (!currentLead) return;
+        
+        const newStatus = document.getElementById('statusSelect').value;
+        const notes = document.getElementById('notesTextarea').value;
+        const updateBtn = document.querySelector('.update-btn');
+        
+        updateBtn.disabled = true;
+        updateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+        
+        try {
+            const response = await fetch(`/api/admin/leads/${currentLead._id}/status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    status: newStatus,
+                    notes: notes 
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('✅ Status updated successfully!');
+                location.reload();
+            } else {
+                alert('❌ Error: ' + (result.message || 'Unknown error'));
+                updateBtn.disabled = false;
+                updateBtn.innerHTML = '<i class="fas fa-save"></i> Update Status & Notes';
+            }
+        } catch (error) {
+            console.error('Update error:', error);
+            alert('❌ Network error');
+            updateBtn.disabled = false;
+            updateBtn.innerHTML = '<i class="fas fa-save"></i> Update Status & Notes';
+        }
+    }
+    
+    function exportLeads() {
+        const rows = document.querySelectorAll('#leadsTableBody tr');
+        let csv = 'Date,Time,Name,Phone,Email,City,Stream,Course,Education,Year,Budget,Message,Source,Status\n';
+        
+        rows.forEach(row => {
+            if (row.style.display !== 'none') {
+                const cells = row.querySelectorAll('td');
+                const dateTime = cells[0].textContent.trim().split('\n');
+                const date = dateTime[0].trim();
+                const time = dateTime[1] ? dateTime[1].trim() : '';
+                const name = cells[1].textContent.trim();
+                const phone = cells[2].textContent.trim();
+                const email = cells[3].textContent.trim();
+                const stream = cells[4].textContent.trim();
+                const source = cells[5].textContent.trim();
+                const status = cells[6].textContent.trim();
+                
+                csv += `"${date}","${time}","${name}","${phone}","${email}","","${stream}","","","","","","${source}","${status}"\n`;
+            }
+        });
+        
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'edupath-leads-' + new Date().toISOString().split('T')[0] + '.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Click outside to close
+    document.getElementById('leadModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+</script>
+</body>
+</html>

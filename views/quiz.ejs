@@ -1,0 +1,133 @@
+<%- include('partials/header') %>
+
+<div class="main-container" style="margin-top: 90px;">
+    <div class="quiz-page-container">
+        <!-- Quiz Progress -->
+        <div class="quiz-progress">
+            <div class="quiz-progress-bar" id="progressBar"></div>
+        </div>
+        
+        <!-- Stream Selection (CUSTOM SHAPES) -->
+        <div class="quiz-step active" id="streamStep">
+            <div class="quiz-header">
+                <h2>Choose Your Academic Stream</h2>
+                <p>Select your current or preferred field of study to begin your career assessment</p>
+            </div>
+            
+            <div class="options-grid">
+                <div class="option-card" data-value="science" onclick="selectStream('science')">
+                    <i class="fas fa-flask"></i>
+                    <div class="option-title">Science</div>
+                    <p class="option-subtitle">Physics, Chemistry, Biology</p>
+                </div>
+                <div class="option-card" data-value="commerce" onclick="selectStream('commerce')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="option-title">Commerce</div>
+                    <p class="option-subtitle">Business, Economics, Accounts</p>
+                </div>
+                <div class="option-card" data-value="arts" onclick="selectStream('arts')">
+                    <i class="fas fa-palette"></i>
+                    <div class="option-title">Arts & Humanities</div>
+                    <p class="option-subtitle">Design, Law, Literature</p>
+                </div>
+                <div class="option-card" data-value="engineering" onclick="selectStream('engineering')">
+                    <i class="fas fa-cogs"></i>
+                    <div class="option-title">Engineering</div>
+                    <p class="option-subtitle">Technology, Computer Science</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Questions -->
+        <div class="quiz-step" id="questionsStep">
+            <div class="question-container" id="questionContainer">
+                <!-- Questions will be dynamically inserted here by quiz.js -->
+            </div>
+            
+            <div class="quiz-navigation">
+                <button class="quiz-btn" onclick="previousQuestion()" id="prevBtn" style="display:none;">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="quiz-btn primary" onclick="nextQuestion()" id="nextBtn" disabled>
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Student Info Collection -->
+        <div class="quiz-step" id="studentInfoStep">
+            <div class="quiz-header">
+                <h2>Almost Done!</h2>
+                <p>Please provide your details to receive personalized recommendations from our counselling team</p>
+            </div>
+            
+            <form id="studentInfoForm" class="student-info-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number *</label>
+                        <input type="tel" id="studentPhone" class="form-control" required pattern="[0-9]{10}">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address *</label>
+                        <input type="email" id="studentEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentCity">City</label>
+                        <input type="text" id="studentCity" class="form-control">
+                    </div>
+                </div>
+                
+                <button type="submit" class="quiz-btn primary" style="width: 100%; margin-top: 30px;">
+                    <i class="fas fa-check-circle"></i> Get My Recommendations
+                </button>
+            </form>
+        </div>
+        
+        <!-- Loading State -->
+        <div class="quiz-step" id="loadingStep">
+            <div class="loading-container">
+                <div class="loader"></div>
+                <h2 style="margin-top: 30px; color: #2c5282;">Analyzing Your Responses...</h2>
+                <p style="color: #666; font-size: 18px;">Please wait while we match you with the perfect universities</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+.student-info-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.loading-container {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #2c5282;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+<script src="/js/quiz.js"></script>
+<%- include('partials/footer') %>
