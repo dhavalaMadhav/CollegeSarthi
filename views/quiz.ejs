@@ -1,133 +1,952 @@
 <%- include('partials/header') %>
 
-<div class="main-container" style="margin-top: 90px;">
-    <div class="quiz-page-container">
-        <!-- Quiz Progress -->
-        <div class="quiz-progress">
-            <div class="quiz-progress-bar" id="progressBar"></div>
+<style>
+    /* ========================================
+       QUIZ PAGE - SWISS DESIGN SYSTEM
+    ======================================== */
+    
+    /* Hero Section */
+    .quiz-hero {
+        height: 300px;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        padding: 120px 30px 40px;
+        border-bottom: 2px solid var(--black);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quiz-hero-content {
+        max-width: 800px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .quiz-hero h1 {
+        font-size: 3rem;
+        font-weight: var(--font-weight-black);
+        margin-bottom: 20px;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+    }
+
+    .quiz-hero h1::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--black);
+        bottom: 15px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .quiz-hero h1::before {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: var(--accent);
+        border: 3px solid var(--black);
+        border-radius: 50%;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .quiz-hero p {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: var(--font-weight-medium);
+    }
+
+    /* Grid Overlay */
+    .quiz-hero-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 2px;
+        padding: 2px;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    .quiz-grid-cell {
+        background-color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--black);
+        transition: all 0.3s ease;
+    }
+
+    /* Quiz Container */
+    .quiz-page-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 60px auto 120px;
+        background: var(--white);
+        padding: 0;
+        position: relative;
+    }
+
+    /* Quiz Progress */
+    .quiz-progress {
+        height: 8px;
+        background: var(--gray-100);
+        border-bottom: 2px solid var(--black);
+        position: relative;
+    }
+
+    .quiz-progress-bar {
+        height: 100%;
+        background: var(--accent);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+
+    /* Quiz Steps */
+    .quiz-step {
+        padding: 60px;
+        display: none;
+    }
+
+    .quiz-step.active {
+        display: block;
+        animation: swissSlideIn 0.3s ease;
+    }
+
+    .quiz-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .quiz-header h2 {
+        font-size: 2.5rem;
+        font-weight: var(--font-weight-black);
+        color: var(--black);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .quiz-header p {
+        font-size: 1.125rem;
+        color: var(--gray-700);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* Stream Selection Section - Clean Design */
+    #streamStep {
+        padding: 0;
+        background-color:  #f1f5f9 ;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #streamStep .quiz-header {
+        padding: 40px 60px 0;
+    }
+
+    /* Grid Container - Full Width, No Border/Shadow */
+    .stream-grid-container {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+
+    /* Options Grid - 2 Rows, 2 Columns */
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+        grid-template-rows: 1fr 1fr;    /* 2 rows */
+        height: 500px; /* Fixed height for all options */
+        width: 100%;
+        position: relative;
+    }
+
+    /* Grid Lines - Only Internal Partitions */
+    .options-grid::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(to bottom, 
+            transparent 0%, 
+            rgba(0, 0, 0, 0.1) 10%, 
+            rgba(0, 0, 0, 0.1) 90%, 
+            transparent 100%);
+        z-index: 1;
+    }
+
+    .options-grid::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, 
+            transparent 0%, 
+            rgba(0, 0, 0, 0.1) 10%, 
+            rgba(0, 0, 0, 0.1) 90%, 
+            transparent 100%);
+        z-index: 1;
+    }
+
+    /* Option Cards - No Borders, Blended Background */
+    .option-card {
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.95) 0%, 
+            rgba(255, 255, 255, 0.85) 100%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        padding: 40px;
+    }
+
+    /* Hover Effect - Move Right and Darken */
+    .option-card:hover {
+        transform: translateX(5px);
+        z-index: 2;
+                background-color:  #f1f5f9 ;
+    }
+
+    /* Selected State */
+    .option-card.selected {
+        background: linear-gradient(135deg, 
+            var(--accent) 0%, 
+            var(--accent-dark) 100%);
+    }
+
+    .option-card.selected:hover {
+        background: linear-gradient(135deg, 
+            var(--accent) 0%, 
+            var(--accent-dark) 100%);
+        transform: translateX(15px);
+    }
+
+    /* Option Content */
+    .option-card i {
+        font-size: 3.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .option-card:hover i {
+        transform: scale(1.1);
+    }
+
+    .option-card.selected i {
+        color: var(--white);
+    }
+
+    .option-title {
+        font-size: 1.75rem;
+        font-weight: var(--font-weight-black);
+        color: var(--black);
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+    }
+
+    .option-card:hover .option-title {
+        color: var(--primary);
+    }
+
+    .option-card.selected .option-title {
+        color: var(--white);
+    }
+
+    .option-subtitle {
+        font-size: 1rem;
+        color: var(--gray-700);
+        font-weight: var(--font-weight-medium);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        line-height: 1.5;
+        max-width: 300px;
+    }
+
+    .option-card:hover .option-subtitle {
+        color: var(--gray-900);
+    }
+
+    .option-card.selected .option-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Subtle Corner Markers */
+    .option-card::before,
+    .option-card::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .option-card::before {
+        top: 20px;
+        left: 20px;
+        border-top: 2px solid var(--primary);
+        border-left: 2px solid var(--primary);
+    }
+
+    .option-card::after {
+        bottom: 20px;
+        right: 20px;
+        border-bottom: 2px solid var(--primary);
+        border-right: 2px solid var(--primary);
+    }
+
+    .option-card:hover::before,
+    .option-card:hover::after {
+        opacity: 1;
+    }
+
+    .option-card.selected::before,
+    .option-card.selected::after {
+        border-color: var(--white);
+        opacity: 1;
+    }
+
+    /* Question Container */
+    .question-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .question-card {
+        background: var(--white);
+        border: 2px solid var(--black);
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .question-number {
+        font-size: 0.875rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--black);
+        margin-bottom: 30px;
+        line-height: 1.4;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .answer-options {
+        display: grid;
+        gap: 15px;
+    }
+
+    .answer-option {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background: var(--white);
+        border: 2px solid var(--gray-200);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+    }
+
+    .answer-option:hover {
+        border-color: var(--primary);
+        background: rgba(0, 85, 255, 0.05);
+    }
+
+    .answer-option.selected {
+        background: var(--accent);
+        border-color: var(--accent-dark);
+    }
+
+    .option-radio {
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--black);
+        border-radius: 50%;
+        margin-right: 20px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .option-radio::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        background: var(--black);
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    .answer-option.selected .option-radio::after {
+        opacity: 1;
+    }
+
+    .option-text {
+        font-size: 1.125rem;
+        font-weight: var(--font-weight-medium);
+        color: var(--black);
+        flex: 1;
+    }
+
+    /* Quiz Navigation */
+    .quiz-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 40px;
+        border-top: 2px solid var(--gray-200);
+    }
+
+    /* Quiz Buttons - Swiss Style */
+    .quiz-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 32px;
+        font-family: var(--font-main);
+        font-size: 1rem;
+        font-weight: var(--font-weight-semibold);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 2px solid var(--black);
+        background-color: var(--white);
+        color: var(--black);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
+
+    .quiz-btn:hover:not(:disabled) {
+        transform: translate(-2px, -2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .quiz-btn:active:not(:disabled) {
+        transform: translate(2px, 2px);
+        box-shadow: none;
+    }
+
+    .quiz-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .quiz-btn.primary {
+        background-color: var(--primary);
+        color: var(--white);
+        border-color: var(--primary-dark);
+        box-shadow: var(--shadow-primary);
+    }
+
+    .quiz-btn.accent {
+        background-color: var(--accent);
+        color: var(--black);
+        border-color: var(--black);
+        box-shadow: var(--shadow-accent);
+    }
+
+    .quiz-btn i {
+        margin-right: 10px;
+    }
+
+    /* Student Info Form - Swiss Style */
+    .student-info-form {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: var(--font-weight-semibold);
+        color: var(--black);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .form-group label .required {
+        color: var(--secondary);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 18px 20px;
+        font-size: 1rem;
+        font-family: var(--font-main);
+        border: 2px solid var(--black);
+        background: var(--white);
+        color: var(--black);
+        transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .form-control:invalid {
+        border-color: var(--secondary);
+    }
+
+    /* Loading State */
+    .loading-container {
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .loader {
+        border: 8px solid var(--gray-100);
+        border-top: 8px solid var(--accent);
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        border-color: var(--gray-200);
+        border-top-color: var(--accent);
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .quiz-page-container {
+            max-width: 1000px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .quiz-hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .quiz-hero p {
+            font-size: 1.125rem;
+        }
+        
+        .quiz-page-container {
+            width: 95%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .quiz-hero {
+            height: 250px;
+            padding: 100px 20px 30px;
+        }
+        
+        .quiz-hero h1 {
+            font-size: 2rem;
+            padding-bottom: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .quiz-step {
+            padding: 40px;
+        }
+        
+        .quiz-header h2 {
+            font-size: 2rem;
+        }
+        
+        /* For mobile: switch to 1 column layout */
+        .options-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            height: auto;
+            min-height: 600px;
+        }
+        
+        /* Hide vertical grid line on mobile */
+        .options-grid::before {
+            display: none;
+        }
+        
+        /* Adjust horizontal grid lines for mobile */
+        .options-grid::after {
+            display: none;
+        }
+        
+        /* Add borders between items on mobile */
+        .option-card {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-card:last-child {
+            border-bottom: none;
+        }
+        
+        .option-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .quiz-navigation {
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .quiz-btn {
+            width: 100%;
+        }
+        
+        .question-card {
+            padding: 30px;
+        }
+        
+        .question-text {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .quiz-hero {
+            height: 220px;
+        }
+        
+        .quiz-hero h1 {
+            font-size: 1.75rem;
+        }
+        
+        .quiz-hero h1::after,
+        .quiz-hero h1::before {
+            display: none;
+        }
+        
+        .quiz-step {
+            padding: 30px 20px;
+        }
+        
+        .quiz-header h2 {
+            font-size: 1.75rem;
+        }
+        
+        .quiz-header p {
+            font-size: 1rem;
+        }
+        
+        #streamStep .quiz-header {
+            padding: 30px 20px 0;
+        }
+        
+        .option-card {
+            padding: 30px 20px;
+        }
+        
+        .option-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .option-title {
+            font-size: 1.5rem;
+        }
+        
+        .option-subtitle {
+            font-size: 0.875rem;
+        }
+        
+        .question-card {
+            padding: 25px;
+        }
+        
+        .question-text {
+            font-size: 1.125rem;
+        }
+        
+        .answer-option {
+            padding: 15px;
+        }
+        
+        .option-text {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .quiz-hero h1 {
+            font-size: 1.5rem;
+        }
+        
+        .quiz-page-container {
+            width: 98%;
+            margin: 40px auto 80px;
+        }
+        
+        .quiz-step {
+            padding: 20px 15px;
+        }
+        
+        #streamStep .quiz-header {
+            padding: 20px 15px 0;
+        }
+        
+        .option-card i {
+            font-size: 2rem;
+        }
+        
+        .option-title {
+            font-size: 1.25rem;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="quiz-hero">
+    <div class="quiz-hero-grid">
+        <% for(let i=0; i<16; i++) { %>
+            <div class="quiz-grid-cell"></div>
+        <% } %>
+    </div>
+    
+    <div class="quiz-hero-content">
+        <h1>University Match Quiz</h1>
+        <p>Take our quick assessment to find the perfect universities for your goals and preferences</p>
+    </div>
+</section>
+
+<!-- Quiz Container -->
+<div class="quiz-page-container">
+    <!-- Quiz Progress -->
+    <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Stream Selection - ALL 4 OPTIONS IN ONE ROW -->
+    <div class="quiz-step active" id="streamStep">
+        <div class="quiz-header">
+            <h2>Choose Your Academic Stream</h2>
+            <p>Select your current or preferred field of study to begin your career assessment</p>
         </div>
         
-        <!-- Stream Selection (CUSTOM SHAPES) -->
-        <div class="quiz-step active" id="streamStep">
-            <div class="quiz-header">
-                <h2>Choose Your Academic Stream</h2>
-                <p>Select your current or preferred field of study to begin your career assessment</p>
+        <div class="options-grid">
+            <div class="option-card" data-value="science" onclick="selectStream('science')">
+                <i class="fas fa-flask"></i>
+                <div class="option-title">Science</div>
+                <p class="option-subtitle">Physics, Chemistry, Biology</p>
+            </div>
+            <div class="option-card" data-value="commerce" onclick="selectStream('commerce')">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="option-title">Commerce</div>
+                <p class="option-subtitle">Business, Economics, Accounts</p>
+            </div>
+            <div class="option-card" data-value="arts" onclick="selectStream('arts')">
+                <i class="fas fa-palette"></i>
+                <div class="option-title">Arts & Humanities</div>
+                <p class="option-subtitle">Design, Law, Literature</p>
+            </div>
+            <div class="option-card" data-value="engineering" onclick="selectStream('engineering')">
+                <i class="fas fa-cogs"></i>
+                <div class="option-title">Engineering</div>
+                <p class="option-subtitle">Technology, Computer Science</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Questions -->
+    <div class="quiz-step" id="questionsStep">
+        <div class="question-container" id="questionContainer">
+            <!-- Questions will be dynamically inserted here by quiz.js -->
+        </div>
+        
+        <div class="quiz-navigation">
+            <button class="quiz-btn" onclick="previousQuestion()" id="prevBtn" style="display:none;">
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="quiz-btn primary" onclick="nextQuestion()" id="nextBtn" disabled>
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Student Info Collection -->
+    <div class="quiz-step" id="studentInfoStep">
+        <div class="quiz-header">
+            <h2>Almost Done!</h2>
+            <p>Please provide your details to receive personalized recommendations from our counselling team</p>
+        </div>
+        
+        <form id="studentInfoForm" class="student-info-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="studentName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="studentName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentPhone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="studentPhone" class="form-control" required pattern="[0-9]{10}">
+                </div>
             </div>
             
-            <div class="options-grid">
-                <div class="option-card" data-value="science" onclick="selectStream('science')">
-                    <i class="fas fa-flask"></i>
-                    <div class="option-title">Science</div>
-                    <p class="option-subtitle">Physics, Chemistry, Biology</p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="studentEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="studentEmail" class="form-control" required>
                 </div>
-                <div class="option-card" data-value="commerce" onclick="selectStream('commerce')">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="option-title">Commerce</div>
-                    <p class="option-subtitle">Business, Economics, Accounts</p>
+                <div class="form-group">
+                    <label for="studentCity">City</label>
+                    <input type="text" id="studentCity" class="form-control">
                 </div>
-                <div class="option-card" data-value="arts" onclick="selectStream('arts')">
-                    <i class="fas fa-palette"></i>
-                    <div class="option-title">Arts & Humanities</div>
-                    <p class="option-subtitle">Design, Law, Literature</p>
-                </div>
-                <div class="option-card" data-value="engineering" onclick="selectStream('engineering')">
-                    <i class="fas fa-cogs"></i>
-                    <div class="option-title">Engineering</div>
-                    <p class="option-subtitle">Technology, Computer Science</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Questions -->
-        <div class="quiz-step" id="questionsStep">
-            <div class="question-container" id="questionContainer">
-                <!-- Questions will be dynamically inserted here by quiz.js -->
             </div>
             
-            <div class="quiz-navigation">
-                <button class="quiz-btn" onclick="previousQuestion()" id="prevBtn" style="display:none;">
-                    <i class="fas fa-arrow-left"></i> Previous
-                </button>
-                <button class="quiz-btn primary" onclick="nextQuestion()" id="nextBtn" disabled>
-                    Next <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Student Info Collection -->
-        <div class="quiz-step" id="studentInfoStep">
-            <div class="quiz-header">
-                <h2>Almost Done!</h2>
-                <p>Please provide your details to receive personalized recommendations from our counselling team</p>
-            </div>
-            
-            <form id="studentInfoForm" class="student-info-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentName">Full Name *</label>
-                        <input type="text" id="studentName" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentPhone">Phone Number *</label>
-                        <input type="tel" id="studentPhone" class="form-control" required pattern="[0-9]{10}">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentEmail">Email Address *</label>
-                        <input type="email" id="studentEmail" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentCity">City</label>
-                        <input type="text" id="studentCity" class="form-control">
-                    </div>
-                </div>
-                
-                <button type="submit" class="quiz-btn primary" style="width: 100%; margin-top: 30px;">
-                    <i class="fas fa-check-circle"></i> Get My Recommendations
-                </button>
-            </form>
-        </div>
-        
-        <!-- Loading State -->
-        <div class="quiz-step" id="loadingStep">
-            <div class="loading-container">
-                <div class="loader"></div>
-                <h2 style="margin-top: 30px; color: #2c5282;">Analyzing Your Responses...</h2>
-                <p style="color: #666; font-size: 18px;">Please wait while we match you with the perfect universities</p>
-            </div>
+            <button type="submit" class="quiz-btn accent" style="width: 100%; margin-top: 30px;">
+                <i class="fas fa-check-circle"></i> Get My Recommendations
+            </button>
+        </form>
+    </div>
+    
+    <!-- Loading State -->
+    <div class="quiz-step" id="loadingStep">
+        <div class="loading-container">
+            <div class="loader"></div>
+            <h2 style="margin-top: 30px; color: var(--black); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.05em;">Analyzing Your Responses...</h2>
+            <p style="color: var(--gray-700); font-size: 1.125rem; font-weight: var(--font-weight-medium);">Please wait while we match you with the perfect universities</p>
         </div>
     </div>
 </div>
 
-
-<style>
-.student-info-form {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.loading-container {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.loader {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #2c5282;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-</style>
-
 <script src="/js/quiz.js"></script>
+
+<script>
+// Initialize stream selection
+document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', function() {
+        // Remove selected class from all cards
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        // Add selected class to clicked card
+        this.classList.add('selected');
+        
+        // Enable next button
+        document.getElementById('nextBtn').disabled = false;
+    });
+});
+
+// Form submission
+document.getElementById('studentInfoForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Show loading step
+    document.getElementById('studentInfoStep').classList.remove('active');
+    document.getElementById('loadingStep').classList.add('active');
+    
+    // Update progress bar
+    document.getElementById('progressBar').style.width = '100%';
+    
+    // Collect form data
+    const formData = {
+        name: document.getElementById('studentName').value,
+        phone: document.getElementById('studentPhone').value,
+        email: document.getElementById('studentEmail').value,
+        city: document.getElementById('studentCity').value,
+        stream: window.selectedStream || 'science',
+        answers: window.quizAnswers || {}
+    };
+    
+    try {
+        // Send data to server
+        const response = await fetch('/api/leads/quiz', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Redirect to results page or show success message
+            setTimeout(() => {
+                window.location.href = '/quiz/results';
+            }, 2000);
+        } else {
+            alert('Error submitting quiz. Please try again.');
+            document.getElementById('loadingStep').classList.remove('active');
+            document.getElementById('studentInfoStep').classList.add('active');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Please try again.');
+        document.getElementById('loadingStep').classList.remove('active');
+        document.getElementById('studentInfoStep').classList.add('active');
+    }
+});
+</script>
+
 <%- include('partials/footer') %>

@@ -1,40 +1,64 @@
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
+<!-- partials/footer.ejs -->
+<footer class="swiss-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
             <div class="footer-column">
-                <h3>About EduPath</h3>
-                <p style="color: #aaa; font-size: 17px; line-height: 1.7;">
-                    Your trusted career guidance partner in finding the perfect university match. 
-                    We connect aspiring students with top institutions across India.
-                </p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
+                <h3>EduPath</h3>
                 <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/universities">Universities</a></li>
-                    <li><a href="/quiz">Career Quiz</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="#" class="footer-link">About Us</a></li>
+                    <li><a href="#" class="footer-link">Our Mission</a></li>
+                    <li><a href="#" class="footer-link">Career Opportunities</a></li>
+                    <li><a href="#" class="footer-link">Press & Media</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
-                <h3>Guidance Office</h3>
+                <h3>Services</h3>
                 <ul class="footer-links">
-                    <li><a><i class="fas fa-phone"></i> <%= process.env.CA_PHONE %></a></li>
-                    <li><a><i class="fas fa-envelope"></i> <%= process.env.CA_EMAIL %></a></li>
-                    <li><a><i class="fas fa-map-marker-alt"></i> Mumbai, India</a></li>
+                    <li><a href="#" class="footer-link">Career Counselling</a></li>
+                    <li><a href="#" class="footer-link">University Selection</a></li>
+                    <li><a href="#" class="footer-link">Admission Guidance</a></li>
+                    <li><a href="#" class="footer-link">Scholarship Assistance</a></li>
                 </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Career Quiz</a></li>
+                    <li><a href="#" class="footer-link">University Directory</a></li>
+                    <li><a href="#" class="footer-link">Success Stories</a></li>
+                    <li><a href="#" class="footer-link">Blog & Articles</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Contact Us</a></li>
+                    <li><a href="#" class="footer-link">Support Center</a></li>
+                    <li><a href="#" class="footer-link">Live Chat</a></li>
+                    <li><a href="#" class="footer-link">Emergency Contact</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
         
-        <div class="copyright">
-            &copy; 2025 EduPath - Career Guidance Platform. All rights reserved.
+        <div class="footer-bottom">
+            <p>© 2024 EduPath. All rights reserved. Swiss Design Principles Applied.</p>
+            <p>Designed with precision in Switzerland, delivered worldwide</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="/js/main.js"></script>
+        <script src="/js/script.js"></script>
+
     <!-- Chat Widget JS -->
 <script src="/js/chat-widget.js"></script>
 <!-- Callback Widget JS -->

@@ -1,12 +1,34 @@
 <%- include('partials/header') %>
 
-<div class="main-container">
+<!-- Link to external CSS -->
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- Hero Section with Carousel -->
     <section class="hero">
         <div class="carousel">
             <div class="carousel-track">
-                <!-- Slide 1 -->
+                <!-- Slide 1 with Grid & Stripes - Primary Colors -->
                 <div class="carousel-slide slide-1">
+                    <!-- Grid Overlay -->
+                    <div class="hero-grid-overlay">
+                        <div class="grid-cell">E</div>
+                        <div class="grid-cell">D</div>
+                        <div class="grid-cell accent">U</div>
+                        <div class="grid-cell">C</div>
+                        <div class="grid-cell primary">A</div>
+                        <div class="grid-cell">T</div>
+                        <div class="grid-cell">I</div>
+                        <div class="grid-cell accent">O</div>
+                        <div class="grid-cell">N</div>
+                        <div class="grid-cell primary">P</div>
+                        <div class="grid-cell accent">A</div>
+                        <div class="grid-cell">T</div>
+                        <div class="grid-cell">H</div>
+                        <div class="grid-cell primary">2</div>
+                        <div class="grid-cell">0</div>
+                        <div class="grid-cell green">2</div>
+                    </div>
+                    
                     <div class="carousel-content">
                         <h1>Find Your Perfect University Match</h1>
                         <p>Expert career guidance and university counselling to help you achieve your academic dreams</p>
@@ -21,8 +43,28 @@
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
+                <!-- Slide 2 with Grid & Stripes - Secondary Colors -->
                 <div class="carousel-slide slide-2">
+                    <!-- Grid Overlay -->
+                    <div class="hero-grid-overlay">
+                        <div class="grid-cell">C</div>
+                        <div class="grid-cell">A</div>
+                        <div class="grid-cell accent">R</div>
+                        <div class="grid-cell">E</div>
+                        <div class="grid-cell primary">E</div>
+                        <div class="grid-cell">R</div>
+                        <div class="grid-cell">G</div>
+                        <div class="grid-cell accent">U</div>
+                        <div class="grid-cell">I</div>
+                        <div class="grid-cell primary">D</div>
+                        <div class="grid-cell accent">E</div>
+                        <div class="grid-cell">2</div>
+                        <div class="grid-cell">0</div>
+                        <div class="grid-cell primary">2</div>
+                        <div class="grid-cell">4</div>
+                        <div class="grid-cell green">5</div>
+                    </div>
+                    
                     <div class="carousel-content">
                         <h1>Personalized Career Counselling</h1>
                         <p>Get one-on-one guidance from experienced counsellors who understand your unique aspirations and goals</p>
@@ -37,8 +79,28 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
+                <!-- Slide 3 with Grid & Stripes - Accent Colors -->
                 <div class="carousel-slide slide-3">
+                    <!-- Grid Overlay -->
+                    <div class="hero-grid-overlay">
+                        <div class="grid-cell">S</div>
+                        <div class="grid-cell">U</div>
+                        <div class="grid-cell accent">C</div>
+                        <div class="grid-cell">C</div>
+                        <div class="grid-cell primary">E</div>
+                        <div class="grid-cell">S</div>
+                        <div class="grid-cell">S</div>
+                        <div class="grid-cell accent">J</div>
+                        <div class="grid-cell">O</div>
+                        <div class="grid-cell primary">U</div>
+                        <div class="grid-cell accent">R</div>
+                        <div class="grid-cell">N</div>
+                        <div class="grid-cell">E</div>
+                        <div class="grid-cell primary">Y</div>
+                        <div class="grid-cell">2</div>
+                        <div class="grid-cell green">4</div>
+                    </div>
+                    
                     <div class="carousel-content">
                         <h1>Your Success is Our Mission</h1>
                         <p>Join thousands of successful students who found their perfect university match with our expert guidance</p>
@@ -71,31 +133,39 @@
         </div>
     </section>
 
-    <!-- ✨ NEW: Stats Section -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number" data-target="500">0</div>
-                <div class="stat-plus">+</div>
-                <div class="stat-label">Students Placed</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fas fa-university"></i></div>
-                <div class="stat-number" data-target="150">0</div>
-                <div class="stat-plus">+</div>
-                <div class="stat-label">Partner Universities</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="stat-number" data-target="95">0</div>
-                <div class="stat-percent">%</div>
-                <div class="stat-label">Success Rate</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fas fa-headset"></i></div>
-                <div class="stat-number-text">24/7</div>
-                <div class="stat-label">Support Available</div>
+    <!-- Canvas Hollow Text Zoom Section with Stats Inside -->
+    <section class="canvas-text-section" id="hollowTextSection">
+        <canvas id="hollowTextCanvas"></canvas>
+        <div class="content-behind-canvas" id="canvasContent">
+            <div class="behind-content-wrapper">
+                <!-- Stats Section -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-number" data-target="500">0</div>
+                            <div class="stat-plus">+</div>
+                            <div class="stat-label">Students Placed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-university"></i></div>
+                            <div class="stat-number" data-target="150">0</div>
+                            <div class="stat-plus">+</div>
+                            <div class="stat-label">Partner Universities</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="stat-number" data-target="95">0</div>
+                            <div class="stat-percent">%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                            <div class="stat-number-text">24/7</div>
+                            <div class="stat-label">Support Available</div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </section>
@@ -150,66 +220,53 @@
         </div>
     </section>
 
-    <!-- ✨ NEW: How It Works Section -->
-<!-- ✨ How It Works Section -->
-<section class="how-it-works">
-    <div class="section-header">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">Your journey to the perfect university in 4 simple steps</p>
-    </div>
-    
-    <div class="process-container">
-        <div class="process-step">
-            <div class="step-number">1</div>
-            <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
-            <h3>Take Career Quiz</h3>
-            <p>Complete our comprehensive assessment to discover your strengths and interests</p>
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Your journey to the perfect university in 4 simple steps</p>
         </div>
         
-        <div class="process-connector">
-            <i class="fas fa-arrow-right"></i>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+                <h3>Take Career Quiz</h3>
+                <p>Complete our comprehensive assessment to discover your strengths and interests</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-icon"><i class="fas fa-user-tie"></i></div>
+                <h3>Get Expert Counseling</h3>
+                <p>Receive personalized guidance from our experienced education consultants</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Apply to Universities</h3>
+                <p>We help you with applications, documentation, and admission procedures</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Start Your Journey</h3>
+                <p>Secure admission and begin your path to academic excellence</p>
+            </div>
         </div>
         
-        <div class="process-step">
-            <div class="step-number">2</div>
-            <div class="step-icon"><i class="fas fa-user-tie"></i></div>
-            <h3>Get Expert Counseling</h3>
-            <p>Receive personalized guidance from our experienced education consultants</p>
+        <!-- CTA Button -->
+        <div class="process-cta">
+            <button class="btn-quiz-cta" onclick="window.location.href='/quiz'">
+                <span>Start Your Journey Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
-        
-        <div class="process-connector">
-            <i class="fas fa-arrow-right"></i>
-        </div>
-        
-        <div class="process-step">
-            <div class="step-number">3</div>
-            <div class="step-icon"><i class="fas fa-file-alt"></i></div>
-            <h3>Apply to Universities</h3>
-            <p>We help you with applications, documentation, and admission procedures</p>
-        </div>
-        
-        <div class="process-connector">
-            <i class="fas fa-arrow-right"></i>
-        </div>
-        
-        <div class="process-step">
-            <div class="step-number">4</div>
-            <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
-            <h3>Start Your Journey</h3>
-            <p>Secure admission and begin your path to academic excellence</p>
-        </div>
-    </div>
-    
-    <!-- ✨ NEW: CTA Button -->
-    <div class="process-cta">
-        <button class="btn-quiz-cta" onclick="window.location.href='/quiz'">
-            <span>Start Your Journey Now</span>
-            <i class="fas fa-arrow-right"></i>
-        </button>
-    </div>
-</section>
+    </section>
 
-    <!-- ✨ NEW: Featured Universities (Logos Only - Top 8) -->
+    <!-- Featured Universities -->
     <section class="featured-universities">
         <div class="section-header">
             <h2 class="section-title">Our Partner Universities</h2>
@@ -281,75 +338,77 @@
         </div>
     </section>
 
-    <!-- ✨ NEW: FAQ Section -->
-    <section class="faq-section">
-        <div class="section-header">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Get answers to common questions about university admissions</p>
+    <!-- FAQ Section -->
+<!-- FAQ Section -->
+<section class="faq-section">
+    <canvas id="faq-matrix-canvas"></canvas>
+    <div class="section-header">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Get answers to common questions about university admissions</p>
+    </div>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How does the career quiz work?</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Our comprehensive career quiz assesses your interests, aptitude, and goals through a series of questions. Based on your responses, we provide personalized university and course recommendations that align with your profile.</p>
+            </div>
         </div>
         
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How does the career quiz work?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Our comprehensive career quiz assesses your interests, aptitude, and goals through a series of questions. Based on your responses, we provide personalized university and course recommendations that align with your profile.</p>
-                </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Is the counselling service free?</h3>
+                <i class="fas fa-chevron-down"></i>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Is the counselling service free?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! Your first consultation session is completely free. We'll assess your profile, discuss your goals, and provide initial guidance. Additional premium services are available for comprehensive application support.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Which universities do you partner with?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>We partner with 150+ top universities across India, including IITs, NITs, BITS Pilani, VIT, SRM, Manipal, and many more. Our network covers engineering, medical, management, and arts institutions.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How long does the admission process take?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>The timeline varies by university and program, typically ranging from 2-6 months. We guide you through each step and ensure timely submission of all applications and documents.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Do you help with scholarship applications?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! We provide guidance on available scholarships, help you identify opportunities you're eligible for, and assist with the application process to maximize your chances of securing financial aid.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Can I contact you after admission?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! We provide ongoing support even after admission. Our team is available 24/7 to answer questions about your university, course registration, accommodation, and any challenges you might face.</p>
-                </div>
+            <div class="faq-answer">
+                <p>Yes! Your first consultation session is completely free. We'll assess your profile, discuss your goals, and provide initial guidance. Additional premium services are available for comprehensive application support.</p>
             </div>
         </div>
-    </section>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Which universities do you partner with?</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>We partner with 150+ top universities across India, including IITs, NITs, BITS Pilani, VIT, SRM, Manipal, and many more. Our network covers engineering, medical, management, and arts institutions.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How long does the admission process take?</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>The timeline varies by university and program, typically ranging from 2-6 months. We guide you through each step and ensure timely submission of all applications and documents.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Do you help with scholarship applications?</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Absolutely! We provide guidance on available scholarships, help you identify opportunities you're eligible for, and assist with the application process to maximize your chances of securing financial aid.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Can I contact you after admission?</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes! We provide ongoing support even after admission. Our team is available 24/7 to answer questions about your university, course registration, accommodation, and any challenges you might face.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -366,879 +425,89 @@
             </div>
         </div>
     </section>
-</div>
-
 <style>
-/* ========================================
-   HERO CAROUSEL STYLES
-======================================== */
-.hero {
-    position: relative;
-    height: 700px;
-    overflow: hidden;
-    user-select: none;
-}
-
-.carousel {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.carousel-track {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.carousel-slide {
-    width: 33.333%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-    padding: 120px 30px;
-}
-
-.slide-1 {
-    background: url('https://img.freepik.com/premium-photo/young-asian-indian-college-students-reading-books-studying-laptop-preparing-exam-working-group-project-while-sitting-grass-staircase-steps-college-campus_466689-8633.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
-    position: relative;
-}
-
-.slide-1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-}
-
-.slide-2 {
-    background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920') no-repeat center center/cover;
-    position: relative;
-}
-
-.slide-2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-}
-
-.slide-3 {
-    background: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1920') no-repeat center center/cover;
-    position: relative;
-}
-
-.slide-3::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-}
-
-.carousel-content {
-    text-align: center;
-    color: white;
-    max-width: 900px;
-    animation: fadeInUp 1s ease-out;
-    position: relative;
-    z-index: 1;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.carousel-content h1 {
-    font-size: 56px;
-    font-weight: 800;
-    margin-bottom: 25px;
-    line-height: 1.2;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.carousel-content p {
-    font-size: 24px;
-    margin-bottom: 40px;
-    opacity: 0.95;
-    line-height: 1.6;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.carousel-dots {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    z-index: 10;
-}
-
-.dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.dot:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.2);
-}
-
-.dot.active {
-    width: 45px;
-    border-radius: 12px;
-    background-color: white;
-    border-color: white;
-}
-
-.carousel-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 0;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-    backdrop-filter: blur(5px);
-}
-
-.carousel-nav-btn:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-50%) scale(1.1);
-    border-color: white;
-}
-
-.carousel-prev {
-    left: 20px;
-}
-
-.carousel-next {
-    right: 20px;
-}
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 18px 35px;
-    font-weight: 700;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn-primary {
-    background-color: white;
-    color: #2c5282;
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
-}
-
-.btn-primary:hover {
-    background-color: #f0f7ff;
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: white;
-    border: 3px solid white;
-    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.2);
-}
-
-.btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.3);
-}
-
-.btn-primary.large, .btn-secondary.large {
-    padding: 22px 45px;
-    font-size: 20px;
-}
-
-/* ========================================
-   SECTION COMMON STYLES
-======================================== */
-section {
-    padding: 100px 0;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 70px;
-    padding: 0 30px;
-}
-
-.section-title {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #1a365d;
-    font-weight: 800;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 40px;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #2c5282;
-    bottom: 15px;
-    left: 0;
-    z-index: 1;
-}
-
-.section-title::before {
-    content: '';
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background: white;
-    border: 4px solid #2c5282;
-    border-radius: 50%;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    box-shadow: 0 0 0 10px rgba(44, 82, 130, 0.08);
-}
-
-.section-subtitle {
-    font-size: 20px;
-    color: #555;
-    max-width: 800px;
-    margin: 40px auto 0;
-    line-height: 1.7;
-}
-
-/* ========================================
-   STATS SECTION
-======================================== */
-.stats-section {
-    background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
-    padding: 80px 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.stats-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-}
-
-.stats-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 50px;
-    position: relative;
-    z-index: 1;
-}
-
-.stat-item {
-    text-align: center;
-    color: white;
-}
-
-.stat-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.stat-number, .stat-number-text {
-    font-size: 72px;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 5px;
-    display: inline-block;
-}
-
-.stat-plus, .stat-percent {
-    font-size: 48px;
-    font-weight: 900;
-    display: inline-block;
-    margin-left: 5px;
-}
-
-.stat-label {
-    font-size: 20px;
-    font-weight: 600;
-    opacity: 0.95;
-    margin-top: 15px;
-}
-
-/* ========================================
-   WHY CHOOSE US SECTION
-======================================== */
-.why-choose-us {
-    background: white;
-    padding: 120px 0;
-}
-
-.why-choose-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.why-choose-image {
-    width: 100%;
-    height: 700px;
-    overflow: hidden;
-    position: relative;
-}
-
-.why-choose-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s;
-}
-
-.why-choose-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.why-choose-item {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-}
-
-.why-choose-number {
-    font-size: 80px;
-    font-weight: 900;
-    color: #2c5282;
-    line-height: 1;
-    flex-shrink: 0;
-    width: 100px;
-}
-
-.why-choose-text {
-    flex: 1;
-}
-
-.why-choose-text h3 {
-    font-size: 32px;
-    color: #1a365d;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.why-choose-text p {
-    font-size: 19px;
-    color: #555;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* ========================================
-   HOW IT WORKS SECTION
-======================================== */
-.how-it-works {
-    background: #f8f9fa;
-    padding: 120px 0;
-}
-
-.process-container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.process-step {
-    flex: 1;
-    text-align: center;
-    padding: 40px 30px;
-    background: white;
-    border: 2px solid #e0e0e0;
-    transition: all 0.3s;
-    position: relative;
-}
-
-.process-step:hover {
-    transform: translateY(-10px);
-    box-shadow: 8px 8px 0 rgba(44, 82, 130, 0.15);
-    border-color: #2c5282;
-}
-
-.step-number {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    background: #2c5282;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 900;
-    border: 5px solid white;
-    box-shadow: 0 4px 15px rgba(44, 82, 130, 0.3);
-}
-
-.step-icon {
-    font-size: 60px;
-    color: #2c5282;
-    margin: 30px 0 20px;
-}
-
-.process-step h3 {
-    font-size: 24px;
-    color: #1a365d;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.process-step p {
-    font-size: 17px;
-    color: #555;
-    line-height: 1.6;
-}
-
-.process-connector {
-    font-size: 32px;
-    color: #2c5282;
-    flex-shrink: 0;
-}
-
-/* ========================================
-   HOW IT WORKS - CTA BUTTON
-======================================== */
-
-.process-cta {
-    text-align: center;
-    margin-top: 60px;
-}
-
-.btn-quiz-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    padding: 22px 50px;
-    background: #2c5282;
-    color: white;
-    border: none;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-quiz-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.btn-quiz-cta:hover::before {
-    left: 100%;
-}
-
-.btn-quiz-cta:hover {
-    background: #1a365d;
-    transform: translate(-3px, -3px);
-    box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.2);
-}
-
-.btn-quiz-cta i {
-    font-size: 22px;
-    transition: transform 0.3s;
-}
-
-.btn-quiz-cta:hover i {
-    transform: translateX(5px);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    .btn-quiz-cta {
-        padding: 18px 35px;
-        font-size: 18px;
-    }
-}
-
-
-/* ========================================
-   FEATURED UNIVERSITIES
-======================================== */
-.featured-universities {
-    background: white;
-    padding: 120px 0;
-}
-
-.university-logos-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-}
-
-.university-logo-item {
-    background: white;
-    padding: 30px;
-    text-align: center;
-    transition: all 0.3s;
-    cursor: pointer;
-    border: 2px solid #e0e0e0;
-}
-
-.university-logo-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 8px 8px 0 rgba(44, 82, 130, 0.15);
-    border-color: #2c5282;
-}
-
-.logo-wrapper {
-    width: 100%;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.logo-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter 0.3s;
-}
-
-.university-logo-item:hover .logo-wrapper img {
-    filter: grayscale(0%);
-}
-
-.university-logo-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a365d;
-    margin: 0;
-}
-
-/* ========================================
-   STUDENT STORIES
-======================================== */
-.student-stories {
-    padding: 120px 0;
-    background-color: #f8f9fa;
-    position: relative;
-}
-
-.stories-container {
-    position: relative;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 80px;
-    user-select: none;
-}
-
-.stories-carousel {
-    display: flex;
-    gap: 40px;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    padding: 20px 10px 40px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.stories-carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.story-card {
-    flex: 0 0 420px;
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    cursor: pointer;
-}
-
-.story-card:hover {
-    box-shadow: 10px 10px 0 rgba(44, 82, 130, 0.2);
-}
-
-.student-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 500px;
-}
-
-.student-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.university-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
-}
-
-.accepted-badge {
-    font-size: 14px;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.university-name-overlay {
-    font-size: 42px;
-    font-weight: 800;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    line-height: 1.1;
-}
-
-.student-info {
-    padding: 30px;
-    background-color: white;
-}
-
-.student-name {
-    font-size: 28px;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-.student-details-row {
-    display: flex;
-    gap: 30px;
-    margin-top: 15px;
-}
-
-.detail-item {
-    flex: 1;
-}
-
-.detail-label {
-    font-size: 14px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-}
-
-.detail-value {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c5282;
-}
-
-.student-review {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: white;
-    overflow: hidden;
-    transition: height 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.story-card:hover .student-review {
-    height: 100%;
-}
-
-.review-content {
-    text-align: center;
-}
-
-.review-text {
-    font-size: 20px;
-    line-height: 1.6;
-    color: #333;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.review-author {
-    font-size: 18px;
-    font-weight: 700;
-    color: #2c5282;
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border: none;
-    font-size: 24px;
-    color: #2c5282;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-}
-
-.carousel-nav:hover {
-    background-color: #2c5282;
-    color: white;
-    transform: translateY(-50%) translate(-2px, -2px);
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
-}
-
-.carousel-nav.prev {
-    left: 0;
-}
-
-.carousel-nav.next {
-    right: 0;
-}
-
-/* ========================================
-   FAQ SECTION
-======================================== */
+    /* FAQ Section with Matrix Background */
+/* FAQ Section with Blue Matrix Background */
 .faq-section {
-    background: white;
-    padding: 120px 0;
+    padding: 6rem 5%;
+    background: #000000; /* Pure black background */
+    position: relative;
+    overflow: hidden;
+}
+
+#faq-matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.faq-section .section-header,
+.faq-container {
+    position: relative;
+    z-index: 1;
+}
+
+.faq-section .section-title {
+    color: #ffffff;
+}
+
+.faq-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .faq-container {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 30px;
 }
 
 .faq-item {
-    border: 2px solid #e0e0e0;
-    margin-bottom: 20px;
-    transition: all 0.3s;
-    background: white;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    margin-bottom: 1.5rem;
+    border-radius: 0; /* No border radius */
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
 }
 
 .faq-item:hover {
-    border-color: #2c5282;
+    border-color: rgba(0, 166, 255, 0.6);
+    box-shadow: 0 8px 25px rgba(0, 166, 255, 0.3);
+    background: rgba(0, 0, 0, 0.7); /* Darker on hover */
 }
 
 .faq-question {
-    padding: 25px 30px;
+    padding: 1.8rem 2rem;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    user-select: none;
+    border-bottom: 2px solid #ffffff; /* White underline */
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.faq-item.active .faq-question {
+    border-bottom-color: #00A6FF; /* Blue underline when active */
 }
 
 .faq-question h3 {
-    font-size: 20px;
-    color: #1a365d;
-    font-weight: 700;
+    color: #ffffff; /* White text for visibility */
+    font-size: 1.15rem;
+    font-weight: 600;
     margin: 0;
-    flex: 1;
 }
 
 .faq-question i {
-    font-size: 20px;
-    color: #2c5282;
-    transition: transform 0.3s;
+    color: #00A6FF; /* Blue icon */
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
 }
 
 .faq-item.active .faq-question i {
@@ -1249,371 +518,81 @@ section {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
+    background: transparent;
 }
 
 .faq-item.active .faq-answer {
     max-height: 500px;
-    padding: 0 30px 25px 30px;
+    padding: 1.5rem 2rem 2rem;
 }
 
 .faq-answer p {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85); /* Light white text for answer */
+    line-height: 1.8;
     margin: 0;
+    font-size: 1rem;
 }
 
-/* ========================================
-   CTA SECTION
-======================================== */
-.cta-section {
-    background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
-    padding: 100px 30px;
-    text-align: center;
-}
-
-.cta-content {
-    max-width: 900px;
-    margin: 0 auto;
-    color: white;
-}
-
-.cta-content h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: 800;
-}
-
-.cta-content p {
-    font-size: 22px;
-    margin-bottom: 40px;
-    opacity: 0.95;
-}
-
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* ========================================
-   RESPONSIVE STYLES
-======================================== */
-@media (max-width: 1024px) {
-    .process-connector {
-        display: none;
-    }
-    
-    .process-container {
-        flex-wrap: wrap;
-    }
-    
-    .process-step {
-        flex: 1 1 calc(50% - 15px);
-        min-width: 250px;
-    }
-    
-    .stories-container {
-        padding: 0 60px;
-    }
-    
-    .story-card {
-        flex: 0 0 360px;
-    }
-}
-
-@media (max-width: 900px) {
-    .why-choose-container {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-    
-    .why-choose-image {
-        height: 400px;
-    }
-    
-    .why-choose-number {
-        font-size: 60px;
-        width: 80px;
-    }
-    
-    .why-choose-text h3 {
-        font-size: 26px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero {
-        height: 600px;
-    }
-
-    .carousel-slide {
-        padding: 80px 30px;
-    }
-    
-    .carousel-content h1 {
-        font-size: 36px;
-    }
-    
-    .section-title {
-        font-size: 36px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-    }
-    
-    .stat-number, .stat-number-text {
-        font-size: 56px;
-    }
-    
-    .process-container {
-        flex-direction: column;
-    }
-    
-    .process-step {
-        width: 100%;
-    }
-    
-    .university-logos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .hero {
-        height: 550px;
-    }
-
-    .carousel-content h1 {
-        font-size: 28px;
-    }
-    
-    .carousel-content p {
-        font-size: 16px;
-    }
-    
-    .btn-primary, .btn-secondary {
-        padding: 16px 28px;
-        font-size: 16px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .why-choose-number {
-        font-size: 50px;
-        width: 60px;
-    }
-    
-    .why-choose-text h3 {
-        font-size: 22px;
-    }
-    
-    .university-logos-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .stories-container {
-        padding: 0 40px;
-    }
-    
-    .story-card {
-        flex: 0 0 280px;
-    }
-}
 </style>
-
 <script>
-console.log('Initializing page...');
-
-// ========================================
-// HERO CAROUSEL
-// ========================================
-const carouselTrack = document.querySelector('.carousel-track');
-const carouselDots = document.querySelectorAll('.carousel .dot');
-const carouselPrevBtn = document.querySelector('.carousel-prev');
-const carouselNextBtn = document.querySelector('.carousel-next');
-const heroSection = document.querySelector('.hero');
-const carouselSlides = document.querySelectorAll('.carousel-slide');
-
-let currentCarouselSlide = 0;
-const totalCarouselSlides = 3;
-let carouselTouchStartX = 0;
-let carouselTouchEndX = 0;
-let carouselInterval;
-
-function moveCarouselToSlide(slideIndex) {
-    currentCarouselSlide = slideIndex;
-    const translateX = -slideIndex * 33.333;
-    carouselTrack.style.transform = `translateX(${translateX}%)`;
+    // Blue Matrix Rain Background for FAQ Section
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('faq-matrix-canvas');
+    if (!canvas) return;
     
-    carouselDots.forEach((dot, index) => {
-        if (index === slideIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
-    });
+    const ctx = canvas.getContext('2d');
     
-    carouselSlides[slideIndex].querySelector('.carousel-content').style.animation = 'none';
-    setTimeout(() => {
-        carouselSlides[slideIndex].querySelector('.carousel-content').style.animation = 'fadeInUp 1s ease-out';
-    }, 10);
-}
-
-carouselDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        moveCarouselToSlide(index);
-        resetCarouselInterval();
-    });
-});
-
-carouselPrevBtn.addEventListener('click', () => {
-    let prevSlide = currentCarouselSlide - 1;
-    if (prevSlide < 0) {
-        prevSlide = totalCarouselSlides - 1;
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
     }
-    moveCarouselToSlide(prevSlide);
-    resetCarouselInterval();
-});
-
-carouselNextBtn.addEventListener('click', () => {
-    let nextSlide = currentCarouselSlide + 1;
-    if (nextSlide >= totalCarouselSlides) {
-        nextSlide = 0;
-    }
-    moveCarouselToSlide(nextSlide);
-    resetCarouselInterval();
-});
-
-function nextCarouselSlide() {
-    let nextSlide = currentCarouselSlide + 1;
-    if (nextSlide >= totalCarouselSlides) {
-        nextSlide = 0;
-    }
-    moveCarouselToSlide(nextSlide);
-}
-
-function startCarouselInterval() {
-    carouselInterval = setInterval(nextCarouselSlide, 5000);
-}
-
-function resetCarouselInterval() {
-    clearInterval(carouselInterval);
-    startCarouselInterval();
-}
-
-heroSection.addEventListener('mouseenter', () => {
-    clearInterval(carouselInterval);
-});
-
-heroSection.addEventListener('mouseleave', () => {
-    startCarouselInterval();
-});
-
-moveCarouselToSlide(0);
-startCarouselInterval();
-
-// ========================================
-// STATS COUNTER ANIMATION
-// ========================================
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
+    resizeCanvas();
     
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const increment = target / speed;
+    const chars = '01';
+    const fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+    
+    // Initialize drops
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+    }
+    
+    function drawMatrix() {
+        // Semi-transparent background for trail effect
+        ctx.fillStyle = 'rgba(0, 8, 20, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        const updateCount = () => {
-            const count = +counter.innerText;
+        // Blue text color
+        ctx.fillStyle = '#00A6FF'; // Bright blue
+        ctx.font = fontSize + 'px monospace';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
             
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 10);
-            } else {
-                counter.innerText = target;
+            // Reset drop to top randomly
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
             }
-        };
-        
-        updateCount();
-    });
-}
-
-const statsSection = document.querySelector('.stats-section');
-let counterAnimated = false;
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !counterAnimated) {
-            animateCounters();
-            counterAnimated = true;
+            drops[i]++;
         }
-    });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-    observer.observe(statsSection);
-}
-
-// ========================================
-// TESTIMONIALS CAROUSEL
-// ========================================
-const storiesCarousel = document.getElementById('testimonialsCarousel');
-const prevButton = document.getElementById('testimonialPrevBtn');
-const nextButton = document.getElementById('testimonialNextBtn');
-const storyCards = document.querySelectorAll('.story-card');
-let currentStoryIndex = 0;
-
-function scrollToCard(index) {
-    const cardWidth = 420;
-    const gap = 40;
-    const scrollAmount = (cardWidth + gap) * index;
-    storiesCarousel.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-    });
-    currentStoryIndex = index;
-}
-
-prevButton.addEventListener('click', () => {
-    if (currentStoryIndex > 0) {
-        currentStoryIndex--;
-        scrollToCard(currentStoryIndex);
     }
-});
-
-nextButton.addEventListener('click', () => {
-    if (currentStoryIndex < storyCards.length - 1) {
-        currentStoryIndex++;
-        scrollToCard(currentStoryIndex);
-    }
-});
-
-// ========================================
-// FAQ ACCORDION
-// ========================================
-const faqItems = document.querySelectorAll('.faq-item');
-
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
     
-    question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        faqItems.forEach(faq => faq.classList.remove('active'));
-        
-        if (!isActive) {
-            item.classList.add('active');
+    // Animation loop
+    setInterval(drawMatrix, 35);
+    
+    // Resize handler
+    window.addEventListener('resize', function() {
+        resizeCanvas();
+        columns = canvas.width / fontSize;
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -100;
         }
     });
 });
 
-console.log('All sections initialized successfully ✅');
 </script>
-
 <%- include('partials/footer') %>

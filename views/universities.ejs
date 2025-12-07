@@ -1,402 +1,685 @@
-<%- include('partials/header') %>
+    <%- include('partials/header') %>
 
-<style>
-    /* Main Container - Matching Homepage */
-    .universities-main-container {
-        width: 90%;
-        margin: 100px auto 0;
-        border-left: 2px solid #000000;
-        border-right: 2px solid #000000;
-        background-color: #ffffff;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        padding-bottom: 100px;
-    }
-
-    /* Page Header Section */
-    .page-header-section {
-        padding: 100px 60px;
-        text-align: center;
-        background-color: #f8f9fa;
-        border-bottom: 2px solid #000000;
-    }
-
-    .page-title {
-        font-size: 56px;
-        margin-bottom: 25px;
-        color: #1a365d;
-        position: relative;
-        display: inline-block;
-        font-weight: 800;
-        letter-spacing: -1px;
-    }
-
-    .page-title::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 4px;
-        background: transparent;
-        bottom: -15px;
-        left: 0;
-        border-bottom: 2px solid #2c5282;
-    }
-
-    .page-title::before {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: #2c5282;
-        border-radius: 50%;
-        bottom: -23px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-    }
-
-    .page-subtitle {
-        font-size: 22px;
-        color: #555;
-        max-width: 800px;
-        margin: 40px auto 30px;
-        line-height: 1.7;
-    }
-
-    .universities-count {
-        display: inline-block;
-        background: #e6f2ff;
-        color: #2c5282;
-        padding: 12px 30px;
-        border: 2px solid #2c5282;
-        font-weight: 700;
-        margin-top: 20px;
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
-        font-size: 18px;
-    }
-
-    /* Universities Grid Section */
-/* Universities Grid Section */
-.universities-section {
-    padding: 80px 60px;
-}
-
-.universities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 50px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* University Card - Box Style with Fixed Width */
-.university-card {
-    background-color: #ffffff;
+    <style>
+        /* ========================================
+        UNIVERSITIES PAGE - SWISS DESIGN SYSTEM
+        ======================================== */
+        
+        /* Hero Section */
+/* Universities Hero - Match Quiz Hero Height */
+.universities-hero {
+    height: 300px; /* Same as quiz-hero */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 120px 30px 40px;
+    border-bottom: 2px solid var(--black);
+    position: relative;
     overflow: hidden;
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
-    transition: all 0.3s;
-    border: 1px solid #eaeaea;
-    cursor: pointer;
+}
+
+.universities-hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.universities-hero h1 {
+    font-size: 3rem;
+    font-weight: var(--font-weight-black);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.universities-hero h1::after {
+    content: '';
+    position: absolute;
     width: 100%;
+    height: 2px;
+    background: var(--black);
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
 }
 
-.university-card:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 12px 12px 0 rgba(44, 82, 130, 0.2);
-    border-color: #2c5282;
+.universities-hero h1::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border: 3px solid var(--black);
+    border-radius: 50%;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
 }
-    .university-banner {
-        width: 100%;
+
+.universities-hero p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Responsive for Universities Hero */
+@media (max-width: 1024px) {
+    .universities-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .universities-hero p {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .universities-hero {
         height: 250px;
-        overflow: hidden;
-        position: relative;
+        padding: 100px 20px 30px;
     }
-
-    .university-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-
-    .university-card:hover .university-banner img {
-        transform: scale(1.05);
-    }
-
-    .university-type-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(255, 255, 255, 0.95);
-        color: #1a365d;
-        padding: 8px 16px;
-        font-weight: 700;
-        font-size: 13px;
-        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
-        border: 2px solid #000;
-    }
-
-    .university-header {
-        background-color: #2c5282;
-        color: white;
-        padding: 40px;
-        text-align: center;
-    }
-
-    .university-name {
-        font-size: 34px;
+    
+    .universities-hero h1 {
+        font-size: 2rem;
+        padding-bottom: 30px;
         margin-bottom: 15px;
-        font-weight: 700;
     }
+}
 
-    .university-location {
-        font-size: 20px;
-        opacity: 0.9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+@media (max-width: 600px) {
+    .universities-hero {
+        height: 220px;
     }
-
-    .university-details {
-        padding: 50px 40px;
+    
+    .universities-hero h1 {
+        font-size: 1.75rem;
     }
-
-    .university-info-list {
-        list-style: none;
-        margin-bottom: 40px;
+    
+    .universities-hero h1::after,
+    .universities-hero h1::before {
+        display: none;
     }
+}
 
-    .university-info-list li {
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-        display: flex;
-        align-items: center;
-        font-size: 19px;
-        transition: all 0.3s;
+@media (max-width: 400px) {
+    .universities-hero h1 {
+        font-size: 1.5rem;
     }
+}
 
-    .university-info-list li:hover {
-        background-color: #f8f9fa;
-        padding-left: 10px;
-        transform: translateX(5px);
-    }
-
-    .university-info-list li:hover i {
-        transform: scale(1.2);
-    }
-
-    .university-info-list li i {
-        color: #2c5282;
-        margin-right: 20px;
-        font-size: 22px;
-        transition: transform 0.3s;
-    }
-
-    .university-button {
-        display: block;
-        width: 100%;
-        padding: 20px;
-        background-color: #f0f7ff;
-        color: #2c5282;
-        border: none;
-        font-weight: 700;
-        font-size: 19px;
-        cursor: pointer;
-        transition: all 0.3s;
-        text-align: center;
-        text-decoration: none;
-        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .university-button:hover {
-        background-color: #2c5282;
-        color: white;
-        transform: translate(-2px, -2px);
-        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    /* No Universities Message */
-    .no-universities {
-        text-align: center;
-        padding: 100px 60px;
-        background: #f8f9fa;
-        margin: 60px;
-        box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.08);
-        border: 1px solid #eaeaea;
-    }
-
-    .no-universities i {
-        font-size: 100px;
-        color: #ddd;
-        margin-bottom: 30px;
-    }
-
-    .no-universities h3 {
-        font-size: 32px;
-        color: #666;
-        margin-bottom: 15px;
-        font-weight: 700;
-    }
-
-    .no-universities p {
-        font-size: 18px;
-        color: #999;
-        margin-bottom: 30px;
-    }
-
-    .no-universities code {
-        background: #ffffff;
-        padding: 15px 25px;
-        font-family: 'Courier New', monospace;
-        font-size: 16px;
-        display: inline-block;
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-        border: 2px solid #e0e0e0;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .universities-main-container {
-            width: 95%;
+        /* Universities Count Badge */
+        .universities-count {
+            display: inline-block;
+            background: var(--white);
+            color: var(--black);
+            padding: 12px 30px;
+            border: 2px solid var(--black);
+            font-weight: var(--font-weight-bold);
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            box-shadow: var(--shadow-sm);
         }
 
-        .page-header-section {
-            padding: 80px 40px;
+        .universities-count i {
+            margin-right: 10px;
         }
 
-        .page-title {
-            font-size: 48px;
+        /* Search Section */
+        .search-section {
+            padding: 60px 30px;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
         }
 
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--black);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 18px 20px;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            border: 2px solid var(--black);
+            background: var(--white);
+            color: var(--black);
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-button {
+            padding: 18px 40px;
+            background: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--black);
+            font-size: 1rem;
+            font-weight: var(--font-weight-semibold);
+            font-family: var(--font-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .search-button:hover {
+            background: var(--primary-dark);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Universities Grid Section */
         .universities-section {
-            padding: 60px 40px;
+            padding: 80px 30px;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
         }
-    }
 
-    @media (max-width: 768px) {
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-black);
+            color: var(--black);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--black);
+            bottom: 15px;
+            left: 0;
+            z-index: 1;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 50%;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
+        }
+
         .universities-grid {
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
+        /* University Card - Swiss Design */
         .university-card {
-            min-width: 100%;
-            max-width: 100%;
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .page-header-section {
-            padding: 60px 30px;
-        }
-
-        .page-title {
-            font-size: 38px;
-        }
-
-        .page-subtitle {
-            font-size: 20px;
-        }
-
-        .universities-section {
-            padding: 60px 30px;
+        .university-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .university-banner {
-            height: 200px;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .university-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .university-card:hover .university-banner img {
+            transform: scale(1.05);
+        }
+
+        .university-type-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--white);
+            color: var(--black);
+            padding: 8px 16px;
+            font-weight: var(--font-weight-bold);
+            font-size: 0.875rem;
+            border: 2px solid var(--black);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .university-header {
-            padding: 30px 25px;
+            padding: 30px;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
         }
 
         .university-name {
-            font-size: 28px;
-        }
-
-        .university-details {
-            padding: 40px 30px;
-        }
-
-        .university-info-list li {
-            font-size: 17px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .universities-main-container {
-            margin-top: 80px;
-        }
-
-        .page-header-section {
-            padding: 50px 20px;
-        }
-
-        .page-title {
-            font-size: 32px;
-        }
-
-        .page-subtitle {
-            font-size: 18px;
-        }
-
-        .universities-section {
-            padding: 40px 20px;
-        }
-
-        .university-header {
-            padding: 25px 20px;
-        }
-
-        .university-name {
-            font-size: 24px;
+            font-size: 1.75rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 15px;
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
         }
 
         .university-location {
-            font-size: 17px;
+            font-size: 1rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .university-details {
-            padding: 35px 25px;
+            padding: 30px;
+        }
+
+        .university-info-list {
+            list-style: none;
+            margin-bottom: 30px;
         }
 
         .university-info-list li {
-            padding: 12px 0;
-            font-size: 16px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--gray-900);
+            transition: all 0.2s ease;
+        }
+
+        .university-info-list li:hover {
+            color: var(--primary);
+            padding-left: 10px;
         }
 
         .university-info-list li i {
-            font-size: 18px;
+            color: var(--primary);
             margin-right: 15px;
+            font-size: 1.125rem;
+            width: 24px;
+            text-align: center;
         }
 
         .university-button {
+            display: block;
+            width: 100%;
             padding: 16px;
-            font-size: 17px;
+            background: var(--accent);
+            color: var(--black);
+            border: 2px solid var(--black);
+            font-weight: var(--font-weight-semibold);
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-accent);
+            cursor: pointer;
         }
-    }
-</style>
 
-<div class="universities-main-container">
-    <!-- Page Header -->
-    <div class="page-header-section">
-        <h1 class="page-title">🎓 Explore Universities</h1>
-        <p class="page-subtitle">India's leading institutions for student entrepreneurship, offering comprehensive startup foundation programs and direct funding for innovative ideas.</p>
-        <div class="universities-count">
-            <i class="fas fa-university"></i> 
-            Showing <%= universities.length %> <%= universities.length === 1 ? 'University' : 'Universities' %>
+        .university-button:hover {
+            background: var(--accent-dark);
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px 0px var(--accent-dark);
+        }
+
+        /* Top Picks Section */
+        .top-picks-section {
+            padding: 80px 30px;
+            background: var(--gray-50);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .top-picks-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--black);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .top-picks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-pick-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        .top-pick-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .top-pick-rank {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-black);
+            color: var(--primary);
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .top-pick-name {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--black);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .top-pick-location {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .top-pick-highlight {
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: var(--font-weight-semibold);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-200);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* No Universities Message */
+        .no-universities {
+            text-align: center;
+            padding: 60px 30px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .no-universities i {
+            font-size: 4rem;
+            color: var(--gray-300);
+            margin-bottom: 20px;
+        }
+
+        .no-universities h3 {
+            font-size: 1.75rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--gray-700);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .no-universities p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .no-universities code {
+            background: var(--gray-100);
+            color: var(--black);
+            padding: 15px 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            display: inline-block;
+            border: 2px solid var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .universities-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .universities-hero p {
+                font-size: 1.125rem;
+            }
+            
+            .universities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .universities-hero {
+                height: 350px;
+                padding: 100px 20px 40px;
+            }
+            
+            .universities-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .search-button {
+                width: 100%;
+            }
+            
+            .universities-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .university-banner {
+                height: 200px;
+            }
+            
+            .university-name {
+                font-size: 1.5rem;
+            }
+            
+            .top-picks-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .universities-hero {
+                height: 300px;
+            }
+            
+            .universities-hero h1 {
+                font-size: 1.75rem;
+                padding-bottom: 30px;
+                margin-bottom: 20px;
+            }
+            
+            .universities-hero h1::after,
+            .universities-hero h1::before {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .section-title::after,
+            .section-title::before {
+                display: none;
+            }
+            
+            .universities-section,
+            .top-picks-section {
+                padding: 60px 20px;
+            }
+            
+            .university-header {
+                padding: 20px;
+            }
+            
+            .university-details {
+                padding: 20px;
+            }
+            
+            .university-info-list li {
+                padding: 12px 0;
+                font-size: 0.875rem;
+            }
+            
+            .top-pick-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .universities-hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .universities-count {
+                padding: 10px 20px;
+                font-size: 0.875rem;
+            }
+            
+            .search-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="universities-hero">
+        <div class="universities-hero-grid">
+            <% for(let i=0; i<16; i++) { %>
+                <div class="universities-grid-cell"></div>
+            <% } %>
         </div>
-    </div>
+        
+        <div class="universities-hero-content">
+            <h1>Explore Universities</h1>
+            <p>India's leading institutions offering comprehensive programs and direct opportunities for innovative ideas.</p>
+            
+            <!-- <div class="universities-count">
+                <i class="fas fa-university"></i> 
+                Showing <%= universities.length %> <%= universities.length === 1 ? 'University' : 'Universities' %>
+            </div> -->
+        </div>
+    </section>
 
-    <!-- Universities Section -->
-    <div class="universities-section">
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <h2 class="search-title">Find Your University</h2>
+            <form class="search-form" id="universitySearchForm">
+                <input type="text" class="search-input" placeholder="Search by name, location, or course..." id="searchInput">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Universities Grid Section -->
+    <section class="universities-section">
+        <h2 class="section-title">All Universities</h2>
+        
         <% if (universities && universities.length > 0) { %>
-            <!-- Universities Grid -->
-            <div class="universities-grid">
-                <% universities.forEach(university => { %>
+            <div class="universities-grid" id="universitiesGrid">
+                <% universities.forEach((university, index) => { %>
                     <div class="university-card" onclick="window.location.href='/university/<%= university._id %>'">
                         <!-- Banner Image -->
                         <div class="university-banner">
                             <img src="<%= university.bannerImage || 'https://images.unsplash.com/photo-1562774053-701939374585?w=800' %>" 
-                                 alt="<%= university.name %>">
+                                alt="<%= university.name %>">
                             <div class="university-type-badge"><%= university.type || 'Private' %></div>
                         </div>
 
@@ -414,24 +697,24 @@
                             <ul class="university-info-list">
                                 <li>
                                     <i class="fas fa-calendar"></i>
-                                    Established: <%= university.established %>
+                                    <span>Established: <%= university.established %></span>
                                 </li>
                                 <li>
                                     <i class="fas fa-users"></i>
-                                    <%= university.students %> Students
+                                    <span><%= university.students %> Students</span>
                                 </li>
                                 <li>
                                     <i class="fas fa-rupee-sign"></i>
-                                    Fees: <%= university.feeRange %>
+                                    <span>Fees: <%= university.feeRange %></span>
                                 </li>
                                 <li>
                                     <i class="fas fa-award"></i>
-                                    <%= university.accreditation %>
+                                    <span><%= university.accreditation %></span>
                                 </li>
                                 <% if (university.placements && university.placements.percentage) { %>
                                 <li>
                                     <i class="fas fa-briefcase"></i>
-                                    <%= university.placements.percentage %>% Placement
+                                    <span><%= university.placements.percentage %>% Placement</span>
                                 </li>
                                 <% } %>
                             </ul>
@@ -453,11 +736,80 @@
                 <code>node seed-universities.js</code>
             </div>
         <% } %>
-    </div>
-</div>
+    </section>
 
-<script>
-    console.log('📊 Universities loaded:', <%= universities.length %>);
-</script>
+    <!-- Top Picks Section -->
+    <% if (universities && universities.length > 0) { %>
+        <section class="top-picks-section">
+            <h2 class="top-picks-title">Our Top University Picks</h2>
+            
+            <div class="top-picks-grid">
+                <% 
+                    // Get top 5 universities (or all if less than 5)
+                    const topPicks = universities.slice(0, 5);
+                    const ranks = ['🥇', '🥈', '🥉', '4', '5'];
+                    
+                    topPicks.forEach((university, index) => { 
+                %>
+                    <div class="top-pick-card" onclick="window.location.href='/university/<%= university._id %>'">
+                        <div class="top-pick-rank"><%= ranks[index] %></div>
+                        <h3 class="top-pick-name"><%= university.name %></h3>
+                        <div class="top-pick-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <%= university.location %>
+                        </div>
+                        <div class="top-pick-highlight">
+                            <%= university.feeRange %> • <%= university.placements?.percentage || 'High' %>% Placement
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    <% } %>
 
-<%- include('partials/footer') %>
+    <script>
+        // Search functionality
+        document.getElementById('universitySearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const universityCards = document.querySelectorAll('.university-card');
+            let visibleCount = 0;
+
+            universityCards.forEach(card => {
+                const universityName = card.querySelector('.university-name').textContent.toLowerCase();
+                const universityLocation = card.querySelector('.university-location').textContent.toLowerCase();
+                
+                if (universityName.includes(searchTerm) || universityLocation.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update count badge
+            const countBadge = document.querySelector('.universities-count');
+            if (countBadge) {
+                countBadge.innerHTML = `<i class="fas fa-university"></i> Showing ${visibleCount} ${visibleCount === 1 ? 'University' : 'Universities'}`;
+            }
+        });
+
+        // Reset search on clear
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            if (this.value === '') {
+                const universityCards = document.querySelectorAll('.university-card');
+                universityCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                const countBadge = document.querySelector('.universities-count');
+                if (countBadge) {
+                    countBadge.innerHTML = `<i class="fas fa-university"></i> Showing <%= universities.length %> <%= universities.length === 1 ? 'University' : 'Universities' %>`;
+                }
+            }
+        });
+
+        console.log('📊 Universities loaded:', <%= universities.length %>);
+    </script>
+
+    <%- include('partials/footer') %>
