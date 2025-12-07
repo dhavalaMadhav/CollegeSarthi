@@ -1,0 +1,523 @@
+<%- include('partials/header') %>
+
+<style>
+/* Courses Page - Swiss Design System */
+
+/* Global Scrollbar Hide */
+html, body {
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hero Section - Swiss Style */
+.courses-hero {
+    height: 300px;              /* ← EXACT from universities-hero */
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 120px 30px 40px;   /* ← EXACT from universities-hero */
+    border-bottom: 2px solid var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.courses-hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.course-grid-cell {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+}
+
+.courses-hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
+
+.courses-hero h1 {
+    font-size: 3rem;
+    font-weight: var(--font-weight-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.courses-hero h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
+}
+
+.courses-hero h1::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.courses-hero p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 30px;
+}
+
+/* Filter Section */
+.course-filter-section {
+    padding: 40px 40px 20px;
+    background: var(--white);
+    border-bottom: 2px solid var(--gray-300);
+}
+
+.filter-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 2px;
+    background: var(--gray-200);
+    border: 2px solid var(--gray-400);
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 15px 25px;
+    background: var(--white);
+    border: none;
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.filter-tab:hover {
+    background: var(--gray-100);
+}
+
+.filter-tab.active {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: var(--font-weight-bold);
+}
+
+.search-filter {
+    max-width: 600px;
+    margin: 30px auto 0;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 20px;
+    color: var(--gray-600);
+    font-size: 1.1rem;
+    z-index: 2;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 18px 20px 18px 55px;
+    border: 2px solid var(--gray-400);
+    font-size: 1rem;
+    background: var(--white);
+    transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 82, 212, 0.1);
+}
+
+/* Courses Grid */
+.courses-grid-section {
+    padding: 60px 40px;
+    background: var(--white);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto 60px;
+}
+
+.course-card {
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.course-card-header {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.course-icon {
+    width: 65px;
+    height: 65px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    border-radius: 4px;
+}
+
+.course-category-badge {
+    background: var(--white);
+    color: var(--primary);
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+    border: 2px solid var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.course-card-body {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-title {
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.course-description {
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin-bottom: auto;
+    font-size: 0.95rem;
+}
+
+.course-details {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 2px solid var(--gray-200);
+}
+
+.course-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+
+.course-detail-item i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.course-footer {
+    padding: 10px 25px 10px;
+    border-top: 2px solid var(--gray-200);
+}
+
+.course-universities {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.btn-view-course {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: var(--white);
+    border: 2px solid var(--primary);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-view-course:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 82, 212, 0.3);
+}
+
+.no-results {
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--gray-600);
+    grid-column: 1 / -1;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+}
+
+.no-results p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .courses-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .courses-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .filter-tabs {
+        flex-direction: column;
+    }
+    
+    .filter-tab {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .course-details {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+</style>
+
+<!-- Hero Section - Swiss Style -->
+<section class="courses-hero">
+    <div class="courses-hero-grid">
+        <% for(let i=0; i<16; i++) { %>
+            <div class="course-grid-cell"></div>
+        <% } %>
+    </div>
+    
+    <div class="courses-hero-content">
+        <h1>Explore Courses</h1>
+        <p>Find the perfect program that matches your interests and career goals</p>
+    </div>
+</section>
+
+<!-- Course Filter Section -->
+<section class="course-filter-section">
+    <div class="filter-container">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-category="all">
+                <i class="fas fa-th"></i> All Courses
+            </button>
+            <button class="filter-tab" data-category="engineering">
+                <i class="fas fa-cogs"></i> Engineering
+            </button>
+            <button class="filter-tab" data-category="medical">
+                <i class="fas fa-heartbeat"></i> Medical & Healthcare
+            </button>
+            <button class="filter-tab" data-category="management">
+                <i class="fas fa-briefcase"></i> Management
+            </button>
+            <button class="filter-tab" data-category="science">
+                <i class="fas fa-flask"></i> Science
+            </button>
+            <button class="filter-tab" data-category="commerce">
+                <i class="fas fa-chart-line"></i> Commerce & Finance
+            </button>
+            <button class="filter-tab" data-category="arts">
+                <i class="fas fa-palette"></i> Arts & Humanities
+            </button>
+            <button class="filter-tab" data-category="design">
+                <i class="fas fa-pencil-ruler"></i> Design & Architecture
+            </button>
+        </div>
+        
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="courseSearch" placeholder="Search courses by name or keyword...">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Courses Grid -->
+<section class="courses-grid-section">
+    <div class="courses-grid" id="coursesGrid">
+        <% courses.forEach(course => { %>
+            <div class="course-card" data-category="<%= course.category %>">
+                <div class="course-card-header">
+                    <div class="course-icon">
+                        <i class="<%= course.icon %>"></i>
+                    </div>
+                    <div class="course-category-badge"><%= course.categoryName %></div>
+                </div>
+                
+                <div class="course-card-body">
+                    <h3 class="course-title"><%= course.name %></h3>
+                    <p class="course-description"><%= course.description %></p>
+                    
+                    
+                    <div class="course-footer">
+                        <button class="btn-view-course" onclick="window.location.href='/courses/<%= course.category %>/<%= course.slug %>'">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    
+    <div id="noResultsMessage" class="no-results" style="display: none;">
+        <i class="fas fa-search"></i>
+        <p>No courses found matching your search.</p>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const courseCards = document.querySelectorAll('.course-card');
+    const searchInput = document.getElementById('courseSearch');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+    
+    // Filter by category
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            const category = this.dataset.category;
+            filterCourses(category, searchInput.value);
+        });
+    });
+    
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+        const activeCategory = document.querySelector('.filter-tab.active').dataset.category;
+        filterCourses(activeCategory, this.value);
+    });
+    
+    function filterCourses(category, searchTerm) {
+        let visibleCount = 0;
+        
+        courseCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const cardTitle = card.querySelector('.course-title').textContent.toLowerCase();
+            const cardDescription = card.querySelector('.course-description').textContent.toLowerCase();
+            
+            const matchesCategory = category === 'all' || cardCategory === category;
+            const matchesSearch = searchTerm === '' || 
+                                cardTitle.includes(searchTerm.toLowerCase()) || 
+                                cardDescription.includes(searchTerm.toLowerCase());
+            
+            if (matchesCategory && matchesSearch) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+});
+</script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,735 @@
+<%- include('partials/header') %>
+
+<style>
+/* About Page - Swiss Design System */
+
+/* Global Scrollbar Hide */
+html, body {
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hero Section */
+.about-hero {
+    height: 300px;
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 120px 30px 40px;
+    border-bottom: 2px solid var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.about-grid-cell {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+}
+
+.about-hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: var(--font-weight-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.about-hero h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
+}
+
+.about-hero h1::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Content Sections */
+.about-section {
+    padding: 80px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.about-section:nth-child(even) {
+    background: var(--gray-50);
+    border-top: 2px solid var(--gray-300);
+    border-bottom: 2px solid var(--gray-300);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-black);
+    color: var(--black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--white);
+    border: 3px solid var(--black);
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--gray-700);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Bio Section */
+.bio-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bio-name {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-black);
+    color: var(--black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bio-title {
+    font-size: 1.3rem;
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.bio-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--gray-700);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Personal Story */
+.story-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 0;
+}
+
+/* Vision Mission */
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.vision-card, .mission-card {
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    padding: 40px;
+    text-align: center;
+}
+
+.vision-icon, .mission-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 25px;
+    border-radius: 4px;
+}
+
+.vision-title, .mission-title {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.vision-text, .mission-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray-700);
+}
+
+/* Core Values */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.value-card {
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.value-title {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.value-description {
+    color: var(--gray-700);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Timeline */
+.timeline {
+    max-width: 1000px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-300);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin: 60px 0;
+    width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+}
+
+.timeline-title {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.timeline-text {
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: var(--white);
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+/* Partner Universities */
+.partners-section {
+    text-align: center;
+    padding: 40px;
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    max-width: 800px;
+    margin: 60px auto 0;
+}
+
+.partners-text {
+    font-size: 1.2rem;
+    color: var(--gray-700);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.6;
+}
+
+/* Quote */
+.quote-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 80px 40px;
+}
+
+.quote-text {
+    font-size: 1.6rem;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    opacity: 0.95;
+}
+
+.quote-author {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-semibold);
+    opacity: 0.9;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--primary);
+    padding: 100px 40px;
+    text-align: center;
+    border-top: 2px solid var(--black);
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-black);
+    color: var(--white);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 40px;
+}
+
+.cta-content h2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    bottom: 15px;
+    left: 0;
+}
+
+.cta-content h2::before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: var(--white);
+    border: 3px solid var(--white);
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.cta-content p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--white);
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px 0px rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 60px !important;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 60px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero h1, .about-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .vision-mission-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="about-hero-grid">
+        <% for(let i=0; i<16; i++) { %>
+            <div class="about-grid-cell"></div>
+        <% } %>
+    </div>
+    
+    <div class="about-hero-content">
+        <h1>About Me</h1>
+    </div>
+</section>
+
+<!-- Consultant Bio -->
+<section class="about-section">
+    <div class="section-header">
+        <h2 class="section-title">Who I Am</h2>
+        <p class="section-subtitle">Chartered Accountant & Admission Consultant</p>
+    </div>
+    
+    <div class="bio-content">
+        <h1 class="bio-name">Rahul Sharma</h1>
+        <p class="bio-title">Chartered Accountant & University Admission Specialist</p>
+        <p class="bio-description">
+            With over 12 years of experience as a Chartered Accountant and dedicated admission consultant, 
+            I specialize in guiding students toward their ideal university programs. My dual expertise in 
+            finance and education ensures transparent, data-driven decisions for long-term academic success. 
+            Every student receives personalized attention and honest guidance throughout their admission journey.
+        </p>
+    </div>
+</section>
+
+<!-- Personal Story -->
+<section class="about-section">
+    <div class="section-header">
+        <h2 class="section-title">How It Started</h2>
+    </div>
+    
+    <div class="story-content">
+        <p class="story-text">
+            My journey began when I noticed countless talented students struggling to navigate complex admission 
+            processes despite their strong academic potential. As a Chartered Accountant working with educational 
+            institutions, I saw firsthand how the lack of clear guidance led to mismatched university choices. 
+            This motivated me to bridge that gap, helping students and parents make informed decisions. 
+            I carefully selected partner universities known for academic excellence, strong placements, 
+            and holistic student development to ensure every recommendation aligns with long-term career success.
+        </p>
+    </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="about-section">
+    <div class="section-header">
+        <h2 class="section-title">Vision & Mission</h2>
+    </div>
+    
+    <div class="vision-mission-grid">
+        <div class="vision-card">
+            <div class="vision-icon">
+                <i class="fas fa-binoculars"></i>
+            </div>
+            <h3 class="vision-title">Vision</h3>
+            <p class="vision-text">
+                To empower every student to discover and pursue their true academic potential 
+                through transparent guidance and strategic university partnerships.
+            </p>
+        </div>
+        
+        <div class="mission-card">
+            <div class="mission-icon">
+                <i class="fas fa-compass"></i>
+            </div>
+            <h3 class="mission-title">Mission</h3>
+            <p class="mission-text">
+                Provide honest, personalized counseling that prioritizes student success 
+                and matches individual aspirations with the right academic opportunities.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values -->
+<section class="about-section">
+    <div class="section-header">
+        <h2 class="section-title">Core Values</h2>
+    </div>
+    
+    <div class="values-grid">
+        <div class="value-card">
+            <i class="fas fa-eye value-icon"></i>
+            <h4 class="value-title">Transparency</h4>
+            <p class="value-description">Complete honesty about admission processes, fees, and university realities</p>
+        </div>
+        
+        <div class="value-card">
+            <i class="fas fa-handshake value-icon"></i>
+            <h4 class="value-title">Student-First</h4>
+            <p class="value-description">Every decision prioritizes the student's long-term academic success</p>
+        </div>
+        
+        <div class="value-card">
+            <i class="fas fa-shield-alt value-icon"></i>
+            <h4 class="value-title">Ethical Practice</h4>
+            <p class="value-description">No hidden fees, guaranteed admission promises, or misleading information</p>
+        </div>
+        
+        <div class="value-card">
+            <i class="fas fa-clock value-icon"></i>
+            <h4 class="value-title">Ongoing Support</h4>
+            <p class="value-description">Guidance continues beyond admission - from enrollment to career start</p>
+        </div>
+        
+        <div class="value-card">
+            <i class="fas fa-chart-line value-icon"></i>
+            <h4 class="value-title">Data-Driven</h4>
+            <p class="value-description">Recommendations based on placement records, ROI analysis, and success metrics</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section class="about-section">
+    <div class="section-header">
+        <h2 class="section-title">Professional Journey</h2>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-date">2008-2012</div>
+                <h3 class="timeline-title">B.Com & CA Foundation</h3>
+                <p class="timeline-text">Completed B.Com Honors and cleared CA Foundation while excelling in academics.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-date">2013</div>
+                <h3 class="timeline-title">Chartered Accountant</h3>
+                <p class="timeline-text">Qualified as Chartered Accountant (CA) from ICAI, ranked among top performers.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-date">2014-2018</div>
+                <h3 class="timeline-title">Corporate Finance Practice</h3>
+                <p class="timeline-text">4+ years in corporate finance, audit, and advisory for educational institutions.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-date">2019-Present</div>
+                <h3 class="timeline-title">Admission Consulting</h3>
+                <p class="timeline-text">Successfully guided 500+ students to top universities with 95% success rate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partner Universities -->
+<section class="partners-section">
+    <p class="partners-text">
+        Currently associated with <strong>selected universities</strong> known for academic excellence, 
+        innovation, and proven student success across engineering, management, medical, and other disciplines.
+    </p>
+</section>
+
+<!-- Personal Quote -->
+<section class="quote-section">
+    <blockquote class="quote-text">
+        "The right university choice isn't just about rankings—it's about finding where your potential meets opportunity."
+    </blockquote>
+    <div class="quote-author">
+        — Rahul Sharma, Chartered Accountant & Admission Consultant
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Need Guidance?</h2>
+        <p>Get personalized counseling today</p>
+        <div class="cta-buttons">
+            <a href="/contact" class="cta-btn-primary">
+                <i class="fas fa-phone"></i> Book Consultation
+            </a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

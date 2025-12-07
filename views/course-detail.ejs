@@ -1,0 +1,619 @@
+<%- include('partials/header') %>
+
+<style>
+    /* Course Detail Page - Swiss Design System */
+    
+    html, body {
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hero Section */
+    .course-hero {
+        height: 400px;
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        padding: 120px 30px 40px;
+        border-bottom: 2px solid var(--black);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .course-hero-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 2px;
+        padding: 2px;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    .course-grid-cell {
+        background-color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--black);
+    }
+
+    .course-hero-content {
+        max-width: 900px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .breadcrumb {
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .breadcrumb a:hover {
+        color: var(--white);
+    }
+
+    .course-hero h1 {
+        font-size: 3rem;
+        font-weight: var(--font-weight-black);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 40px;
+    }
+
+    .course-hero h1::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--white);
+        bottom: 15px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .course-hero h1::before {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: var(--primary);
+        border: 3px solid var(--white);
+        border-radius: 50%;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+    }
+
+    .course-hero p {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-weight: var(--font-weight-medium);
+        margin-bottom: 30px;
+    }
+
+    .course-meta {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .course-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .course-meta-item i {
+        font-size: 1.5rem;
+    }
+
+    /* Universities Section */
+    .universities-section {
+        padding: 80px 40px;
+        background: var(--gray-50);
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: var(--font-weight-black);
+        color: var(--black);
+        margin-bottom: 60px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--black);
+        bottom: 15px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .section-title::before {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: var(--white);
+        border: 3px solid var(--black);
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Top Pick Card Styling - From universities.ejs */
+    .top-picks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .top-pick-card {
+        background: var(--white);
+        border: 1px solid var(--gray-300);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .top-pick-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-light);
+    }
+
+    .top-pick-image {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        position: relative;
+        background: var(--gray-200);
+    }
+
+    .top-pick-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .top-pick-card:hover .top-pick-image img {
+        transform: scale(1.05);
+    }
+
+    .top-pick-content {
+        padding: 25px;
+        position: relative;
+    }
+
+    .top-pick-rank-number {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 4rem;
+        font-weight: var(--font-weight-black);
+        color: var(--gray-200);
+        line-height: 1;
+        opacity: 0.7;
+        z-index: 1;
+    }
+
+    .top-pick-name {
+        font-size: 1.5rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--black);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.3;
+        position: relative;
+        z-index: 2;
+    }
+
+    .top-pick-location {
+        font-size: 0.875rem;
+        color: var(--gray-700);
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .top-pick-location i {
+        color: var(--primary);
+    }
+
+    .top-pick-highlight {
+        font-size: 0.875rem;
+        color: var(--primary);
+        font-weight: var(--font-weight-semibold);
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--gray-300);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .top-pick-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .top-pick-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .top-pick-stat-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+
+    .top-pick-stat-value {
+        font-size: 1rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--black);
+    }
+
+    .top-pick-stat-label {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .featured-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--accent);
+        color: var(--black);
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        font-weight: var(--font-weight-bold);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border: 2px solid var(--accent-dark);
+        z-index: 3;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: var(--primary);
+        padding: 100px 30px;
+        text-align: center;
+        border-top: 2px solid var(--black);
+    }
+
+    .cta-content h2 {
+        font-size: 2.5rem;
+        font-weight: var(--font-weight-black);
+        color: var(--white);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 40px;
+    }
+
+    .cta-content h2::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--white);
+        bottom: 15px;
+        left: 0;
+    }
+
+    .cta-content h2::before {
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background: var(--white);
+        border: 3px solid var(--white);
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+    }
+
+    .cta-content p {
+        font-size: 1.25rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        color: var(--white);
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .cta-btn-primary, .cta-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+        font-size: 1.125rem;
+        font-weight: var(--font-weight-semibold);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 2px solid var(--white);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-btn-primary {
+        background-color: var(--white);
+        color: var(--primary);
+    }
+
+    .cta-btn-secondary {
+        background-color: transparent;
+        color: var(--white);
+    }
+
+    .cta-btn-primary:hover, .cta-btn-secondary:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0px 0px rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+    }
+
+    .cta-btn-primary i, .cta-btn-secondary i {
+        margin-right: 10px;
+    }
+
+    /* Empty State */
+    .no-universities {
+        text-align: center;
+        padding: 80px 40px;
+        background: var(--white);
+        border: 2px solid var(--gray-300);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .no-universities i {
+        font-size: 4rem;
+        color: var(--gray-300);
+        margin-bottom: 20px;
+    }
+
+    .no-universities h3 {
+        font-size: 2rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--gray-700);
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .no-universities p {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        margin-bottom: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .course-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .top-picks-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .course-hero h1 {
+            font-size: 2rem;
+        }
+
+        .course-meta {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="course-hero">
+    <div class="course-hero-grid">
+        <% for(let i=0; i<16; i++) { %>
+            <div class="course-grid-cell"></div>
+        <% } %>
+    </div>
+    
+    <div class="course-hero-content">
+        <div class="breadcrumb">
+            <a href="/">Home</a> / 
+            <a href="/courses">Courses</a> / 
+            <a href="/courses/<%= category %>"><%= categoryName %></a> / 
+            <span><%= course.name %></span>
+        </div>
+        
+        <h1><%= course.name %></h1>
+        <p><%= course.description %></p>
+        
+        <div class="course-meta">
+            <div class="course-meta-item">
+                <i class="fas fa-clock"></i>
+                <span><%= course.duration %></span>
+            </div>
+            <div class="course-meta-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span><%= course.degree %></span>
+            </div>
+            <div class="course-meta-item">
+                <i class="fas fa-university"></i>
+                <span><%= universities.length %>+ Universities</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Universities Section -->
+<section class="universities-section">
+    <h2 class="section-title">Top Universities Offering <%= course.name %></h2>
+    
+    <% if (universities && universities.length > 0) { %>
+        <div class="top-picks-grid">
+            <% universities.forEach((university, index) => { %>
+                <div class="top-pick-card" onclick="window.location.href='/university/<%= university._id %>'">
+                    <div class="top-pick-image">
+                        <img src="<%= university.bannerImage || 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop&auto=format' %>" alt="<%= university.name %> Campus">
+                        <% if (university.featured) { %>
+                            <div class="featured-badge">Featured</div>
+                        <% } %>
+                    </div>
+                    
+                    <div class="top-pick-content">
+                        <div class="top-pick-rank-number"><%= index + 1 %></div>
+                        
+                        <h3 class="top-pick-name"><%= university.name %></h3>
+                        
+                        <div class="top-pick-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <%= university.location %>, <%= university.state %>
+                        </div>
+                        
+                        <div class="top-pick-highlight">
+                            <i class="fas fa-university"></i>
+                            <%= university.type || 'Private' %> University
+                        </div>
+                        
+                        <div class="top-pick-stats">
+                            <div class="top-pick-stat">
+                                <i class="fas fa-globe-asia top-pick-stat-icon"></i>
+                                <div class="top-pick-stat-value">#<%= university.globalRanking || Math.floor(Math.random() * 200) + 1 %></div>
+                                <div class="top-pick-stat-label">Global Rank</div>
+                            </div>
+                            
+                            <div class="top-pick-stat">
+                                <i class="fas fa-star top-pick-stat-icon"></i>
+                                <div class="top-pick-stat-value"><%= university.rating || 4.0 %></div>
+                                <div class="top-pick-stat-label">Rating</div>
+                            </div>
+                            
+                            <div class="top-pick-stat">
+                                <i class="fas fa-rupee-sign top-pick-stat-icon"></i>
+                                <div class="top-pick-stat-value">
+                                    <% if (university.fee) { %>
+                                        ₹<%= (university.fee/100000).toFixed(1) %>L
+                                    <% } else { %>
+                                        <%= university.feeRange ? university.feeRange.split('-')[0] : '₹2L' %>
+                                    <% } %>
+                                </div>
+                                <div class="top-pick-stat-label">Fees</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <div class="no-universities">
+            <i class="fas fa-university"></i>
+            <h3>No Universities Available</h3>
+            <p>We're currently updating our database with universities offering this program. Check back soon!</p>
+            <a href="/contact" class="cta-btn-primary">
+                <i class="fas fa-phone"></i> Contact Us for More Information
+            </a>
+        </div>
+    <% } %>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Pursue <%= course.name %>?</h2>
+        <p>Get personalized guidance from our expert counsellors to find the best university for you</p>
+        <div class="cta-buttons">
+            <a href="/quiz" class="cta-btn-primary">
+                <i class="fas fa-clipboard-list"></i> Take Career Quiz
+            </a>
+            <a href="/contact" class="cta-btn-secondary">
+                <i class="fas fa-phone"></i> Talk to Counsellor
+            </a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -9,6 +9,10 @@ const universitySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    state: {
+        type: String,
+        required: true
+    },
     established: {
         type: Number,
         required: true
@@ -28,15 +32,60 @@ const universitySchema = new mongoose.Schema({
     faculty: String,
     campusSize: String,
     feeRange: String,
+    fee: Number,
+    
+    // New fields for card display
+    globalRanking: Number,
+    mastersPrograms: Number,
+    scholarships: Number,
+    featured: {
+        type: Boolean,
+        default: false
+    },
+    rating: {
+        type: Number,
+        default: 4.0,
+        min: 0,
+        max: 5
+    },
+    programmes: [{
+        type: String,
+        enum: [
+            'engineering',
+            'management',
+            'computer',
+            'law',
+            'medical',
+            'sciences',
+            'arts',
+            'architecture',
+            'pharmacy',
+            'design',
+            'education',
+            'commerce'
+        ]
+    }],
     
     // Programs as array of objects
-    programs: [{
-        name: String,
-        duration: String,
-        eligibility: String,
-        fees: String,
-        seats: Number
-    }],
+// In models/University.js, update the programmes enum:
+programmes: [{
+    type: String,
+    enum: [
+        'engineering',
+        'management',
+        'computer',
+        'law',
+        'medical',
+        'sciences',
+        'arts',
+        'architecture',
+        'pharmacy',
+        'design',
+        'education',
+        'commerce',
+        'dental'  // ADD THIS LINE
+    ]
+}],
     
     // Facilities as array of strings
     facilities: [String],
@@ -63,13 +112,13 @@ const universitySchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    
     // In your university model, add coordinates field:
-coordinates: {
-    lat: Number,
-    lng: Number
-},
-address: String
-
+    coordinates: {
+        lat: Number,
+        lng: Number
+    },
+    address: String
 });
 
 module.exports = mongoose.model('University', universitySchema);

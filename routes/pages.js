@@ -113,6 +113,14 @@ router.get('/university/:id', async (req, res) => {
     }
 });
 
+// GET /about - About Page
+router.get('/about', (req, res) => {
+    res.render('about', { 
+        title: 'About - Rahul Sharma | CA & Admission Consultant',
+        page: 'about'
+    });
+});
+
 // Contact page
 router.get('/contact', (req, res) => {
     res.render('contact', {

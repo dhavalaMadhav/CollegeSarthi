@@ -63,6 +63,28 @@
 <script src="/js/chat-widget.js"></script>
 <!-- Callback Widget JS -->
 <script src="/js/callback-widget.js"></script>
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
 
+        // Mobile dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown > a');
+            mobileDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const content = this.nextElementSibling;
+                        content.classList.toggle('show');
+                        this.querySelector('i').classList.toggle('fa-chevron-down');
+                        this.querySelector('i').classList.toggle('fa-chevron-up');
+                    }
+                });
+            });
+        });
+    </script>   
 </body>
 </html>

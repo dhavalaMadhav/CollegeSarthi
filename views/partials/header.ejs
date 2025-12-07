@@ -5,35 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css"><!-- Chat Widget CSS -->
-<link rel="stylesheet" href="/css/chat-widget.css">
-<!-- Add this in your header.ejs file, before closing </head> tag -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-      crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
-<!-- Callback Widget CSS -->
-<link rel="stylesheet" href="/css/callback-widget.css">
-
-
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/chat-widget.css">
+    <link rel="stylesheet" href="/css/callback-widget.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="nav-container">
             <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Uni<span>Pick</span></a></div>
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/universities">Universities</a></li>
-        <li><a href="/quiz">Career Quiz</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-</nav>
-
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a href="/courses" class="dropdown-toggle">Courses <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <h4>Engineering</h4>
+                                    <a href="/courses/engineering/computer-science">Computer Science</a>
+                                    <a href="/courses/engineering/mechanical">Mechanical</a>
+                                    <a href="/courses/engineering/civil">Civil</a>
+                                    <a href="/courses/engineering/electrical">Electrical</a>
+                                    <a href="/courses/engineering/electronics">Electronics</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Management</h4>
+                                    <a href="/courses/management/mba">MBA</a>
+                                    <a href="/courses/management/business">Business Administration</a>
+                                    <a href="/courses/management/finance">Finance</a>
+                                    <a href="/courses/management/marketing">Marketing</a>
+                                    <a href="/courses/management/hr">Human Resources</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Science & Arts</h4>
+                                    <a href="/courses/science/computer-applications">Computer Applications</a>
+                                    <a href="/courses/arts/literature">Literature</a>
+                                    <a href="/courses/arts/psychology">Psychology</a>
+                                    <a href="/courses/science/mathematics">Mathematics</a>
+                                    <a href="/courses/science/physics">Physics</a>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h4>Health & Commerce</h4>
+                                    <a href="/courses/health/medicine">Medicine</a>
+                                    <a href="/courses/health/pharmacy">Pharmacy</a>
+                                    <a href="/courses/commerce/accounting">Accounting</a>
+                                    <a href="/courses/commerce/banking">Banking & Finance</a>
+                                    <a href="/courses/diploma/certificate">Diploma Programs</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="/courses" class="view-all">
+                                    <i class="fas fa-graduation-cap"></i> View All Programs
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/universities">Universities</a></li>
+                    <li><a href="/quiz">Career Quiz</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
             <button class="menu-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
@@ -47,7 +86,22 @@
         </button>
         <ul>
             <li><a href="/" onclick="toggleMobileMenu()">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="/courses" onclick="toggleMobileMenu()">Courses <i class="fas fa-chevron-down"></i></a>
+                <div class="mobile-dropdown-content">
+                    <a href="/courses/engineering">Engineering</a>
+                    <a href="/courses/management">Management</a>
+                    <a href="/courses/arts">Arts & Humanities</a>
+                    <a href="/courses/science">Science</a>
+                    <a href="/courses/health">Health Sciences</a>
+                    <a href="/courses/commerce">Commerce</a>
+                    <a href="/courses/diploma">Diploma Programs</a>
+                    <a href="/courses">View All</a>
+                </div>
+            </li>
             <li><a href="/universities" onclick="toggleMobileMenu()">Universities</a></li>
+            <li><a href="/quiz" onclick="toggleMobileMenu()">Career Quiz</a></li>
+            <li><a href="/about" onclick="toggleMobileMenu()">About</a></li>
             <li><a href="/contact" onclick="toggleMobileMenu()">Contact</a></li>
         </ul>
     </div>
