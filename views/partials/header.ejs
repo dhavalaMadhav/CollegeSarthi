@@ -16,10 +16,25 @@
             crossorigin=""></script>
 </head>
 <body>
+<script>
+// Show loading ONLY first time per browser
+if (localStorage.getItem('hasSeenLoading') !== 'true') {
+  localStorage.setItem('hasSeenLoading', 'true');
+  // Redirect to loading with current URL as return path
+  const currentUrl = window.location.pathname + window.location.search;
+  window.location.href = `/loading?redirect=${encodeURIComponent(currentUrl)}`;
+}
+</script>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo"><a href="/" style="text-decoration: none; color: inherit;">Uni<span>Pick</span></a></div>
+<div class="logo">
+  <a href="/" class="logo-link">
+    <img src="/images/unipick-logo.png" alt="UniPick Logo" class="logo-img">
+  </a>
+</div>
+
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>

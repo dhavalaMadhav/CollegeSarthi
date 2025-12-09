@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loading - UniPick</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --black: #000000;
+            --white: #f5f6f5;
+            --primary: #0055FF;
+            --primary-dark: #0033CC;
+            --accent: #00CC88;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-900: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+            background: var(--white);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            gap: 32px;
+            user-select: none;
+        }
+
+        /* Subtle Grid Pattern */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.4;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            z-index: 3;
+            animation: logoFloat 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .logo-img {
+            height: 88px;
+            width: auto;
+            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: logoPulse 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-6px) scale(1.02); }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { 
+                filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.12));
+                transform: scale(1.03);
+            }
+        }
+
+        /* Professional Spinner */
+        .spinner-container {
+            position: relative;
+            width: 64px;
+            height: 64px;
+            z-index: 3;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gray-200);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .spinner-inner {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px solid var(--gray-100);
+            border-top: 2px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite reverse;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Loading Dots */
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 24px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: dotPulse 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dotPulse {
+            0%, 80%, 100% { 
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% { 
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { gap: 24px; }
+            .logo-img { height: 72px; }
+            .spinner-container { width: 56px; height: 56px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img { height: 64px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Subtle Grid Background -->
+    <div class="grid-overlay"></div>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="/images/unipick-logo.png" alt="UniPick" class="logo-img" />
+    </div>
+
+    <!-- Professional Spinner + Dots -->
+    <div class="spinner-container">
+        <div class="spinner"></div>
+        <div class="spinner-inner"></div>
+    </div>
+
+    <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <script>
+        // Precise 4.5-second redirect
+        const params = new URLSearchParams(window.location.search);
+        const redirectUrl = params.get('redirect') || '/';
+        
+        setTimeout(() => {
+            window.location.href = decodeURIComponent(redirectUrl);
+        }, 4500);
+    </script>
+</body>
+</html>

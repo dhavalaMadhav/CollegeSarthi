@@ -1296,7 +1296,7 @@
 .btn-map-action:hover {
     background: var(--primary);
     color: var(--white);
-    transform: translate(-2px, -2px);
+    /* transform: translate(-2px, -2px); */
     box-shadow: var(--shadow-primary);
 }
 
@@ -1437,7 +1437,7 @@
 
 .btn-calculate:hover {
     background: var(--primary);
-    transform: translate(-2px, -2px);
+    /* transform: translate(-2px, -2px); */
     box-shadow: var(--shadow-primary);
 }
 
@@ -1503,7 +1503,7 @@
 }
 
 .travel-option:hover {
-    transform: translate(-2px, -2px);
+    /* transform: translate(-2px, -2px); */
     box-shadow: var(--shadow-md);
     background: var(--accent);
 }
@@ -1680,7 +1680,7 @@
 .apply-button-large:hover {
     background: var(--primary);
     color: var(--white);
-    transform: translate(-4px, -4px);
+    /* transform: translate(-4px, -4px); */
     box-shadow: 12px 12px 0 var(--black);
 }
 

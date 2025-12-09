@@ -58,60 +58,63 @@ const createLeadFromQuiz = async (req, res) => {
     try {
         const { studentName, email, phone, city, stream, quizScore, recommendedUniversities } = req.body;
 
-        // Get university details
+        // 🛡️ FIX #1: Safe map
+        const safeRecommended = Array.isArray(recommendedUniversities) ? recommendedUniversities : [];
+        const universityIds = safeRecommended.map(r => r.universityId || r._id).filter(Boolean);
+        
+        console.log('🔍 Safe universityIds:', universityIds);
+
+        // Get university details (safe)
         const universities = await University.find({
-            '_id': { $in: recommendedUniversities.map(r => r.universityId) }
+            '_id': { $in: universityIds }
         });
 
+        // 🛡️ FIX #2: Safe lead creation
         const lead = new Lead({
-            studentName,
-            email,
-            phone,
-            city,
-            stream,
-            quizScore,
-            recommendedUniversities: recommendedUniversities,
+            studentName: studentName?.trim() || 'Quiz User',
+            email: email?.trim().toLowerCase() || '',
+            phone: phone?.trim() || '',
+            city: city?.trim() || '',
+            stream: stream || 'engineering', // ✅ Required field safe
+            quizScore: Number(quizScore) || 0, // ✅ No NaN
+            recommendedUniversities: safeRecommended,
             source: 'quiz'
         });
 
         await lead.save();
 
-        // Prepare notification data
-        const leadData = {
-            studentName,
-            email,
-            phone,
-            city,
-            stream,
-            quizScore,
-            recommendedUniversities: universities.map(uni => {
-                const match = recommendedUniversities.find(r => r.universityId.toString() === uni._id.toString());
-                return {
+        // Safe notifications (skip if no email)
+        if (email) {
+            const leadData = {
+                studentName: lead.studentName,
+                email: lead.email,
+                phone: lead.phone,
+                city: lead.city,
+                stream: lead.stream,
+                quizScore: lead.quizScore,
+                recommendedUniversities: universities.map(uni => ({
                     name: uni.name,
-                    matchPercentage: match.matchPercentage
-                };
-            }),
-            source: 'quiz'
-        };
+                    matchPercentage: 85 // default
+                })),
+                source: 'quiz'
+            };
 
-        // Send notifications
-        sendLeadNotificationToCA(leadData).catch(err => console.error('Email error:', err));
-        sendWhatsAppToCA(leadData).catch(err => console.error('WhatsApp error:', err));
-        sendConfirmationToStudent(leadData).catch(err => console.error('Confirmation error:', err));
+            sendLeadNotificationToCA(leadData).catch(console.error);
+            sendWhatsAppToCA(leadData).catch(console.error);
+            sendConfirmationToStudent(leadData).catch(console.error);
+        }
 
         res.json({
             success: true,
-            message: 'Thank you! Our counselling team will contact you soon with detailed guidance.'
+            message: 'Thank you! Our counselling team will contact you soon.'
         });
 
     } catch (error) {
         console.error('Error creating quiz lead:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error submitting your information.'
-        });
+        res.status(500).json({ success: false, message: 'Server error' });
     }
 };
+
 
 module.exports = {
     createLead,

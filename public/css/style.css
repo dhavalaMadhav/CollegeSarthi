@@ -95,17 +95,32 @@ header {
     position: relative;
 }
 
+/* Logo wrapper */
 .logo {
-    font-size: 32px;
-    font-weight: var(--font-weight-black);
-    color: var(--black);
-    letter-spacing: -0.5px;
-    z-index: 1001;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
 }
 
-.logo span {
-    color: var(--primary);
+/* Make the whole logo clickable, remove default link styles */
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Control logo image size and keep aspect ratio */
+.logo-img {
+    height: 50px;          /* match your design */
+    width: auto;           /* keeps aspect ratio */
+    display: block;
+}
+
+/* Optional: reduce on very small screens */
+@media (max-width: 600px) {
+    .logo-img {
+        height: 32px;
+    }
 }
 
 /* Main Navigation */

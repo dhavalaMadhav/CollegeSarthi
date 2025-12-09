@@ -67,86 +67,60 @@ const calculateRecommendations = async (stream, answers, scores) => {
 
 // Process quiz results
 const processQuizResults = async (req, res) => {
-    try {
-        const { stream, answers, studentInfo } = req.body;
-
-        // Calculate scores from answers
-        let scores = {
-            [stream]: 0,
-            budget: 'medium',
-            research: 0,
-            practical: 0
-        };
-
-        let totalScore = 0;
-
-        // Process each answer
-        answers.forEach((answer, index) => {
-            if (answer.weights) {
-                // Add weights to respective categories
-                for (const [key, value] of Object.entries(answer.weights)) {
-                    if (key === 'budget') {
-                        scores.budget = value;
-                    } else if (typeof scores[key] === 'number') {
-                        scores[key] += value;
-                    }
-                }
-            }
-            totalScore += answer.score || 0;
-        });
-
-        // Normalize scores to 0-100 range
-        const maxStreamScore = answers.length * 3; // Assuming max 3 points per question
-        scores[stream] = Math.round((scores[stream] / maxStreamScore) * 100);
-        scores.research = Math.min(Math.round((scores.research / maxStreamScore) * 100), 100);
-        scores.practical = Math.min(Math.round((scores.practical / maxStreamScore) * 100), 100);
-
-        // Get recommendations
-        const recommendations = await calculateRecommendations(stream, answers, scores);
-
-        // Calculate overall quiz score
-        const quizScore = Math.round((totalScore / (answers.length * 3)) * 100);
-
-        // Save lead if student info provided
-        if (studentInfo && studentInfo.email) {
-            const lead = new Lead({
-                studentName: studentInfo.name,
-                email: studentInfo.email,
-                phone: studentInfo.phone,
-                city: studentInfo.city,
-                stream: stream,
-                quizScore: quizScore,
-                quizAnswers: answers,
-                recommendedUniversities: recommendations.map(r => ({
-                    universityId: r.university._id,
-                    matchPercentage: r.matchPercentage
-                })),
-                source: 'quiz'
-            });
-
-            await lead.save();
-        }
-
-        res.json({
-            success: true,
-            quizScore: quizScore,
-            recommendations: recommendations.map(r => ({
-                id: r.university._id,
-                name: r.university.name,
-                location: r.university.location,
-                ranking: r.university.ranking,
-                image: r.university.bannerImage,
-                matchPercentage: r.matchPercentage
-            }))
-        });
-
-    } catch (error) {
-        console.error('Error processing quiz:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error processing quiz results'
-        });
+  try {
+    const { answers, studentId, stream, email, name } = req.body;
+    
+    // Validate required fields
+    if (!stream) {
+      return res.status(400).json({ 
+        error: 'Stream is required' 
+      });
     }
+    
+    // Calculate quiz score safely
+    let quizScore = 0;
+    const totalQuestions = answers.length;
+    const correctAnswers = answers.filter(answer => answer.isCorrect).length;
+    
+    // Ensure score is a valid number
+    if (totalQuestions > 0) {
+      quizScore = Math.round((correctAnswers / totalQuestions) * 100);
+    }
+    
+    // Debug logging
+    console.log('Quiz Score Calculation:', {
+      correctAnswers,
+      totalQuestions,
+      calculatedScore: quizScore,
+      isNaN: isNaN(quizScore)
+    });
+    
+    // Create lead with proper validation
+    const leadData = {
+      studentId: studentId || generateStudentId(),
+      name: name || 'Unknown',
+      email: email || '',
+      stream: stream, // This was missing
+      quizScore: quizScore,
+      // ... other fields
+    };
+    
+    // Validate before saving
+    const lead = new Lead(leadData);
+    await lead.validate(); // This will throw error if validation fails
+    
+    // Save the lead
+    await lead.save();
+    
+    // Rest of your code...
+    
+  } catch (error) {
+    console.error('Error processing quiz:', error);
+    return res.status(400).json({ 
+      error: error.message,
+      details: 'Please provide all required fields' 
+    });
+  }
 };
 
 module.exports = {

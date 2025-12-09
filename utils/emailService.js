@@ -1,11 +1,18 @@
+// In your email service file
 const nodemailer = require('nodemailer');
 
+// Or for development only, you can disable SSL verification:
 const transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-    }
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: false, // Don't use SSL in development
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  },
+  tls: {
+    rejectUnauthorized: false // ONLY for development/testing
+  }
 });
 
 // Send lead notification to CA

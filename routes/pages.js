@@ -121,6 +121,12 @@ router.get('/about', (req, res) => {
     });
 });
 
+router.get('/loading', (req, res) => {
+  res.render('loading');
+});
+
+
+
 // Contact page
 router.get('/contact', (req, res) => {
     res.render('contact', {
