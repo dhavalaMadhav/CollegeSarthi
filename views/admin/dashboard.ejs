@@ -6,6 +6,27 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Swiss Design System Colors */
+        :root {
+            --primary: #0055FF;
+            --primary-dark: #0044CC;
+            --primary-light: #66A3FF;
+            --accent: #FFD700;
+            --accent-dark: #E6C200;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-50: #F8F9FA;
+            --gray-100: #E9ECEF;
+            --gray-200: #DEE2E6;
+            --gray-300: #CED4DA;
+            --gray-400: #ADB5BD;
+            --gray-500: #6C757D;
+            --gray-600: #495057;
+            --gray-700: #343A40;
+            --gray-800: #212529;
+            --gray-900: #121416;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,12 +35,13 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
+            background-color: var(--white);
+            color: var(--black);
         }
         
         .admin-header {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
@@ -28,6 +50,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid var(--black);
         }
         
         .admin-header h1 {
@@ -42,8 +65,8 @@
         }
         
         .logout-btn, .refresh-btn {
-            background: white;
-            color: #2c5282;
+            background: var(--white);
+            color: var(--primary);
             padding: 12px 25px;
             border: none;
             font-weight: 700;
@@ -52,22 +75,25 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            border: 2px solid var(--primary);
         }
         
         .logout-btn:hover, .refresh-btn:hover {
-            background: #f0f7ff;
-            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 2px 2px 0 var(--primary-dark);
             transform: translate(-1px, -1px);
         }
 
         .refresh-btn {
             background: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid var(--white);
+            color: var(--white);
         }
 
         .refresh-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--white);
+            color: var(--primary);
         }
         
         .dashboard-container {
@@ -84,9 +110,9 @@
         }
         
         .stat-card {
-            background: white;
+            background: var(--white);
             padding: 30px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--gray-300);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -99,32 +125,32 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #2c5282, #1a365d);
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
         }
         
         .stat-card:hover {
             transform: translate(-3px, -3px);
-            box-shadow: 6px 6px 0 rgba(44, 82, 130, 0.2);
-            border-color: #2c5282;
+            box-shadow: 6px 6px 0 rgba(0, 85, 255, 0.2);
+            border-color: var(--primary);
         }
         
         .stat-card .stat-icon {
             font-size: 42px;
-            color: #2c5282;
+            color: var(--primary);
             margin-bottom: 15px;
         }
         
         .stat-card .stat-number {
             font-size: 48px;
             font-weight: 800;
-            color: #1a365d;
+            color: var(--black);
             margin-bottom: 10px;
             line-height: 1;
         }
         
         .stat-card .stat-label {
             font-size: 18px;
-            color: #666;
+            color: var(--gray-700);
             font-weight: 600;
         }
 
@@ -135,9 +161,9 @@
         }
         
         .leads-section {
-            background: white;
+            background: var(--white);
             padding: 30px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--gray-300);
             margin-bottom: 30px;
         }
         
@@ -152,7 +178,7 @@
         
         .leads-header h2 {
             font-size: 32px;
-            color: #1a365d;
+            color: var(--black);
             font-weight: 800;
         }
         
@@ -164,9 +190,9 @@
         
         .filter-btn {
             padding: 10px 20px;
-            border: 2px solid #2c5282;
-            background: white;
-            color: #2c5282;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -175,8 +201,8 @@
         
         .filter-btn.active,
         .filter-btn:hover {
-            background: #2c5282;
-            color: white;
+            background: var(--primary);
+            color: var(--white);
         }
         
         .table-container {
@@ -191,23 +217,23 @@
         }
         
         .leads-table th {
-            background: #f8f9fa;
+            background: var(--gray-50);
             padding: 15px;
             text-align: left;
             font-weight: 700;
-            color: #1a365d;
-            border-bottom: 2px solid #e0e0e0;
+            color: var(--black);
+            border-bottom: 2px solid var(--gray-300);
             white-space: nowrap;
         }
         
         .leads-table td {
             padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--gray-300);
             vertical-align: middle;
         }
         
         .leads-table tr:hover {
-            background: #f8f9fa;
+            background: var(--gray-50);
         }
         
         .status-badge {
@@ -217,31 +243,38 @@
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
+            border: 2px solid;
+            background: var(--white);
         }
         
         .status-badge.new {
-            background: #d4edda;
-            color: #155724;
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--primary);
         }
         
         .status-badge.contacted {
-            background: #cce5ff;
-            color: #004085;
+            background: var(--white);
+            color: var(--accent-dark);
+            border-color: var(--accent);
         }
         
         .status-badge.followup {
-            background: #fff3cd;
-            color: #856404;
+            background: var(--white);
+            color: #FF6B35;
+            border-color: #FF6B35;
         }
         
         .status-badge.converted {
-            background: #d1ecf1;
-            color: #0c5460;
+            background: var(--white);
+            color: #28A745;
+            border-color: #28A745;
         }
         
         .status-badge.closed {
-            background: #f8d7da;
-            color: #721c24;
+            background: var(--white);
+            color: var(--gray-600);
+            border-color: var(--gray-600);
         }
         
         .action-buttons {
@@ -259,24 +292,29 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            color: white;
+            color: var(--white);
             font-weight: 600;
+            border: 2px solid;
         }
         
         .action-btn.view {
-            background: #2c5282;
+            background: var(--primary);
+            border-color: var(--primary-dark);
         }
         
         .action-btn.call {
             background: #28a745;
+            border-color: #218838;
         }
         
         .action-btn.email {
             background: #17a2b8;
+            border-color: #138496;
         }
 
         .action-btn.whatsapp {
             background: #25D366;
+            border-color: #1DA851;
         }
         
         .action-btn:hover {
@@ -286,8 +324,8 @@
         
         .export-btn {
             padding: 12px 25px;
-            background: #28a745;
-            color: white;
+            background: var(--primary);
+            color: var(--white);
             border: none;
             font-weight: 700;
             cursor: pointer;
@@ -295,12 +333,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            border: 2px solid var(--primary-dark);
         }
         
         .export-btn:hover {
-            background: #218838;
+            background: var(--primary-dark);
             transform: translate(-2px, -2px);
-            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 4px 0 rgba(0, 85, 255, 0.3);
         }
         
         .lead-modal {
@@ -323,13 +362,14 @@
         }
         
         .modal-content {
-            background: white;
+            background: var(--white);
             max-width: 900px;
             width: 100%;
             padding: 40px;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
+            border: 2px solid var(--black);
         }
         
         .modal-close {
@@ -338,22 +378,31 @@
             right: 20px;
             font-size: 28px;
             cursor: pointer;
-            color: #666;
+            color: var(--gray-700);
             transition: color 0.3s;
+            border: 2px solid var(--gray-700);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
         }
         
         .modal-close:hover {
-            color: #2c5282;
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: rotate(90deg);
         }
 
         .modal-header {
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid var(--gray-300);
         }
 
         .modal-header h2 {
-            color: #1a365d;
+            color: var(--black);
             font-weight: 800;
             font-size: 32px;
         }
@@ -367,16 +416,16 @@
             grid-template-columns: 200px 1fr;
             gap: 20px;
             padding: 15px 0;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--gray-300);
         }
         
         .detail-label {
             font-weight: 700;
-            color: #1a365d;
+            color: var(--gray-700);
         }
         
         .detail-value {
-            color: #333;
+            color: var(--black);
         }
 
         .universities-list {
@@ -386,62 +435,68 @@
 
         .universities-list li {
             padding: 10px;
-            background: #f8f9fa;
+            background: var(--gray-50);
             margin: 5px 0;
-            border-left: 4px solid #2c5282;
+            border-left: 4px solid var(--primary);
         }
         
         .status-update {
             margin-top: 30px;
             padding: 20px;
-            background: #f8f9fa;
-            border-left: 4px solid #2c5282;
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            border: 2px solid var(--gray-300);
         }
         
         .status-update h3 {
             margin-bottom: 15px;
-            color: #1a365d;
+            color: var(--black);
         }
         
         .status-select {
             padding: 12px;
             width: 100%;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--gray-400);
             font-size: 16px;
             margin-bottom: 15px;
+            background: var(--white);
+            color: var(--black);
         }
 
         .status-select:focus {
             outline: none;
-            border-color: #2c5282;
+            border-color: var(--primary);
         }
         
         .update-btn {
             padding: 12px 30px;
-            background: #2c5282;
-            color: white;
+            background: var(--primary);
+            color: var(--white);
             border: none;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            border: 2px solid var(--primary-dark);
         }
         
         .update-btn:hover {
-            background: #1a365d;
+            background: var(--primary-dark);
             transform: translate(-2px, -2px);
-            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 4px 4px 0 rgba(0, 85, 255, 0.3);
         }
 
         .no-leads {
             text-align: center;
             padding: 60px 20px;
-            color: #999;
+            color: var(--gray-600);
+            border: 2px solid var(--gray-300);
+            background: var(--white);
         }
 
         .no-leads i {
             font-size: 64px;
             margin-bottom: 20px;
-            color: #ddd;
+            color: var(--gray-300);
         }
 
         .search-box {
@@ -451,14 +506,16 @@
         .search-input {
             width: 100%;
             padding: 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--gray-400);
             font-size: 16px;
             transition: border 0.3s;
+            background: var(--white);
+            color: var(--black);
         }
 
         .search-input:focus {
             outline: none;
-            border-color: #2c5282;
+            border-color: var(--primary);
         }
         
         @media (max-width: 1200px) {
@@ -621,18 +678,18 @@
                                 <tr data-status="<%= lead.status %>" data-search="<%= lead.studentName.toLowerCase() %> <%= lead.email.toLowerCase() %> <%= lead.phone %> <%= lead.stream.toLowerCase() %>">
                                     <td>
                                         <strong><%= new Date(lead.createdAt).toLocaleDateString('en-IN') %></strong><br>
-                                        <small style="color: #666;"><%= new Date(lead.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) %></small>
+                                        <small style="color: var(--gray-600);"><%= new Date(lead.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) %></small>
                                     </td>
                                     <td><strong><%= lead.studentName %></strong></td>
                                     <td><%= lead.phone %></td>
                                     <td><%= lead.email %></td>
                                     <td>
-                                        <span style="text-transform: capitalize; font-weight: 600;">
+                                        <span style="text-transform: capitalize; font-weight: 600; color: var(--primary);">
                                             <%= lead.stream %>
                                         </span>
                                     </td>
                                     <td>
-                                        <span style="text-transform: uppercase; font-size: 12px; color: #666;">
+                                        <span style="text-transform: uppercase; font-size: 12px; color: var(--gray-600);">
                                             <%= lead.source.replace('_', ' ') %>
                                         </span>
                                     </td>
@@ -778,7 +835,7 @@
             quizResultsHTML = `
                 <div class="detail-row">
                     <div class="detail-label"><i class="fas fa-chart-pie"></i> Quiz Results:</div>
-                    <div class="detail-value" style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2c5282;">
+                    <div class="detail-value" style="background: #e3f2fd; padding: 15px; border-left: 4px solid var(--primary);">
                         <strong>Stream:</strong> ${lead.quizResults.stream}<br>
                         <strong>Match:</strong> ${lead.quizResults.percentage || 0}%
                         ${lead.quizResults.recommendedUniversities ? `<br><strong>Unis:</strong> ${lead.quizResults.recommendedUniversities.join(', ')}` : ''}
@@ -793,9 +850,9 @@
             callbackHTML = `
                 <div class="detail-row">
                     <div class="detail-label"><i class="fas fa-phone-alt"></i> Callback Info:</div>
-                    <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;">
+                    <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid var(--accent);">
                         ${lead.preferredCallbackTime ? `<strong>Time:</strong> ${lead.preferredCallbackTime}<br>` : ''}
-                        ${lead.urgency ? `<strong>Urgency:</strong> <span style="text-transform: uppercase; font-weight: 700; color: #EA4335;">${lead.urgency}</span>` : ''}
+                        ${lead.urgency ? `<strong>Urgency:</strong> <span style="text-transform: uppercase; font-weight: 700; color: var(--primary);">${lead.urgency}</span>` : ''}
                     </div>
                 </div>
             `;
@@ -805,12 +862,12 @@
         detailsDiv.innerHTML = `
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-user"></i> Name:</div>
-                <div class="detail-value"><strong style="font-size: 20px; color: #1a365d;">${lead.studentName}</strong></div>
+                <div class="detail-value"><strong style="font-size: 20px; color: var(--black);">${lead.studentName}</strong></div>
             </div>
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-phone"></i> Phone:</div>
                 <div class="detail-value">
-                    <a href="tel:${lead.phone}" style="color: #2c5282; text-decoration: none; font-weight: 700; font-size: 18px;">
+                    <a href="tel:${lead.phone}" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 18px;">
                         ${lead.phone}
                     </a>
                     <a href="https://wa.me/${lead.phone.replace(/\D/g, '')}" target="_blank" style="margin-left: 15px; color: #25D366; text-decoration: none;">
@@ -821,7 +878,7 @@
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-envelope"></i> Email:</div>
                 <div class="detail-value">
-                    <a href="mailto:${lead.email}" style="color: #2c5282; text-decoration: none; font-weight: 600;">
+                    <a href="mailto:${lead.email}" style="color: var(--primary); text-decoration: none; font-weight: 600;">
                         ${lead.email}
                     </a>
                 </div>
@@ -832,7 +889,7 @@
             </div>
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-graduation-cap"></i> Stream:</div>
-                <div class="detail-value"><strong style="text-transform: capitalize; font-size: 18px; color: #2c5282;">${lead.stream}</strong></div>
+                <div class="detail-value"><strong style="text-transform: capitalize; font-size: 18px; color: var(--primary);">${lead.stream}</strong></div>
             </div>
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-book"></i> Course:</div>
@@ -860,7 +917,7 @@
             ${lead.message ? `
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-comment-dots"></i> Message:</div>
-                <div class="detail-value" style="background: #f8f9fa; padding: 15px; border-left: 4px solid #2c5282; line-height: 1.6;">
+                <div class="detail-value" style="background: var(--gray-50); padding: 15px; border-left: 4px solid var(--primary); line-height: 1.6;">
                     ${lead.message}
                 </div>
             </div>
@@ -869,7 +926,7 @@
             ${lead.quizScore ? `
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-chart-bar"></i> Quiz Score:</div>
-                <div class="detail-value"><strong style="color: #2c5282; font-size: 24px;">${lead.quizScore}/100</strong></div>
+                <div class="detail-value"><strong style="color: var(--primary); font-size: 24px;">${lead.quizScore}/100</strong></div>
             </div>
             ` : ''}
             ${quizResultsHTML}
@@ -877,7 +934,7 @@
             ${lead.notes ? `
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-sticky-note"></i> Notes:</div>
-                <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107;">
+                <div class="detail-value" style="background: #fff3cd; padding: 15px; border-left: 4px solid var(--accent);">
                     ${lead.notes}
                 </div>
             </div>
@@ -885,7 +942,7 @@
             <div class="detail-row">
                 <div class="detail-label"><i class="fas fa-tag"></i> Source:</div>
                 <div class="detail-value">
-                    <span style="text-transform: uppercase; font-weight: 700; background: #e3f2fd; padding: 8px 15px; border-radius: 5px;">
+                    <span style="text-transform: uppercase; font-weight: 700; background: var(--gray-50); padding: 8px 15px; border-radius: 5px; border: 2px solid var(--gray-300);">
                         ${lead.source.replace(/_/g, ' ')}
                     </span>
                 </div>
