@@ -27,8 +27,7 @@ class ChatWidget {
                 <div id="chat-window" class="chat-window" style="display: none;">
                     <div class="chat-header">
                         <div class="chat-header-content">
-                            <h4>💬 Live Career Guidance</h4>
-                            <p>Our counsellors are here to help</p>
+                            <h4><i class="fas fa-comments"></i> Live Career Guidance</h4>
                         </div>
                         <button id="chat-close" class="chat-close">
                             <i class="fas fa-times"></i>

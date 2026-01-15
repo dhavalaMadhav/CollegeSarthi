@@ -1,5 +1,5 @@
 /* ===============================================
-   CALLBACK WIDGET - PURE SWISS (NO CURVES, PROFESSIONAL)
+   CALLBACK WIDGET - ACADEMIC THEME (CIRCULAR, PROFESSIONAL)
    =============================================== */
 
 /* Floating Callback Widget */
@@ -8,33 +8,35 @@
     bottom: 100px;
     right: 20px;
     z-index: 9999;
-    font-family: var(--font-main), 'Inter', -apple-system, sans-serif;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .callback-button {
     width: 70px;
     height: 70px;
-    background: var(--secondary);
-    border: 3px solid var(--black);
-    box-shadow: 4px 4px 0 var(--black);
+    background: #2C5F8D; /* Academic blue */
+    border: none;
+    border-radius: 50%; /* Circular */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     position: relative;
-    font-weight: var(--font-weight-bold);
+    font-weight: 600;
 }
 
 .callback-button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 var(--black);
+    background: #1E4364; /* Darker blue on hover */
+    transform: none; /* Remove displacement */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 4px 4px 0 var(--black); }
-    50% { box-shadow: 6px 6px 0 var(--black); }
+    0%, 100% { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
 }
 
 .callback-button {
@@ -46,16 +48,20 @@
 }
 
 .callback-popup {
-    position: absolute;
+    position: fixed;
     bottom: 90px;
-    right: 0;
-    width: 380px;
-    background: var(--white);
-    border: 3px solid var(--black);
-    box-shadow: 10px 10px 0 var(--black);
+    width: 300px;
+    height: 350px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     display: none;
     animation: slideUp 0.3s ease;
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10002;
 }
 
 .callback-popup.active {
@@ -74,45 +80,41 @@
 }
 
 .callback-popup-header {
-    background: var(--secondary);
-    color: var(--white);
-    padding: 25px 25px 20px;
-    border-bottom: 2px solid var(--black);
+    background: #2C5F8D;
+    color: #FFFFFF;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 12px 12px 0 0;
 }
 
 .callback-popup-header::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: var(--accent);
+    display: none;
 }
 
 .callback-popup-header h3 {
     margin: 0;
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-black);
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    color: #FFFFFF;
 }
 
 .callback-popup-header h3 i {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .callback-close-btn {
     background: none;
-    border: 2px solid var(--white);
-    color: var(--white);
+    border: none;
+    color: #FFFFFF;
     font-size: 1.125rem;
     cursor: pointer;
     padding: 8px;
@@ -121,39 +123,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    font-weight: var(--font-weight-bold);
+    transition: all 0.25s ease;
+    font-weight: 600;
+    border-radius: 50%;
 }
 
 .callback-close-btn:hover {
-    background: var(--white);
-    color: var(--black);
-    transform: translate(-1px, -1px);
-    box-shadow: 2px 2px 0 var(--black);
+    background: #FFFFFF;
+    color: #2C5F8D;
+    transform: none;
 }
 
 .callback-popup-body {
-    padding: 25px;
+    padding: 15px;
+    background: #F7F8FA;
+    border-radius: 0 0 12px 12px;
 }
 
 .callback-popup-body p {
-    margin: 0 0 25px 0;
-    color: var(--gray-700);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    font-weight: var(--font-weight-medium);
+    margin: 0 0 15px 0;
+    color: #4B5563;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
 .callback-form-group {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .callback-form-group label {
     display: block;
-    font-weight: var(--font-weight-bold);
-    color: var(--black);
-    margin-bottom: 8px;
-    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1B1F24;
+    margin-bottom: 4px;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -161,33 +165,35 @@
 .callback-form-group input,
 .callback-form-group select {
     width: 100%;
-    padding: 14px 16px;
-    border: 2px solid var(--gray-300);
-    font-size: 0.95rem;
-    font-family: var(--font-main);
-    font-weight: var(--font-weight-medium);
-    transition: all 0.2s ease;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 500;
+    transition: all 0.25s ease;
     box-sizing: border-box;
+    background: #FFFFFF;
 }
 
 .callback-form-group input:focus,
 .callback-form-group select:focus {
     outline: none;
-    border-color: var(--secondary);
-    box-shadow: 2px 2px 0 var(--secondary);
-    transform: translateY(-1px);
+    border-color: #2C5F8D;
+    box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
 }
 
 .callback-submit-btn {
     width: 100%;
-    padding: 18px;
-    background: var(--secondary);
-    color: var(--white);
-    border: 2px solid var(--black);
-    font-size: 1.1rem;
-    font-weight: var(--font-weight-black);
+    padding: 12px;
+    background: #2C5F8D;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: relative;
@@ -195,9 +201,9 @@
 }
 
 .callback-submit-btn:hover {
-    background: var(--black);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--black);
+    background: #1E4364;
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .callback-submit-btn::before {
@@ -226,26 +232,25 @@
 
 .callback-success,
 .callback-error {
-    padding: 16px 20px;
-    margin-bottom: 15px;
-    border-left: 4px solid var(--black);
+    padding: 8px 0;
+    margin-bottom: 10px;
     display: none;
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-semibold);
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    background: transparent;
+    border: none;
+    color: #22C55E;
+    border-radius: 4px;
 }
 
 .callback-success {
-    background: var(--gray-50);
-    border-left-color: var(--secondary);
-    color: var(--black);
+    color: #22C55E;
 }
 
 .callback-error {
-    background: var(--gray-50);
-    border-left-color: var(--accent);
-    color: var(--black);
+    color: #EF4444;
 }
 
 .callback-success.show,
@@ -256,23 +261,28 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .callback-widget {
-        bottom: 90px;
-        right: 20px;
+        bottom: 85px;
+        right: 15px;
     }
 
     .callback-button {
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
         font-size: 1.3rem;
     }
 
     .callback-popup {
         width: calc(100vw - 40px);
-        right: 20px;
+        height: 360px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10002;
     }
     
     .callback-popup-body {
-        padding: 20px;
+        padding: 15px;
     }
 }
 
@@ -283,13 +293,22 @@
     }
     
     .callback-button {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         font-size: 1.2rem;
     }
     
     .callback-popup {
         width: calc(100vw - 30px);
-        right: 15px;
+        height: 340px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10002;
+    }
+    
+    .callback-popup-body {
+        padding: 15px;
     }
 }

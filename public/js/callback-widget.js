@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             <div class="callback-popup" id="callbackPopup">
                 <div class="callback-popup-header">
-                    <h3>📞 Request Callback</h3>
+                    <h3><i class="fas fa-phone"></i> Request Callback</h3>
                     <button class="callback-close-btn" id="callbackCloseBtn">
                         <i class="fas fa-times"></i>
                     </button>
@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>We'll call you back within the hour!</p>
                     
                     <div class="callback-success" id="callbackSuccess">
-                        ✅ We'll call you soon!
+                        <i class="fas fa-check"></i> We'll call you soon!
                     </div>
                     <div class="callback-error" id="callbackError">
-                        ❌ Error. Please try again.
+                        <i class="fas fa-exclamation-triangle"></i> Error. Please try again.
                     </div>
                     
                     <form id="callbackForm">

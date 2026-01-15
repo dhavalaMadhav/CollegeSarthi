@@ -909,6 +909,14 @@ h1::before, h2::before, h3::before {
 .faq-item:hover {
     background: transparent !important;
     box-shadow: none !important;
+    transform: none !important;
+}
+
+
+.faq-item:hover .faq-question {
+    transform: none !important;
+    margin: 0 !important;
+    padding: 1.2rem 0 !important;
 }
 
 
@@ -931,13 +939,20 @@ h1::before, h2::before, h3::before {
 
 .faq-question {
     padding: 1.2rem 0;
-    cursor: pointer;
+    cursor: default;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: transparent;
     transition: none;
     font-family: var(--font-simple);
+}
+
+
+.faq-question:hover {
+    transform: none !important;
+    margin: 0 !important;
+    padding: 1.2rem 0 !important;
 }
 
 
@@ -960,7 +975,7 @@ h1::before, h2::before, h3::before {
 
 .faq-question i {
     color: var(--accent-primary);
-    transition: transform 0.3s ease;
+    transition: none;
     font-size: 0.9rem;
     flex-shrink: 0;
     margin-left: 0.5rem;
