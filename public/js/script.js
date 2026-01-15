@@ -209,7 +209,7 @@ class HeroCarousel {
         this.carouselSlides = document.querySelectorAll('.carousel-slide');
         
         this.currentSlide = 0;
-        this.totalSlides = 3;
+        this.totalSlides = this.carouselSlides.length;
         this.carouselInterval = null;
         
         if (this.carouselTrack) this.init();
@@ -228,21 +228,78 @@ class HeroCarousel {
                 this.resetAutoPlay();
             });
         });
-        
-        this.carouselPrevBtn.addEventListener('click', () => {
-            this.prevSlide();
+
+        if (this.carouselPrevBtn) {
+            this.carouselPrevBtn.addEventListener('click', () => {
+                this.prevSlide();
+                this.resetAutoPlay();
+            });
+        }
+
+        if (this.carouselNextBtn) {
+            this.carouselNextBtn.addEventListener('click', () => {
+                this.nextSlide();
+                this.resetAutoPlay();
+            });
+        }
+
+        // Swipe / drag support (touch + mouse)
+        let isDragging = false;
+        let startX = 0;
+        let prevTranslate = 0;
+
+        const getPosition = (e) => (e.type.includes('mouse') ? e.pageX : e.touches[0].clientX);
+
+        const touchStart = (e) => {
+            isDragging = true;
+            startX = getPosition(e);
+            const containerWidth = this.heroSection.offsetWidth;
+            prevTranslate = -this.currentSlide * containerWidth;
+            this.carouselTrack.style.transition = ''; // disable transition while dragging
+            clearInterval(this.carouselInterval);
+        };
+
+        const touchMove = (e) => {
+            if(!isDragging) return;
+            const currentPosition = getPosition(e);
+            const diff = currentPosition - startX;
+            const translatePx = prevTranslate + diff;
+            this.carouselTrack.style.transform = `translateX(${translatePx}px)`;
+        };
+
+        const touchEnd = (e) => {
+            if(!isDragging) return;
+            isDragging = false;
+            const containerWidth = this.heroSection.offsetWidth;
+            const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : (e.pageX || startX);
+            const movedBy = endX - startX;
+
+            if (movedBy < -60 && this.currentSlide < this.totalSlides - 1) {
+                this.nextSlide();
+            } else if (movedBy > 60 && this.currentSlide > 0) {
+                this.prevSlide();
+            } else {
+                this.moveToSlide(this.currentSlide);
+            }
+
             this.resetAutoPlay();
-        });
-        
-        this.carouselNextBtn.addEventListener('click', () => {
-            this.nextSlide();
-            this.resetAutoPlay();
-        });
-        
+        };
+
+        // Touch events
+        this.carouselTrack.addEventListener('touchstart', touchStart, {passive:true});
+        this.carouselTrack.addEventListener('touchmove', touchMove, {passive:true});
+        this.carouselTrack.addEventListener('touchend', touchEnd);
+
+        // Mouse events
+        this.carouselTrack.addEventListener('mousedown', touchStart);
+        this.carouselTrack.addEventListener('mousemove', touchMove);
+        this.carouselTrack.addEventListener('mouseup', touchEnd);
+        this.carouselTrack.addEventListener('mouseleave', () => { if (isDragging) touchEnd(); });
+
         this.heroSection.addEventListener('mouseenter', () => {
             clearInterval(this.carouselInterval);
         });
-        
+
         this.heroSection.addEventListener('mouseleave', () => {
             this.startAutoPlay();
         });
@@ -250,7 +307,8 @@ class HeroCarousel {
     
     moveToSlide(slideIndex) {
         this.currentSlide = slideIndex;
-        const translateX = -slideIndex * 33.333;
+        const percentPerSlide = 100 / this.totalSlides;
+        const translateX = -slideIndex * percentPerSlide;
         this.carouselTrack.style.transform = `translateX(${translateX}%)`;
         
         this.carouselDots.forEach((dot, index) => {

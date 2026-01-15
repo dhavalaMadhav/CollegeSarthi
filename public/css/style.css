@@ -1281,13 +1281,18 @@ p {
 
 .why-choose-item {
     display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    padding: 0;
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    transition: none;
+    gap: 1rem;
+    align-items: center; /* Changed from flex-start to center */
+}
+
+.why-choose-icon {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    flex-shrink: 0;
+    margin-top: 0; /* Remove the margin-top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .why-choose-item:hover {

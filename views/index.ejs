@@ -1,347 +1,1824 @@
 <%- include('partials/header') %>
 
-<!-- Link to external CSS -->
-<link rel="stylesheet" href="/css/style.css">
 
-    <!-- Hero Section with Carousel -->
-    <section class="hero">
-        <div class="carousel">
-            <div class="carousel-track">
-                <!-- Slide 1 with Grid & Stripes - Primary Colors -->
-                <div class="carousel-slide slide-1">
-                    <!-- Grid Overlay -->
-                    <div class="hero-grid-overlay">
-                        <div class="grid-cell">E</div>
-                        <div class="grid-cell">D</div>
-                        <div class="grid-cell accent">U</div>
-                        <div class="grid-cell">C</div>
-                        <div class="grid-cell primary">A</div>
-                        <div class="grid-cell">T</div>
-                        <div class="grid-cell">I</div>
-                        <div class="grid-cell accent">O</div>
-                        <div class="grid-cell">N</div>
-                        <div class="grid-cell primary">P</div>
-                        <div class="grid-cell accent">A</div>
-                        <div class="grid-cell">T</div>
-                        <div class="grid-cell">H</div>
-                        <div class="grid-cell primary">2</div>
-                        <div class="grid-cell">0</div>
-                        <div class="grid-cell green">2</div>
-                    </div>
-                    
-                    <div class="carousel-content">
-                        <h1>Find Your Perfect University Match</h1>
-                        <p>Expert career guidance and university counselling to help you achieve your academic dreams</p>
-                        <div class="hero-buttons">
-                            <button class="btn-primary" onclick="window.location.href='/quiz'">
-                                <i class="fas fa-clipboard-list"></i> Take Career Quiz
-                            </button>
-                            <button class="btn-secondary" onclick="window.location.href='/contact'">
-                                <i class="fas fa-phone"></i> Book Consultation
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- Import Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-                <!-- Slide 2 with Grid & Stripes - Secondary Colors -->
-                <div class="carousel-slide slide-2">
-                    <!-- Grid Overlay -->
-                    <div class="hero-grid-overlay">
-                        <div class="grid-cell">C</div>
-                        <div class="grid-cell">A</div>
-                        <div class="grid-cell accent">R</div>
-                        <div class="grid-cell">E</div>
-                        <div class="grid-cell primary">E</div>
-                        <div class="grid-cell">R</div>
-                        <div class="grid-cell">G</div>
-                        <div class="grid-cell accent">U</div>
-                        <div class="grid-cell">I</div>
-                        <div class="grid-cell primary">D</div>
-                        <div class="grid-cell accent">E</div>
-                        <div class="grid-cell">2</div>
-                        <div class="grid-cell">0</div>
-                        <div class="grid-cell primary">2</div>
-                        <div class="grid-cell">4</div>
-                        <div class="grid-cell green">5</div>
-                    </div>
-                    
-                    <div class="carousel-content">
-                        <h1>Personalized Career Counselling</h1>
-                        <p>Get one-on-one guidance from experienced counsellors who understand your unique aspirations and goals</p>
-                        <div class="hero-buttons">
-                            <button class="btn-primary" onclick="window.location.href='/contact'">
-                                <i class="fas fa-phone"></i> Book Consultation
-                            </button>
-                            <button class="btn-secondary" onclick="window.location.href='/universities'">
-                                <i class="fas fa-university"></i> Explore Universities
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Slide 3 with Grid & Stripes - Accent Colors -->
-                <div class="carousel-slide slide-3">
-                    <!-- Grid Overlay -->
-                    <div class="hero-grid-overlay">
-                        <div class="grid-cell">S</div>
-                        <div class="grid-cell">U</div>
-                        <div class="grid-cell accent">C</div>
-                        <div class="grid-cell">C</div>
-                        <div class="grid-cell primary">E</div>
-                        <div class="grid-cell">S</div>
-                        <div class="grid-cell">S</div>
-                        <div class="grid-cell accent">J</div>
-                        <div class="grid-cell">O</div>
-                        <div class="grid-cell primary">U</div>
-                        <div class="grid-cell accent">R</div>
-                        <div class="grid-cell">N</div>
-                        <div class="grid-cell">E</div>
-                        <div class="grid-cell primary">Y</div>
-                        <div class="grid-cell">2</div>
-                        <div class="grid-cell green">4</div>
-                    </div>
-                    
-                    <div class="carousel-content">
-                        <h1>Your Success is Our Mission</h1>
-                        <p>Join thousands of successful students who found their perfect university match with our expert guidance</p>
-                        <div class="hero-buttons">
-                            <button class="btn-primary" onclick="window.location.href='/quiz'">
-                                <i class="fas fa-star"></i> Start Your Journey
-                            </button>
-                            <button class="btn-secondary" onclick="window.location.href='#stories'">
-                                <i class="fas fa-users"></i> Success Stories
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<style>
+/* ========================================
+   UNIVERSITY ACADEMIC THEME - COMPLETE STYLES
+   ======================================== */
 
-            <!-- Carousel Navigation Buttons -->
-            <button class="carousel-nav-btn carousel-prev">
-                <i class="fas fa-chevron-left"></i>
+
+/* Root Variables - Academic Color Palette */
+:root {
+    /* Backgrounds - Almost white, never pure white */
+    --bg-primary: #F7F8FA;
+    --bg-alternate: #F1F3F6;
+    --bg-surface: #FFFFFF;
+    
+    /* Text Colors - Scholarly Hierarchy */
+    --text-primary: #1B1F24;
+    --text-body: #4B5563;
+    --text-muted: #6B7280;
+    
+    /* Academic Blue Accent - Single restrained accent */
+    --accent-primary: #2C5F8D;
+    --accent-hover: #1E4364;
+    --accent-light: rgba(44, 95, 141, 0.08);
+    
+    /* Bright Blue for Advisor Button */
+    --bright-blue: #007BFF;
+    --bright-blue-hover: #0056b3;
+    
+    /* Yellow for stars */
+    --star-yellow: #FFD700;
+    --star-yellow-dark: #FFC107;
+    
+    /* Subtle Illumination */
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.06);
+    
+    /* Typography */
+    --font-heading: 'Libre Baskerville', Georgia, serif;
+    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-simple: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-simple);
+    color: var(--text-body);
+    background: var(--bg-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+}
+
+
+/* Typography - Academic Hierarchy - NO UNDERLINES */
+h1, h2 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+}
+
+/* Side headings and points use simpler font */
+h3, h4, h5, h6 {
+    font-family: var(--font-simple);
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+}
+
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.1rem; }
+p { 
+    font-size: 0.88rem; 
+    line-height: 1.6;
+    font-family: var(--font-simple);
+}
+
+
+/* Remove ALL underlines globally */
+h1::after, h2::after, h3::after,
+h1::before, h2::before, h3::before {
+    display: none !important;
+}
+
+
+/* ========================================
+   HERO SECTION - ANIMATED UNIVERSITY NAMES IN BOXES WITH BACKGROUND IMAGE
+   ======================================== */
+
+
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000000; /* Black background for hero */
+    padding: 4rem 5%;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* University Background Image with Black Overlay */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Black overlay */
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+
+.hero-content h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF; /* White text on black */
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+.university-title {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9); /* Lighter white */
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    font-family: var(--font-heading);
+    font-style: italic;
+}
+
+
+.hero-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85); /* Lighter white */
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    font-family: var(--font-simple);
+}
+
+
+/* Hero Buttons - UPDATED with curved edges */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.btn-primary, .btn-secondary {
+    font-family: var(--font-simple);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 25px; /* Curved edges */
+    box-shadow: none;
+}
+
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: #FFFFFF;
+}
+
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+
+/* Bright Blue Button for Advisor */
+.btn-bright-blue {
+    background: var(--bright-blue);
+    color: #FFFFFF;
+    font-family: var(--font-simple);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 25px; /* Curved edges */
+    box-shadow: none;
+}
+
+.btn-bright-blue:hover {
+    background: var(--bright-blue-hover);
+    transform: translateY(-2px);
+}
+
+
+.btn-secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+
+/* Animated University Names in Boxes */
+.university-marquee {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.3; /* Reduced opacity to see background image better */
+}
+
+
+.marquee-row {
+    position: absolute;
+    white-space: nowrap;
+    transform: rotate(-45deg);
+    width: 200%;
+}
+
+.marquee-row-1 {
+    top: 20%;
+    left: -50%;
+    animation: marquee-1 40s linear infinite;
+}
+
+.marquee-row-2 {
+    bottom: 20%;
+    right: -50%;
+    animation: marquee-2 35s linear infinite;
+}
+
+.marquee-track {
+    display: inline-block;
+}
+
+.university-box {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7); /* Dark box background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    margin: 0 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.university-box:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.university-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #FFFFFF; /* White text */
+    font-family: var(--font-heading);
+    white-space: nowrap;
+}
+
+@keyframes marquee-1 {
+    0% { transform: rotate(-45deg) translateX(0); }
+    100% { transform: rotate(-45deg) translateX(-50%); }
+}
+
+@keyframes marquee-2 {
+    0% { transform: rotate(-45deg) translateX(0); }
+    100% { transform: rotate(-45deg) translateX(50%); }
+}
+
+/* ========================================
+   STATS SECTION - REDUCED SPACING
+   ======================================== */
+
+
+.stats-section {
+    padding: 1.5rem 5%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    position: relative;
+}
+
+
+.stats-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+
+.stat-item {
+    text-align: center;
+    padding: 0.8rem 0.3rem;
+    transition: all 0.3s ease;
+}
+
+
+.stat-item:hover {
+    transform: translateY(-4px);
+}
+
+
+.stat-icon {
+    font-size: 1.3rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.3rem;
+}
+
+
+.stat-number, .stat-number-text {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: inline-block;
+}
+
+
+.stat-plus, .stat-percent {
+    font-size: 1rem;
+    color: var(--accent-primary);
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    font-weight: 500;
+    font-family: var(--font-simple);
+}
+
+
+/* ========================================
+   SECTION HEADERS (Global) - NO UNDERLINES
+   ======================================== */
+
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+
+.section-title {
+    font-size: 1.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    text-decoration: none;
+    font-family: var(--font-heading);
+}
+
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+    font-family: var(--font-simple);
+}
+
+
+/* ========================================
+   WHY CHOOSE US SECTION - 6 POINTS IN GRID
+   ======================================== */
+
+
+.why-choose-us {
+    padding: 4.5rem 5%;
+    background: var(--bg-primary);
+}
+
+
+.why-choose-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+}
+
+
+.why-choose-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+
+.why-choose-icon {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+
+.why-choose-text h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-simple);
+}
+
+
+.why-choose-text p {
+    color: var(--text-body);
+    line-height: 1.6;
+    font-size: 0.85rem;
+    font-family: var(--font-simple);
+}
+
+
+/* ========================================
+   FEATURED UNIVERSITIES SECTION - UPDATED WITH SMALLER TEXT
+   ======================================== */
+
+
+.featured-universities {
+    padding: 4.5rem 5%;
+    background: var(--bg-primary);
+}
+
+
+.featured-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: var(--font-simple);
+}
+
+
+/* Horizontal scroll container */
+.university-logos-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+.university-logos-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0 1.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+}
+
+
+.university-logos-carousel:active {
+    cursor: grabbing;
+}
+
+
+.university-logos-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* University Card - NO HOVER EFFECTS, NO BOX SHADOW */
+.university-logo-item {
+    flex: 0 0 520px;
+    background: var(--bg-surface);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: none;
+    box-shadow: none !important;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 20px; /* Added space between cards */
+}
+
+
+/* Removed hover effects */
+.university-logo-item:hover {
+    transform: none;
+    box-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+
+/* Card Content Wrapper - FIXED: Equal padding on left and right */
+.university-card-content {
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    position: relative;
+    text-align: left;
+}
+
+
+/* Admission Open Badge - Green - Smaller */
+.admission-badge {
+    display: inline-block;
+    background: #22C55E;
+    color: #FFFFFF;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+    text-align: left;
+    font-family: var(--font-simple);
+}
+
+
+/* Card Header with Logo */
+.university-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.university-text-info {
+    flex: 1;
+}
+
+
+.university-location-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    font-family: var(--font-simple);
+}
+
+
+.university-name-large {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+
+/* Logo Box - Perfect Square */
+.university-logo-box {
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    flex-shrink: 0;
+}
+
+
+.university-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+/* Card Footer - Only Fees (Deadline Removed) */
+.university-card-footer {
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.footer-item h4 {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-family: var(--font-simple);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.footer-item p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+
+/* View More Button */
+.view-more-btn {
+    background: var(--bright-blue); /* Bright blue background */
+    color: #FFFFFF;
+    font-family: var(--font-simple);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.8rem 2.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 25px; /* Curved edges */
+    margin-top: 2.8rem;
+}
+
+
+.view-more-btn:hover {
+    background: var(--bright-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* Animated Arrow */
+@keyframes slide-right {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.animated-arrow {
+    animation: slide-right 1s infinite;
+}
+
+
+/* ========================================
+   STUDENT SUCCESS STORIES - UPDATED SIMPLE DESIGN
+   ======================================== */
+
+
+.student-stories {
+    padding: 4.5rem 5%;
+    background: var(--bg-surface);
+}
+
+
+.stories-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.stories-carousel {
+    display: flex;
+    gap: 1.8rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0 1.5rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+
+.stories-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Simple Story Card - NO HOVER EFFECTS */
+.story-card {
+    flex: 0 0 350px;
+    background: var(--bg-surface);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: none;
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    cursor: pointer;
+}
+
+/* Remove all hover effects */
+.story-card:hover {
+    box-shadow: var(--shadow-soft);
+    transform: none;
+}
+
+/* Top Section with Rating and Student Info */
+.story-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.student-info-left {
+    flex: 1;
+}
+
+/* Rating Stars */
+.student-rating {
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 0.8rem;
+    align-items: center;
+}
+
+.star {
+    color: var(--star-yellow);
+    font-size: 1rem;
+}
+
+.star.half {
+    position: relative;
+}
+
+.star.half:after {
+    content: '★';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: var(--star-yellow);
+}
+
+.star.empty {
+    color: #E5E7EB;
+}
+
+.rating-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+    font-weight: 600;
+    font-family: var(--font-simple);
+}
+
+/* Student Details */
+.student-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.student-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.student-course {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-family: var(--font-simple);
+}
+
+.student-university {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-family: var(--font-simple);
+}
+
+/* Student Image - Small like university cards */
+.student-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.student-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bottom Section with Review */
+.story-card-bottom {
+    padding-top: 0.5rem;
+}
+
+.review-text {
+    color: var(--text-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--font-simple);
+}
+
+/* ========================================
+   FAQ SECTION - COMPLETELY UPDATED WITH BETTER MOBILE VISIBILITY
+   ======================================== */
+
+
+.faq-section {
+    padding: 4.5rem 5%;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+
+.faq-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+
+.faq-item {
+    background: transparent;
+    margin-bottom: 0;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    border: none;
+    box-shadow: none !important;
+    border-radius: 0;
+    transition: none;
+}
+
+
+/* Remove ALL hover effects from FAQ */
+.faq-item:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+
+.faq-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.1) 10%,
+        rgba(0, 0, 0, 0.1) 90%,
+        transparent 100%
+    );
+}
+
+
+.faq-question {
+    padding: 1.2rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    transition: none;
+    font-family: var(--font-simple);
+}
+
+
+/* FAQ Question Text - Ensure complete visibility */
+.faq-question h3 {
+    color: var(--text-primary);
+    font-size: 0.92rem; /* Slightly larger for better readability */
+    font-weight: 600;
+    margin: 0;
+    text-decoration: none;
+    flex: 1;
+    padding-right: 1rem;
+    line-height: 1.4; /* Better line height */
+    white-space: normal; /* Allow wrapping */
+    overflow: visible;
+    text-overflow: clip;
+    font-family: var(--font-simple);
+}
+
+
+.faq-question i {
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: transparent;
+}
+
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 0 1.2rem;
+}
+
+
+.faq-answer p {
+    color: var(--text-body);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.85rem;
+    font-family: var(--font-simple);
+}
+
+
+/* ========================================
+   CTA SECTION WITH UPDATED TEXT
+   ======================================== */
+
+
+.cta-section {
+    padding: 4.5rem 5%;
+    background: var(--bg-surface);
+    text-align: center;
+}
+
+
+.cta-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+
+.cta-content h2 {
+    font-size: 1.95rem;
+    margin-bottom: 0.9rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-heading);
+}
+
+
+.cta-content p {
+    font-size: 1rem;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+    font-family: var(--font-simple);
+}
+
+
+.cta-buttons {
+    display: flex;
+    gap: 1.1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.btn-primary.large,
+.btn-bright-blue.large,
+.btn-secondary.large {
+    font-size: 0.95rem;
+    padding: 0.95rem 2.2rem;
+    border-radius: 25px; /* Curved edges */
+    box-shadow: none;
+    transition: all 0.25s ease;
+    font-family: var(--font-simple);
+}
+
+.btn-primary.large:hover,
+.btn-bright-blue.large:hover,
+.btn-secondary.large:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary.large {
+    background: var(--accent-primary);
+    color: #FFFFFF;
+    border: none;
+}
+
+.btn-primary.large:hover {
+    background: var(--accent-hover);
+}
+
+.btn-bright-blue.large {
+    background: var(--bright-blue);
+    color: #FFFFFF;
+    border: none;
+}
+
+.btn-bright-blue.large:hover {
+    background: var(--bright-blue-hover);
+}
+
+.btn-secondary.large {
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
+    background: transparent;
+}
+
+
+.btn-secondary.large:hover {
+    background: var(--accent-light);
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+
+@media (max-width: 968px) {
+    .hero-content h1 { font-size: 1.9rem; }
+    .section-title { font-size: 1.6rem; }
+    
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .university-logo-item {
+        flex: 0 0 460px;
+    }
+    
+    .university-card-header {
+        gap: 1rem;
+    }
+    
+    .university-name-large {
+        font-size: 1.3rem;
+    }
+    
+    .university-logo-box {
+        width: 90px;
+        height: 90px;
+    }
+    
+    /* University boxes adjustments */
+    .university-box {
+        padding: 0.6rem 1.2rem;
+        margin: 0 1rem;
+    }
+    
+    .university-name {
+        font-size: 1.2rem;
+    }
+    
+    /* Story card adjustments */
+    .story-card {
+        flex: 0 0 320px;
+        padding: 1.2rem;
+    }
+    
+    .student-image {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .student-name {
+        font-size: 1rem;
+    }
+    
+    /* FAQ adjustments for tablet */
+    .faq-question h3 {
+        font-size: 0.88rem;
+        line-height: 1.3;
+    }
+}
+
+
+@media (max-width: 640px) {
+    .hero { 
+        min-height: 550px;
+        padding: 2.5rem 5%;
+    }
+    
+    /* Make titles smaller on mobile */
+    .hero-content h1 { 
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .university-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title { 
+        font-size: 1.3rem; 
+    }
+    
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 0.95rem; }
+    
+    /* CTA Title smaller on mobile */
+    .cta-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-bright-blue {
+        width: 100%;
+        justify-content: center;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+        border-radius: 25px;
+    }
+    
+    /* University boxes for mobile - MAKE THEM VISIBLE */
+    .university-marquee {
+        display: block;
+        opacity: 0.25;
+    }
+    
+    .university-box {
+        padding: 0.4rem 0.8rem;
+        margin: 0 0.8rem;
+    }
+    
+    .university-name {
+        font-size: 0.9rem;
+    }
+    
+    .marquee-row-1 {
+        top: 15%;
+    }
+    
+    .marquee-row-2 {
+        bottom: 15%;
+    }
+    
+    /* Stats Section - Further reduced spacing */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .stat-number { 
+        font-size: 1.5rem;
+    }
+    
+    .stat-number-text {
+        font-size: 1.5rem;
+    }
+    
+    .stat-plus, .stat-percent {
+        font-size: 0.9rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Featured Universities - Mobile Optimizations */
+    .featured-description {
+        display: none;
+    }
+    
+    .university-logos-carousel {
+        gap: 1.5rem;
+        padding: 0.5rem 0 1rem;
+    }
+    
+    .university-logo-item {
+        flex: 0 0 90vw;
+        box-shadow: none !important;
+        margin-right: 15px;
+    }
+    
+    .university-logo-item:hover {
+        box-shadow: none !important;
+    }
+    
+    /* FIXED: Equal padding on left and right for mobile */
+    .university-card-content {
+        padding: 1.2rem 1.2rem 1.2rem 1.2rem; /* Equal padding on all sides */
+    }
+    
+    .admission-badge {
+        font-size: 0.55rem;
+        padding: 0.35rem 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .university-card-header {
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .university-location-text {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* FIXED: Decreased font size for university names on mobile */
+    .university-name-large {
+        font-size: 1.1rem; /* Reduced from 1.3rem */
+        line-height: 1.2;
+    }
+    
+    /* Perfect Square Logo Box on Mobile */
+    .university-logo-box {
+        width: 80px; /* Slightly smaller for mobile */
+        height: 80px;
+        padding: 0.5rem;
+    }
+    
+    .university-card-footer {
+        padding-top: 1rem;
+    }
+    
+    .footer-item h4 {
+        font-size: 0.65rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .footer-item p {
+        font-size: 1rem;
+    }
+    
+    /* FAQ - Mobile adjustments with better visibility and smaller font */
+    .faq-question h3 {
+        font-size: 0.82rem; /* Reduced font size for mobile */
+        line-height: 1.3;
+        white-space: normal; /* Allow text to wrap */
+        overflow: visible;
+        padding-right: 1.5rem; /* More space for the icon */
+        font-family: var(--font-simple); /* Professional simple font */
+    }
+    
+    .faq-question {
+        padding: 1rem 0;
+        align-items: flex-start;
+    }
+    
+    .faq-question i {
+        margin-top: 0.2rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.8rem; /* Smaller font for answers on mobile */
+        line-height: 1.5;
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 0 1rem;
+    }
+    
+    /* Story cards - mobile optimization */
+    .story-card {
+        flex: 0 0 85vw;
+        padding: 1rem;
+        gap: 1rem;
+        margin-right: 1rem;
+    }
+    
+    .story-card-top {
+        padding-bottom: 0.8rem;
+        gap: 0.8rem;
+    }
+    
+    .student-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .student-name {
+        font-size: 0.95rem;
+    }
+    
+    .student-course {
+        font-size: 0.8rem;
+    }
+    
+    .student-university {
+        font-size: 0.75rem;
+    }
+    
+    .star {
+        font-size: 0.9rem;
+    }
+    
+    .review-text {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 3;
+    }
+    
+    .view-more-btn {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+    }
+    
+    /* CTA Buttons mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .btn-primary.large,
+    .btn-bright-blue.large,
+    .btn-secondary.large {
+        width: 100%;
+        max-width: 280px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 500px;
+    }
+    
+    /* Further reduce CTA title on very small screens */
+    .cta-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .university-box {
+        padding: 0.3rem 0.6rem;
+        margin: 0 0.6rem;
+    }
+    
+    .university-name {
+        font-size: 0.8rem;
+    }
+    
+    .story-card {
+        flex: 0 0 82vw;
+        padding: 0.9rem;
+    }
+    
+    /* FAQ further adjustments for very small screens - smaller font */
+    .faq-question h3 {
+        font-size: 0.78rem; /* Even smaller font */
+        line-height: 1.25;
+        font-family: var(--font-simple); /* Professional simple font */
+    }
+    
+    .faq-answer p {
+        font-size: 0.78rem; /* Even smaller for answers */
+    }
+    
+    .stats-section {
+        padding: 1rem 5%;
+    }
+    
+    .university-logo-item {
+        flex: 0 0 85vw;
+        box-shadow: none !important;
+        margin-right: 12px;
+    }
+    
+    /* FIXED: Ensure equal padding on mobile */
+    .university-card-content {
+        padding: 1rem 1rem 1rem 1rem; /* Equal padding */
+    }
+    
+    .admission-badge {
+        font-size: 0.52rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .university-location-text {
+        font-size: 0.68rem;
+    }
+    
+    /* FIXED: Further decreased font size for university names on very small mobile */
+    .university-name-large {
+        font-size: 1rem; /* Further reduced for very small screens */
+    }
+    
+    /* Perfect Square Logo Box */
+    .university-logo-box {
+        width: 70px; /* Even smaller for very small screens */
+        height: 70px;
+        padding: 0.4rem;
+    }
+    
+    .footer-item h4 {
+        font-size: 0.62rem;
+    }
+    
+    .footer-item p {
+        font-size: 0.95rem;
+    }
+    
+    /* Story card extra small adjustments */
+    .student-image {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .student-name {
+        font-size: 0.9rem;
+    }
+    
+    .star {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Extra small devices */
+@media (max-width: 380px) {
+    .university-name-large {
+        font-size: 0.95rem; /* Minimum readable size */
+    }
+    
+    .university-logo-box {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .university-card-content {
+        padding: 0.9rem 0.9rem 0.9rem 0.9rem;
+    }
+    
+    .university-box {
+        padding: 0.25rem 0.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .university-name {
+        font-size: 0.75rem;
+    }
+    
+    /* FAQ smallest adjustment - even smaller font */
+    .faq-question h3 {
+        font-size: 0.75rem;
+        line-height: 1.2;
+        font-family: var(--font-simple); /* Professional simple font */
+    }
+    
+    .faq-answer p {
+        font-size: 0.75rem;
+    }
+    
+    /* CTA title extra small */
+    .cta-content h2 {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+
+<!-- Hero Section with Animated University Names in Boxes -->
+<section class="hero">
+    <!-- University Background Image with Black Overlay -->
+    <div class="hero-background"></div>
+    
+    <div class="hero-content">
+        <h1>Discover Your Academic Future</h1>
+        <div class="university-title">UniPick University Partners</div>
+        <p>Connect with premier universities and shape your career with expert guidance tailored to your aspirations</p>
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="window.location.href='/quiz'">
+                <i class="fas fa-clipboard-list"></i> Take Career Quiz
             </button>
-            <button class="carousel-nav-btn carousel-next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <!-- Carousel Dots -->
-            <div class="carousel-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Canvas Hollow Text Zoom Section with Stats Inside -->
-    <section class="canvas-text-section" id="hollowTextSection">
-        <canvas id="hollowTextCanvas"></canvas>
-        <div class="content-behind-canvas" id="canvasContent">
-            <div class="behind-content-wrapper">
-                <!-- Stats Section -->
-                <section class="stats-section">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-number" data-target="500">0</div>
-                            <div class="stat-plus">+</div>
-                            <div class="stat-label">Students Placed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-university"></i></div>
-                            <div class="stat-number" data-target="150">0</div>
-                            <div class="stat-plus">+</div>
-                            <div class="stat-label">Partner Universities</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="stat-number" data-target="95">0</div>
-                            <div class="stat-percent">%</div>
-                            <div class="stat-label">Success Rate</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-headset"></i></div>
-                            <div class="stat-number-text">24/7</div>
-                            <div class="stat-label">Support Available</div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us">
-        <div class="section-header">
-            <h2 class="section-title">Why Choose EduPath?</h2>
-            <p class="section-subtitle">Your trusted partner in academic success</p>
-        </div>
-        
-        <div class="why-choose-container">
-            <!-- Left Side - Image -->
-            <div class="why-choose-image">
-                <img src="images/goal-setting.png" alt="Why Choose EduPath">
-            </div>
-            
-            <!-- Right Side - Numbered Points -->
-            <div class="why-choose-content">
-                <div class="why-choose-item">
-                    <div class="why-choose-number">1</div>
-                    <div class="why-choose-text">
-                        <h3>Expert Guidance</h3>
-                        <p>Personalized counselling from experienced education consultants who understand your unique needs and aspirations.</p>
-                    </div>
-                </div>
-                
-                <div class="why-choose-item">
-                    <div class="why-choose-number">2</div>
-                    <div class="why-choose-text">
-                        <h3>Top Universities</h3>
-                        <p>Access to India's premier educational institutions with strong track records in placements and academics.</p>
-                    </div>
-                </div>
-                
-                <div class="why-choose-item">
-                    <div class="why-choose-number">3</div>
-                    <div class="why-choose-text">
-                        <h3>Career Assessment</h3>
-                        <p>Scientific career assessment quiz that matches your interests, aptitude, and goals with the right programs.</p>
-                    </div>
-                </div>
-                
-                <div class="why-choose-item">
-                    <div class="why-choose-number">4</div>
-                    <div class="why-choose-text">
-                        <h3>End-to-End Support</h3>
-                        <p>Complete assistance from university selection to admission confirmation and beyond.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="section-header">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Your journey to the perfect university in 4 simple steps</p>
-        </div>
-        
-        <div class="process-container">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
-                <h3>Take Career Quiz</h3>
-                <p>Complete our comprehensive assessment to discover your strengths and interests</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <div class="step-icon"><i class="fas fa-user-tie"></i></div>
-                <h3>Get Expert Counseling</h3>
-                <p>Receive personalized guidance from our experienced education consultants</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <div class="step-icon"><i class="fas fa-file-alt"></i></div>
-                <h3>Apply to Universities</h3>
-                <p>We help you with applications, documentation, and admission procedures</p>
-            </div>
-            
-            <div class="process-step">
-                <div class="step-number">4</div>
-                <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>Start Your Journey</h3>
-                <p>Secure admission and begin your path to academic excellence</p>
-            </div>
-        </div>
-        
-        <!-- CTA Button -->
-        <div class="process-cta">
-            <button class="btn-quiz-cta" onclick="window.location.href='/quiz'">
-                <span>Start Your Journey Now</span>
-                <i class="fas fa-arrow-right"></i>
+            <button class="btn-bright-blue" onclick="window.location.href='/contact'">
+                <i class="fas fa-user-graduate"></i> Talk to Advisor
             </button>
         </div>
-    </section>
+    </div>
+    
+    <!-- Animated University Names in Boxes -->
+    <div class="university-marquee">
+        <div class="marquee-row marquee-row-1">
+            <div class="marquee-track">
+                <div class="university-box"><span class="university-name">University of Oxford</span></div>
+                <div class="university-box"><span class="university-name">Harvard University</span></div>
+                <div class="university-box"><span class="university-name">Stanford University</span></div>
+                <div class="university-box"><span class="university-name">MIT</span></div>
+                <div class="university-box"><span class="university-name">Cambridge University</span></div>
+                <div class="university-box"><span class="university-name">Caltech</span></div>
+                <div class="university-box"><span class="university-name">Princeton University</span></div>
+                <div class="university-box"><span class="university-name">Yale University</span></div>
+                <div class="university-box"><span class="university-name">University of Chicago</span></div>
+                <div class="university-box"><span class="university-name">University of Pennsylvania</span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="university-box"><span class="university-name">University of Oxford</span></div>
+                <div class="university-box"><span class="university-name">Harvard University</span></div>
+                <div class="university-box"><span class="university-name">Stanford University</span></div>
+                <div class="university-box"><span class="university-name">MIT</span></div>
+                <div class="university-box"><span class="university-name">Cambridge University</span></div>
+                <div class="university-box"><span class="university-name">Caltech</span></div>
+                <div class="university-box"><span class="university-name">Princeton University</span></div>
+                <div class="university-box"><span class="university-name">Yale University</span></div>
+                <div class="university-box"><span class="university-name">University of Chicago</span></div>
+                <div class="university-box"><span class="university-name">University of Pennsylvania</span></div>
+            </div>
+        </div>
+        <div class="marquee-row marquee-row-2">
+            <div class="marquee-track">
+                <div class="university-box"><span class="university-name">Columbia University</span></div>
+                <div class="university-box"><span class="university-name">University of Michigan</span></div>
+                <div class="university-box"><span class="university-name">Johns Hopkins University</span></div>
+                <div class="university-box"><span class="university-name">Northwestern University</span></div>
+                <div class="university-box"><span class="university-name">Duke University</span></div>
+                <div class="university-box"><span class="university-name">UC Berkeley</span></div>
+                <div class="university-box"><span class="university-name">Cornell University</span></div>
+                <div class="university-box"><span class="university-name">UCLA</span></div>
+                <div class="university-box"><span class="university-name">NYU</span></div>
+                <div class="university-box"><span class="university-name">University of Toronto</span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="university-box"><span class="university-name">Columbia University</span></div>
+                <div class="university-box"><span class="university-name">University of Michigan</span></div>
+                <div class="university-box"><span class="university-name">Johns Hopkins University</span></div>
+                <div class="university-box"><span class="university-name">Northwestern University</span></div>
+                <div class="university-box"><span class="university-name">Duke University</span></div>
+                <div class="university-box"><span class="university-name">UC Berkeley</span></div>
+                <div class="university-box"><span class="university-name">Cornell University</span></div>
+                <div class="university-box"><span class="university-name">UCLA</span></div>
+                <div class="university-box"><span class="university-name">NYU</span></div>
+                <div class="university-box"><span class="university-name">University of Toronto</span></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Featured Universities -->
-    <section class="featured-universities">
-        <div class="section-header">
-            <h2 class="section-title">Our Partner Universities</h2>
-            <p class="section-subtitle">Collaborating with India's top institutions</p>
+
+<!-- Stats Section - With Gradient Background -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">Students Placed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-university"></i></div>
+            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-plus">+</div>
+            <div class="stat-label">Partner Universities</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="stat-number" data-target="95">0</div>
+            <div class="stat-percent">%</div>
+            <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-headset"></i></div>
+            <div class="stat-number-text">24/7</div>
+            <div class="stat-label">Support Available</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Why Choose Us Section - 6 Points Grid -->
+<section class="why-choose-us">
+    <div class="section-header">
+        <h2 class="section-title">Why Choose UniPick</h2>
+        <p class="section-subtitle">Your trusted partner in academic success</p>
+    </div>
+    
+    <div class="why-choose-grid">
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="why-choose-text">
+                <h3>Expert Guidance</h3>
+                <p>Personalized counseling from experienced education consultants who understand your unique aspirations.</p>
+            </div>
         </div>
         
-        <div class="university-logos-grid">
-            <% universities.slice(0, 8).forEach(university => { %>
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-university"></i></div>
+            <div class="why-choose-text">
+                <h3>Top Universities</h3>
+                <p>Access to premier educational institutions with strong track records in placements and academics.</p>
+            </div>
+        </div>
+        
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="why-choose-text">
+                <h3>Career Assessment</h3>
+                <p>Scientific career quiz that matches your interests and aptitude with the right programs.</p>
+            </div>
+        </div>
+        
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-handshake"></i></div>
+            <div class="why-choose-text">
+                <h3>End-to-End Support</h3>
+                <p>Complete assistance from university selection to admission confirmation and beyond.</p>
+            </div>
+        </div>
+        
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-award"></i></div>
+            <div class="why-choose-text">
+                <h3>Scholarship Assistance</h3>
+                <p>Guidance on available scholarships and help with applications to maximize financial aid.</p>
+            </div>
+        </div>
+        
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-clock"></i></div>
+            <div class="why-choose-text">
+                <h3>Timely Process</h3>
+                <p>Streamlined admission process with timely submission of all applications and documents.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Featured Universities -->
+<section class="featured-universities">
+    <div class="section-header">
+        <h2 class="section-title">Our Partner Universities</h2>
+        <p class="section-subtitle">UniPick carefully selects and partners with the finest educational institutions</p>
+    </div>
+    
+    <p class="featured-description">
+        We work exclusively with universities that demonstrate excellence in education, robust placement records, and comprehensive student support. Each institution in our network has been thoroughly vetted to ensure they meet our high standards for academic quality and student success.
+    </p>
+    
+    <div class="university-logos-container">
+        <div class="university-logos-carousel" id="universityCarousel">
+            <% universities.forEach(university => { %>
                 <div class="university-logo-item" onclick="window.location.href='/university/<%= university._id %>'">
-                    <div class="logo-wrapper">
-                        <img src="<%= university.bannerImage %>" alt="<%= university.name %>">
+                    <div class="university-card-content">
+                        <!-- Admission Badge -->
+                        <span class="admission-badge">ADMISSION OPEN</span>
+                        
+                        <!-- Header with University Info and Logo -->
+                        <div class="university-card-header">
+                            <div class="university-text-info">
+                                <p class="university-location-text"><%= university.location || 'India' %></p>
+                                <h3 class="university-name-large"><%= university.name %></h3>
+                            </div>
+                            <div class="university-logo-box">
+                                <img src="<%= university.bannerImage %>" alt="<%= university.name %> Logo">
+                            </div>
+                        </div>
+                        
+                        <!-- Footer with Only Fees (Deadline Removed) -->
+                        <div class="university-card-footer">
+                            <div class="footer-item">
+                                <h4>Approximate Fees (₹)</h4>
+                                <p><%= university.fees || '23 lakhs/year' %></p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="university-logo-name"><%= university.name %></p>
                 </div>
             <% }) %>
         </div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn-primary" onclick="window.location.href='/universities'">
-                <i class="fas fa-th"></i> View All Universities
-            </button>
-        </div>
-    </section>
+    </div>
+    
+    <div style="text-align: center;">
+        <button class="view-more-btn" onclick="window.location.href='/universities'">
+            explore more <i class="fas fa-arrow-right animated-arrow"></i>
+        </button>
+    </div>
+</section>
 
-    <!-- Student Success Stories Section -->
-    <section id="stories" class="student-stories">
-        <div class="section-header">
-            <h2 class="section-title">Student Success Stories</h2>
-            <p class="section-subtitle">Hear from students who achieved their dreams with our career guidance and university counselling</p>
-        </div>
-        
-        <div class="stories-container">
-            <button class="carousel-nav prev" id="testimonialPrevBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <div class="stories-carousel" id="testimonialsCarousel">
-                <% testimonials.forEach(testimonial => { %>
-                    <div class="story-card">
-                        <div class="student-image-wrapper">
-                            <img src="<%= testimonial.image %>" alt="<%= testimonial.name %>" class="student-image">
-                            <div class="university-overlay">
-                                <div class="accepted-badge">Admitted To</div>
-                                <div class="university-name-overlay"><%= testimonial.university %></div>
+
+<!-- Student Success Stories Section - UPDATED SIMPLE DESIGN -->
+<section id="stories" class="student-stories">
+    <div class="section-header">
+        <h2 class="section-title">Student Success Stories</h2>
+        <p class="section-subtitle">Hear from students who achieved their dreams with our career guidance and university counseling</p>
+    </div>
+    
+    <div class="stories-container">
+        <div class="stories-carousel" id="testimonialsCarousel">
+            <% testimonials.forEach(testimonial => { %>
+                <div class="story-card">
+                    <div class="story-card-top">
+                        <div class="student-info-left">
+                            <!-- Rating Stars -->
+                            <div class="student-rating">
+                                <% for(let i = 1; i <= 5; i++) { %>
+                                    <% if(i <= Math.floor(testimonial.rating || 5)) { %>
+                                        <span class="star">★</span>
+                                    <% } else if(i === Math.ceil(testimonial.rating || 5) && testimonial.rating % 1 !== 0) { %>
+                                        <span class="star half">★</span>
+                                    <% } else { %>
+                                        <span class="star empty">★</span>
+                                    <% } %>
+                                <% } %>
+                                <span class="rating-text"><%= (testimonial.rating || 5).toFixed(1) %></span>
+                            </div>
+                            
+                            <!-- Student Details -->
+                            <div class="student-details">
+                                <div class="student-name"><%= testimonial.name %></div>
+                                <div class="student-course"><%= testimonial.course %></div>
+                                <div class="student-university"><%= testimonial.university %></div>
                             </div>
                         </div>
-                        <div class="student-info">
-                            <div class="student-name"><%= testimonial.name %></div>
-                            <div class="student-details-row">
-                                <div class="detail-item">
-                                    <div class="detail-label">Course</div>
-                                    <div class="detail-value"><%= testimonial.course %></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="student-review">
-                            <div class="review-content">
-                                <p class="review-text">"<%= testimonial.review %>"</p>
-                                <p class="review-author">— <%= testimonial.name %></p>
-                            </div>
+                        
+                        <!-- Student Image -->
+                        <div class="student-image">
+                            <img src="<%= testimonial.image %>" alt="<%= testimonial.name %>">
                         </div>
                     </div>
-                <% }) %>
-            </div>
-            
-            <button class="carousel-nav next" id="testimonialNextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+                    
+                    <!-- Student Review -->
+                    <div class="story-card-bottom">
+                        <p class="review-text">"<%= testimonial.review %>"</p>
+                    </div>
+                </div>
+            <% }) %>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FAQ Section -->
-<!-- FAQ Section -->
+
+<!-- FAQ Section - Updated with Minimal Design -->
 <section class="faq-section">
-    <canvas id="faq-matrix-canvas"></canvas>
     <div class="section-header">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <p class="section-subtitle">Get answers to common questions about university admissions</p>
@@ -350,7 +1827,7 @@
     <div class="faq-container">
         <div class="faq-item">
             <div class="faq-question">
-                <h3>How does the career quiz work?</h3>
+                <h3>How does the career quiz work and what insights does it provide?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -360,7 +1837,7 @@
         
         <div class="faq-item">
             <div class="faq-question">
-                <h3>Is the counselling service free?</h3>
+                <h3>Is the counseling service completely free or are there any hidden charges?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -370,7 +1847,7 @@
         
         <div class="faq-item">
             <div class="faq-question">
-                <h3>Which universities do you partner with?</h3>
+                <h3>Which universities do you partner with and how are they selected?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -380,7 +1857,7 @@
         
         <div class="faq-item">
             <div class="faq-question">
-                <h3>How long does the admission process take?</h3>
+                <h3>How long does the complete admission process typically take from start to finish?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -390,7 +1867,7 @@
         
         <div class="faq-item">
             <div class="faq-question">
-                <h3>Do you help with scholarship applications?</h3>
+                <h3>Do you help with scholarship applications and financial aid opportunities?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -400,7 +1877,7 @@
         
         <div class="faq-item">
             <div class="faq-question">
-                <h3>Can I contact you after admission?</h3>
+                <h3>Can I contact you for support after getting admission to my chosen university?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
@@ -410,189 +1887,177 @@
     </div>
 </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Find Your Perfect University?</h2>
-            <p>Take our free career assessment quiz and get personalized university recommendations</p>
-            <div class="cta-buttons">
-                <button class="btn-primary large" onclick="window.location.href='/quiz'">
-                    <i class="fas fa-clipboard-list"></i> Start Career Quiz
-                </button>
-                <button class="btn-secondary large" onclick="window.location.href='/contact'">
-                    <i class="fas fa-phone"></i> Talk to Counsellor
-                </button>
-            </div>
+
+<!-- CTA Section with Updated Text -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Find Your Perfect University?</h2>
+        <p>Take our free career assessment quiz and get personalized university recommendations</p>
+        <div class="cta-buttons">
+            <button class="btn-primary large" onclick="window.location.href='/quiz'">
+                <i class="fas fa-clipboard-list"></i> Start Career Quiz
+            </button>
+            <button class="btn-bright-blue large" onclick="window.location.href='/contact'">
+                <i class="fas fa-user-graduate"></i> Talk to Advisor
+            </button>
         </div>
-    </section>
-<style>
-    /* FAQ Section with Matrix Background */
-/* FAQ Section with Blue Matrix Background */
-.faq-section {
-    padding: 6rem 5%;
-    background: #000000; /* Pure black background */
-    position: relative;
-    overflow: hidden;
-}
+    </div>
+</section>
 
-#faq-matrix-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
 
-.faq-section .section-header,
-.faq-container {
-    position: relative;
-    z-index: 1;
-}
-
-.faq-section .section-title {
-    color: #ffffff;
-}
-
-.faq-section .section-subtitle {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.faq-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    backdrop-filter: blur(10px); /* Blur effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    margin-bottom: 1.5rem;
-    border-radius: 0; /* No border radius */
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    border-color: rgba(0, 166, 255, 0.6);
-    box-shadow: 0 8px 25px rgba(0, 166, 255, 0.3);
-    background: rgba(0, 0, 0, 0.7); /* Darker on hover */
-}
-
-.faq-question {
-    padding: 1.8rem 2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ffffff; /* White underline */
-    transition: all 0.3s ease;
-    background: transparent;
-}
-
-.faq-item.active .faq-question {
-    border-bottom-color: #00A6FF; /* Blue underline when active */
-}
-
-.faq-question h3 {
-    color: #ffffff; /* White text for visibility */
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.faq-question i {
-    color: #00A6FF; /* Blue icon */
-    transition: transform 0.3s ease;
-    font-size: 1.2rem;
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    background: transparent;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 500px;
-    padding: 1.5rem 2rem 2rem;
-}
-
-.faq-answer p {
-    color: rgba(255, 255, 255, 0.85); /* Light white text for answer */
-    line-height: 1.8;
-    margin: 0;
-    font-size: 1rem;
-}
-
-</style>
 <script>
-    // Blue Matrix Rain Background for FAQ Section
+// Stats counter animation
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('faq-matrix-canvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas size
-    function resizeCanvas() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-    }
-    resizeCanvas();
-    
-    const chars = '01';
-    const fontSize = 14;
-    let columns = canvas.width / fontSize;
-    let drops = [];
-    
-    // Initialize drops
-    for (let i = 0; i < columns; i++) {
-        drops[i] = Math.random() * -100;
-    }
-    
-    function drawMatrix() {
-        // Semi-transparent background for trail effect
-        ctx.fillStyle = 'rgba(0, 8, 20, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Stats counter animation
+    const animateCounter = (element, target) => {
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
         
-        // Blue text color
-        ctx.fillStyle = '#00A6FF'; // Bright blue
-        ctx.font = fontSize + 'px monospace';
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = chars[Math.floor(Math.random() * chars.length)];
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            
-            // Reset drop to top randomly
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
             }
-            drops[i]++;
-        }
+        }, 16);
+    };
+    
+    const observerOptions = {
+        threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = document.querySelectorAll('.stat-number');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    animateCounter(counter, target);
+                });
+                observer.disconnect();
+            }
+        });
+    }, observerOptions);
+    
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        observer.observe(statsSection);
     }
     
-    // Animation loop
-    setInterval(drawMatrix, 35);
+    // University carousel swipe functionality
+    const universityCarousel = document.getElementById('universityCarousel');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
     
-    // Resize handler
-    window.addEventListener('resize', function() {
-        resizeCanvas();
-        columns = canvas.width / fontSize;
-        drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.random() * -100;
-        }
+    // Mouse events for university carousel
+    universityCarousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        universityCarousel.style.cursor = 'grabbing';
+        startX = e.pageX - universityCarousel.offsetLeft;
+        scrollLeft = universityCarousel.scrollLeft;
+        e.preventDefault();
+    });
+    
+    universityCarousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        universityCarousel.style.cursor = 'grab';
+    });
+    
+    universityCarousel.addEventListener('mouseup', () => {
+        isDown = false;
+        universityCarousel.style.cursor = 'grab';
+    });
+    
+    universityCarousel.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - universityCarousel.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        universityCarousel.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Touch events for university carousel mobile
+    universityCarousel.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - universityCarousel.offsetLeft;
+        scrollLeft = universityCarousel.scrollLeft;
+    });
+    
+    universityCarousel.addEventListener('touchend', () => {
+        isDown = false;
+    });
+    
+    universityCarousel.addEventListener('touchmove', (e) => {
+        if(!isDown) return;
+        const x = e.touches[0].pageX - universityCarousel.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        universityCarousel.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Testimonial carousel swipe functionality
+    const testimonialsCarousel = document.getElementById('testimonialsCarousel');
+    let isDownTestimonial = false;
+    let startXTestimonial;
+    let scrollLeftTestimonial;
+    
+    testimonialsCarousel.addEventListener('mousedown', (e) => {
+        isDownTestimonial = true;
+        testimonialsCarousel.classList.add('active');
+        startXTestimonial = e.pageX - testimonialsCarousel.offsetLeft;
+        scrollLeftTestimonial = testimonialsCarousel.scrollLeft;
+    });
+    
+    testimonialsCarousel.addEventListener('mouseleave', () => {
+        isDownTestimonial = false;
+        testimonialsCarousel.classList.remove('active');
+    });
+    
+    testimonialsCarousel.addEventListener('mouseup', () => {
+        isDownTestimonial = false;
+        testimonialsCarousel.classList.remove('active');
+    });
+    
+    testimonialsCarousel.addEventListener('mousemove', (e) => {
+        if(!isDownTestimonial) return;
+        e.preventDefault();
+        const x = e.pageX - testimonialsCarousel.offsetLeft;
+        const walk = (x - startXTestimonial) * 2;
+        testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
+    });
+    
+    // Touch events for testimonials mobile
+    testimonialsCarousel.addEventListener('touchstart', (e) => {
+        isDownTestimonial = true;
+        startXTestimonial = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
+        scrollLeftTestimonial = testimonialsCarousel.scrollLeft;
+    });
+    
+    testimonialsCarousel.addEventListener('touchend', () => {
+        isDownTestimonial = false;
+    });
+    
+    testimonialsCarousel.addEventListener('touchmove', (e) => {
+        if(!isDownTestimonial) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
+        const walk = (x - startXTestimonial) * 2;
+        testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
+    });
+    
+    // FAQ toggle functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            faqItem.classList.toggle('active');
+        });
     });
 });
-
 </script>
+
+
 <%- include('partials/footer') %>
