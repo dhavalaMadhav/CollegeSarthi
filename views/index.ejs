@@ -104,7 +104,7 @@ h1::before, h2::before, h3::before {
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #000000; /* Black background for hero */
+    background: #000000;
     padding: 4rem 5%;
     min-height: 700px;
     display: flex;
@@ -133,7 +133,7 @@ h1::before, h2::before, h3::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Black overlay */
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .hero-content {
@@ -147,14 +147,14 @@ h1::before, h2::before, h3::before {
 .hero-content h1 {
     font-size: 2.4rem;
     margin-bottom: 0.5rem;
-    color: #FFFFFF; /* White text on black */
+    color: #FFFFFF;
     font-weight: 700;
     text-decoration: none;
 }
 
 .university-title {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9); /* Lighter white */
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 1.2rem;
     font-weight: 500;
     font-family: var(--font-heading);
@@ -163,7 +163,7 @@ h1::before, h2::before, h3::before {
 
 .hero-content p {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.85); /* Lighter white */
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -172,7 +172,7 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-/* Hero Buttons - UPDATED with curved edges */
+/* Hero Buttons */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -191,7 +191,7 @@ h1::before, h2::before, h3::before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 25px; /* Curved edges */
+    border-radius: 25px;
     box-shadow: none;
 }
 
@@ -219,7 +219,7 @@ h1::before, h2::before, h3::before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 25px; /* Curved edges */
+    border-radius: 25px;
     box-shadow: none;
 }
 
@@ -249,7 +249,7 @@ h1::before, h2::before, h3::before {
     overflow: hidden;
     pointer-events: none;
     z-index: 5;
-    opacity: 0.3; /* Reduced opacity to see background image better */
+    opacity: 0.3;
 }
 
 .marquee-row {
@@ -277,7 +277,7 @@ h1::before, h2::before, h3::before {
 
 .university-box {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.7); /* Dark box background */
+    background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 0.8rem 1.5rem;
@@ -295,7 +295,7 @@ h1::before, h2::before, h3::before {
 .university-name {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #FFFFFF; /* White text */
+    color: #FFFFFF;
     font-family: var(--font-heading);
     white-space: nowrap;
 }
@@ -438,7 +438,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   FEATURED UNIVERSITIES SECTION - WITH BOX SHADOW & HOVER
+   FEATURED UNIVERSITIES SECTION - RESPONSIVE CARDS PER SECTION
    ======================================== */
 
 .featured-universities {
@@ -456,7 +456,7 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-/* Horizontal scroll container */
+/* DESKTOP: 3 cards per section */
 .university-logos-container {
     position: relative;
     max-width: 1400px;
@@ -466,7 +466,7 @@ h1::before, h2::before, h3::before {
 
 .university-logos-carousel {
     display: flex;
-    gap: 2rem;
+    gap: 0;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0 1.5rem;
@@ -484,35 +484,40 @@ h1::before, h2::before, h3::before {
     display: none;
 }
 
-/* University Card - WITH BOX SHADOW & SUBTLE HOVER EFFECT */
+.university-logos-carousel.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+/* University Card - DESKTOP: 3 cards per section with gap */
 .university-logo-item {
-    flex: 0 0 480px;
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: calc(33.333% - 20px);
     background: var(--bg-surface);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: start;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-medium); /* Added box shadow */
+    box-shadow: var(--shadow-medium);
     cursor: pointer;
     user-select: none;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
-/* Subtle hover effect - NO MOVEMENT OR SCALING */
 .university-logo-item:hover {
-    box-shadow: var(--shadow-elevated); /* Enhanced shadow on hover */
-    border-color: rgba(44, 95, 141, 0.15); /* Subtle border color change */
+    box-shadow: var(--shadow-elevated);
+    border-color: rgba(44, 95, 141, 0.15);
 }
 
-/* Card Content Wrapper - REDUCED PADDING */
+/* Card Content Wrapper */
 .university-card-content {
     padding: 1rem 1rem 1rem 1rem;
     position: relative;
     text-align: left;
 }
 
-/* Admission Open Badge - Green - Smaller */
+/* Admission Open Badge */
 .admission-badge {
     display: inline-block;
     background: #22C55E;
@@ -558,7 +563,7 @@ h1::before, h2::before, h3::before {
     margin: 0;
 }
 
-/* Logo Box - Perfect Square - Slightly smaller */
+/* Logo Box - Perfect Square */
 .university-logo-box {
     width: 90px;
     height: 90px;
@@ -578,7 +583,7 @@ h1::before, h2::before, h3::before {
     object-fit: contain;
 }
 
-/* Card Footer - Only Fees (Deadline Removed) */
+/* Card Footer */
 .university-card-footer {
     padding-top: 0.8rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -600,6 +605,35 @@ h1::before, h2::before, h3::before {
     font-weight: 700;
     font-family: var(--font-heading);
     margin: 0;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.dot:hover {
+    background: #60a5fa;
+}
+
+.dot.active {
+    background: var(--accent-primary);
+    width: 30px;
+    border-radius: 5px;
 }
 
 /* View More Button */
@@ -637,7 +671,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   STUDENT SUCCESS STORIES - WITH BOX SHADOW & SUBTLE HOVER
+   STUDENT SUCCESS STORIES - RESPONSIVE CARDS PER SECTION
    ======================================== */
 
 .student-stories {
@@ -645,6 +679,7 @@ h1::before, h2::before, h3::before {
     background: var(--bg-surface);
 }
 
+/* DESKTOP: 3 cards per section */
 .stories-container {
     position: relative;
     max-width: 1400px;
@@ -653,7 +688,7 @@ h1::before, h2::before, h3::before {
 
 .stories-carousel {
     display: flex;
-    gap: 1.5rem;
+    gap: 0;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0 1.5rem;
@@ -671,29 +706,34 @@ h1::before, h2::before, h3::before {
     display: none;
 }
 
-/* Story Card - WITH BOX SHADOW & SUBTLE HOVER EFFECT */
+.stories-carousel.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+/* Story Card - DESKTOP: 3 cards per section with gap */
 .story-card {
-    flex: 0 0 320px;
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: calc(33.333% - 20px);
     background: var(--bg-surface);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: start;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-medium); /* Added box shadow */
+    box-shadow: var(--shadow-medium);
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     cursor: pointer;
     user-select: none;
-    margin-right: 15px;
+    margin-right: 30px;
 }
 
-/* Subtle hover effect - NO MOVEMENT OR SCALING */
 .story-card:hover {
-    box-shadow: var(--shadow-elevated); /* Enhanced shadow on hover */
-    border-color: rgba(44, 95, 141, 0.15); /* Subtle border color change */
+    box-shadow: var(--shadow-elevated);
+    border-color: rgba(44, 95, 141, 0.15);
 }
 
 /* Top Section with Rating and Student Info */
@@ -777,7 +817,7 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-/* Student Image - Smaller like university cards */
+/* Student Image */
 .student-image {
     width: 70px;
     height: 70px;
@@ -812,7 +852,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   FAQ SECTION - COMPLETELY UPDATED WITH BETTER MOBILE VISIBILITY
+   FAQ SECTION
    ======================================== */
 
 .faq-section {
@@ -838,7 +878,6 @@ h1::before, h2::before, h3::before {
     transition: none;
 }
 
-/* Remove ALL hover effects from FAQ */
 .faq-item:hover {
     background: transparent !important;
     box-shadow: none !important;
@@ -869,7 +908,7 @@ h1::before, h2::before, h3::before {
 
 .faq-question {
     padding: 1.2rem 0;
-    cursor: default;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -884,7 +923,6 @@ h1::before, h2::before, h3::before {
     padding: 1.2rem 0 !important;
 }
 
-/* FAQ Question Text - Ensure complete visibility */
 .faq-question h3 {
     color: var(--text-primary);
     font-size: 0.92rem;
@@ -902,7 +940,7 @@ h1::before, h2::before, h3::before {
 
 .faq-question i {
     color: var(--accent-primary);
-    transition: none;
+    transition: transform 0.3s ease;
     font-size: 0.9rem;
     flex-shrink: 0;
     margin-left: 0.5rem;
@@ -933,7 +971,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   CTA SECTION WITH UPDATED TEXT
+   CTA SECTION
    ======================================== */
 
 .cta-section {
@@ -1033,8 +1071,15 @@ h1::before, h2::before, h3::before {
         gap: 0.8rem;
     }
     
+    /* TABLET: 2 cards per section for universities */
+    .university-logos-container {
+        max-width: 100%;
+    }
+    
     .university-logo-item {
-        flex: 0 0 420px;
+        flex: 0 0 calc(50% - 15px);
+        min-width: calc(50% - 15px);
+        margin-right: 30px;
     }
     
     .university-card-header {
@@ -1050,7 +1095,6 @@ h1::before, h2::before, h3::before {
         height: 80px;
     }
     
-    /* University boxes adjustments */
     .university-box {
         padding: 0.6rem 1.2rem;
         margin: 0 1rem;
@@ -1060,10 +1104,16 @@ h1::before, h2::before, h3::before {
         font-size: 1.2rem;
     }
     
-    /* Story card adjustments */
+    /* TABLET: 2 cards per section for testimonials */
+    .stories-container {
+        max-width: 100%;
+    }
+    
     .story-card {
-        flex: 0 0 300px;
+        flex: 0 0 calc(50% - 15px);
+        min-width: calc(50% - 15px);
         padding: 1rem;
+        margin-right: 30px;
     }
     
     .student-image {
@@ -1075,7 +1125,6 @@ h1::before, h2::before, h3::before {
         font-size: 0.95rem;
     }
     
-    /* FAQ adjustments for tablet */
     .faq-question h3 {
         font-size: 0.88rem;
         line-height: 1.3;
@@ -1088,7 +1137,6 @@ h1::before, h2::before, h3::before {
         padding: 2.5rem 5%;
     }
     
-    /* Make titles smaller on mobile */
     .hero-content h1 { 
         font-size: 1.5rem;
         margin-bottom: 0.3rem;
@@ -1111,7 +1159,6 @@ h1::before, h2::before, h3::before {
     h2 { font-size: 1.3rem; }
     h3 { font-size: 0.95rem; }
     
-    /* CTA Title smaller on mobile */
     .cta-content h2 {
         font-size: 1.4rem;
     }
@@ -1131,7 +1178,6 @@ h1::before, h2::before, h3::before {
         border-radius: 25px;
     }
     
-    /* University boxes for mobile - MAKE THEM VISIBLE */
     .university-marquee {
         display: block;
         opacity: 0.25;
@@ -1154,7 +1200,6 @@ h1::before, h2::before, h3::before {
         bottom: 15%;
     }
     
-    /* Stats Section - Further reduced spacing */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem;
@@ -1181,27 +1226,26 @@ h1::before, h2::before, h3::before {
         gap: 2rem;
     }
     
-    /* Featured Universities - Mobile Optimizations */
     .featured-description {
         display: none;
     }
     
-    .university-logos-carousel {
-        gap: 1.2rem;
-        padding: 0.5rem 0 1rem;
+    /* MOBILE: 1 card per section for universities */
+    .university-logos-container {
+        max-width: 100%;
     }
     
     .university-logo-item {
-        flex: 0 0 85vw;
-        box-shadow: var(--shadow-medium) !important; /* Keep box shadow on mobile */
-        margin-right: 15px;
+        flex: 0 0 100%;
+        min-width: 100%;
+        margin-right: 0;
+        box-shadow: var(--shadow-medium) !important;
     }
     
     .university-logo-item:hover {
-        box-shadow: var(--shadow-elevated) !important; /* Keep hover shadow on mobile */
+        box-shadow: var(--shadow-elevated) !important;
     }
     
-    /* FIXED: Equal padding on left and right for mobile - REDUCED */
     .university-card-content {
         padding: 0.5rem;
     }
@@ -1222,13 +1266,11 @@ h1::before, h2::before, h3::before {
         margin-bottom: 0.3rem;
     }
     
-    /* FIXED: Decreased font size for university names on mobile */
     .university-name-large {
         font-size: 1rem;
         line-height: 1.2;
     }
     
-    /* Perfect Square Logo Box on Mobile - Smaller */
     .university-logo-box {
         width: 70px;
         height: 70px;
@@ -1248,23 +1290,23 @@ h1::before, h2::before, h3::before {
         font-size: 0.95rem;
     }
     
-    /* STORY CARDS - MOBILE ADJUSTMENTS FOR COMPLETE VISIBILITY */
-    .stories-carousel {
-        gap: 1rem;
-        padding: 1rem 5% 1.5rem;
+    /* MOBILE: 1 card per section for testimonials */
+    .stories-container {
+        max-width: 100%;
     }
     
     .story-card {
-        flex: 0 0 75vw !important;
+        flex: 0 0 100%;
+        min-width: 100%;
         padding: 0.9rem;
         gap: 0.8rem;
-        margin-right: 10px;
+        margin-right: 0;
         box-sizing: border-box;
-        box-shadow: var(--shadow-medium) !important; /* Keep box shadow on mobile */
+        box-shadow: var(--shadow-medium) !important;
     }
     
     .story-card:hover {
-        box-shadow: var(--shadow-elevated) !important; /* Keep hover shadow on mobile */
+        box-shadow: var(--shadow-elevated) !important;
     }
     
     .story-card-top {
@@ -1303,7 +1345,6 @@ h1::before, h2::before, h3::before {
         line-height: 1.4;
     }
     
-    /* FAQ - Mobile adjustments with better visibility and smaller font */
     .faq-question h3 {
         font-size: 0.82rem;
         line-height: 1.3;
@@ -1337,7 +1378,6 @@ h1::before, h2::before, h3::before {
         margin-top: 2rem;
     }
     
-    /* CTA Buttons mobile */
     .cta-buttons {
         flex-direction: column;
         align-items: center;
@@ -1359,7 +1399,6 @@ h1::before, h2::before, h3::before {
         min-height: 500px;
     }
     
-    /* Further reduce CTA title on very small screens */
     .cta-content h2 {
         font-size: 1.2rem;
     }
@@ -1373,9 +1412,7 @@ h1::before, h2::before, h3::before {
         font-size: 0.8rem;
     }
     
-    /* STORY CARDS - EXTRA SMALL MOBILE */
     .story-card {
-        flex: 0 0 70vw !important;
         padding: 0.8rem;
         gap: 0.7rem;
     }
@@ -1397,7 +1434,6 @@ h1::before, h2::before, h3::before {
         font-size: 0.8rem;
     }
     
-    /* FAQ further adjustments for very small screens - smaller font */
     .faq-question h3 {
         font-size: 0.78rem;
         line-height: 1.25;
@@ -1412,12 +1448,6 @@ h1::before, h2::before, h3::before {
         padding: 1rem 5%;
     }
     
-    .university-logo-item {
-        flex: 0 0 82vw;
-        margin-right: 12px;
-    }
-    
-    /* FIXED: Ensure equal padding on mobile - FURTHER REDUCED */
     .university-card-content {
         padding: 0.5rem;
     }
@@ -1431,12 +1461,10 @@ h1::before, h2::before, h3::before {
         font-size: 0.68rem;
     }
     
-    /* FIXED: Further decreased font size for university names on very small mobile */
     .university-name-large {
         font-size: 0.95rem;
     }
     
-    /* Perfect Square Logo Box - Even smaller */
     .university-logo-box {
         width: 65px;
         height: 65px;
@@ -1452,7 +1480,6 @@ h1::before, h2::before, h3::before {
     }
 }
 
-/* Extra small devices */
 @media (max-width: 380px) {
     .university-name-large {
         font-size: 0.9rem;
@@ -1464,7 +1491,7 @@ h1::before, h2::before, h3::before {
     }
     
     .university-card-content {
-        padding:0.5rem;
+        padding: 0.5rem;
     }
     
     .university-box {
@@ -1476,9 +1503,7 @@ h1::before, h2::before, h3::before {
         font-size: 0.75rem;
     }
     
-    /* STORY CARDS - SMALLEST ADJUSTMENT */
     .story-card {
-        flex: 0 0 68vw !important;
         padding: 0.7rem;
     }
     
@@ -1487,7 +1512,6 @@ h1::before, h2::before, h3::before {
         height: 45px !important;
     }
     
-    /* FAQ smallest adjustment - even smaller font */
     .faq-question h3 {
         font-size: 0.75rem;
         line-height: 1.2;
@@ -1498,7 +1522,6 @@ h1::before, h2::before, h3::before {
         font-size: 0.75rem;
     }
     
-    /* CTA title extra small */
     .cta-content h2 {
         font-size: 1.1rem;
     }
@@ -1507,7 +1530,6 @@ h1::before, h2::before, h3::before {
 
 <!-- Hero Section with Animated University Names in Boxes -->
 <section class="hero">
-    <!-- University Background Image with Black Overlay -->
     <div class="hero-background"></div>
     
     <div class="hero-content">
@@ -1579,7 +1601,7 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-<!-- Stats Section - With Gradient Background -->
+<!-- Stats Section -->
 <section class="stats-section">
     <div class="stats-grid">
         <div class="stat-item">
@@ -1608,54 +1630,49 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-<!-- Why Choose Us Section - 6 Points Grid -->
+<!-- Why Choose Us Section -->
 <section class="why-choose-us">
     <div class="section-header">
         <h2 class="section-title">Why Choose UniPick</h2>
-        <p class="section-subtitle">Your trusted partner in academic success</p>
+        <p class="section-subtitle">Your trusted partner in academic excellence and career success</p>
     </div>
     
     <div class="why-choose-grid">
         <div class="why-choose-item">
-            <div class="why-choose-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="why-choose-icon"><i class="fas fa-user-tie"></i></div>
             <div class="why-choose-text">
-                <h3>Expert Guidance</h3>
-                <p>Personalized counseling from experienced education consultants who understand your unique aspirations.</p>
+                <h3>Expert Counselors</h3>
+                <p>Dedicated academic advisors with years of experience guiding students to their ideal universities.</p>
             </div>
         </div>
-        
         <div class="why-choose-item">
-            <div class="why-choose-icon"><i class="fas fa-university"></i></div>
+            <div class="why-choose-icon"><i class="fas fa-graduation-cap"></i></div>
             <div class="why-choose-text">
-                <h3>Top Universities</h3>
-                <p>Access to premier educational institutions with strong track records in placements and academics.</p>
+                <h3>Verified Universities</h3>
+                <p>Access to carefully vetted institutions known for academic excellence and student success.</p>
             </div>
         </div>
-        
         <div class="why-choose-item">
-            <div class="why-choose-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="why-choose-icon"><i class="fas fa-chart-line"></i></div>
             <div class="why-choose-text">
-                <h3>Career Assessment</h3>
-                <p>Scientific career quiz that matches your interests and aptitude with the right programs.</p>
+                <h3>Career-Focused Approach</h3>
+                <p>Programs aligned with industry demands ensuring strong placement opportunities.</p>
             </div>
         </div>
-        
         <div class="why-choose-item">
-            <div class="why-choose-icon"><i class="fas fa-handshake"></i></div>
+            <div class="why-choose-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="why-choose-text">
+                <h3>Transparent Process</h3>
+                <p>Clear communication about fees, eligibility, and admission procedures with no hidden costs.</p>
+            </div>
+        </div>
+        <div class="why-choose-item">
+            <div class="why-choose-icon"><i class="fas fa-hands-helping"></i></div>
             <div class="why-choose-text">
                 <h3>End-to-End Support</h3>
-                <p>Complete assistance from university selection to admission confirmation and beyond.</p>
+                <p>Comprehensive assistance from application to enrollment and beyond.</p>
             </div>
         </div>
-        
-        <div class="why-choose-item">
-            <div class="why-choose-icon"><i class="fas fa-award"></i></div>
-            <div class="why-choose-text">
-                <h3>Scholarship Assistance</h3>
-                <p>Guidance on available scholarships and help with applications to maximize financial aid.</p>
-            </div>
-        </div>
-        
         <div class="why-choose-item">
             <div class="why-choose-icon"><i class="fas fa-clock"></i></div>
             <div class="why-choose-text">
@@ -1666,7 +1683,7 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-<!-- Featured Universities -->
+<!-- Featured Universities - 3 CARDS PER SECTION ON DESKTOP -->
 <section class="featured-universities">
     <div class="section-header">
         <h2 class="section-title">Our Partner Universities</h2>
@@ -1682,25 +1699,25 @@ h1::before, h2::before, h3::before {
             <% universities.forEach(university => { %>
                 <div class="university-logo-item" onclick="window.location.href='/university/<%= university._id %>'">
                     <div class="university-card-content">
-                        <!-- Admission Badge -->
                         <span class="admission-badge">ADMISSION OPEN</span>
                         
-                        <!-- Header with University Info and Logo -->
                         <div class="university-card-header">
                             <div class="university-text-info">
-                                <p class="university-location-text"><%= university.location || 'India' %></p>
+                                <div class="university-location-text">
+                                    <i class="fas fa-map-marker-alt"></i> <%= university.location || 'India' %>
+                                </div>
                                 <h3 class="university-name-large"><%= university.name %></h3>
                             </div>
+                            
                             <div class="university-logo-box">
-                                <img src="<%= university.bannerImage %>" alt="<%= university.name %> Logo">
+                                <img src="<%= university.logo %>" alt="<%= university.name %> Logo">
                             </div>
                         </div>
                         
-                        <!-- Footer with Only Fees (Deadline Removed) -->
                         <div class="university-card-footer">
                             <div class="footer-item">
-                                <h4>Approximate Fees (₹)</h4>
-                                <p><%= university.fees || '23 lakhs/year' %></p>
+                                <h4>Annual Tuition</h4>
+                                <p><%= university.fees || '₹23 lakhs/year' %></p>
                             </div>
                         </div>
                     </div>
@@ -1709,6 +1726,9 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
     
+    <!-- Dots Navigation for Universities -->
+    <div class="carousel-dots" id="universityDots"></div>
+    
     <div style="text-align: center;">
         <button class="view-more-btn" onclick="window.location.href='/universities'">
             explore more <i class="fas fa-arrow-right animated-arrow"></i>
@@ -1716,7 +1736,7 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-<!-- Student Success Stories Section - UPDATED SIMPLE DESIGN -->
+<!-- Student Success Stories - 3 CARDS PER SECTION ON DESKTOP -->
 <section id="stories" class="student-stories">
     <div class="section-header">
         <h2 class="section-title">Student Success Stories</h2>
@@ -1734,10 +1754,10 @@ h1::before, h2::before, h3::before {
                                 <% for(let i = 1; i <= 5; i++) { %>
                                     <% if(i <= Math.floor(testimonial.rating || 5)) { %>
                                         <span class="star">★</span>
-                                    <% } else if(i === Math.ceil(testimonial.rating || 5) && testimonial.rating % 1 !== 0) { %>
-                                        <span class="star half">★</span>
+                                    <% } else if(i === Math.ceil(testimonial.rating || 5) && (testimonial.rating || 5) % 1 !== 0) { %>
+                                        <span class="star half">☆</span>
                                     <% } else { %>
-                                        <span class="star empty">★</span>
+                                        <span class="star empty">☆</span>
                                     <% } %>
                                 <% } %>
                                 <span class="rating-text"><%= (testimonial.rating || 5).toFixed(1) %></span>
@@ -1753,11 +1773,11 @@ h1::before, h2::before, h3::before {
                         
                         <!-- Student Image -->
                         <div class="student-image">
-                            <img src="<%= testimonial.image %>" alt="<%= testimonial.name %>">
+                            <img src="<%= testimonial.image || 'https://via.placeholder.com/70' %>" alt="<%= testimonial.name %>">
                         </div>
                     </div>
                     
-                    <!-- Student Review -->
+                    <!-- Review Text -->
                     <div class="story-card-bottom">
                         <p class="review-text">"<%= testimonial.review %>"</p>
                     </div>
@@ -1765,302 +1785,385 @@ h1::before, h2::before, h3::before {
             <% }) %>
         </div>
     </div>
+    
+    <!-- Dots Navigation for Testimonials -->
+    <div class="carousel-dots" id="testimonialDots"></div>
 </section>
 
-<!-- FAQ Section - Updated with Minimal Design -->
+<!-- FAQ Section -->
 <section class="faq-section">
     <div class="section-header">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Get answers to common questions about university admissions</p>
+        <p class="section-subtitle">Find answers to common questions about our services and process</p>
     </div>
     
     <div class="faq-container">
         <div class="faq-item">
-            <div class="faq-question">
-                <h3>How does the career quiz work and what insights does it provide?</h3>
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>How does UniPick select its partner universities?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Our comprehensive career quiz assesses your interests, aptitude, and goals through a series of questions. Based on your responses, we provide personalized university and course recommendations that align with your profile.</p>
+                <p>We conduct thorough evaluations of universities based on academic reputation, faculty quality, placement records, infrastructure, and student support services. Only institutions meeting our rigorous standards are included in our network.</p>
             </div>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">
-                <h3>Is the counseling service completely free or are there any hidden charges?</h3>
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>What services are included in your counseling?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Yes! Your first consultation session is completely free. We'll assess your profile, discuss your goals, and provide initial guidance. Additional premium services are available for comprehensive application support.</p>
+                <p>Our comprehensive counseling includes career assessment, university selection guidance, application assistance, documentation support, interview preparation, and post-admission guidance. We provide end-to-end support throughout your admission journey.</p>
             </div>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">
-                <h3>Which universities do you partner with and how are they selected?</h3>
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>Are there any hidden fees or charges?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>We partner with 150+ top universities across India, including IITs, NITs, BITS Pilani, VIT, SRM, Manipal, and many more. Our network covers engineering, medical, management, and arts institutions.</p>
+                <p>No, we believe in complete transparency. All fees and charges are clearly communicated upfront. Our counseling service fee is separate from university tuition, and we'll help you understand all costs involved before you commit.</p>
             </div>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">
-                <h3>How long does the complete admission process typically take from start to finish?</h3>
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>How long does the admission process typically take?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>The timeline varies by university and program, typically ranging from 2-6 months. We guide you through each step and ensure timely submission of all applications and documents.</p>
+                <p>The timeline varies by university and program, but typically ranges from 2-6 weeks from application submission to admission decision. We ensure all applications are submitted well before deadlines to maximize your chances of acceptance.</p>
             </div>
         </div>
         
         <div class="faq-item">
-            <div class="faq-question">
-                <h3>Do you help with scholarship applications and financial aid opportunities?</h3>
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>Can I apply to multiple universities through UniPick?</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Absolutely! We provide guidance on available scholarships, help you identify opportunities you're eligible for, and assist with the application process to maximize your chances of securing financial aid.</p>
-            </div>
-        </div>
-        
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Can I contact you for support after getting admission to my chosen university?</h3>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="faq-answer">
-                <p>Yes! We provide ongoing support even after admission. Our team is available 24/7 to answer questions about your university, course registration, accommodation, and any challenges you might face.</p>
+                <p>Yes, we encourage applying to multiple universities to increase your options. Our counselors will help you create a strategic application plan with reach, match, and safety schools tailored to your profile and preferences.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA Section with Updated Text -->
+<!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
-        <h2>Ready to Find Your Perfect University?</h2>
-        <p>Take our free career assessment quiz and get personalized university recommendations</p>
+        <h2>Ready to Start Your Academic Journey?</h2>
+        <p>Take the first step towards your dream university with expert guidance from UniPick</p>
         <div class="cta-buttons">
-            <button class="btn-primary large" onclick="window.location.href='/quiz'">
-                <i class="fas fa-clipboard-list"></i> Start Career Quiz
-            </button>
             <button class="btn-bright-blue large" onclick="window.location.href='/contact'">
-                <i class="fas fa-user-graduate"></i> Talk to Advisor
+                <i class="fas fa-comments"></i> Schedule Free Consultation
+            </button>
+            <button class="btn-secondary large" onclick="window.location.href='/universities'">
+                <i class="fas fa-search"></i> Explore Universities
             </button>
         </div>
     </div>
 </section>
 
 <script>
-// Stats counter animation
-document.addEventListener('DOMContentLoaded', function() {
-    // Stats counter animation
-    const animateCounter = (element, target) => {
+// Stats Counter Animation
+function animateStats() {
+    const stats = document.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
         const duration = 2000;
-        const step = target / (duration / 16);
+        const increment = target / (duration / 16);
         let current = 0;
         
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                stat.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
             } else {
-                element.textContent = Math.floor(current);
+                stat.textContent = target;
             }
-        }, 16);
-    };
+        };
+        
+        updateCounter();
+    });
+}
+
+// Trigger stats animation when section is visible
+const statsSection = document.querySelector('.stats-section');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateStats();
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(statsSection);
+
+// FAQ Toggle
+function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    const isActive = faqItem.classList.contains('active');
     
-    const observerOptions = {
-        threshold: 0.5
-    };
+    // Close all FAQs
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+    });
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counters = document.querySelectorAll('.stat-number');
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    animateCounter(counter, target);
-                });
-                observer.disconnect();
-            }
-        });
-    }, observerOptions);
+    // Open clicked FAQ if it wasn't active
+    if (!isActive) {
+        faqItem.classList.add('active');
+    }
+}
+
+// ========================================
+// UNIVERSITY CAROUSEL - RESPONSIVE CARDS PER SECTION
+// ========================================
+(function() {
+    const universityCarousel = document.getElementById('universityCarousel');
+    const universityDotsContainer = document.getElementById('universityDots');
     
-    const statsSection = document.querySelector('.stats-section');
-    if (statsSection) {
-        observer.observe(statsSection);
+    if (!universityCarousel || !universityDotsContainer) return;
+    
+    const universityCards = universityCarousel.querySelectorAll('.university-logo-item');
+    let currentUniversitySlide = 0;
+    let isDraggingUniversity = false;
+    let startXUniversity = 0;
+    let scrollLeftUniversity = 0;
+    
+    // Function to get cards per view based on screen size
+    function getCardsPerView() {
+        if (window.innerWidth <= 640) return 1;
+        if (window.innerWidth <= 968) return 2;
+        return 3;
     }
     
-    // University carousel swipe functionality - MORE SENSITIVE
-    const universityCarousel = document.getElementById('universityCarousel');
-    let isDownUniversity = false;
-    let startXUniversity;
-    let scrollLeftUniversity;
+    // Calculate number of slides
+    function getTotalSlides() {
+        const cardsPerView = getCardsPerView();
+        return Math.ceil(universityCards.length / cardsPerView);
+    }
     
-    // Mouse events for university carousel - MORE SENSITIVE
+    // Create dots for universities
+    function createDots() {
+        universityDotsContainer.innerHTML = '';
+        const totalSlides = getTotalSlides();
+        
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to university slide ${i + 1}`);
+            dot.addEventListener('click', () => goToUniversitySlide(i));
+            universityDotsContainer.appendChild(dot);
+        }
+    }
+    
+    createDots();
+    
+    const getUniversityDots = () => universityDotsContainer.querySelectorAll('.dot');
+    
+    // Mouse drag handlers for universities
     universityCarousel.addEventListener('mousedown', (e) => {
-        isDownUniversity = true;
-        universityCarousel.style.cursor = 'grabbing';
+        isDraggingUniversity = true;
         startXUniversity = e.pageX - universityCarousel.offsetLeft;
         scrollLeftUniversity = universityCarousel.scrollLeft;
-        e.preventDefault();
+        universityCarousel.classList.add('dragging');
     });
     
     universityCarousel.addEventListener('mouseleave', () => {
-        isDownUniversity = false;
-        universityCarousel.style.cursor = 'grab';
+        isDraggingUniversity = false;
+        universityCarousel.classList.remove('dragging');
     });
     
     universityCarousel.addEventListener('mouseup', () => {
-        isDownUniversity = false;
-        universityCarousel.style.cursor = 'grab';
+        isDraggingUniversity = false;
+        universityCarousel.classList.remove('dragging');
     });
     
     universityCarousel.addEventListener('mousemove', (e) => {
-        if(!isDownUniversity) return;
+        if (!isDraggingUniversity) return;
         e.preventDefault();
         const x = e.pageX - universityCarousel.offsetLeft;
-        const walk = (x - startXUniversity) * 2.5; // Increased sensitivity from 1.5 to 2.5
+        const walk = (x - startXUniversity) * 2;
         universityCarousel.scrollLeft = scrollLeftUniversity - walk;
     });
     
-    // Touch events for university carousel mobile - MORE SENSITIVE
-    universityCarousel.addEventListener('touchstart', (e) => {
-        isDownUniversity = true;
-        startXUniversity = e.touches[0].pageX - universityCarousel.offsetLeft;
-        scrollLeftUniversity = universityCarousel.scrollLeft;
-    });
-    
-    universityCarousel.addEventListener('touchend', () => {
-        isDownUniversity = false;
-    });
-    
-    universityCarousel.addEventListener('touchmove', (e) => {
-        if(!isDownUniversity) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - universityCarousel.offsetLeft;
-        const walk = (x - startXUniversity) * 2.5; // Increased sensitivity from 1.5 to 2.5
-        universityCarousel.scrollLeft = scrollLeftUniversity - walk;
-    });
-    
-    // Testimonial carousel swipe functionality - MORE SENSITIVE
-    const testimonialsCarousel = document.getElementById('testimonialsCarousel');
-    let isDownTestimonial = false;
-    let startXTestimonial;
-    let scrollLeftTestimonial;
-    
-    // Mouse events for testimonials carousel - MORE SENSITIVE
-    testimonialsCarousel.addEventListener('mousedown', (e) => {
-        isDownTestimonial = true;
-        testimonialsCarousel.classList.add('active');
-        startXTestimonial = e.pageX - testimonialsCarousel.offsetLeft;
-        scrollLeftTestimonial = testimonialsCarousel.scrollLeft;
-        e.preventDefault();
-    });
-    
-    testimonialsCarousel.addEventListener('mouseleave', () => {
-        isDownTestimonial = false;
-        testimonialsCarousel.classList.remove('active');
-    });
-    
-    testimonialsCarousel.addEventListener('mouseup', () => {
-        isDownTestimonial = false;
-        testimonialsCarousel.classList.remove('active');
-    });
-    
-    testimonialsCarousel.addEventListener('mousemove', (e) => {
-        if(!isDownTestimonial) return;
-        e.preventDefault();
-        const x = e.pageX - testimonialsCarousel.offsetLeft;
-        const walk = (x - startXTestimonial) * 3; // Increased sensitivity from 2 to 3
-        testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
-    });
-    
-    // Touch events for testimonials mobile - MORE SENSITIVE
-    testimonialsCarousel.addEventListener('touchstart', (e) => {
-        isDownTestimonial = true;
-        startXTestimonial = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
-        scrollLeftTestimonial = testimonialsCarousel.scrollLeft;
-    });
-    
-    testimonialsCarousel.addEventListener('touchend', () => {
-        isDownTestimonial = false;
-    });
-    
-    testimonialsCarousel.addEventListener('touchmove', (e) => {
-        if(!isDownTestimonial) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
-        const walk = (x - startXTestimonial) * 3; // Increased sensitivity from 2 to 3
-        testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
-    });
-    
-    // Add momentum scrolling for better mobile experience
-    function addMomentumScrolling(carousel) {
-        let startX = 0;
-        let scrollLeft = 0;
-        let velocity = 0;
-        let animationFrame;
-        let lastTime = 0;
+    // Update current slide based on scroll position
+    universityCarousel.addEventListener('scroll', () => {
+        const cardsPerView = getCardsPerView();
+        const cardWidth = universityCards[0].offsetWidth;
+        const gap = 30;
+        const sectionWidth = (cardWidth + gap) * cardsPerView;
+        const scrollPosition = universityCarousel.scrollLeft;
+        const newSlide = Math.round(scrollPosition / sectionWidth);
         
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX;
-            scrollLeft = carousel.scrollLeft;
-            velocity = 0;
-            lastTime = Date.now();
-            
-            if (animationFrame) {
-                cancelAnimationFrame(animationFrame);
-            }
+        if (newSlide !== currentUniversitySlide) {
+            currentUniversitySlide = newSlide;
+            updateUniversityDots();
+        }
+    });
+    
+    function goToUniversitySlide(index) {
+        const cardsPerView = getCardsPerView();
+        const cardWidth = universityCards[0].offsetWidth;
+        const gap = 30;
+        const sectionWidth = (cardWidth + gap) * cardsPerView;
+        
+        universityCarousel.scrollTo({
+            left: sectionWidth * index,
+            behavior: 'smooth'
         });
-        
-        carousel.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].pageX;
-            const walk = (x - startX);
-            carousel.scrollLeft = scrollLeft - walk;
-            
-            const currentTime = Date.now();
-            const timeDiff = currentTime - lastTime;
-            if (timeDiff > 0) {
-                velocity = walk / timeDiff;
-                lastTime = currentTime;
-            }
-        });
-        
-        carousel.addEventListener('touchend', () => {
-            if (Math.abs(velocity) > 0.1) {
-                const momentum = velocity * 500;
-                
-                function animate() {
-                    carousel.scrollLeft -= momentum * 0.1;
-                    velocity *= 0.95;
-                    
-                    if (Math.abs(velocity) > 0.01) {
-                        animationFrame = requestAnimationFrame(animate);
-                    }
-                }
-                
-                animate();
+    }
+    
+    function updateUniversityDots() {
+        const dots = getUniversityDots();
+        dots.forEach((dot, index) => {
+            if (index === currentUniversitySlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
             }
         });
     }
     
-    // Apply momentum scrolling to both carousels
-    addMomentumScrolling(universityCarousel);
-    addMomentumScrolling(testimonialsCarousel);
-    
-    // FAQ toggle functionality
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const faqItem = question.parentElement;
-            faqItem.classList.toggle('active');
-        });
+    // Recreate dots on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            createDots();
+            currentUniversitySlide = 0;
+            universityCarousel.scrollLeft = 0;
+        }, 250);
     });
-});
+})();
+
+// ========================================
+// TESTIMONIALS CAROUSEL - RESPONSIVE CARDS PER SECTION
+// ========================================
+(function() {
+    const testimonialCarousel = document.getElementById('testimonialsCarousel');
+    const testimonialDotsContainer = document.getElementById('testimonialDots');
+    
+    if (!testimonialCarousel || !testimonialDotsContainer) return;
+    
+    const testimonialCards = testimonialCarousel.querySelectorAll('.story-card');
+    let currentTestimonialSlide = 0;
+    let isDraggingTestimonial = false;
+    let startXTestimonial = 0;
+    let scrollLeftTestimonial = 0;
+    
+    // Function to get cards per view based on screen size
+    function getCardsPerView() {
+        if (window.innerWidth <= 640) return 1;
+        if (window.innerWidth <= 968) return 2;
+        return 3;
+    }
+    
+    // Calculate number of slides
+    function getTotalSlides() {
+        const cardsPerView = getCardsPerView();
+        return Math.ceil(testimonialCards.length / cardsPerView);
+    }
+    
+    // Create dots for testimonials
+    function createDots() {
+        testimonialDotsContainer.innerHTML = '';
+        const totalSlides = getTotalSlides();
+        
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to testimonial slide ${i + 1}`);
+            dot.addEventListener('click', () => goToTestimonialSlide(i));
+            testimonialDotsContainer.appendChild(dot);
+        }
+    }
+    
+    createDots();
+    
+    const getTestimonialDots = () => testimonialDotsContainer.querySelectorAll('.dot');
+    
+    // Mouse drag handlers for testimonials
+    testimonialCarousel.addEventListener('mousedown', (e) => {
+        isDraggingTestimonial = true;
+        startXTestimonial = e.pageX - testimonialCarousel.offsetLeft;
+        scrollLeftTestimonial = testimonialCarousel.scrollLeft;
+        testimonialCarousel.classList.add('dragging');
+    });
+    
+    testimonialCarousel.addEventListener('mouseleave', () => {
+        isDraggingTestimonial = false;
+        testimonialCarousel.classList.remove('dragging');
+    });
+    
+    testimonialCarousel.addEventListener('mouseup', () => {
+        isDraggingTestimonial = false;
+        testimonialCarousel.classList.remove('dragging');
+    });
+    
+    testimonialCarousel.addEventListener('mousemove', (e) => {
+        if (!isDraggingTestimonial) return;
+        e.preventDefault();
+        const x = e.pageX - testimonialCarousel.offsetLeft;
+        const walk = (x - startXTestimonial) * 2;
+        testimonialCarousel.scrollLeft = scrollLeftTestimonial - walk;
+    });
+    
+    // Update current slide based on scroll position
+    testimonialCarousel.addEventListener('scroll', () => {
+        const cardsPerView = getCardsPerView();
+        const cardWidth = testimonialCards[0].offsetWidth;
+        const gap = 30;
+        const sectionWidth = (cardWidth + gap) * cardsPerView;
+        const scrollPosition = testimonialCarousel.scrollLeft;
+        const newSlide = Math.round(scrollPosition / sectionWidth);
+        
+        if (newSlide !== currentTestimonialSlide) {
+            currentTestimonialSlide = newSlide;
+            updateTestimonialDots();
+        }
+    });
+    
+    function goToTestimonialSlide(index) {
+        const cardsPerView = getCardsPerView();
+        const cardWidth = testimonialCards[0].offsetWidth;
+        const gap = 30;
+        const sectionWidth = (cardWidth + gap) * cardsPerView;
+        
+        testimonialCarousel.scrollTo({
+            left: sectionWidth * index,
+            behavior: 'smooth'
+        });
+    }
+    
+    function updateTestimonialDots() {
+        const dots = getTestimonialDots();
+        dots.forEach((dot, index) => {
+            if (index === currentTestimonialSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+    
+    // Recreate dots on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            createDots();
+            currentTestimonialSlide = 0;
+            testimonialCarousel.scrollLeft = 0;
+        }, 250);
+    });
+})();
 </script>
+
 <%- include('partials/footer') %>
