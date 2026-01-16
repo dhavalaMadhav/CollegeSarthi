@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <style>
-/* Courses Page - Swiss Design System */
+/* Courses Page - Academic Theme with Tabs */
 
 /* Global Scrollbar Hide */
 html, body {
@@ -14,509 +14,664 @@ html, body {
     display: none;
 }
 
-/* Hero Section - Swiss Style */
+/* Hero Section - Academic Style with Background Image */
 .courses-hero {
-    height: 300px;              /* ← EXACT from universities-hero */
-    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    overflow: hidden;
+    background: #000000;
+    padding: 120px 5% 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    padding: 120px 30px 40px;   /* ← EXACT from universities-hero */
-    border-bottom: 2px solid var(--black);
-    position: relative;
-    overflow: hidden;
+    border-bottom: 2px solid #000000;
 }
 
-
-.courses-hero-grid {
+/* Background Image */
+.courses-hero::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 2px;
-    padding: 2px;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    opacity: 0.7;
+    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 
-.course-grid-cell {
-    background-color: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--black);
+/* Black Overlay */
+.courses-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
 }
 
 .courses-hero-content {
-    max-width: 900px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     position: relative;
     z-index: 2;
+    text-align: left;
 }
 
 .courses-hero h1 {
-    font-size: 3rem;
-    font-weight: var(--font-weight-black);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 700;
     margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 40px;
-}
-
-.courses-hero h1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: var(--white);
-    bottom: 15px;
-    left: 0;
-    z-index: 1;
-}
-
-.courses-hero h1::before {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    background: var(--primary);
-    border: 3px solid var(--white);
-    border-radius: 50%;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
 }
 
 .courses-hero p {
-    font-size: 1.25rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
     line-height: 1.6;
-    font-weight: var(--font-weight-medium);
-    margin-bottom: 30px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 800px;
 }
 
-/* Filter Section */
-.course-filter-section {
-    padding: 40px 40px 20px;
-    background: var(--white);
-    border-bottom: 2px solid var(--gray-300);
+/* Category Tabs Section - ALWAYS STICKY */
+.category-tabs-section {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.filter-container {
+.category-tabs-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.category-tab {
+    flex: 1;
+    min-width: 200px;
+    padding: 24px 32px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.category-tab:hover {
+    color: #2C5F8D;
+    background: rgba(44, 95, 141, 0.05);
+}
+
+.category-tab.active {
+    color: #2C5F8D;
+    border-bottom-color: #2C5F8D;
+    background: transparent;
+}
+
+.category-tab i {
+    font-size: 1.2rem;
+}
+
+/* Courses List Section */
+.courses-list-section {
+    padding: 60px 5%;
+    background: #FFFFFF;
+    min-height: 500px;
+}
+
+.courses-list-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.filter-tabs {
-    display: flex;
-    gap: 2px;
-    background: var(--gray-200);
-    border: 2px solid var(--gray-400);
-    flex-wrap: wrap;
+.courses-list {
+    display: none;
 }
 
-.filter-tab {
-    padding: 15px 25px;
-    background: var(--white);
-    border: none;
-    font-size: 0.95rem;
-    font-weight: var(--font-weight-semibold);
-    color: var(--gray-700);
+.courses-list.active {
+    display: block;
+}
+
+.course-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-}
-
-.filter-tab:hover {
-    background: var(--gray-100);
-}
-
-.filter-tab.active {
-    background: var(--primary);
-    color: var(--white);
-    font-weight: var(--font-weight-bold);
-}
-
-.search-filter {
-    max-width: 600px;
-    margin: 30px auto 0;
-}
-
-.search-box {
     position: relative;
+}
+
+.course-item:first-child {
+    padding-top: 0;
+}
+
+.course-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Narrow border at ends */
+.course-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.course-item:last-child::after {
+    display: none;
+}
+
+.course-item:hover {
+    padding-left: 12px;
+}
+
+.course-item:hover .course-item-title {
+    color: #2C5F8D;
+}
+
+.course-item-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1B1F24;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.search-box i {
-    position: absolute;
-    left: 20px;
-    color: var(--gray-600);
-    font-size: 1.1rem;
-    z-index: 2;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 18px 20px 18px 55px;
-    border: 2px solid var(--gray-400);
+.course-item-title i {
     font-size: 1rem;
-    background: var(--white);
+    color: #6B7280;
     transition: all 0.2s ease;
 }
 
-.search-box input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 82, 212, 0.1);
+.course-item:hover .course-item-title i {
+    color: #2C5F8D;
+    transform: translateX(5px);
 }
 
-/* Courses Grid */
-.courses-grid-section {
-    padding: 60px 40px;
-    background: var(--white);
-}
-
-.courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto 60px;
-}
-
-.course-card {
-    background: var(--white);
-    border: 2px solid var(--gray-300);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.course-card:hover {
-    border-color: var(--primary);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.course-card-header {
-    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.course-icon {
-    width: 65px;
-    height: 65px;
-    color: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    border-radius: 4px;
-}
-
-.course-category-badge {
-    background: var(--white);
-    color: var(--primary);
-    padding: 6px 14px;
-    font-size: 0.8rem;
-    font-weight: var(--font-weight-bold);
-    border: 2px solid var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.course-card-body {
-    padding: 25px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.course-title {
-    font-size: 1.4rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--black);
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
-
-.course-description {
-    color: var(--gray-700);
+.course-item-description {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    color: #4B5563;
     line-height: 1.6;
-    margin-bottom: auto;
-    font-size: 0.95rem;
 }
 
-.course-details {
-    display: flex;
-    gap: 16px;
-    margin: 20px 0;
-    padding-top: 20px;
-    border-top: 2px solid var(--gray-200);
-}
-
-.course-detail-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--gray-600);
-    font-size: 0.9rem;
-}
-
-.course-detail-item i {
-    color: var(--primary);
-    font-size: 1rem;
-}
-
-.course-footer {
-    padding: 10px 25px 10px;
-    border-top: 2px solid var(--gray-200);
-}
-
-.course-universities {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--gray-600);
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-}
-
-.btn-view-course {
-    width: 100%;
-    padding: 14px;
-    background: var(--primary);
-    color: var(--white);
-    border: 2px solid var(--primary);
-    font-size: 0.95rem;
-    font-weight: var(--font-weight-semibold);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.btn-view-course:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 82, 212, 0.3);
-}
-
-.no-results {
+/* Empty State */
+.empty-state {
     text-align: center;
-    padding: 80px 40px;
-    color: var(--gray-600);
-    grid-column: 1 / -1;
+    padding: 80px 20px;
 }
 
-.no-results i {
+.empty-state i {
     font-size: 4rem;
-    color: var(--gray-300);
+    color: #E5E7EB;
     margin-bottom: 20px;
 }
 
-.no-results p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.empty-state h3 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #6B7280;
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    color: #9CA3AF;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .courses-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+@media (max-width: 768px) {
+    .courses-hero {
+        padding: 100px 5% 40px;
+        min-height: 300px;
+    }
+
+    .courses-hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .courses-hero p {
+        font-size: 0.9rem;
+    }
+
+    /* Tabs remain sticky on mobile with 2x2 grid */
+    .category-tabs-section {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #FFFFFF;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 0;
+    }
+
+    .category-tabs-container {
+        padding: 0;
+    }
+
+    .category-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0;
+    }
+
+    .category-tab {
+        min-width: auto;
+        padding: 16px 12px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0;
+        justify-content: flex-start;
+        text-align: left;
+        font-size: 0.65rem; /* Smaller text for full visibility */
+        gap: 10px;
+        background: #FFFFFF;
+        border-left: 3px solid transparent;
+        line-height: 1.2;
+        letter-spacing: 0.03em;
+    }
+
+    .category-tab span {
+        white-space: normal; /* Allow text to wrap if needed */
+        word-break: break-word;
+    }
+
+    /* Remove right border on last column */
+    .category-tab:nth-child(2),
+    .category-tab:nth-child(4) {
+        border-right: none;
+    }
+
+    /* Remove bottom border on last row */
+    .category-tab:nth-child(3),
+    .category-tab:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .category-tab i {
+        font-size: 1.1rem;
+        color: #6B7280;
+        flex-shrink: 0;
+    }
+
+    .category-tab.active {
+        background: #F7F8FA;
+        border-left-color: #2C5F8D;
+        color: #2C5F8D;
+    }
+
+    .category-tab.active i {
+        color: #2C5F8D;
+    }
+
+    .category-tab:hover {
+        background: #F7F8FA;
+    }
+
+    .courses-list-section {
+        padding: 40px 5%;
+    }
+
+    .course-item-title {
+        font-size: 1.1rem;
+    }
+
+    .course-item-description {
+        font-size: 0.85rem;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .courses-hero h1 {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
     }
-    
-    .courses-hero p {
-        font-size: 1.1rem;
+
+    .category-tab {
+        font-size: 0.6rem; /* Even smaller on very small screens */
+        padding: 14px 10px;
+        gap: 8px;
     }
-    
-    .filter-tabs {
+
+    .category-tab i {
+        font-size: 1rem;
+    }
+
+    .course-item {
+        padding: 20px 0;
+    }
+
+    .course-item-title {
+        font-size: 1rem;
         flex-direction: column;
-    }
-    
-    .filter-tab {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .courses-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .course-details {
-        flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
     }
 }
 </style>
 
-<!-- Hero Section - Swiss Style -->
+<!-- Hero Section -->
 <section class="courses-hero">
-    <div class="courses-hero-grid">
-        <% for(let i=0; i<16; i++) { %>
-            <div class="course-grid-cell"></div>
-        <% } %>
-    </div>
-    
     <div class="courses-hero-content">
-        <h1>Explore Courses</h1>
-        <p>Find the perfect program that matches your interests and career goals</p>
+        <h1>Explore All Courses</h1>
+        <p>Find the perfect program that matches your interests and career goals across Engineering, Management, Sciences, and more</p>
     </div>
 </section>
 
-<!-- Course Filter Section -->
-<section class="course-filter-section">
-    <div class="filter-container">
-        <div class="filter-tabs">
-            <button class="filter-tab active" data-category="all">
-                <i class="fas fa-th"></i> All Courses
+<!-- Category Tabs -->
+<section class="category-tabs-section">
+    <div class="category-tabs-container">
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="engineering">
+                <i class="fas fa-cogs"></i>
+                <span>Engineering</span>
             </button>
-            <button class="filter-tab" data-category="engineering">
-                <i class="fas fa-cogs"></i> Engineering
+            <button class="category-tab" data-category="management">
+                <i class="fas fa-briefcase"></i>
+                <span>Management</span>
             </button>
-            <button class="filter-tab" data-category="medical">
-                <i class="fas fa-heartbeat"></i> Medical & Healthcare
+            <button class="category-tab" data-category="science-arts">
+                <i class="fas fa-flask"></i>
+                <span>Science & Arts</span>
             </button>
-            <button class="filter-tab" data-category="management">
-                <i class="fas fa-briefcase"></i> Management
-            </button>
-            <button class="filter-tab" data-category="science">
-                <i class="fas fa-flask"></i> Science
-            </button>
-            <button class="filter-tab" data-category="commerce">
-                <i class="fas fa-chart-line"></i> Commerce & Finance
-            </button>
-            <button class="filter-tab" data-category="arts">
-                <i class="fas fa-palette"></i> Arts & Humanities
-            </button>
-            <button class="filter-tab" data-category="design">
-                <i class="fas fa-pencil-ruler"></i> Design & Architecture
+            <button class="category-tab" data-category="health-commerce">
+                <i class="fas fa-heartbeat"></i>
+                <span>Health & Commerce</span>
             </button>
         </div>
+    </div>
+</section>
+
+<!-- Courses List -->
+<section class="courses-list-section">
+    <div class="courses-list-container">
         
-        <div class="search-filter">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="courseSearch" placeholder="Search courses by name or keyword...">
+        <!-- Engineering Courses -->
+        <div class="courses-list active" data-category="engineering">
+            <div class="course-item" onclick="window.location.href='/courses/engineering/computer-science'">
+                <div class="course-item-title">
+                    Computer Science Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Master software development, artificial intelligence, and cutting-edge computing technologies
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/engineering/mechanical'">
+                <div class="course-item-title">
+                    Mechanical Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Design, analyze, and manufacture mechanical systems and machinery
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/engineering/civil'">
+                <div class="course-item-title">
+                    Civil Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Build infrastructure, roads, bridges, and shape the physical world around us
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/engineering/electrical'">
+                <div class="course-item-title">
+                    Electrical Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Power the future with electrical systems, circuits, and energy technology
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/engineering/electronics'">
+                <div class="course-item-title">
+                    Electronics Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Innovate with electronic circuits, embedded systems, and communication technology
+                </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Courses Grid -->
-<section class="courses-grid-section">
-    <div class="courses-grid" id="coursesGrid">
-        <% courses.forEach(course => { %>
-            <div class="course-card" data-category="<%= course.category %>">
-                <div class="course-card-header">
-                    <div class="course-icon">
-                        <i class="<%= course.icon %>"></i>
-                    </div>
-                    <div class="course-category-badge"><%= course.categoryName %></div>
+        <!-- Management Courses -->
+        <div class="courses-list" data-category="management">
+            <div class="course-item" onclick="window.location.href='/courses/management/mba'">
+                <div class="course-item-title">
+                    MBA (Master of Business Administration)
+                    <i class="fas fa-arrow-right"></i>
                 </div>
-                
-                <div class="course-card-body">
-                    <h3 class="course-title"><%= course.name %></h3>
-                    <p class="course-description"><%= course.description %></p>
-                    
-                    
-                    <div class="course-footer">
-                        <button class="btn-view-course" onclick="window.location.href='/courses/<%= course.category %>/<%= course.slug %>'">
-                            View Details <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
+                <div class="course-item-description">
+                    Master business administration, strategic leadership, and advanced management principles
                 </div>
             </div>
-        <% }) %>
-    </div>
-    
-    <div id="noResultsMessage" class="no-results" style="display: none;">
-        <i class="fas fa-search"></i>
-        <p>No courses found matching your search.</p>
+
+            <div class="course-item" onclick="window.location.href='/courses/management/business'">
+                <div class="course-item-title">
+                    Business Administration
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Learn core business principles, operations management, and entrepreneurship
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/management/finance'">
+                <div class="course-item-title">
+                    Finance Management
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Master financial analysis, investment strategies, and wealth management
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/management/marketing'">
+                <div class="course-item-title">
+                    Marketing Management
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Create impactful marketing campaigns and drive business growth through strategic marketing
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/management/hr'">
+                <div class="course-item-title">
+                    Human Resources Management
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Build strong teams, manage organizational talent, and develop workplace culture
+                </div>
+            </div>
+        </div>
+
+        <!-- Science & Arts Courses -->
+        <div class="courses-list" data-category="science-arts">
+            <div class="course-item" onclick="window.location.href='/courses/science/computer-applications'">
+                <div class="course-item-title">
+                    Computer Applications
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Apply computing solutions to solve real-world problems and business challenges
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/arts/literature'">
+                <div class="course-item-title">
+                    Literature
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Explore the world of language, creative writing, and literary analysis
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/arts/psychology'">
+                <div class="course-item-title">
+                    Psychology
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Understand human behavior, mental processes, and cognitive science
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/science/mathematics'">
+                <div class="course-item-title">
+                    Mathematics
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Master mathematical theory, analytical thinking, and problem-solving
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/science/physics'">
+                <div class="course-item-title">
+                    Physics
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Explore the fundamental laws of nature, matter, energy, and the universe
+                </div>
+            </div>
+        </div>
+
+        <!-- Health & Commerce Courses -->
+        <div class="courses-list" data-category="health-commerce">
+            <div class="course-item" onclick="window.location.href='/courses/health/medicine'">
+                <div class="course-item-title">
+                    Medicine (MBBS)
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Train to become a healthcare professional, diagnose diseases, and save lives
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/health/pharmacy'">
+                <div class="course-item-title">
+                    Pharmacy
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Study pharmaceuticals, drug development, and medication management
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/commerce/accounting'">
+                <div class="course-item-title">
+                    Accounting
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Master financial reporting, auditing practices, and taxation
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/commerce/banking'">
+                <div class="course-item-title">
+                    Banking & Finance
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Learn banking operations, financial services, and investment management
+                </div>
+            </div>
+
+            <div class="course-item" onclick="window.location.href='/courses/diploma/certificate'">
+                <div class="course-item-title">
+                    Diploma Programs
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="course-item-description">
+                    Short-term specialized certification and professional development programs
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const courseCards = document.querySelectorAll('.course-card');
-    const searchInput = document.getElementById('courseSearch');
-    const noResultsMessage = document.getElementById('noResultsMessage');
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const coursesLists = document.querySelectorAll('.courses-list');
     
-    // Filter by category
-    filterTabs.forEach(tab => {
+    categoryTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            filterTabs.forEach(t => t.classList.remove('active'));
+            // Remove active class from all tabs
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
             this.classList.add('active');
             
+            // Get category
             const category = this.dataset.category;
-            filterCourses(category, searchInput.value);
-        });
-    });
-    
-    // Search functionality
-    searchInput.addEventListener('input', function() {
-        const activeCategory = document.querySelector('.filter-tab.active').dataset.category;
-        filterCourses(activeCategory, this.value);
-    });
-    
-    function filterCourses(category, searchTerm) {
-        let visibleCount = 0;
-        
-        courseCards.forEach(card => {
-            const cardCategory = card.dataset.category;
-            const cardTitle = card.querySelector('.course-title').textContent.toLowerCase();
-            const cardDescription = card.querySelector('.course-description').textContent.toLowerCase();
             
-            const matchesCategory = category === 'all' || cardCategory === category;
-            const matchesSearch = searchTerm === '' || 
-                                cardTitle.includes(searchTerm.toLowerCase()) || 
-                                cardDescription.includes(searchTerm.toLowerCase());
+            // Hide all course lists
+            coursesLists.forEach(list => list.classList.remove('active'));
             
-            if (matchesCategory && matchesSearch) {
-                card.style.display = 'flex';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
+            // Show selected course list
+            const selectedList = document.querySelector(`.courses-list[data-category="${category}"]`);
+            if (selectedList) {
+                selectedList.classList.add('active');
             }
         });
-        
-        noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
+    });
 });
 </script>
 

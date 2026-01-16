@@ -1,122 +1,480 @@
 <%- include('partials/header') %>
 
+<!-- Import Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
     /* ========================================
-       UNIVERSITIES PAGE - SWISS DESIGN SYSTEM
+       UNIVERSITIES PAGE - ACADEMIC THEME
        ======================================== */
     
     /* Global Scrollbar Hide */
     html, body {
         overflow-x: hidden;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     ::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none;
     }
 
-    /* Hero Section - Updated with grid design */
+    /* Hero Section - Background Image with Black Overlay */
     .universities-hero {
-        height: 300px;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        position: relative;
+        width: 100%;
+        min-height: 180px;
+        overflow: hidden;
+        background: #000000;
+        padding: 60px 5% 40px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: var(--white);
-        padding: 120px 30px 40px;
-        border-bottom: 2px solid var(--black);
-        position: relative;
-        overflow: hidden;
+        border-bottom: 2px solid #000000;
     }
 
-    .universities-hero-content {
-        max-width: 800px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .universities-hero h1 {
-        font-size: 3rem;
-        font-weight: var(--font-weight-black);
-        margin-bottom: 20px;
-        line-height: 1.1;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 40px;
-        margin-bottom: 20px;
-    }
-
-    .universities-hero h1::after {
+    /* Background Image */
+    .universities-hero::before {
         content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: var(--white);
-        bottom: 15px;
-        left: 0;
-        z-index: 1;
-    }
-
-    .universities-hero h1::before {
-        content: '';
-        position: absolute;
-        width: 28px;
-        height: 28px;
-        background: var(--primary);
-        border: 3px solid var(--white);
-        border-radius: 50%;
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
-    }
-
-    .universities-hero p {
-        font-size: 1.25rem;
-        line-height: 1.6;
-        max-width: 600px;
-        margin: 0 auto;
-        font-weight: var(--font-weight-medium);
-    }
-
-    /* Grid Overlay - Added to match quiz page */
-    .universities-hero-grid {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 2px;
-        padding: 2px;
-        background-color: rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        opacity: 0.7;
+        background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
     }
 
-    .universities-grid-cell {
-        background-color: rgba(255, 255, 255, 0.2);
+    /* Black Overlay */
+    .universities-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 1;
+    }
+
+    .universities-hero-content {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        text-align: left;
+    }
+
+    .universities-hero h1 {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #FFFFFF;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+    }
+
+    .universities-hero p {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 800px;
+    }
+
+    /* Mobile Breadcrumb - Hidden on Desktop - MATCHING COURSE DETAIL SIZE */
+    .mobile-breadcrumb-section {
+        display: none;
+        background: #F7F8FA;
+        padding: 20px 5%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Elevated Breadcrumb with Rounded Box and Full-Height Dividers - EXACTLY MATCHING COURSE DETAIL */
+    .mobile-breadcrumb {
+        display: inline-flex;
+        align-items: stretch;
+        gap: 0;
+        margin-bottom: 0;
+        font-size: 0.75rem;
+        color: #4B5563;
+        background: #FFFFFF;
+        border-radius: 50px;
+        padding: 10px 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 500;
+        min-height: 40px;
+    }
+
+    .mobile-breadcrumb a,
+    .mobile-breadcrumb span {
+        color: #4B5563;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        padding: 0 15px;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-breadcrumb a:hover {
+        color: #2C5F8D;
+    }
+
+    /* Full-height vertical divider lines - NO "/" text */
+    .mobile-breadcrumb a::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.15);
+    }
+
+    .mobile-breadcrumb a:last-of-type::after {
+        display: none;
+    }
+
+    .mobile-breadcrumb span {
+        font-weight: 600;
+        color: #2C5F8D;
+    }
+
+    /* Mobile Filter Button - Hidden on Desktop */
+    .mobile-filter-button {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2C5F8D;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 50px;
+        padding: 14px 24px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.4);
+        cursor: pointer;
+        z-index: 998;
+        transition: all 0.3s ease;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .mobile-filter-button:hover {
+        background: #1E4364;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(44, 95, 141, 0.5);
+    }
+
+    .mobile-filter-button i {
+        font-size: 1rem;
+    }
+
+    /* Filter Modal Overlay */
+    .filter-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .filter-modal-overlay.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Filter Modal */
+    .filter-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #FFFFFF;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 420px;
+        max-height: 85vh;
+        overflow-y: auto;
+        z-index: 1000;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.3s ease;
+    }
+
+    .filter-modal.active {
+        display: block;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    /* Modal Header */
+    .filter-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 28px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        background: #FFFFFF;
+        z-index: 10;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .filter-modal-title {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    .filter-modal-close {
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: #6B7280;
+        cursor: pointer;
+        padding: 4px;
+        line-height: 1;
+        transition: all 0.2s ease;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--black);
-        transition: all 0.3s ease;
+        border-radius: 50%;
+    }
+
+    .filter-modal-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #1B1F24;
+    }
+
+    /* Modal Body with Better Spacing */
+    .filter-modal-body {
+        padding: 28px;
+    }
+
+    /* Modal Filter Section Spacing */
+    .filter-modal-body .filter-section {
+        margin-bottom: 28px;
+    }
+
+    .filter-modal-body .filter-section:last-of-type {
+        margin-bottom: 20px;
+    }
+
+    .filter-modal-body .filter-title {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-modal-body .filter-dropdown {
+        width: 100%;
+        padding: 14px 16px;
+        background: #F7F8FA;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 6px;
+        color: #1B1F24;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        line-height: 1.5;
+    }
+
+    .filter-modal-body .filter-dropdown:focus {
+        outline: none;
+        border-color: #2C5F8D;
+        box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
+        background: #FFFFFF;
+    }
+
+    .filter-modal-body .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-modal-body .filter-radio {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        padding: 12px 14px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+    }
+
+    .filter-modal-body .filter-radio:hover {
+        background: rgba(44, 95, 141, 0.05);
+    }
+
+    .filter-modal-body .custom-radio {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        background: transparent;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+    }
+
+    .filter-modal-body .filter-radio input:checked + .custom-radio {
+        background: #2C5F8D;
+        border-color: #2C5F8D;
+    }
+
+    .filter-modal-body .filter-radio input:checked + .custom-radio::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 7px;
+        height: 7px;
+        background: #FFFFFF;
+        border-radius: 50%;
+    }
+
+    .filter-modal-body .filter-label {
+        color: #4B5563;
+        font-size: 0.95rem;
+        font-weight: 400;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+        letter-spacing: 0.01em;
+    }
+
+    .filter-modal-body .filter-count {
+        margin-left: auto;
+        background: rgba(44, 95, 141, 0.1);
+        color: #2C5F8D;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        min-width: 28px;
+        text-align: center;
+    }
+
+    .filter-modal-body .budget-range {
+        padding: 16px 0;
+    }
+
+    .filter-modal-body .budget-display {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 14px;
+        color: #6B7280;
+        font-weight: 500;
+        font-size: 0.85rem;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .filter-modal-body .range-slider {
+        width: 100%;
+        height: 5px;
+        -webkit-appearance: none;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        outline: none;
+    }
+
+    .filter-modal-body .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        background: #2C5F8D;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-modal-body .range-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        background: #2C5F8D;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-modal-body .reset-filters {
+        width: 100%;
+        padding: 14px 20px;
+        background: #2C5F8D;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 8px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        letter-spacing: 0.02em;
+    }
+
+    .filter-modal-body .reset-filters:hover {
+        background: #1E4364;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.3);
     }
 
     /* Search Section */
     .search-section {
-        padding: 40px 30px 20px;
-        background: var(--white);
-        border-bottom: 2px solid var(--gray-300);
+        padding: 50px 5%;
+        background: #F7F8FA;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .search-container {
@@ -126,74 +484,94 @@
 
     .search-title {
         text-align: center;
-        font-size: 2rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--black);
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1B1F24;
         margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: -0.01em;
+        text-decoration: none;
     }
 
+    /* Search Form with CIRCULAR EDGES */
     .search-form {
         display: flex;
-        gap: 15px;
         max-width: 700px;
         margin: 0 auto;
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 50px;
+        overflow: hidden;
+        transition: all 0.2s ease;
+    }
+
+    .search-form:focus-within {
+        border-color: #2C5F8D;
+        box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
     }
 
     .search-input {
         flex: 1;
-        padding: 18px 20px;
+        padding: 16px 24px;
         font-size: 1rem;
-        font-family: var(--font-main);
-        border: 2px solid var(--gray-400);
-        background: var(--white);
-        color: var(--black);
-        transition: all 0.2s ease;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        border: none;
+        background: transparent;
+        color: #1B1F24;
+        outline: none;
+        border-radius: 50px 0 0 50px;
     }
 
-    .search-input:focus {
-        outline: none;
-        border-color: var(--primary);
+    .search-input::placeholder {
+        color: #9CA3AF;
+    }
+
+    .search-divider {
+        width: 1px;
+        background: rgba(0, 0, 0, 0.12);
+        align-self: stretch;
     }
 
     .search-button {
-        padding: 18px 40px;
-        background: var(--primary);
-        color: var(--white);
-        border: 2px solid var(--primary-dark);
+        padding: 16px 32px;
+        background: transparent;
+        color: #2C5F8D;
+        border: none;
         font-size: 1rem;
-        font-weight: var(--font-weight-semibold);
-        font-family: var(--font-main);
+        font-weight: 600;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         cursor: pointer;
         transition: all 0.2s ease;
-        box-shadow: var(--shadow-primary);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 0 50px 50px 0;
     }
 
     .search-button:hover {
-        background: var(--primary-dark);
-        transform: translate(-2px, -2px);
-        box-shadow: var(--shadow-lg);
+        background: rgba(44, 95, 141, 0.05);
+    }
+
+    .search-button-text {
+        display: inline;
     }
 
     /* Main Layout */
     .universities-main {
         display: flex;
         min-height: 800px;
-        background: var(--white);
+        background: #FFFFFF;
         position: relative;
     }
 
-    /* Filter Sidebar - Resizable and Black Background */
+    /* Filter Sidebar */
     .filter-sidebar {
         width: 280px;
         flex-shrink: 0;
-        background: var(--black);
+        background: #F7F8FA;
         padding: 40px 20px;
-        border-right: 2px solid var(--primary);
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
         position: sticky;
         top: 0;
         height: 100vh;
@@ -201,51 +579,54 @@
         resize: horizontal;
         min-width: 250px;
         max-width: 400px;
-        cursor: ew-resize;
     }
 
-    /* Hide scrollbar for sidebar */
     .filter-sidebar::-webkit-scrollbar {
         width: 0;
         height: 0;
     }
 
     .filter-section {
-        margin-bottom: 35px;
+        margin-bottom: 32px;
     }
 
     .filter-title {
-        font-size: 1.125rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--primary);
-        margin-bottom: 15px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin-bottom: 12px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         padding-bottom: 8px;
-        border-bottom: 1px solid var(--primary);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    /* Dropdown Filter */
     .filter-dropdown {
         width: 100%;
         padding: 12px;
-        background: var(--black);
-        border: 2px solid var(--primary);
-        color: var(--primary);
-        font-family: var(--font-main);
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        color: #1B1F24;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 0.875rem;
         cursor: pointer;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        transition: all 0.2s ease;
+    }
+
+    .filter-dropdown:focus {
+        outline: none;
+        border-color: #2C5F8D;
+        box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
     }
 
     .filter-dropdown option {
-        background: var(--black);
-        color: var(--primary);
+        background: #FFFFFF;
+        color: #1B1F24;
         padding: 10px;
     }
 
-    /* Checkbox and Radio Styles */
     .filter-group {
         display: flex;
         flex-direction: column;
@@ -258,11 +639,12 @@
         gap: 10px;
         cursor: pointer;
         padding: 8px 10px;
+        border-radius: 4px;
         transition: all 0.2s ease;
     }
 
     .filter-radio:hover {
-        background: rgba(0, 85, 255, 0.1);
+        background: rgba(44, 95, 141, 0.05);
     }
 
     .filter-radio input {
@@ -272,14 +654,17 @@
     .custom-radio {
         width: 16px;
         height: 16px;
-        border: 2px solid var(--primary);
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
         background: transparent;
         position: relative;
         flex-shrink: 0;
+        transition: all 0.2s ease;
     }
 
     .filter-radio input:checked + .custom-radio {
-        background: var(--primary);
+        background: #2C5F8D;
+        border-color: #2C5F8D;
     }
 
     .filter-radio input:checked + .custom-radio::after {
@@ -290,29 +675,29 @@
         transform: translate(-50%, -50%);
         width: 6px;
         height: 6px;
-        background: var(--black);
+        background: #FFFFFF;
+        border-radius: 50%;
     }
 
     .filter-label {
-        color: var(--primary);
+        color: #4B5563;
         font-size: 0.875rem;
-        font-weight: var(--font-weight-medium);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        font-weight: 400;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     .filter-count {
         margin-left: auto;
-        background: var(--primary);
-        color: var(--black);
-        padding: 2px 6px;
+        background: rgba(44, 95, 141, 0.1);
+        color: #2C5F8D;
+        padding: 2px 8px;
+        border-radius: 12px;
         font-size: 0.75rem;
-        font-weight: var(--font-weight-bold);
-        min-width: 20px;
+        font-weight: 600;
+        min-width: 24px;
         text-align: center;
     }
 
-    /* Budget Range */
     .budget-range {
         padding: 15px 0;
     }
@@ -321,18 +706,17 @@
         display: flex;
         justify-content: space-between;
         margin-top: 10px;
-        color: var(--primary);
-        font-weight: var(--font-weight-medium);
+        color: #6B7280;
+        font-weight: 500;
         font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
     }
 
     .range-slider {
         width: 100%;
         height: 4px;
         -webkit-appearance: none;
-        background: var(--primary);
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
         outline: none;
     }
 
@@ -340,110 +724,132 @@
         -webkit-appearance: none;
         width: 16px;
         height: 16px;
-        background: var(--primary);
-        border: 2px solid var(--black);
+        background: #2C5F8D;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
         cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    /* Reset Filters Button */
+    .range-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: #2C5F8D;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
     .reset-filters {
         width: 100%;
         padding: 12px;
-        background: var(--primary);
-        color: var(--black);
-        border: 2px solid var(--primary);
-        font-weight: var(--font-weight-bold);
+        background: #2C5F8D;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
         font-size: 0.875rem;
         cursor: pointer;
         transition: all 0.2s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
         margin-top: 20px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     .reset-filters:hover {
-        background: var(--black);
-        color: var(--primary);
-        transform: translate(-2px, -2px);
-        box-shadow: 4px 4px 0px 0px var(--primary);
+        background: #1E4364;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.3);
     }
 
     /* Content Area */
     .content-area {
         flex: 1;
         padding: 40px;
-        background: var(--white);
+        background: #FFFFFF;
         overflow-y: auto;
         max-height: calc(100vh);
     }
 
-    /* Content Header */
-    .content-header {
+    /* Page Header with Toggle */
+    .page-header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 40px;
         padding-bottom: 20px;
-        border-bottom: 2px solid var(--gray-300);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .content-tabs {
+    .page-header-left h1 {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1B1F24;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        margin-bottom: 8px;
+    }
+
+    .page-count {
+        font-size: 0.875rem;
+        color: #6B7280;
+        font-weight: 400;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* View Toggle Buttons */
+    .view-toggle {
         display: flex;
-        gap: 2px;
-        background: var(--gray-200);
-        border: 2px solid var(--gray-400);
+        gap: 4px;
+        background: #F7F8FA;
+        padding: 4px;
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .tab-button {
-        padding: 15px 30px;
-        background: var(--white);
+    .view-btn {
+        padding: 8px 16px;
+        background: transparent;
         border: none;
-        font-size: 1rem;
-        font-weight: var(--font-weight-semibold);
-        color: var(--gray-700);
+        border-radius: 16px;
         cursor: pointer;
         transition: all 0.2s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        color: #6B7280;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 500;
     }
 
-    .tab-button:hover {
-        background: var(--gray-100);
+    .view-btn:hover {
+        background: rgba(44, 95, 141, 0.05);
+        color: #2C5F8D;
     }
 
-    .tab-button.active {
-        background: var(--primary);
-        color: var(--white);
-        font-weight: var(--font-weight-bold);
+    .view-btn.active {
+        background: #2C5F8D;
+        color: #FFFFFF;
     }
 
-    .content-title {
-        font-size: 2rem;
-        font-weight: var(--font-weight-black);
-        color: var(--black);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .universities-count {
+    .view-btn i {
         font-size: 1rem;
-        color: var(--gray-700);
-        font-weight: var(--font-weight-medium);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
     }
 
-    /* University Cards */
+    /* LIST VIEW - Cards with metrics on right */
     .universities-list {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 24px;
     }
 
-    .university-card {
-        background: var(--white);
-        border: 1px solid var(--gray-300);
-        padding: 30px;
+    .universities-list .university-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 32px;
         transition: all 0.2s ease;
         cursor: pointer;
         display: flex;
@@ -451,143 +857,83 @@
         align-items: flex-start;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
     }
 
-    .university-card:hover {
+    .universities-list .university-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary-light);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+        border-color: rgba(44, 95, 141, 0.3);
     }
 
-    /* Clippath Abstract Background - Yellow and White */
-    .university-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            linear-gradient(135deg, 
-                rgba(255, 255, 240, 0.85) 0%,
-                rgba(255, 255, 220, 0.7) 25%,
-                rgba(255, 255, 200, 0.5) 50%,
-                rgba(255, 255, 180, 0.3) 75%,
-                rgba(255, 255, 160, 0.2) 100%);
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 30%,
-            70% 50%,
-            100% 70%,
-            100% 100%,
-            0 100%,
-            0 70%,
-            30% 50%,
-            0 30%
-        );
-        z-index: 1;
-        pointer-events: none;
-        opacity: 0.9;
-    }
-
-    .university-card::after {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        width: 140%;
-        height: 140%;
-        background: 
-            repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 15px,
-                rgba(255, 255, 220, 0.3) 15px,
-                rgba(255, 255, 220, 0.3) 30px
-            );
-        clip-path: polygon(
-            0% 0%,
-            100% 0%,
-            100% 100%,
-            20% 100%,
-            0% 80%
-        );
-        z-index: 1;
-        pointer-events: none;
-        opacity: 0.7;
-    }
-
-    .university-left, .university-right {
+    .universities-list .university-left,
+    .universities-list .university-right {
         position: relative;
         z-index: 2;
     }
 
-    /* Left Section of Card */
-    .university-left {
+    .universities-list .university-left {
         flex: 1;
     }
 
-    .university-name {
-        font-size: 1.75rem;
-        font-weight: var(--font-weight-black);
-        color: var(--black);
+    .universities-list .university-name {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1B1F24;
         margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        line-height: 1.2;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        text-decoration: none;
     }
 
-    .university-details-left {
+    .universities-list .university-details-left {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 30px;
+        gap: 12px;
+        margin-bottom: 24px;
     }
 
-    .detail-row {
+    .universities-list .detail-row {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 1rem;
-        color: var(--gray-900);
-        font-weight: var(--font-weight-medium);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        gap: 12px;
+        font-size: 0.95rem;
+        color: #4B5563;
+        font-weight: 400;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .detail-row i {
-        color: var(--primary);
+    .universities-list .detail-row i {
+        color: #2C5F8D;
         width: 20px;
         text-align: center;
     }
 
-    .visit-button {
+    .universities-list .visit-button {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         padding: 12px 24px;
-        background: var(--primary);
-        color: var(--white);
-        border: 2px solid var(--primary-dark);
-        font-weight: var(--font-weight-bold);
+        background: #2C5F8D;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
         font-size: 0.875rem;
         text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
         transition: all 0.2s ease;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .visit-button:hover {
-        background: var(--primary-dark);
-        transform: translate(-2px, -2px);
-        box-shadow: 4px 4px 0px 0px var(--primary-dark);
+    .universities-list .visit-button:hover {
+        background: #1E4364;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.3);
         text-decoration: none;
     }
 
-    /* Right Section of Card (Stats Grid) */
-    .university-right {
+    .universities-list .university-right {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -595,611 +941,580 @@
         margin-left: 40px;
     }
 
-    .stat-item {
+    .universities-list .stat-item {
         display: flex;
         align-items: center;
         gap: 12px;
         padding: 8px 0;
     }
 
-    .stat-icon {
-        font-size: 1.75rem;
-        color: var(--black);
+    .universities-list .stat-icon {
+        font-size: 1.5rem;
+        color: #2C5F8D;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         flex-shrink: 0;
     }
 
-    .stat-content {
+    .universities-list .stat-content {
         display: flex;
         flex-direction: column;
         flex: 1;
     }
 
-    .stat-label {
-        font-size: 0.6875rem;
-        color: var(--gray-700);
-        font-weight: var(--font-weight-bold);
+    .universities-list .stat-label {
+        font-size: 0.7rem;
+        color: #6B7280;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 2px;
+        letter-spacing: 0.05em;
+        margin-bottom: 4px;
         line-height: 1.2;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .stat-value {
+    .universities-list .stat-value {
         font-size: 1.125rem;
-        font-weight: var(--font-weight-black);
-        color: var(--black);
+        font-weight: 700;
+        color: #1B1F24;
         line-height: 1;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Featured Badge */
+    /* GRID VIEW - 3 Column Horizontal Stats - SMALLER ICONS */
+    .universities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+    }
+
+    .universities-grid .university-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 24px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .universities-grid .university-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+        border-color: rgba(44, 95, 141, 0.3);
+    }
+
+    .universities-grid .university-name {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        text-decoration: none;
+        padding-right: 90px;
+    }
+
+    .universities-grid .university-location {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        color: #6B7280;
+        margin-bottom: 12px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .universities-grid .university-location i {
+        color: #2C5F8D;
+        font-size: 0.875rem;
+    }
+
+    .universities-grid .university-programmes {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        color: #2C5F8D;
+        margin-bottom: 24px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 500;
+    }
+
+    .universities-grid .university-programmes i {
+        font-size: 0.875rem;
+    }
+
+    /* 3-COLUMN HORIZONTAL GRID STATS - FIXED STABLE LAYOUT */
+    .universities-grid .grid-stats {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .universities-grid .grid-stat-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        min-width: 0;
+    }
+
+    .universities-grid .grid-stat-icon {
+        font-size: 1.5rem !important;
+        color: #2C5F8D !important;
+        margin-bottom: 8px !important;
+        flex-shrink: 0;
+    }
+
+    .universities-grid .grid-stat-label {
+        font-size: 0.7rem !important;
+        color: #6B7280 !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        margin-bottom: 6px !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        white-space: nowrap;
+    }
+
+    .universities-grid .grid-stat-value {
+        font-size: 1.25rem !important;
+        font-weight: 700 !important;
+        color: #1B1F24 !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        white-space: nowrap;
+    }
+
+    /* Hide elements based on view */
+    .universities-grid .university-left,
+    .universities-grid .university-right,
+    .universities-grid .university-details-left,
+    .universities-grid .visit-button {
+        display: none !important;
+    }
+
+    .universities-list .university-location,
+    .universities-list .university-programmes,
+    .universities-list .grid-stats,
+    .universities-list .grid-title {
+        display: none !important;
+    }
+
+    /* Featured Badge with CURVED Corners */
     .featured-badge {
         position: absolute;
-        top: 15px;
-        right: 15px;
-        background: var(--accent);
-        color: var(--black);
+        top: 16px;
+        right: 16px;
+        background: #22C55E;
+        color: #FFFFFF;
         padding: 6px 12px;
         font-size: 0.75rem;
-        font-weight: var(--font-weight-bold);
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        border: 2px solid var(--accent-dark);
+        letter-spacing: 0.05em;
+        border-radius: 16px;
         z-index: 3;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
     }
 
-    /* Top Picks Section - ONLY FEATURED UNIVERSITIES */
-    .top-picks-section {
-        padding: 80px 40px;
-        background: var(--gray-50);
-        border-top: 2px solid var(--gray-300);
-        border-bottom: 2px solid var(--gray-300);
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: var(--font-weight-black);
-        color: var(--black);
-        margin-bottom: 60px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 40px;
-        margin-bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .section-title::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: var(--black);
-        bottom: 15px;
-        left: 0;
-        z-index: 1;
-    }
-
-    .section-title::before {
-        content: '';
-        position: absolute;
-        width: 28px;
-        height: 28px;
-        background: var(--white);
-        border: 3px solid var(--black);
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .top-picks-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .top-pick-card {
-        background: var(--white);
-        border: 1px solid var(--gray-300);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        position: relative;
-    }
-
-    .top-pick-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary-light);
-    }
-
-    /* Top Pick Image */
-    .top-pick-image {
-        width: 100%;
-        height: 180px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .top-pick-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-
-    .top-pick-card:hover .top-pick-image img {
-        transform: scale(1.05);
-    }
-
-    /* Top Pick Content */
-    .top-pick-content {
-        padding: 25px;
-        position: relative;
-    }
-
-    .top-pick-rank-number {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 4rem;
-        font-weight: var(--font-weight-black);
-        color: var(--gray-200);
-        line-height: 1;
-        opacity: 0.7;
-        z-index: 1;
-    }
-
-    .top-pick-name {
-        font-size: 1.5rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--black);
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        line-height: 1.3;
-        position: relative;
-        z-index: 2;
-    }
-
-    .top-pick-location {
-        font-size: 0.875rem;
-        color: var(--gray-700);
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .top-pick-location i {
-        color: var(--primary);
-    }
-
-    .top-pick-highlight {
-        font-size: 0.875rem;
-        color: var(--primary);
-        font-weight: var(--font-weight-semibold);
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid var(--gray-300);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .top-pick-stats {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .top-pick-stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .top-pick-stat-icon {
-        font-size: 1.5rem;
-        color: var(--primary);
-    }
-
-    .top-pick-stat-value {
-        font-size: 1rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--black);
-    }
-
-    .top-pick-stat-label {
-        font-size: 0.75rem;
-        color: var(--gray-600);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    /* CTA Section */
+    /* CTA Section - Matching Course Detail Page */
     .cta-section {
-        background: var(--primary);
-        padding: 100px 30px;
+        background: #FFFFFF;
+        padding: 60px 5%;
         text-align: center;
-        border-top: 2px solid var(--black);
-        border-bottom: 2px solid var(--black);
-    }
-
-    .cta-content {
-        max-width: 800px;
-        margin: 0 auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .cta-content h2 {
-        font-size: 2.5rem;
-        font-weight: var(--font-weight-black);
-        color: var(--white);
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin-bottom: 16px;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        text-decoration: none;
         position: relative;
         display: inline-block;
-        padding-bottom: 40px;
+        padding-bottom: 0;
     }
 
-    .cta-content h2::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: var(--white);
-        bottom: 15px;
-        left: 0;
-        z-index: 1;
-    }
-
+    /* Remove decorative elements */
+    .cta-content h2::after,
     .cta-content h2::before {
-        content: '';
-        position: absolute;
-        width: 28px;
-        height: 28px;
-        background: var(--white);
-        border: 3px solid var(--white);
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+        display: none !important;
     }
 
     .cta-content p {
-        font-size: 1.25rem;
-        margin-bottom: 40px;
-        opacity: 0.9;
-        color: var(--white);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        color: #4B5563;
     }
 
     .cta-buttons {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 16px;
         flex-wrap: wrap;
     }
 
     .cta-btn-primary, .cta-btn-secondary {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 40px;
-        font-family: var(--font-main);
-        font-size: 1.125rem;
-        font-weight: var(--font-weight-semibold);
+        padding: 0.85rem 1.8rem;
+        font-size: 0.8rem;
+        font-weight: 600;
         text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        border: 2px solid var(--white);
         cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 6px 6px 0px 0px rgba(255, 255, 255, 0.3);
-    }
-
-    .cta-btn-primary:hover, .cta-btn-secondary:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 8px 8px 0px 0px rgba(255, 255, 255, 0.4);
+        transition: all 0.25s ease;
+        border-radius: 24px;
+        border: none;
     }
 
     .cta-btn-primary {
-        background-color: var(--white);
-        color: var(--primary);
+        background-color: #2C5F8D;
+        color: #FFFFFF;
     }
 
     .cta-btn-secondary {
         background-color: transparent;
-        color: var(--white);
+        color: #2C5F8D;
+        border: 2px solid #2C5F8D;
+    }
+
+    .cta-btn-primary:hover {
+        background-color: #1E4364;
+        transform: translateY(-2px);
+        text-decoration: none;
+    }
+
+    .cta-btn-secondary:hover {
+        background-color: rgba(44, 95, 141, 0.08);
+        transform: translateY(-2px);
+        text-decoration: none;
     }
 
     .cta-btn-primary i, .cta-btn-secondary i {
-        margin-right: 10px;
+        margin-right: 8px;
+        font-size: 0.85rem;
     }
 
-    /* No Results Message */
+    /* No Results */
     .no-results {
         text-align: center;
         padding: 80px 40px;
-        background: var(--white);
-        border: 1px solid var(--gray-300);
-        max-width: 800px;
+        background: #F7F8FA;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        max-width: 600px;
         margin: 0 auto;
+        display: none;
+    }
+
+    .no-results.show {
+        display: block;
     }
 
     .no-results i {
-        font-size: 4rem;
-        color: var(--gray-300);
-        margin-bottom: 20px;
+        font-size: 3rem;
+        color: rgba(0, 0, 0, 0.15);
+        margin-bottom: 16px;
     }
 
     .no-results h3 {
-        font-size: 2rem;
-        font-weight: var(--font-weight-bold);
-        color: var(--gray-700);
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        font-family: 'Libre Baskerville', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1B1F24;
+        margin-bottom: 12px;
+        text-decoration: none;
     }
 
     .no-results p {
-        font-size: 1.125rem;
-        color: var(--gray-600);
-        margin-bottom: 30px;
+        font-size: 1rem;
+        color: #6B7280;
+        margin-bottom: 24px;
         line-height: 1.6;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Resize handle for sidebar */
+    /* Resize handle */
     .resize-handle {
         position: absolute;
         top: 0;
         right: -2px;
         width: 4px;
         height: 100%;
-        background: var(--primary);
+        background: rgba(44, 95, 141, 0.2);
         cursor: ew-resize;
         z-index: 10;
+        transition: background 0.2s ease;
     }
 
-    /* RESPONSIVE DESIGN - Mobile Transformation */
-    /* Tablet and Mobile (max-width: 1024px) - Sidebar becomes horizontal topbar */
+    .resize-handle:hover {
+        background: #2C5F8D;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
         .universities-main {
             flex-direction: column;
         }
 
-        /* Transform sidebar into horizontal topbar - 100% WIDTH */
         .filter-sidebar {
-            width: 100% !important; /* Force 100% width */
+            width: 100% !important;
             height: auto;
-            min-height: auto;
             position: relative;
             border-right: none;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             overflow-x: auto;
             overflow-y: hidden;
             resize: none;
             padding: 20px;
             display: flex;
             flex-wrap: nowrap;
-            gap: 30px;
-            align-items: flex-start;
-            min-width: 100%;
-            cursor: default;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 24px;
         }
 
-        /* Make filter sections arranged horizontally */
         .filter-section {
             margin-bottom: 0;
             flex: 0 0 auto;
             min-width: 200px;
-            white-space: normal;
         }
 
-        .filter-group {
-            max-height: 150px;
-            overflow-y: auto;
-            min-height: 100px;
-        }
-
-        /* Hide resize handle on mobile */
         .resize-handle {
             display: none;
         }
 
-        /* Reset filters button in horizontal layout */
-        .reset-filters {
-            flex: 0 0 auto;
-            min-width: 150px;
-            margin-top: 0;
-            align-self: center;
-            height: fit-content;
-        }
-
-        /* Content area adjustments */
         .content-area {
             max-height: none;
             overflow-y: visible;
             padding: 30px;
-            width: 100%;
         }
 
-        /* Header adjustments for mobile */
-        .content-header {
+        .page-header {
             flex-direction: column;
-            gap: 20px;
-            text-align: center;
+            gap: 16px;
         }
 
-        /* Cards adjustments */
-        .university-card {
+        .universities-list .university-card {
             flex-direction: column;
         }
 
-        .university-right {
+        .universities-list .university-right {
             width: 100%;
             margin-left: 0;
-            margin-top: 30px;
+            margin-top: 24px;
+        }
+
+        .universities-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         }
     }
 
-    /* Custom scrollbar for horizontal sidebar on mobile */
-    @media (max-width: 1024px) {
-        .filter-sidebar::-webkit-scrollbar {
-            height: 6px;
+    @media (max-width: 768px) {
+        /* Hide Hero Section on Mobile */
+        .universities-hero {
+            display: none !important;
+        }
+
+        /* Show Mobile Breadcrumb - SAME SIZE AS COURSE DETAIL */
+        .mobile-breadcrumb-section {
             display: block;
         }
-        
-        .filter-sidebar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .filter-sidebar::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 3px;
-        }
-        
-        .filter-sidebar::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-    }
 
-    /* Medium Mobile (max-width: 768px) */
-    @media (max-width: 768px) {
-        /* Hero adjustments */
-        .universities-hero h1 {
-            font-size: 2.5rem;
+        /* Smaller breadcrumb on mobile - EXACTLY MATCHING COURSE DETAIL */
+        .mobile-breadcrumb {
+            font-size: 0.65rem;
+            padding: 8px 14px;
+            min-height: 32px;
         }
 
-        .universities-hero p {
-            font-size: 1.125rem;
+        .mobile-breadcrumb a,
+        .mobile-breadcrumb span {
+            padding: 0 10px;
         }
 
-        /* Search form adjustments */
+        /* HIDE DESKTOP FILTER SIDEBAR ON MOBILE */
+        .filter-sidebar {
+            display: none !important;
+        }
+
+        /* SHOW MOBILE FILTER BUTTON */
+        .mobile-filter-button {
+            display: inline-flex;
+        }
+
+        /* Fix Search Button Alignment on Mobile */
         .search-form {
-            flex-direction: column;
+            flex-direction: row;
         }
 
         .search-button {
-            width: 100%;
+            padding: 16px 16px;
+            min-width: 50px;
         }
 
-        /* Adjust horizontal sidebar spacing */
-        .filter-sidebar {
+        .search-button-text {
+            display: none;
+        }
+
+        .search-button i {
+            margin: 0;
+        }
+
+        /* BOTH LIST AND GRID SHOW SAME CARD DESIGN ON MOBILE */
+        .universities-list,
+        .universities-grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
             gap: 20px;
-            padding: 15px;
         }
 
-        .filter-section {
-            min-width: 180px;
+        .universities-list .university-card,
+        .universities-grid .university-card {
+            display: block !important;
+            padding: 24px !important;
         }
 
-        /* Tabs adjustments */
-        .content-tabs {
-            width: 100%;
+        /* Hide List View Specific Elements on Mobile */
+        .universities-list .university-left,
+        .universities-list .university-right,
+        .universities-list .university-details-left,
+        .universities-list .visit-button {
+            display: none !important;
         }
 
-        .tab-button {
-            flex: 1;
-            text-align: center;
-            padding: 12px 15px;
-            font-size: 0.9rem;
+        /* Show Grid View Elements for BOTH List and Grid on Mobile */
+        .universities-list .university-location,
+        .universities-list .university-programmes,
+        .universities-list .grid-stats,
+        .universities-list .grid-title,
+        .universities-grid .university-location,
+        .universities-grid .university-programmes,
+        .universities-grid .grid-stats,
+        .universities-grid .university-name {
+            display: block !important;
         }
 
-        /* Cards grid adjustments */
-        .university-right {
-            grid-template-columns: repeat(2, 1fr);
+        .universities-list .grid-stats,
+        .universities-grid .grid-stats {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important;
+            padding-top: 20px !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
         }
 
-        /* Top picks adjustments */
-        .top-picks-grid {
-            grid-template-columns: 1fr;
+        .universities-list .university-location,
+        .universities-grid .university-location {
+            display: flex !important;
         }
 
-        .top-picks-section {
-            padding: 60px 20px;
+        .universities-list .university-programmes,
+        .universities-grid .university-programmes {
+            display: flex !important;
         }
 
-        /* CTA adjustments */
-        .cta-content h2 {
-            font-size: 2rem;
+        /* Hide View Toggle on Mobile */
+        .view-toggle {
+            display: none !important;
         }
 
+        /* Mobile Card Design - SAME FOR BOTH LIST AND GRID */
+        .universities-list .grid-title,
+        .universities-grid .university-name {
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 16px !important;
+            line-height: 1.3 !important;
+            padding-right: 90px !important;
+        }
+
+        .universities-list .university-location,
+        .universities-grid .university-location {
+            font-size: 0.8rem !important;
+            margin-bottom: 10px !important;
+            color: #6B7280 !important;
+        }
+
+        .universities-list .university-programmes,
+        .universities-grid .university-programmes {
+            font-size: 0.8rem !important;
+            margin-bottom: 20px !important;
+        }
+
+        /* 3-COLUMN HORIZONTAL GRID ON MOBILE - STABLE ALIGNMENT */
+        .universities-list .grid-stat-item,
+        .universities-grid .grid-stat-item {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            min-width: 0 !important;
+        }
+
+        .universities-list .grid-stat-icon,
+        .universities-grid .grid-stat-icon {
+            font-size: 1.4rem !important;
+            margin-bottom: 8px !important;
+            color: #2C5F8D !important;
+            flex-shrink: 0 !important;
+        }
+
+        .universities-list .grid-stat-label,
+        .universities-grid .grid-stat-label {
+            font-size: 0.65rem !important;
+            margin-bottom: 4px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            color: #6B7280 !important;
+            white-space: nowrap !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        }
+
+        .universities-list .grid-stat-value,
+        .universities-grid .grid-stat-value {
+            font-size: 1.15rem !important;
+            font-weight: 700 !important;
+            color: #1B1F24 !important;
+            white-space: nowrap !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        }
+
+        /* Featured Badge Mobile Size */
+        .featured-badge {
+            padding: 5px 12px !important;
+            font-size: 0.65rem !important;
+            top: 16px !important;
+            right: 16px !important;
+            border-radius: 16px !important;
+        }
+
+        /* CTA Section Mobile */
         .cta-section {
-            padding: 80px 20px;
-        }
-    }
-
-    /* Small Mobile (max-width: 600px) */
-    @media (max-width: 600px) {
-        /* Hero adjustments */
-        .universities-hero h1 {
-            font-size: 2rem;
+            padding: 50px 5%;
         }
 
-        /* Content adjustments */
-        .content-title {
-            font-size: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-        }
-
-        /* University card adjustments */
-        .university-name {
-            font-size: 1.5rem;
-        }
-
-        .stat-value {
-            font-size: 1rem;
-        }
-
-        .stat-icon {
-            font-size: 1.5rem;
-            width: 35px;
-            height: 35px;
-        }
-
-        /* Cards grid adjustments */
-        .university-right {
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .stat-item {
-            gap: 10px;
-        }
-
-        /* CTA adjustments */
         .cta-content h2 {
-            font-size: 1.75rem;
+            font-size: 1.4rem;
+        }
+
+        .cta-content p {
+            font-size: 0.85rem;
         }
 
         .cta-buttons {
@@ -1207,132 +1522,81 @@
             align-items: center;
         }
 
-        /* Adjust padding */
-        .content-area {
-            padding: 20px 15px;
-        }
-
-        .top-picks-section {
-            padding: 40px 15px;
-        }
-
-        /* Budget display adjustments */
-        .budget-display {
-            font-size: 0.7rem;
-        }
-
-        .search-title {
-            font-size: 1.5rem;
-        }
-
-        /* Further compact horizontal sidebar */
-        .filter-sidebar {
-            gap: 15px;
-            padding: 12px;
-        }
-
-        .filter-section {
-            min-width: 160px;
-        }
-
-        .filter-title {
-            font-size: 1rem;
-        }
-
-        .filter-dropdown {
-            padding: 10px;
-            font-size: 0.8rem;
+        .cta-btn-primary, .cta-btn-secondary {
+            width: 100%;
+            max-width: 280px;
         }
     }
 
-    /* Extra Small Mobile (max-width: 480px) */
-    @media (max-width: 480px) {
-        .filter-sidebar {
-            gap: 12px;
-            padding: 10px;
+    @media (max-width: 600px) {
+        .page-header-left h1 {
+            font-size: 1.4rem;
         }
 
-        .filter-section {
-            min-width: 140px;
-        }
-
-        .reset-filters {
-            min-width: 120px;
-            padding: 10px;
-            font-size: 0.75rem;
-        }
-
-        .universities-hero h1 {
-            font-size: 1.75rem;
-            padding-bottom: 30px;
-        }
-
-        .universities-hero h1::after {
-            bottom: 10px;
-        }
-
-        .universities-hero h1::before {
-            width: 20px;
-            height: 20px;
-            bottom: 0;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .section-title::after {
-            bottom: 10px;
-        }
-
-        .section-title::before {
-            width: 20px;
-            height: 20px;
-            bottom: 0;
-        }
-
-        .top-pick-name {
-            font-size: 1.25rem;
-        }
-
-        .cta-section {
-            padding: 60px 15px;
+        .content-area {
+            padding: 20px;
         }
 
         .cta-content h2 {
-            font-size: 1.5rem;
-            padding-bottom: 30px;
+            font-size: 1.2rem;
         }
 
-        .cta-content h2::after {
-            bottom: 10px;
+        /* Extra Small Mobile - Breadcrumb size matches course detail */
+        .mobile-breadcrumb {
+            font-size: 0.6rem;
+            padding: 6px 12px;
+            min-height: 28px;
         }
 
-        .cta-content h2::before {
-            width: 20px;
-            height: 20px;
-            bottom: 0;
+        .mobile-breadcrumb a,
+        .mobile-breadcrumb span {
+            padding: 0 8px;
         }
 
-        .search-section {
-            padding: 30px 15px 20px;
+        /* Extra small breadcrumb on very small screens */
+        .universities-list .grid-title,
+        .universities-grid .university-name {
+            font-size: 1rem !important;
+            padding-right: 85px !important;
+        }
+
+        .universities-list .university-location,
+        .universities-list .university-programmes,
+        .universities-grid .university-location,
+        .universities-grid .university-programmes {
+            font-size: 0.75rem !important;
+        }
+
+        .universities-list .grid-stat-value,
+        .universities-grid .grid-stat-value {
+            font-size: 1.05rem !important;
+        }
+
+        .universities-list .grid-stat-label,
+        .universities-grid .grid-stat-label {
+            font-size: 0.6rem !important;
+        }
+
+        .universities-list .grid-stat-icon,
+        .universities-grid .grid-stat-icon {
+            font-size: 1.3rem !important;
         }
     }
 </style>
 
-<!-- Hero Section -->
+<!-- Hero Section - Hidden on Mobile -->
 <section class="universities-hero">
-    <div class="universities-hero-grid">
-        <% for(let i=0; i<16; i++) { %>
-            <div class="universities-grid-cell"></div>
-        <% } %>
-    </div>
-    
     <div class="universities-hero-content">
         <h1>Explore Universities</h1>
         <p>Discover premier educational institutions offering diverse programs and exceptional opportunities.</p>
+    </div>
+</section>
+
+<!-- Mobile Breadcrumb Section - Visible Only on Mobile -->
+<section class="mobile-breadcrumb-section">
+    <div class="mobile-breadcrumb">
+        <a href="/">Home</a>
+        <span>Universities</span>
     </div>
 </section>
 
@@ -1342,16 +1606,113 @@
         <h2 class="search-title">Find Your University</h2>
         <form class="search-form" id="universitySearchForm">
             <input type="text" class="search-input" placeholder="Search by name, location, or course..." id="searchInput">
+            <div class="search-divider"></div>
             <button type="submit" class="search-button">
-                <i class="fas fa-search"></i> Search
+                <i class="fas fa-search"></i>
+                <span class="search-button-text">Search</span>
             </button>
         </form>
     </div>
 </section>
 
+<!-- Mobile Filter Button -->
+<button class="mobile-filter-button" id="mobileFilterBtn">
+    <i class="fas fa-filter"></i>
+    Filters
+</button>
+
+<!-- Filter Modal Overlay -->
+<div class="filter-modal-overlay" id="filterModalOverlay"></div>
+
+<!-- Filter Modal -->
+<div class="filter-modal" id="filterModal">
+    <div class="filter-modal-header">
+        <h3 class="filter-modal-title">Filters</h3>
+        <button class="filter-modal-close" id="closeFilterModal">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="filter-modal-body">
+        <!-- Programmes Dropdown -->
+        <div class="filter-section">
+            <h3 class="filter-title">Programmes</h3>
+            <select class="filter-dropdown auto-filter" id="programmesFilterModal">
+                <option value="all">All Programmes</option>
+                <option value="engineering">Engineering & Technology</option>
+                <option value="management">Business & Management</option>
+                <option value="computer">Computer Science & IT</option>
+                <option value="law">Law & Legal Studies</option>
+                <option value="medical">Medical & Health Sciences</option>
+                <option value="sciences">Sciences</option>
+                <option value="arts">Arts & Humanities</option>
+                <option value="architecture">Architecture</option>
+                <option value="pharmacy">Pharmacy</option>
+                <option value="design">Design</option>
+                <option value="education">Education</option>
+            </select>
+        </div>
+
+        <!-- State Filter -->
+        <div class="filter-section">
+            <h3 class="filter-title">State</h3>
+            <select class="filter-dropdown auto-filter" id="stateFilterModal">
+                <option value="all">All States</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="delhi">Delhi</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+            </select>
+        </div>
+
+        <!-- University Type -->
+        <div class="filter-section">
+            <h3 class="filter-title">University Type</h3>
+            <div class="filter-group">
+                <label class="filter-radio">
+                    <input type="radio" name="typeModal" value="all" checked class="auto-filter">
+                    <span class="custom-radio"></span>
+                    <span class="filter-label">All Types</span>
+                </label>
+                <label class="filter-radio">
+                    <input type="radio" name="typeModal" value="private" class="auto-filter">
+                    <span class="custom-radio"></span>
+                    <span class="filter-label">Private</span>
+                    <span class="filter-count">7</span>
+                </label>
+                <label class="filter-radio">
+                    <input type="radio" name="typeModal" value="government" class="auto-filter">
+                    <span class="custom-radio"></span>
+                    <span class="filter-label">Government</span>
+                    <span class="filter-count">2</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Budget Filter -->
+        <div class="filter-section">
+            <h3 class="filter-title">Annual Fees</h3>
+            <div class="budget-range">
+                <input type="range" class="range-slider auto-filter" id="budgetRangeModal" min="0" max="500000" step="50000" value="500000">
+                <div class="budget-display">
+                    <span>₹0</span>
+                    <span id="budgetValueModal">₹5L</span>
+                    <span>₹5L+</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="reset-filters" id="resetFiltersModal">
+            <i class="fas fa-redo"></i> Reset Filters
+        </button>
+    </div>
+</div>
+
 <!-- Main Content -->
 <div class="universities-main">
-    <!-- Filter Sidebar - Resizable on desktop, horizontal on mobile -->
+    <!-- Filter Sidebar - Desktop Only -->
     <aside class="filter-sidebar">
         <div class="resize-handle"></div>
         
@@ -1417,36 +1778,37 @@
         <div class="filter-section">
             <h3 class="filter-title">Annual Fees</h3>
             <div class="budget-range">
-                <input type="range" class="range-slider auto-filter" id="budgetRange" min="0" max="500000" step="50000" value="250000">
+                <input type="range" class="range-slider auto-filter" id="budgetRange" min="0" max="500000" step="50000" value="500000">
                 <div class="budget-display">
                     <span>₹0</span>
-                    <span id="budgetValue">₹2.5L</span>
+                    <span id="budgetValue">₹5L</span>
                     <span>₹5L+</span>
                 </div>
             </div>
         </div>
 
         <button class="reset-filters" id="resetFilters">
-            <i class="fas fa-redo"></i> Reset All Filters
+            <i class="fas fa-redo"></i> Reset Filters
         </button>
     </aside>
 
     <!-- Content Area -->
     <main class="content-area">
-        <div class="content-header">
-            <div class="content-tabs">
-                <button class="tab-button active" onclick="window.location.href='/universities'">
-                    All Universities
-                </button>
-                <button class="tab-button" onclick="window.location.href='/universities/top-ranked'">
-                    <i class="fas fa-medal"></i> Top Ranked
-                </button>
+        <!-- Page Header with View Toggle -->
+        <div class="page-header">
+            <div class="page-header-left">
+                <h1>UNIVERSITIES</h1>
+                <p class="page-count">Showing <span id="filteredCount"><%= universities.length %></span> of <%= universities.length %> Universities</p>
             </div>
-            <div>
-                <h2 class="content-title">Universities</h2>
-                <div class="universities-count">
-                    Showing <span id="filteredCount"><%= universities.length %></span> of <%= universities.length %> Universities
-                </div>
+            <div class="view-toggle">
+                <button class="view-btn active" id="listViewBtn">
+                    <i class="fas fa-list"></i>
+                    List
+                </button>
+                <button class="view-btn" id="gridViewBtn">
+                    <i class="fas fa-th"></i>
+                    Grid
+                </button>
             </div>
         </div>
 
@@ -1458,7 +1820,7 @@
                              id: university._id,
                              name: university.name.toLowerCase(),
                              location: university.location.toLowerCase(),
-                             state: university.state || '',
+                             state: (university.state || '').toLowerCase(),
                              type: university.type ? university.type.toLowerCase() : 'private',
                              fee: university.fee || 0,
                              programmes: university.programmes || [],
@@ -1468,9 +1830,10 @@
                          onclick="window.location.href='/university/<%= university._id %>'">
                         
                         <% if (university.featured) { %>
-                            <div class="featured-badge">Featured</div>
+                            <div class="featured-badge">FEATURED</div>
                         <% } %>
                         
+                        <!-- List View Content - Desktop Only -->
                         <div class="university-left">
                             <h3 class="university-name"><%= university.name %></h3>
                             
@@ -1478,24 +1841,23 @@
                                 <div class="detail-row">
                                     <i class="fas fa-map-marker-alt"></i>
                                     <span>Location</span>
-                                    <span style="margin-left: auto;"><%= university.location %></span>
+                                    <span style="margin-left: auto; font-weight: 500;"><%= university.location %>, <%= university.state || 'Gujarat' %></span>
                                 </div>
                                 
                                 <div class="detail-row">
                                     <i class="fas fa-university"></i>
                                     <span>Type</span>
-                                    <span style="margin-left: auto;"><%= university.type || 'Private' %></span>
+                                    <span style="margin-left: auto; font-weight: 500;"><%= university.type || 'Private' %></span>
                                 </div>
-
+                                
                                 <div class="detail-row">
                                     <i class="fas fa-graduation-cap"></i>
                                     <span>Programmes</span>
-                                    <span style="margin-left: auto;"><%= university.programmes.slice(0, 3).join(', ') %>
-                                    <% if (university.programmes.length > 3) { %> +<%= university.programmes.length - 3 %> more<% } %></span>
+                                    <span style="margin-left: auto; font-weight: 500; text-align: right;"><%= university.programmes.slice(0, 3).join(', ') %><% if (university.programmes.length > 3) { %> +<%= university.programmes.length - 3 %> more<% } %></span>
                                 </div>
                             </div>
                             
-                            <a href="/university/<%= university._id %>" class="visit-button">
+                            <a href="/university/<%= university._id %>" class="visit-button" onclick="event.stopPropagation()">
                                 <i class="fas fa-external-link-alt"></i> Visit University Page
                             </a>
                         </div>
@@ -1505,13 +1867,7 @@
                                 <i class="fas fa-globe-asia stat-icon"></i>
                                 <div class="stat-content">
                                     <div class="stat-label">Global Ranking</div>
-                                    <div class="stat-value">
-                                        <% if (university.globalRanking) { %>
-                                            #<%= university.globalRanking %>
-                                        <% } else { %>
-                                            #<%= Math.floor(Math.random() * 200) + 1 %>
-                                        <% } %>
-                                    </div>
+                                    <div class="stat-value">#<%= university.globalRanking || Math.floor(Math.random() * 200) + 1 %></div>
                                 </div>
                             </div>
                             
@@ -1519,7 +1875,7 @@
                                 <i class="fas fa-star stat-icon"></i>
                                 <div class="stat-content">
                                     <div class="stat-label">Rating</div>
-                                    <div class="stat-value"><%= university.rating || 4.0 %>/5</div>
+                                    <div class="stat-value"><%= university.rating || 4.4 %>/5</div>
                                 </div>
                             </div>
                             
@@ -1527,13 +1883,7 @@
                                 <i class="fas fa-graduation-cap stat-icon"></i>
                                 <div class="stat-content">
                                     <div class="stat-label">Masters Programs</div>
-                                    <div class="stat-value">
-                                        <% if (university.mastersPrograms) { %>
-                                            <%= university.mastersPrograms %>
-                                        <% } else { %>
-                                            <%= Math.floor(Math.random() * 30) + 20 %>
-                                        <% } %>
-                                    </div>
+                                    <div class="stat-value"><%= university.mastersPrograms || 40 %></div>
                                 </div>
                             </div>
                             
@@ -1545,204 +1895,197 @@
                                         <% if (university.fee) { %>
                                             ₹<%= (university.fee/100000).toFixed(1) %>L
                                         <% } else { %>
-                                            ₹1.5-3L
+                                            ₹3.3L
                                         <% } %>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Grid View Content - Desktop Grid & Mobile (Both List and Grid) -->
+                        <h3 class="university-name grid-title"><%= university.name %></h3>
+                        
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <%= university.location %>, <%= university.state || 'Gujarat' %>
+                        </div>
+                        
+                        <div class="university-programmes">
+                            <i class="fas fa-graduation-cap"></i>
+                            <%= university.programmes.slice(0, 2).join(', ') %> +<%= Math.max(0, university.programmes.length - 2) %> more
+                        </div>
+                        
+                        <div class="grid-stats">
+                            <div class="grid-stat-item">
+                                <i class="fas fa-globe-asia grid-stat-icon"></i>
+                                <div class="grid-stat-label">GLOBAL RANK</div>
+                                <div class="grid-stat-value">#<%= university.globalRanking || 85 %></div>
+                            </div>
+                            
+                            <div class="grid-stat-item">
+                                <i class="fas fa-star grid-stat-icon"></i>
+                                <div class="grid-stat-label">RATING</div>
+                                <div class="grid-stat-value"><%= university.rating || 4.3 %></div>
+                            </div>
+                            
+                            <div class="grid-stat-item">
+                                <i class="fas fa-users grid-stat-icon"></i>
+                                <div class="grid-stat-label">STUDENTS</div>
+                                <div class="grid-stat-value"><%= university.students || '5200+' %></div>
+                            </div>
+                        </div>
                     </div>
                 <% }) %>
             </div>
-        <% } else { %>
-            <div class="no-results">
+            
+            <!-- No Results Message - Hidden by Default -->
+            <div class="no-results" id="noResults">
                 <i class="fas fa-university"></i>
                 <h3>No Universities Found</h3>
                 <p>Try adjusting your search criteria or filters to find more universities.</p>
                 <button class="reset-filters" onclick="resetAllFilters()">
-                    <i class="fas fa-redo"></i> Reset All Filters
+                    <i class="fas fa-redo"></i> Reset Filters
+                </button>
+            </div>
+        <% } else { %>
+            <div class="no-results show">
+                <i class="fas fa-university"></i>
+                <h3>No Universities Found</h3>
+                <p>Try adjusting your search criteria or filters to find more universities.</p>
+                <button class="reset-filters" onclick="resetAllFilters()">
+                    <i class="fas fa-redo"></i> Reset Filters
                 </button>
             </div>
         <% } %>
     </main>
 </div>
 
-<!-- Top Picks Section - ONLY FEATURED UNIVERSITIES -->
-<% 
-    // Get ONLY featured universities for top picks
-    const featuredUniversities = universities.filter(u => u.featured);
-    
-    if (featuredUniversities.length > 0) { 
-%>
-    <section class="top-picks-section">
-        <h2 class="section-title">Featured Universities</h2>
-        
-        <div class="top-picks-grid">
-            <% featuredUniversities.forEach((university, index) => { %>
-                <div class="top-pick-card" onclick="window.location.href='/university/<%= university._id %>'">
-                    <div class="top-pick-image">
-                        <img src="<%= university.bannerImage || 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop&auto=format' %>" alt="<%= university.name %> Campus">
-                        <div class="featured-badge">Featured</div>
-                    </div>
-                    <div class="top-pick-content">
-                        <div class="top-pick-rank-number"><%= index + 1 %></div>
-                        <h3 class="top-pick-name"><%= university.name %></h3>
-                        <div class="top-pick-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <%= university.location %>
-                        </div>
-                        <div class="top-pick-highlight">
-                            <i class="fas fa-graduation-cap"></i>
-                            <%= university.programmes.slice(0, 2).join(', ') %> 
-                            <% if (university.programmes.length > 2) { %>
-                                +<%= university.programmes.length - 2 %> more
-                            <% } %>
-                        </div>
-                        <div class="top-pick-stats">
-                            <div class="top-pick-stat">
-                                <i class="fas fa-globe-asia top-pick-stat-icon"></i>
-                                <div class="top-pick-stat-value">#<%= university.globalRanking || '150' %></div>
-                                <div class="top-pick-stat-label">Global Rank</div>
-                            </div>
-                            <div class="top-pick-stat">
-                                <i class="fas fa-star top-pick-stat-icon"></i>
-                                <div class="top-pick-stat-value"><%= university.rating %></div>
-                                <div class="top-pick-stat-label">Rating</div>
-                            </div>
-                            <div class="top-pick-stat">
-                                <i class="fas fa-users top-pick-stat-icon"></i>
-                                <div class="top-pick-stat-value"><%= university.students.split('+')[0] %></div>
-                                <div class="top-pick-stat-label">Students</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
-    </section>
-<% } %>
-
-<!-- Contact CTA Section -->
+<!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
         <h2>Need Help Choosing?</h2>
-        <p>Our expert counselors are ready to guide you through the university selection process and answer all your questions.</p>
+        <p>Get personalized guidance from our expert counsellors to find the best university for you</p>
         <div class="cta-buttons">
             <a href="/contact" class="cta-btn-primary">
                 <i class="fas fa-envelope"></i> Contact Admissions
             </a>
             <a href="tel:+9118001234567" class="cta-btn-secondary">
-                <i class="fas fa-phone"></i> Call Free: 1800-123-4567
+                <i class="fas fa-phone"></i> Talk to Counsellor
             </a>
         </div>
     </div>
 </section>
 
 <script>
-    // Debug: Log universities count
-    console.log('📊 Total universities loaded:', <%= universities.length %>);
-    console.log('⭐ Featured universities:', <%= featuredUniversities.length %>);
+    // Mobile Filter Modal
+    const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+    const filterModal = document.getElementById('filterModal');
+    const filterModalOverlay = document.getElementById('filterModalOverlay');
+    const closeFilterModal = document.getElementById('closeFilterModal');
 
-    // Search functionality with input event
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-        filterUniversities();
+    // Open filter modal
+    mobileFilterBtn.addEventListener('click', function() {
+        filterModal.classList.add('active');
+        filterModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
 
+    // Close filter modal
+    function closeModal() {
+        filterModal.classList.remove('active');
+        filterModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeFilterModal.addEventListener('click', closeModal);
+    filterModalOverlay.addEventListener('click', closeModal);
+
+    // Sync modal filters with main filters
+    function syncModalToMain() {
+        document.getElementById('programmesFilter').value = document.getElementById('programmesFilterModal').value;
+        document.getElementById('stateFilter').value = document.getElementById('stateFilterModal').value;
+        document.getElementById('budgetRange').value = document.getElementById('budgetRangeModal').value;
+        
+        const typeModal = document.querySelector('input[name="typeModal"]:checked').value;
+        document.querySelector(`input[name="type"][value="${typeModal}"]`).checked = true;
+        
+        filterUniversities();
+    }
+
+    // Add event listeners to modal filters
+    document.querySelectorAll('#filterModal .auto-filter').forEach(element => {
+        element.addEventListener('change', syncModalToMain);
+    });
+
+    // Budget range modal
+    const budgetRangeModal = document.getElementById('budgetRangeModal');
+    const budgetValueModal = document.getElementById('budgetValueModal');
+    
+    budgetRangeModal.addEventListener('input', function() {
+        const value = parseInt(this.value);
+        budgetValueModal.textContent = value >= 100000 ? '₹' + (value/100000).toFixed(1) + 'L' : '₹' + value.toLocaleString();
+        syncModalToMain();
+    });
+
+    // Reset modal filters
+    document.getElementById('resetFiltersModal').addEventListener('click', function() {
+        document.getElementById('programmesFilterModal').value = 'all';
+        document.getElementById('stateFilterModal').value = 'all';
+        budgetRangeModal.value = 500000;
+        budgetValueModal.textContent = '₹5L';
+        document.querySelector('input[name="typeModal"][value="all"]').checked = true;
+        resetAllFilters();
+        closeModal();
+    });
+
+    // View Toggle Functionality
+    const listViewBtn = document.getElementById('listViewBtn');
+    const gridViewBtn = document.getElementById('gridViewBtn');
+    const universitiesList = document.getElementById('universitiesList');
+    const noResults = document.getElementById('noResults');
+
+    listViewBtn.addEventListener('click', function() {
+        if (universitiesList) {
+            universitiesList.classList.remove('universities-grid');
+            universitiesList.classList.add('universities-list');
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+        }
+    });
+
+    gridViewBtn.addEventListener('click', function() {
+        if (universitiesList) {
+            universitiesList.classList.remove('universities-list');
+            universitiesList.classList.add('universities-grid');
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+        }
+    });
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', filterUniversities);
     document.getElementById('universitySearchForm').addEventListener('submit', function(e) {
         e.preventDefault();
         filterUniversities();
     });
 
-    // Auto-filter functionality for all filter elements
+    // Auto-filter functionality
     document.querySelectorAll('.auto-filter').forEach(element => {
         element.addEventListener('change', filterUniversities);
-        if (element.type === 'radio') {
-            element.addEventListener('click', filterUniversities);
-        }
     });
 
-    // Budget range with auto-filter
+    // Budget range
     const budgetRange = document.getElementById('budgetRange');
     const budgetValue = document.getElementById('budgetValue');
     
     budgetRange.addEventListener('input', function() {
         const value = parseInt(this.value);
-        if (value >= 100000) {
-            budgetValue.textContent = '₹' + (value/100000).toFixed(1) + 'L';
-        } else {
-            budgetValue.textContent = '₹' + value.toLocaleString();
-        }
+        budgetValue.textContent = value >= 100000 ? '₹' + (value/100000).toFixed(1) + 'L' : '₹' + value.toLocaleString();
         filterUniversities();
     });
 
     // Reset all filters
     document.getElementById('resetFilters').addEventListener('click', resetAllFilters);
-
-    // Sidebar resize functionality - Only for desktop
-    const sidebar = document.querySelector('.filter-sidebar');
-    const resizeHandle = document.querySelector('.resize-handle');
-    
-    let isResizing = false;
-    
-    resizeHandle.addEventListener('mousedown', function(e) {
-        if (window.innerWidth > 1024) {
-            isResizing = true;
-            document.addEventListener('mousemove', handleResize);
-            document.addEventListener('mouseup', stopResize);
-        }
-    });
-    
-    function handleResize(e) {
-        if (!isResizing) return;
-        
-        const newWidth = e.clientX;
-        if (newWidth >= 250 && newWidth <= 400) {
-            sidebar.style.width = newWidth + 'px';
-        }
-    }
-    
-    function stopResize() {
-        isResizing = false;
-        document.removeEventListener('mousemove', handleResize);
-        document.removeEventListener('mouseup', stopResize);
-    }
-
-    // Mobile filter sidebar horizontal scrolling enhancement
-    function setupMobileSidebar() {
-        const filterSidebar = document.querySelector('.filter-sidebar');
-        const isMobile = window.innerWidth <= 1024;
-        
-        if (isMobile && filterSidebar) {
-            // Force 100% width on mobile
-            filterSidebar.style.width = '100%';
-            
-            // Add horizontal scroll for filters
-            filterSidebar.style.overflowX = 'auto';
-            filterSidebar.style.overflowY = 'hidden';
-            
-            // Hide resize handle on mobile
-            resizeHandle.style.display = 'none';
-            
-            // Add scroll shadow effect
-            filterSidebar.addEventListener('scroll', function() {
-                const scrollLeft = this.scrollLeft;
-                if (scrollLeft > 0) {
-                    this.style.boxShadow = 'inset 10px 0 10px -10px rgba(0,0,0,0.2)';
-                } else {
-                    this.style.boxShadow = 'none';
-                }
-            });
-        } else if (filterSidebar) {
-            // Reset for desktop
-            filterSidebar.style.overflowX = 'hidden';
-            filterSidebar.style.overflowY = 'auto';
-            filterSidebar.style.boxShadow = 'none';
-            resizeHandle.style.display = 'block';
-            
-            // Set default width for desktop
-            filterSidebar.style.width = '280px';
-        }
-    }
 
     // Filter universities function
     function filterUniversities() {
@@ -1750,8 +2093,6 @@
         const stateFilter = document.getElementById('stateFilter').value;
         const programmesFilter = document.getElementById('programmesFilter').value;
         const budgetValue = parseInt(budgetRange.value);
-        
-        // Get selected university type
         const selectedType = document.querySelector('input[name="type"]:checked').value;
         
         const universityCards = document.querySelectorAll('.university-card');
@@ -1761,10 +2102,13 @@
             const universityData = JSON.parse(card.getAttribute('data-university'));
             let visible = true;
             
-            // Search term filter
-            if (searchTerm !== '') {
-                if (!universityData.name.includes(searchTerm) && 
-                    !universityData.location.includes(searchTerm)) {
+            // Search filter
+            if (searchTerm) {
+                const nameMatch = universityData.name.includes(searchTerm);
+                const locationMatch = universityData.location.includes(searchTerm);
+                const stateMatch = universityData.state && universityData.state.includes(searchTerm);
+                
+                if (!nameMatch && !locationMatch && !stateMatch) {
                     visible = false;
                 }
             }
@@ -1776,12 +2120,10 @@
             
             // Programmes filter
             if (programmesFilter !== 'all') {
-                const hasProgramme = universityData.programmes.some(programme => 
-                    programme.toLowerCase().includes(programmesFilter)
+                const hasProgramme = universityData.programmes.some(p => 
+                    p.toLowerCase().includes(programmesFilter)
                 );
-                if (!hasProgramme) {
-                    visible = false;
-                }
+                if (!hasProgramme) visible = false;
             }
             
             // Type filter
@@ -1790,101 +2132,103 @@
             }
             
             // Budget filter
-            if (budgetValue > 0) {
-                const universityFee = universityData.fee || 0;
-                if (universityFee > budgetValue * 1.2) {
-                    visible = false;
-                }
+            if (budgetValue < 500000 && universityData.fee > budgetValue) {
+                visible = false;
             }
             
-            // Show/hide card
-            card.style.display = visible ? 'flex' : 'none';
-            if (visible) visibleCount++;
+            // Apply visibility
+            if (visible) {
+                card.classList.remove('filtered-out');
+                visibleCount++;
+            } else {
+                card.classList.add('filtered-out');
+            }
         });
         
         // Update count
         document.getElementById('filteredCount').textContent = visibleCount;
         
-        // Show no results message if needed
-        if (visibleCount === 0 && universityCards.length > 0) {
-            const list = document.getElementById('universitiesList');
-            if (list) {
-                list.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-university"></i>
-                        <h3>No Universities Found</h3>
-                        <p>Try adjusting your search criteria or filters to find more universities.</p>
-                        <button class="reset-filters" onclick="resetAllFilters()">
-                            <i class="fas fa-redo"></i> Reset All Filters
-                        </button>
-                    </div>
-                `;
+        // Show/hide no results message
+        if (noResults) {
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+                if (universitiesList) {
+                    universitiesList.style.display = 'none';
+                }
+            } else {
+                noResults.classList.remove('show');
+                if (universitiesList) {
+                    universitiesList.style.display = '';
+                }
             }
         }
     }
 
-    // Reset all filters
     function resetAllFilters() {
-        // Reset search input
         document.getElementById('searchInput').value = '';
-        
-        // Reset state filter
         document.getElementById('stateFilter').value = 'all';
-        
-        // Reset programmes filter
         document.getElementById('programmesFilter').value = 'all';
-        
-        // Reset budget range to max value
         budgetRange.value = 500000;
         budgetValue.textContent = '₹5L';
-        
-        // Reset radio buttons
         document.querySelector('input[name="type"][value="all"]').checked = true;
         
-        // Show all cards
-        const universityCards = document.querySelectorAll('.university-card');
-        universityCards.forEach(card => {
-            card.style.display = 'flex';
+        // Reset modal filters
+        document.getElementById('stateFilterModal').value = 'all';
+        document.getElementById('programmesFilterModal').value = 'all';
+        budgetRangeModal.value = 500000;
+        budgetValueModal.textContent = '₹5L';
+        document.querySelector('input[name="typeModal"][value="all"]').checked = true;
+        
+        // Remove filtered-out class from all cards
+        document.querySelectorAll('.university-card').forEach(card => {
+            card.classList.remove('filtered-out');
         });
         
-        // Reset count
-        document.getElementById('filteredCount').textContent = universityCards.length;
-        
-        // Remove no results message if present
-        const noResults = document.querySelector('.no-results');
-        if (noResults && document.getElementById('universitiesList')) {
-            const list = document.getElementById('universitiesList');
-            if (list) {
-                universityCards.forEach(card => card.style.display = 'flex');
-            }
+        // Show universities list and hide no results
+        if (universitiesList) {
+            universitiesList.style.display = '';
         }
+        if (noResults) {
+            noResults.classList.remove('show');
+        }
+        
+        // Update count
+        const totalCards = document.querySelectorAll('.university-card').length;
+        document.getElementById('filteredCount').textContent = totalCards;
     }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🎯 Featured universities shown in Top Picks:', <%= featuredUniversities.length %>);
+        // Add CSS for filtered-out class
+        const style = document.createElement('style');
+        style.textContent = `
+            .university-card.filtered-out {
+                display: none !important;
+            }
+            
+            @media (max-width: 768px) {
+                .universities-list .university-card.filtered-out,
+                .universities-grid .university-card.filtered-out {
+                    display: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
         
-        // Set initial budget to max value (500000 = ₹5L)
         budgetRange.value = 500000;
         budgetValue.textContent = '₹5L';
+        budgetRangeModal.value = 500000;
+        budgetValueModal.textContent = '₹5L';
         
-        // Show all universities initially
-        const universityCards = document.querySelectorAll('.university-card');
-        universityCards.forEach(card => {
-            card.style.display = 'flex';
-        });
-        
-        // Update count to show all
-        document.getElementById('filteredCount').textContent = universityCards.length;
-        
-        // Setup mobile/desktop sidebar
-        setupMobileSidebar();
-        
-        console.log('💰 Initial budget set to:', budgetRange.value);
-        console.log('📱 Mobile mode:', window.innerWidth <= 1024);
+        // Initialize filter count
+        const totalCards = document.querySelectorAll('.university-card').length;
+        document.getElementById('filteredCount').textContent = totalCards;
     });
 
-    // Re-setup on resize
-    window.addEventListener('resize', setupMobileSidebar);
+    // Force filter on page load
+    window.addEventListener('load', function() {
+        setTimeout(filterUniversities, 100);
+    });
 </script>
+
 <%- include('partials/footer') %>

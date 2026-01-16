@@ -1,17 +1,14 @@
 <%- include('partials/header') %>
 
-
 <!-- Import Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
 <style>
 /* ========================================
    UNIVERSITY ACADEMIC THEME - COMPLETE STYLES
    ======================================== */
-
 
 /* Root Variables - Academic Color Palette */
 :root {
@@ -41,6 +38,7 @@
     /* Subtle Illumination */
     --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.08);
     
     /* Typography */
     --font-heading: 'Libre Baskerville', Georgia, serif;
@@ -48,14 +46,12 @@
     --font-simple: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-
 /* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: var(--font-simple);
@@ -65,7 +61,6 @@ body {
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
 }
-
 
 /* Typography - Academic Hierarchy - NO UNDERLINES */
 h1, h2 {
@@ -86,7 +81,6 @@ h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-
 h1 { font-size: 2rem; }
 h2 { font-size: 1.75rem; }
 h3 { font-size: 1.1rem; }
@@ -96,18 +90,15 @@ p {
     font-family: var(--font-simple);
 }
 
-
 /* Remove ALL underlines globally */
 h1::after, h2::after, h3::after,
 h1::before, h2::before, h3::before {
     display: none !important;
 }
 
-
 /* ========================================
    HERO SECTION - ANIMATED UNIVERSITY NAMES IN BOXES WITH BACKGROUND IMAGE
    ======================================== */
-
 
 .hero {
     position: relative;
@@ -129,7 +120,7 @@ h1::before, h2::before, h3::before {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+    background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -145,7 +136,6 @@ h1::before, h2::before, h3::before {
     background: rgba(0, 0, 0, 0.7); /* Black overlay */
 }
 
-
 .hero-content {
     position: relative;
     z-index: 10;
@@ -153,7 +143,6 @@ h1::before, h2::before, h3::before {
     max-width: 850px;
     margin: 0 auto;
 }
-
 
 .hero-content h1 {
     font-size: 2.4rem;
@@ -163,7 +152,6 @@ h1::before, h2::before, h3::before {
     text-decoration: none;
 }
 
-
 .university-title {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.9); /* Lighter white */
@@ -172,7 +160,6 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-heading);
     font-style: italic;
 }
-
 
 .hero-content p {
     font-size: 1rem;
@@ -185,7 +172,6 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* Hero Buttons - UPDATED with curved edges */
 .hero-buttons {
     display: flex;
@@ -193,7 +179,6 @@ h1::before, h2::before, h3::before {
     justify-content: center;
     flex-wrap: wrap;
 }
-
 
 .btn-primary, .btn-secondary {
     font-family: var(--font-simple);
@@ -210,18 +195,15 @@ h1::before, h2::before, h3::before {
     box-shadow: none;
 }
 
-
 .btn-primary {
     background: var(--accent-primary);
     color: #FFFFFF;
 }
 
-
 .btn-primary:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
 }
-
 
 /* Bright Blue Button for Advisor */
 .btn-bright-blue {
@@ -246,19 +228,16 @@ h1::before, h2::before, h3::before {
     transform: translateY(-2px);
 }
 
-
 .btn-secondary {
     background: transparent;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
 }
 
-
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
-
 
 /* Animated University Names in Boxes */
 .university-marquee {
@@ -272,7 +251,6 @@ h1::before, h2::before, h3::before {
     z-index: 5;
     opacity: 0.3; /* Reduced opacity to see background image better */
 }
-
 
 .marquee-row {
     position: absolute;
@@ -336,13 +314,11 @@ h1::before, h2::before, h3::before {
    STATS SECTION - REDUCED SPACING
    ======================================== */
 
-
 .stats-section {
     padding: 1.5rem 5%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
     position: relative;
 }
-
 
 .stats-grid {
     max-width: 1200px;
@@ -352,25 +328,21 @@ h1::before, h2::before, h3::before {
     gap: 1rem;
 }
 
-
 .stat-item {
     text-align: center;
     padding: 0.8rem 0.3rem;
     transition: all 0.3s ease;
 }
 
-
 .stat-item:hover {
     transform: translateY(-4px);
 }
-
 
 .stat-icon {
     font-size: 1.3rem;
     color: var(--accent-primary);
     margin-bottom: 0.3rem;
 }
-
 
 .stat-number, .stat-number-text {
     font-family: var(--font-heading);
@@ -380,14 +352,12 @@ h1::before, h2::before, h3::before {
     display: inline-block;
 }
 
-
 .stat-plus, .stat-percent {
     font-size: 1rem;
     color: var(--accent-primary);
     display: inline-block;
     margin-left: 0.2rem;
 }
-
 
 .stat-label {
     font-size: 0.75rem;
@@ -397,17 +367,14 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* ========================================
    SECTION HEADERS (Global) - NO UNDERLINES
    ======================================== */
-
 
 .section-header {
     text-align: center;
     margin-bottom: 3rem;
 }
-
 
 .section-title {
     font-size: 1.85rem;
@@ -417,7 +384,6 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-heading);
 }
 
-
 .section-subtitle {
     font-size: 0.95rem;
     color: var(--text-muted);
@@ -426,17 +392,14 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* ========================================
    WHY CHOOSE US SECTION - 6 POINTS IN GRID
    ======================================== */
-
 
 .why-choose-us {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
 }
-
 
 .why-choose-grid {
     max-width: 1200px;
@@ -446,13 +409,11 @@ h1::before, h2::before, h3::before {
     gap: 2.5rem 2rem;
 }
 
-
 .why-choose-item {
     display: flex;
     gap: 1rem;
     align-items: flex-start;
 }
-
 
 .why-choose-icon {
     font-size: 1.6rem;
@@ -460,7 +421,6 @@ h1::before, h2::before, h3::before {
     flex-shrink: 0;
     margin-top: 0.2rem;
 }
-
 
 .why-choose-text h3 {
     font-size: 1.05rem;
@@ -470,7 +430,6 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 .why-choose-text p {
     color: var(--text-body);
     line-height: 1.6;
@@ -478,17 +437,14 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* ========================================
-   FEATURED UNIVERSITIES SECTION - UPDATED WITH SMALLER TEXT
+   FEATURED UNIVERSITIES SECTION - WITH BOX SHADOW & HOVER
    ======================================== */
-
 
 .featured-universities {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
 }
-
 
 .featured-description {
     text-align: center;
@@ -500,7 +456,6 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* Horizontal scroll container */
 .university-logos-container {
     position: relative;
@@ -508,7 +463,6 @@ h1::before, h2::before, h3::before {
     margin: 0 auto;
     overflow: hidden;
 }
-
 
 .university-logos-carousel {
     display: flex;
@@ -522,48 +476,41 @@ h1::before, h2::before, h3::before {
     cursor: grab;
 }
 
-
 .university-logos-carousel:active {
     cursor: grabbing;
 }
-
 
 .university-logos-carousel::-webkit-scrollbar {
     display: none;
 }
 
-
-/* University Card - NO HOVER EFFECTS, NO BOX SHADOW */
+/* University Card - WITH BOX SHADOW & SUBTLE HOVER EFFECT */
 .university-logo-item {
-    flex: 0 0 520px;
+    flex: 0 0 480px;
     background: var(--bg-surface);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: start;
-    transition: none;
-    box-shadow: none !important;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium); /* Added box shadow */
     cursor: pointer;
     user-select: none;
-    margin-right: 20px; /* Added space between cards */
+    margin-right: 20px;
 }
 
-
-/* Removed hover effects */
+/* Subtle hover effect - NO MOVEMENT OR SCALING */
 .university-logo-item:hover {
-    transform: none;
-    box-shadow: none !important;
-    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-elevated); /* Enhanced shadow on hover */
+    border-color: rgba(44, 95, 141, 0.15); /* Subtle border color change */
 }
 
-
-/* Card Content Wrapper - FIXED: Equal padding on left and right */
+/* Card Content Wrapper - REDUCED PADDING */
 .university-card-content {
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1rem 1rem 1rem 1rem;
     position: relative;
     text-align: left;
 }
-
 
 /* Admission Open Badge - Green - Smaller */
 .admission-badge {
@@ -574,62 +521,56 @@ h1::before, h2::before, h3::before {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 0.4rem 1rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
     text-align: left;
     font-family: var(--font-simple);
 }
-
 
 /* Card Header with Logo */
 .university-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
-
 
 .university-text-info {
     flex: 1;
 }
 
-
 .university-location-text {
     font-size: 0.75rem;
     color: var(--text-muted);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
     font-weight: 500;
     font-family: var(--font-simple);
 }
 
-
 .university-name-large {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.3;
     margin: 0;
 }
 
-
-/* Logo Box - Perfect Square */
+/* Logo Box - Perfect Square - Slightly smaller */
 .university-logo-box {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem;
+    padding: 0.5rem;
     flex-shrink: 0;
 }
-
 
 .university-logo-box img {
     max-width: 100%;
@@ -637,24 +578,21 @@ h1::before, h2::before, h3::before {
     object-fit: contain;
 }
 
-
 /* Card Footer - Only Fees (Deadline Removed) */
 .university-card-footer {
-    padding-top: 1.2rem;
+    padding-top: 0.8rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
-
 
 .footer-item h4 {
     font-size: 0.7rem;
     color: var(--text-muted);
     font-weight: 600;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     font-family: var(--font-simple);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
 
 .footer-item p {
     font-size: 1.1rem;
@@ -664,10 +602,9 @@ h1::before, h2::before, h3::before {
     margin: 0;
 }
 
-
 /* View More Button */
 .view-more-btn {
-    background: var(--bright-blue); /* Bright blue background */
+    background: var(--bright-blue);
     color: #FFFFFF;
     font-family: var(--font-simple);
     font-weight: 600;
@@ -679,10 +616,9 @@ h1::before, h2::before, h3::before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 25px; /* Curved edges */
+    border-radius: 25px;
     margin-top: 2.8rem;
 }
-
 
 .view-more-btn:hover {
     background: var(--bright-blue-hover);
@@ -700,17 +636,14 @@ h1::before, h2::before, h3::before {
     animation: slide-right 1s infinite;
 }
 
-
 /* ========================================
-   STUDENT SUCCESS STORIES - UPDATED SIMPLE DESIGN
+   STUDENT SUCCESS STORIES - WITH BOX SHADOW & SUBTLE HOVER
    ======================================== */
-
 
 .student-stories {
     padding: 4.5rem 5%;
     background: var(--bg-surface);
 }
-
 
 .stories-container {
     position: relative;
@@ -718,45 +651,49 @@ h1::before, h2::before, h3::before {
     margin: 0 auto;
 }
 
-
 .stories-carousel {
     display: flex;
-    gap: 1.8rem;
+    gap: 1.5rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0 1.5rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    cursor: grab;
 }
 
+.stories-carousel:active {
+    cursor: grabbing;
+}
 
 .stories-carousel::-webkit-scrollbar {
     display: none;
 }
 
-
-/* Simple Story Card - NO HOVER EFFECTS */
+/* Story Card - WITH BOX SHADOW & SUBTLE HOVER EFFECT */
 .story-card {
-    flex: 0 0 350px;
+    flex: 0 0 320px;
     background: var(--bg-surface);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: start;
-    transition: none;
-    box-shadow: var(--shadow-soft);
-    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-medium); /* Added box shadow */
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
     cursor: pointer;
+    user-select: none;
+    margin-right: 15px;
 }
 
-/* Remove all hover effects */
+/* Subtle hover effect - NO MOVEMENT OR SCALING */
 .story-card:hover {
-    box-shadow: var(--shadow-soft);
-    transform: none;
+    box-shadow: var(--shadow-elevated); /* Enhanced shadow on hover */
+    border-color: rgba(44, 95, 141, 0.15); /* Subtle border color change */
 }
 
 /* Top Section with Rating and Student Info */
@@ -764,8 +701,8 @@ h1::before, h2::before, h3::before {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 1rem;
-    padding-bottom: 1.2rem;
+    gap: 0.8rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -777,13 +714,13 @@ h1::before, h2::before, h3::before {
 .student-rating {
     display: flex;
     gap: 0.2rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     align-items: center;
 }
 
 .star {
     color: var(--star-yellow);
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .star.half {
@@ -815,35 +752,35 @@ h1::before, h2::before, h3::before {
 .student-details {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.2rem;
 }
 
 .student-name {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.3;
 }
 
 .student-course {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--accent-primary);
     font-weight: 600;
     font-family: var(--font-simple);
 }
 
 .student-university {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 500;
     font-family: var(--font-simple);
 }
 
-/* Student Image - Small like university cards */
+/* Student Image - Smaller like university cards */
 .student-image {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 8px;
     overflow: hidden;
     flex-shrink: 0;
@@ -858,13 +795,13 @@ h1::before, h2::before, h3::before {
 
 /* Bottom Section with Review */
 .story-card-bottom {
-    padding-top: 0.5rem;
+    padding-top: 0.4rem;
 }
 
 .review-text {
     color: var(--text-body);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.5;
     font-style: italic;
     margin: 0;
     display: -webkit-box;
@@ -878,19 +815,16 @@ h1::before, h2::before, h3::before {
    FAQ SECTION - COMPLETELY UPDATED WITH BETTER MOBILE VISIBILITY
    ======================================== */
 
-
 .faq-section {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
     position: relative;
 }
 
-
 .faq-container {
     max-width: 850px;
     margin: 0 auto;
 }
-
 
 .faq-item {
     background: transparent;
@@ -904,7 +838,6 @@ h1::before, h2::before, h3::before {
     transition: none;
 }
 
-
 /* Remove ALL hover effects from FAQ */
 .faq-item:hover {
     background: transparent !important;
@@ -912,13 +845,11 @@ h1::before, h2::before, h3::before {
     transform: none !important;
 }
 
-
 .faq-item:hover .faq-question {
     transform: none !important;
     margin: 0 !important;
     padding: 1.2rem 0 !important;
 }
-
 
 .faq-item:not(:last-child)::after {
     content: '';
@@ -936,7 +867,6 @@ h1::before, h2::before, h3::before {
     );
 }
 
-
 .faq-question {
     padding: 1.2rem 0;
     cursor: default;
@@ -948,30 +878,27 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 .faq-question:hover {
     transform: none !important;
     margin: 0 !important;
     padding: 1.2rem 0 !important;
 }
 
-
 /* FAQ Question Text - Ensure complete visibility */
 .faq-question h3 {
     color: var(--text-primary);
-    font-size: 0.92rem; /* Slightly larger for better readability */
+    font-size: 0.92rem;
     font-weight: 600;
     margin: 0;
     text-decoration: none;
     flex: 1;
     padding-right: 1rem;
-    line-height: 1.4; /* Better line height */
-    white-space: normal; /* Allow wrapping */
+    line-height: 1.4;
+    white-space: normal;
     overflow: visible;
     text-overflow: clip;
     font-family: var(--font-simple);
 }
-
 
 .faq-question i {
     color: var(--accent-primary);
@@ -981,11 +908,9 @@ h1::before, h2::before, h3::before {
     margin-left: 0.5rem;
 }
 
-
 .faq-item.active .faq-question i {
     transform: rotate(180deg);
 }
-
 
 .faq-answer {
     max-height: 0;
@@ -994,12 +919,10 @@ h1::before, h2::before, h3::before {
     background: transparent;
 }
 
-
 .faq-item.active .faq-answer {
     max-height: 500px;
     padding: 0 0 1.2rem;
 }
-
 
 .faq-answer p {
     color: var(--text-body);
@@ -1009,11 +932,9 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-simple);
 }
 
-
 /* ========================================
    CTA SECTION WITH UPDATED TEXT
    ======================================== */
-
 
 .cta-section {
     padding: 4.5rem 5%;
@@ -1021,12 +942,10 @@ h1::before, h2::before, h3::before {
     text-align: center;
 }
 
-
 .cta-content {
     max-width: 750px;
     margin: 0 auto;
 }
-
 
 .cta-content h2 {
     font-size: 1.95rem;
@@ -1036,14 +955,12 @@ h1::before, h2::before, h3::before {
     font-family: var(--font-heading);
 }
 
-
 .cta-content p {
     font-size: 1rem;
     color: var(--text-body);
     margin-bottom: 2rem;
     font-family: var(--font-simple);
 }
-
 
 .cta-buttons {
     display: flex;
@@ -1052,13 +969,12 @@ h1::before, h2::before, h3::before {
     flex-wrap: wrap;
 }
 
-
 .btn-primary.large,
 .btn-bright-blue.large,
 .btn-secondary.large {
     font-size: 0.95rem;
     padding: 0.95rem 2.2rem;
-    border-radius: 25px; /* Curved edges */
+    border-radius: 25px;
     box-shadow: none;
     transition: all 0.25s ease;
     font-family: var(--font-simple);
@@ -1096,16 +1012,13 @@ h1::before, h2::before, h3::before {
     background: transparent;
 }
 
-
 .btn-secondary.large:hover {
     background: var(--accent-light);
 }
 
-
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */
-
 
 @media (max-width: 968px) {
     .hero-content h1 { font-size: 1.9rem; }
@@ -1121,20 +1034,20 @@ h1::before, h2::before, h3::before {
     }
     
     .university-logo-item {
-        flex: 0 0 460px;
+        flex: 0 0 420px;
     }
     
     .university-card-header {
-        gap: 1rem;
+        gap: 0.8rem;
     }
     
     .university-name-large {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
     .university-logo-box {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
     }
     
     /* University boxes adjustments */
@@ -1149,17 +1062,17 @@ h1::before, h2::before, h3::before {
     
     /* Story card adjustments */
     .story-card {
-        flex: 0 0 320px;
-        padding: 1.2rem;
+        flex: 0 0 300px;
+        padding: 1rem;
     }
     
     .student-image {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
     }
     
     .student-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     /* FAQ adjustments for tablet */
@@ -1168,7 +1081,6 @@ h1::before, h2::before, h3::before {
         line-height: 1.3;
     }
 }
-
 
 @media (max-width: 640px) {
     .hero { 
@@ -1275,75 +1187,130 @@ h1::before, h2::before, h3::before {
     }
     
     .university-logos-carousel {
-        gap: 1.5rem;
+        gap: 1.2rem;
         padding: 0.5rem 0 1rem;
     }
     
     .university-logo-item {
-        flex: 0 0 90vw;
-        box-shadow: none !important;
+        flex: 0 0 85vw;
+        box-shadow: var(--shadow-medium) !important; /* Keep box shadow on mobile */
         margin-right: 15px;
     }
     
     .university-logo-item:hover {
-        box-shadow: none !important;
+        box-shadow: var(--shadow-elevated) !important; /* Keep hover shadow on mobile */
     }
     
-    /* FIXED: Equal padding on left and right for mobile */
+    /* FIXED: Equal padding on left and right for mobile - REDUCED */
     .university-card-content {
-        padding: 1.2rem 1.2rem 1.2rem 1.2rem; /* Equal padding on all sides */
+        padding: 0.5rem;
     }
     
     .admission-badge {
         font-size: 0.55rem;
-        padding: 0.35rem 0.9rem;
-        margin-bottom: 1rem;
+        padding: 0.25rem 0.7rem;
+        margin-bottom: 0.7rem;
     }
     
     .university-card-header {
-        gap: 1rem;
-        margin-bottom: 1.2rem;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
     }
     
     .university-location-text {
         font-size: 0.7rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
     
     /* FIXED: Decreased font size for university names on mobile */
     .university-name-large {
-        font-size: 1.1rem; /* Reduced from 1.3rem */
+        font-size: 1rem;
         line-height: 1.2;
     }
     
-    /* Perfect Square Logo Box on Mobile */
+    /* Perfect Square Logo Box on Mobile - Smaller */
     .university-logo-box {
-        width: 80px; /* Slightly smaller for mobile */
-        height: 80px;
-        padding: 0.5rem;
+        width: 70px;
+        height: 70px;
+        padding: 0.4rem;
     }
     
     .university-card-footer {
-        padding-top: 1rem;
+        padding-top: 0.7rem;
     }
     
     .footer-item h4 {
         font-size: 0.65rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
     }
     
     .footer-item p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    /* STORY CARDS - MOBILE ADJUSTMENTS FOR COMPLETE VISIBILITY */
+    .stories-carousel {
+        gap: 1rem;
+        padding: 1rem 5% 1.5rem;
+    }
+    
+    .story-card {
+        flex: 0 0 75vw !important;
+        padding: 0.9rem;
+        gap: 0.8rem;
+        margin-right: 10px;
+        box-sizing: border-box;
+        box-shadow: var(--shadow-medium) !important; /* Keep box shadow on mobile */
+    }
+    
+    .story-card:hover {
+        box-shadow: var(--shadow-elevated) !important; /* Keep hover shadow on mobile */
+    }
+    
+    .story-card-top {
+        padding-bottom: 0.7rem;
+        gap: 0.7rem;
+    }
+    
+    .student-image {
+        width: 55px !important;
+        height: 55px !important;
+    }
+    
+    .student-name {
+        font-size: 0.9rem;
+    }
+    
+    .student-course {
+        font-size: 0.75rem;
+    }
+    
+    .student-university {
+        font-size: 0.7rem;
+    }
+    
+    .student-rating {
+        margin-bottom: 0.5rem;
+    }
+    
+    .star {
+        font-size: 0.85rem;
+    }
+    
+    .review-text {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 3;
+        line-height: 1.4;
     }
     
     /* FAQ - Mobile adjustments with better visibility and smaller font */
     .faq-question h3 {
-        font-size: 0.82rem; /* Reduced font size for mobile */
+        font-size: 0.82rem;
         line-height: 1.3;
-        white-space: normal; /* Allow text to wrap */
+        white-space: normal;
         overflow: visible;
-        padding-right: 1.5rem; /* More space for the icon */
-        font-family: var(--font-simple); /* Professional simple font */
+        padding-right: 1.5rem;
+        font-family: var(--font-simple);
     }
     
     .faq-question {
@@ -1356,51 +1323,12 @@ h1::before, h2::before, h3::before {
     }
     
     .faq-answer p {
-        font-size: 0.8rem; /* Smaller font for answers on mobile */
+        font-size: 0.8rem;
         line-height: 1.5;
     }
     
     .faq-item.active .faq-answer {
         padding: 0 0 1rem;
-    }
-    
-    /* Story cards - mobile optimization */
-    .story-card {
-        flex: 0 0 85vw;
-        padding: 1rem;
-        gap: 1rem;
-        margin-right: 1rem;
-    }
-    
-    .story-card-top {
-        padding-bottom: 0.8rem;
-        gap: 0.8rem;
-    }
-    
-    .student-image {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .student-name {
-        font-size: 0.95rem;
-    }
-    
-    .student-course {
-        font-size: 0.8rem;
-    }
-    
-    .student-university {
-        font-size: 0.75rem;
-    }
-    
-    .star {
-        font-size: 0.9rem;
-    }
-    
-    .review-text {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 3;
     }
     
     .view-more-btn {
@@ -1426,7 +1354,6 @@ h1::before, h2::before, h3::before {
     }
 }
 
-
 @media (max-width: 480px) {
     .hero {
         min-height: 500px;
@@ -1446,20 +1373,39 @@ h1::before, h2::before, h3::before {
         font-size: 0.8rem;
     }
     
+    /* STORY CARDS - EXTRA SMALL MOBILE */
     .story-card {
-        flex: 0 0 82vw;
-        padding: 0.9rem;
+        flex: 0 0 70vw !important;
+        padding: 0.8rem;
+        gap: 0.7rem;
+    }
+    
+    .student-image {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .student-name {
+        font-size: 0.85rem;
+    }
+    
+    .student-rating {
+        margin-bottom: 0.4rem;
+    }
+    
+    .star {
+        font-size: 0.8rem;
     }
     
     /* FAQ further adjustments for very small screens - smaller font */
     .faq-question h3 {
-        font-size: 0.78rem; /* Even smaller font */
+        font-size: 0.78rem;
         line-height: 1.25;
-        font-family: var(--font-simple); /* Professional simple font */
+        font-family: var(--font-simple);
     }
     
     .faq-answer p {
-        font-size: 0.78rem; /* Even smaller for answers */
+        font-size: 0.78rem;
     }
     
     .stats-section {
@@ -1467,19 +1413,18 @@ h1::before, h2::before, h3::before {
     }
     
     .university-logo-item {
-        flex: 0 0 85vw;
-        box-shadow: none !important;
+        flex: 0 0 82vw;
         margin-right: 12px;
     }
     
-    /* FIXED: Ensure equal padding on mobile */
+    /* FIXED: Ensure equal padding on mobile - FURTHER REDUCED */
     .university-card-content {
-        padding: 1rem 1rem 1rem 1rem; /* Equal padding */
+        padding: 0.5rem;
     }
     
     .admission-badge {
         font-size: 0.52rem;
-        padding: 0.3rem 0.8rem;
+        padding: 0.2rem 0.6rem;
     }
     
     .university-location-text {
@@ -1488,14 +1433,14 @@ h1::before, h2::before, h3::before {
     
     /* FIXED: Further decreased font size for university names on very small mobile */
     .university-name-large {
-        font-size: 1rem; /* Further reduced for very small screens */
+        font-size: 0.95rem;
     }
     
-    /* Perfect Square Logo Box */
+    /* Perfect Square Logo Box - Even smaller */
     .university-logo-box {
-        width: 70px; /* Even smaller for very small screens */
-        height: 70px;
-        padding: 0.4rem;
+        width: 65px;
+        height: 65px;
+        padding: 0.3rem;
     }
     
     .footer-item h4 {
@@ -1503,38 +1448,23 @@ h1::before, h2::before, h3::before {
     }
     
     .footer-item p {
-        font-size: 0.95rem;
-    }
-    
-    /* Story card extra small adjustments */
-    .student-image {
-        width: 55px;
-        height: 55px;
-    }
-    
-    .student-name {
         font-size: 0.9rem;
     }
-    
-    .star {
-        font-size: 0.8rem;
-    }
 }
-
 
 /* Extra small devices */
 @media (max-width: 380px) {
     .university-name-large {
-        font-size: 0.95rem; /* Minimum readable size */
+        font-size: 0.9rem;
     }
     
     .university-logo-box {
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
     }
     
     .university-card-content {
-        padding: 0.9rem 0.9rem 0.9rem 0.9rem;
+        padding:0.5rem;
     }
     
     .university-box {
@@ -1546,11 +1476,22 @@ h1::before, h2::before, h3::before {
         font-size: 0.75rem;
     }
     
+    /* STORY CARDS - SMALLEST ADJUSTMENT */
+    .story-card {
+        flex: 0 0 68vw !important;
+        padding: 0.7rem;
+    }
+    
+    .student-image {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
     /* FAQ smallest adjustment - even smaller font */
     .faq-question h3 {
         font-size: 0.75rem;
         line-height: 1.2;
-        font-family: var(--font-simple); /* Professional simple font */
+        font-family: var(--font-simple);
     }
     
     .faq-answer p {
@@ -1563,7 +1504,6 @@ h1::before, h2::before, h3::before {
     }
 }
 </style>
-
 
 <!-- Hero Section with Animated University Names in Boxes -->
 <section class="hero">
@@ -1639,7 +1579,6 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-
 <!-- Stats Section - With Gradient Background -->
 <section class="stats-section">
     <div class="stats-grid">
@@ -1668,7 +1607,6 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
 </section>
-
 
 <!-- Why Choose Us Section - 6 Points Grid -->
 <section class="why-choose-us">
@@ -1728,7 +1666,6 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-
 <!-- Featured Universities -->
 <section class="featured-universities">
     <div class="section-header">
@@ -1778,7 +1715,6 @@ h1::before, h2::before, h3::before {
         </button>
     </div>
 </section>
-
 
 <!-- Student Success Stories Section - UPDATED SIMPLE DESIGN -->
 <section id="stories" class="student-stories">
@@ -1830,7 +1766,6 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
 </section>
-
 
 <!-- FAQ Section - Updated with Minimal Design -->
 <section class="faq-section">
@@ -1902,7 +1837,6 @@ h1::before, h2::before, h3::before {
     </div>
 </section>
 
-
 <!-- CTA Section with Updated Text -->
 <section class="cta-section">
     <div class="cta-content">
@@ -1918,7 +1852,6 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
 </section>
-
 
 <script>
 // Stats counter animation
@@ -1962,68 +1895,71 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(statsSection);
     }
     
-    // University carousel swipe functionality
+    // University carousel swipe functionality - MORE SENSITIVE
     const universityCarousel = document.getElementById('universityCarousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let isDownUniversity = false;
+    let startXUniversity;
+    let scrollLeftUniversity;
     
-    // Mouse events for university carousel
+    // Mouse events for university carousel - MORE SENSITIVE
     universityCarousel.addEventListener('mousedown', (e) => {
-        isDown = true;
+        isDownUniversity = true;
         universityCarousel.style.cursor = 'grabbing';
-        startX = e.pageX - universityCarousel.offsetLeft;
-        scrollLeft = universityCarousel.scrollLeft;
+        startXUniversity = e.pageX - universityCarousel.offsetLeft;
+        scrollLeftUniversity = universityCarousel.scrollLeft;
         e.preventDefault();
     });
     
     universityCarousel.addEventListener('mouseleave', () => {
-        isDown = false;
+        isDownUniversity = false;
         universityCarousel.style.cursor = 'grab';
     });
     
     universityCarousel.addEventListener('mouseup', () => {
-        isDown = false;
+        isDownUniversity = false;
         universityCarousel.style.cursor = 'grab';
     });
     
     universityCarousel.addEventListener('mousemove', (e) => {
-        if(!isDown) return;
+        if(!isDownUniversity) return;
         e.preventDefault();
         const x = e.pageX - universityCarousel.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        universityCarousel.scrollLeft = scrollLeft - walk;
+        const walk = (x - startXUniversity) * 2.5; // Increased sensitivity from 1.5 to 2.5
+        universityCarousel.scrollLeft = scrollLeftUniversity - walk;
     });
     
-    // Touch events for university carousel mobile
+    // Touch events for university carousel mobile - MORE SENSITIVE
     universityCarousel.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - universityCarousel.offsetLeft;
-        scrollLeft = universityCarousel.scrollLeft;
+        isDownUniversity = true;
+        startXUniversity = e.touches[0].pageX - universityCarousel.offsetLeft;
+        scrollLeftUniversity = universityCarousel.scrollLeft;
     });
     
     universityCarousel.addEventListener('touchend', () => {
-        isDown = false;
+        isDownUniversity = false;
     });
     
     universityCarousel.addEventListener('touchmove', (e) => {
-        if(!isDown) return;
+        if(!isDownUniversity) return;
+        e.preventDefault();
         const x = e.touches[0].pageX - universityCarousel.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        universityCarousel.scrollLeft = scrollLeft - walk;
+        const walk = (x - startXUniversity) * 2.5; // Increased sensitivity from 1.5 to 2.5
+        universityCarousel.scrollLeft = scrollLeftUniversity - walk;
     });
     
-    // Testimonial carousel swipe functionality
+    // Testimonial carousel swipe functionality - MORE SENSITIVE
     const testimonialsCarousel = document.getElementById('testimonialsCarousel');
     let isDownTestimonial = false;
     let startXTestimonial;
     let scrollLeftTestimonial;
     
+    // Mouse events for testimonials carousel - MORE SENSITIVE
     testimonialsCarousel.addEventListener('mousedown', (e) => {
         isDownTestimonial = true;
         testimonialsCarousel.classList.add('active');
         startXTestimonial = e.pageX - testimonialsCarousel.offsetLeft;
         scrollLeftTestimonial = testimonialsCarousel.scrollLeft;
+        e.preventDefault();
     });
     
     testimonialsCarousel.addEventListener('mouseleave', () => {
@@ -2040,11 +1976,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!isDownTestimonial) return;
         e.preventDefault();
         const x = e.pageX - testimonialsCarousel.offsetLeft;
-        const walk = (x - startXTestimonial) * 2;
+        const walk = (x - startXTestimonial) * 3; // Increased sensitivity from 2 to 3
         testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
     });
     
-    // Touch events for testimonials mobile
+    // Touch events for testimonials mobile - MORE SENSITIVE
     testimonialsCarousel.addEventListener('touchstart', (e) => {
         isDownTestimonial = true;
         startXTestimonial = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
@@ -2059,9 +1995,63 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!isDownTestimonial) return;
         e.preventDefault();
         const x = e.touches[0].pageX - testimonialsCarousel.offsetLeft;
-        const walk = (x - startXTestimonial) * 2;
+        const walk = (x - startXTestimonial) * 3; // Increased sensitivity from 2 to 3
         testimonialsCarousel.scrollLeft = scrollLeftTestimonial - walk;
     });
+    
+    // Add momentum scrolling for better mobile experience
+    function addMomentumScrolling(carousel) {
+        let startX = 0;
+        let scrollLeft = 0;
+        let velocity = 0;
+        let animationFrame;
+        let lastTime = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX;
+            scrollLeft = carousel.scrollLeft;
+            velocity = 0;
+            lastTime = Date.now();
+            
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+        });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            const x = e.touches[0].pageX;
+            const walk = (x - startX);
+            carousel.scrollLeft = scrollLeft - walk;
+            
+            const currentTime = Date.now();
+            const timeDiff = currentTime - lastTime;
+            if (timeDiff > 0) {
+                velocity = walk / timeDiff;
+                lastTime = currentTime;
+            }
+        });
+        
+        carousel.addEventListener('touchend', () => {
+            if (Math.abs(velocity) > 0.1) {
+                const momentum = velocity * 500;
+                
+                function animate() {
+                    carousel.scrollLeft -= momentum * 0.1;
+                    velocity *= 0.95;
+                    
+                    if (Math.abs(velocity) > 0.01) {
+                        animationFrame = requestAnimationFrame(animate);
+                    }
+                }
+                
+                animate();
+            }
+        });
+    }
+    
+    // Apply momentum scrolling to both carousels
+    addMomentumScrolling(universityCarousel);
+    addMomentumScrolling(testimonialsCarousel);
     
     // FAQ toggle functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -2073,6 +2063,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
-
 <%- include('partials/footer') %>
