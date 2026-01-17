@@ -110,6 +110,7 @@ h1::before, h2::before, h3::before {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 
 /* University Background Image with Black Overlay */
@@ -318,6 +319,7 @@ h1::before, h2::before, h3::before {
     padding: 1.5rem 5%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
     position: relative;
+    z-index: 2;
 }
 
 .stats-grid {
@@ -399,6 +401,8 @@ h1::before, h2::before, h3::before {
 .why-choose-us {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
+    position: relative;
+    z-index: 2;
 }
 
 .why-choose-grid {
@@ -444,6 +448,8 @@ h1::before, h2::before, h3::before {
 .featured-universities {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
+    position: relative;
+    z-index: 2;
 }
 
 .featured-description {
@@ -607,12 +613,14 @@ h1::before, h2::before, h3::before {
     margin: 0;
 }
 
-/* Carousel Dots */
+/* Carousel Dots - FIXED POSITIONING */
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin-top: 25px;
+    position: relative;
+    z-index: 10;
 }
 
 .dot {
@@ -677,6 +685,8 @@ h1::before, h2::before, h3::before {
 .student-stories {
     padding: 4.5rem 5%;
     background: var(--bg-surface);
+    position: relative;
+    z-index: 2;
 }
 
 /* DESKTOP: 3 cards per section */
@@ -859,6 +869,7 @@ h1::before, h2::before, h3::before {
     padding: 4.5rem 5%;
     background: var(--bg-primary);
     position: relative;
+    z-index: 2;
 }
 
 .faq-container {
@@ -978,6 +989,8 @@ h1::before, h2::before, h3::before {
     padding: 4.5rem 5%;
     background: var(--bg-surface);
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .cta-content {
@@ -1726,7 +1739,7 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
     
-    <!-- Dots Navigation for Universities -->
+    <!-- Dots Navigation for Universities - INSIDE featured-universities section -->
     <div class="carousel-dots" id="universityDots"></div>
     
     <div style="text-align: center;">
@@ -1786,7 +1799,7 @@ h1::before, h2::before, h3::before {
         </div>
     </div>
     
-    <!-- Dots Navigation for Testimonials -->
+    <!-- Dots Navigation for Testimonials - INSIDE student-stories section -->
     <div class="carousel-dots" id="testimonialDots"></div>
 </section>
 
