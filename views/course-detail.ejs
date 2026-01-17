@@ -1,11 +1,9 @@
 <%- include('partials/header') %>
 
-
 <!-- Import Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 
 <style>
     /* Course Detail Page - Academic Theme with Background Image Hero */
@@ -16,27 +14,24 @@
         -ms-overflow-style: none;
     }
 
-
     ::-webkit-scrollbar {
         display: none;
     }
 
-
-    /* Hero Section - Background Image with Black Overlay */
+    /* Hero Section - Background Image with Black Overlay - IMPROVED */
     .course-hero {
         position: relative;
         width: 100%;
         min-height: 400px;
         overflow: hidden;
-        background: #000000;
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
         padding: 120px 5% 60px;
         display: flex;
         align-items: center;
         border-bottom: 2px solid #000000;
     }
 
-
-    /* Background Image */
+    /* Background Image - Multiple fallbacks */
     .course-hero::before {
         content: '';
         position: absolute;
@@ -44,15 +39,15 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+        background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-attachment: scroll;
         z-index: 0;
     }
 
-
-    /* Black Overlay */
+    /* Black Overlay - Darker for better text contrast */
     .course-hero::after {
         content: '';
         position: absolute;
@@ -60,16 +55,18 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.65);
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.75) 100%
+        );
         z-index: 1;
     }
 
-
     /* Remove the grid background */
     .course-hero-grid {
-        display: none;
+        display: none !important;
     }
-
 
     .course-hero-content {
         max-width: 1200px;
@@ -80,8 +77,7 @@
         text-align: left;
     }
 
-
-    /* Elevated Breadcrumb with Rounded Box and Full-Height Dividers */
+    /* Elevated Breadcrumb with Rounded Box and Full-Height Dividers - FIXED */
     .breadcrumb {
         display: inline-flex;
         align-items: stretch;
@@ -98,8 +94,9 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-weight: 500;
         min-height: 40px;
+        position: relative;
+        z-index: 2;
     }
-
 
     .breadcrumb a,
     .breadcrumb span {
@@ -112,14 +109,13 @@
         align-items: center;
     }
 
-
     .breadcrumb a:hover {
         color: #FFFFFF;
     }
 
-
-    /* Full-height vertical divider lines - NO "/" text */
-    .breadcrumb a::after {
+    /* Full-height vertical divider lines - Add to ALL items */
+    .breadcrumb a::after,
+    .breadcrumb span::after {
         content: '';
         position: absolute;
         right: 0;
@@ -130,17 +126,15 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
-
-    .breadcrumb a:last-of-type::after {
+    /* Remove line after the LAST item only (span) */
+    .breadcrumb span::after {
         display: none;
     }
-
 
     .breadcrumb span {
         font-weight: 600;
         color: #FFFFFF;
     }
-
 
     /* Hero Title - No underline, left-aligned */
     .course-hero h1 {
@@ -156,15 +150,14 @@
         padding-bottom: 0;
         text-align: left;
         text-decoration: none;
+        z-index: 2;
     }
-
 
     /* Remove all decorative elements */
     .course-hero h1::after,
     .course-hero h1::before {
         display: none !important;
     }
-
 
     .course-hero p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -175,8 +168,9 @@
         text-align: left;
         color: rgba(255, 255, 255, 0.85);
         max-width: 800px;
+        position: relative;
+        z-index: 2;
     }
-
 
     .course-meta {
         display: flex;
@@ -188,12 +182,13 @@
         overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        position: relative;
+        z-index: 2;
     }
 
     .course-meta::-webkit-scrollbar {
         display: none;
     }
-
 
     .course-meta-item {
         display: flex;
@@ -207,19 +202,16 @@
         flex-shrink: 0;
     }
 
-
     .course-meta-item i {
         font-size: 1.3rem;
         color: rgba(255, 255, 255, 0.8);
     }
-
 
     /* Universities Section */
     .universities-section {
         padding: 60px 5%;
         background: #F7F8FA;
     }
-
 
     .section-title {
         text-align: center;
@@ -236,13 +228,11 @@
         padding-bottom: 0;
     }
 
-
     /* Remove underline and circle decoration */
     .section-title::after,
     .section-title::before {
         display: none !important;
     }
-
 
     /* Top Pick Card Styling - SMALLER SIZE */
     .top-picks-grid {
@@ -252,7 +242,6 @@
         max-width: 1400px;
         margin: 0 auto;
     }
-
 
     .top-pick-card {
         background: #FFFFFF;
@@ -265,12 +254,10 @@
         position: relative;
     }
 
-
     .top-pick-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
-
 
     .top-pick-image {
         width: 100%;
@@ -280,7 +267,6 @@
         background: #F1F3F6;
     }
 
-
     .top-pick-image img {
         width: 100%;
         height: 100%;
@@ -288,17 +274,14 @@
         transition: transform 0.3s ease;
     }
 
-
     .top-pick-card:hover .top-pick-image img {
         transform: scale(1.05);
     }
-
 
     .top-pick-content {
         padding: 20px;
         position: relative;
     }
-
 
     .top-pick-rank-number {
         position: absolute;
@@ -313,7 +296,6 @@
         z-index: 1;
     }
 
-
     .top-pick-name {
         font-family: 'Libre Baskerville', Georgia, serif;
         font-size: 1.1rem;
@@ -324,7 +306,6 @@
         position: relative;
         z-index: 2;
     }
-
 
     .top-pick-location {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -339,12 +320,10 @@
         z-index: 2;
     }
 
-
     .top-pick-location i {
         color: #2C5F8D;
         font-size: 0.75rem;
     }
-
 
     .top-pick-highlight {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -361,11 +340,9 @@
         z-index: 2;
     }
 
-
     .top-pick-highlight i {
         font-size: 0.75rem;
     }
-
 
     .top-pick-stats {
         display: flex;
@@ -375,7 +352,6 @@
         z-index: 2;
     }
 
-
     .top-pick-stat {
         display: flex;
         flex-direction: column;
@@ -383,12 +359,10 @@
         gap: 4px;
     }
 
-
     .top-pick-stat-icon {
         font-size: 1.1rem;
         color: #2C5F8D;
     }
-
 
     .top-pick-stat-value {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -397,14 +371,12 @@
         color: #1B1F24;
     }
 
-
     .top-pick-stat-label {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 0.65rem;
         color: #6B7280;
         font-weight: 500;
     }
-
 
     .featured-badge {
         position: absolute;
@@ -420,7 +392,6 @@
         z-index: 3;
     }
 
-
     /* CTA Section */
     .cta-section {
         background: #FFFFFF;
@@ -428,7 +399,6 @@
         text-align: center;
         border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
-
 
     .cta-content h2 {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -444,13 +414,11 @@
         padding-bottom: 0;
     }
 
-
     /* Remove decorative elements */
     .cta-content h2::after,
     .cta-content h2::before {
         display: none !important;
     }
-
 
     .cta-content p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -459,14 +427,12 @@
         color: #4B5563;
     }
 
-
     .cta-buttons {
         display: flex;
         justify-content: center;
         gap: 16px;
         flex-wrap: wrap;
     }
-
 
     .cta-btn-primary, .cta-btn-secondary {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -483,12 +449,10 @@
         border: none;
     }
 
-
     .cta-btn-primary {
         background-color: #2C5F8D;
         color: #FFFFFF;
     }
-
 
     .cta-btn-secondary {
         background-color: transparent;
@@ -496,13 +460,11 @@
         border: 2px solid #2C5F8D;
     }
 
-
     .cta-btn-primary:hover {
         background-color: #1E4364;
         transform: translateY(-2px);
         text-decoration: none;
     }
-
 
     .cta-btn-secondary:hover {
         background-color: rgba(44, 95, 141, 0.08);
@@ -510,12 +472,10 @@
         text-decoration: none;
     }
 
-
     .cta-btn-primary i, .cta-btn-secondary i {
         margin-right: 8px;
         font-size: 0.85rem;
     }
-
 
     /* Empty State */
     .no-universities {
@@ -528,13 +488,11 @@
         margin: 0 auto;
     }
 
-
     .no-universities i {
         font-size: 3.5rem;
         color: #E5E7EB;
         margin-bottom: 16px;
     }
-
 
     .no-universities h3 {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -544,14 +502,12 @@
         margin-bottom: 12px;
     }
 
-
     .no-universities p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 0.85rem;
         color: #4B5563;
         margin-bottom: 24px;
     }
-
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -560,16 +516,13 @@
             min-height: 350px;
         }
 
-
         .course-hero h1 {
             font-size: 1.9rem;
         }
 
-
         .course-hero p {
             font-size: 0.9rem;
         }
-
 
         /* Smaller breadcrumb on mobile */
         .breadcrumb {
@@ -578,66 +531,54 @@
             min-height: 32px;
         }
 
-
         .breadcrumb a,
         .breadcrumb span {
             padding: 0 10px;
         }
-
 
         .course-meta {
             gap: 20px;
             flex-wrap: nowrap;
         }
 
-
         .course-meta-item {
             font-size: 0.75rem;
         }
 
-
         .course-meta-item i {
             font-size: 1.1rem;
         }
-
 
         .section-title {
             font-size: 1.3rem;
             margin-bottom: 30px;
         }
 
-
         .top-picks-grid {
             grid-template-columns: 1fr;
             gap: 20px;
         }
 
-
         .universities-section {
             padding: 50px 5%;
         }
-
 
         .cta-section {
             padding: 50px 5%;
         }
 
-
         .cta-content h2 {
             font-size: 1.4rem;
         }
-
 
         .cta-content p {
             font-size: 0.85rem;
         }
 
-
         .cta-buttons {
             flex-direction: column;
             align-items: center;
         }
-
 
         .cta-btn-primary, .cta-btn-secondary {
             width: 100%;
@@ -645,23 +586,19 @@
         }
     }
 
-
     @media (max-width: 600px) {
         .course-hero {
             padding: 80px 5% 30px;
             min-height: 300px;
         }
 
-
         .course-hero h1 {
             font-size: 1.6rem;
         }
 
-
         .course-hero p {
             font-size: 0.85rem;
         }
-
 
         /* Extra small breadcrumb on very small screens */
         .breadcrumb {
@@ -670,12 +607,10 @@
             min-height: 28px;
         }
 
-
         .breadcrumb a,
         .breadcrumb span {
             padding: 0 8px;
         }
-
 
         /* Keep meta items in one line */
         .course-meta {
@@ -683,57 +618,46 @@
             flex-wrap: nowrap;
         }
 
-
         .course-meta-item {
             font-size: 0.7rem;
         }
 
-
         .course-meta-item i {
             font-size: 1rem;
         }
-
 
         .section-title {
             font-size: 1.2rem;
             margin-bottom: 25px;
         }
 
-
         .top-pick-card {
             border-radius: 8px;
         }
-
 
         .top-pick-content {
             padding: 16px;
         }
 
-
         .top-pick-name {
             font-size: 1rem;
         }
-
 
         .top-pick-rank-number {
             font-size: 2.5rem;
         }
 
-
         .top-pick-image {
             height: 130px;
         }
-
 
         .no-universities {
             padding: 50px 25px;
         }
 
-
         .no-universities h3 {
             font-size: 1.2rem;
         }
-
 
         .no-universities i {
             font-size: 3rem;
@@ -741,15 +665,8 @@
     }
 </style>
 
-
 <!-- Hero Section -->
 <section class="course-hero">
-    <div class="course-hero-grid">
-        <% for(let i=0; i<16; i++) { %>
-            <div class="course-grid-cell"></div>
-        <% } %>
-    </div>
-    
     <div class="course-hero-content">
         <div class="breadcrumb">
             <a href="/">Home</a>
@@ -777,7 +694,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Universities Section -->
 <section class="universities-section">
@@ -850,7 +766,6 @@
     <% } %>
 </section>
 
-
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
@@ -866,6 +781,5 @@
         </div>
     </div>
 </section>
-
 
 <%- include('partials/footer') %>

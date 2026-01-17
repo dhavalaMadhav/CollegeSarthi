@@ -152,36 +152,33 @@
         color: #2C5F8D;
     }
 
-    /* Mobile Filter Button - Hidden on Desktop */
+    /* Mobile Filter Button - INLINE VERSION - Hidden on Desktop */
     .mobile-filter-button {
         display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
         background: #2C5F8D;
         color: #FFFFFF;
         border: none;
-        border-radius: 50px;
-        padding: 14px 24px;
-        font-size: 0.9rem;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 0.85rem;
         font-weight: 600;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.4);
+        box-shadow: 0 2px 8px rgba(44, 95, 141, 0.3);
         cursor: pointer;
-        z-index: 998;
         transition: all 0.3s ease;
         gap: 8px;
         align-items: center;
+        white-space: nowrap;
     }
 
     .mobile-filter-button:hover {
         background: #1E4364;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(44, 95, 141, 0.5);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(44, 95, 141, 0.4);
     }
 
     .mobile-filter-button i {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     /* Filter Modal Overlay */
@@ -190,8 +187,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100%        height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
         animation: fadeIn 0.3s ease;
@@ -771,7 +767,7 @@
         max-height: calc(100vh);
     }
 
-    /* Page Header with Toggle */
+    /* Page Header with Toggle - UPDATED WITH FILTER BUTTON */
     .page-header {
         display: flex;
         justify-content: space-between;
@@ -796,6 +792,13 @@
         color: #6B7280;
         font-weight: 400;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Page Header Right - Contains both filter button and view toggle */
+    .page-header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
     /* View Toggle Buttons */
@@ -1353,7 +1356,7 @@
             display: none !important;
         }
 
-        /* SHOW MOBILE FILTER BUTTON */
+        /* SHOW MOBILE FILTER BUTTON IN HEADER */
         .mobile-filter-button {
             display: inline-flex;
         }
@@ -1615,12 +1618,6 @@
     </div>
 </section>
 
-<!-- Mobile Filter Button -->
-<button class="mobile-filter-button" id="mobileFilterBtn">
-    <i class="fas fa-filter"></i>
-    Filters
-</button>
-
 <!-- Filter Modal Overlay -->
 <div class="filter-modal-overlay" id="filterModalOverlay"></div>
 
@@ -1794,21 +1791,29 @@
 
     <!-- Content Area -->
     <main class="content-area">
-        <!-- Page Header with View Toggle -->
+        <!-- Page Header with Filter Button and View Toggle -->
         <div class="page-header">
             <div class="page-header-left">
                 <h1>UNIVERSITIES</h1>
                 <p class="page-count">Showing <span id="filteredCount"><%= universities.length %></span> of <%= universities.length %> Universities</p>
             </div>
-            <div class="view-toggle">
-                <button class="view-btn active" id="listViewBtn">
-                    <i class="fas fa-list"></i>
-                    List
+            <div class="page-header-right">
+                <!-- Mobile Filter Button - Shows only on mobile -->
+                <button class="mobile-filter-button" id="mobileFilterBtn">
+                    <i class="fas fa-filter"></i>
+                    Filters
                 </button>
-                <button class="view-btn" id="gridViewBtn">
-                    <i class="fas fa-th"></i>
-                    Grid
-                </button>
+                <!-- View Toggle - Shows only on desktop -->
+                <div class="view-toggle">
+                    <button class="view-btn active" id="listViewBtn">
+                        <i class="fas fa-list"></i>
+                        List
+                    </button>
+                    <button class="view-btn" id="gridViewBtn">
+                        <i class="fas fa-th"></i>
+                        Grid
+                    </button>
+                </div>
             </div>
         </div>
 

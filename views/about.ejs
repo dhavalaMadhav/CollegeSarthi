@@ -1,9 +1,11 @@
 <%- include('partials/header') %>
 
+
 <style>
 /* ========================================
    ABOUT PAGE - ACADEMIC THEME
 ========================================= */
+
 
 /* Global Scrollbar Hide */
 html, body {
@@ -12,9 +14,11 @@ html, body {
     -ms-overflow-style: none;
 }
 
+
 ::-webkit-scrollbar {
     display: none;
 }
+
 
 /* Hero Section - Reduced Height */
 .about-hero {
@@ -29,6 +33,7 @@ html, body {
     border-bottom: none;
 }
 
+
 /* Background Image */
 .about-hero::before {
     content: '';
@@ -37,12 +42,13 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80');
+    background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1920&q=80');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
 }
+
 
 /* Black Overlay */
 .about-hero::after {
@@ -56,6 +62,7 @@ html, body {
     z-index: 1;
 }
 
+
 .about-hero-content {
     max-width: 1200px;
     width: 100%;
@@ -64,6 +71,7 @@ html, body {
     z-index: 2;
     text-align: left;
 }
+
 
 .about-hero h1 {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -76,15 +84,18 @@ html, body {
     text-decoration: none;
 }
 
+
 /* Content Sections - Reduced Padding */
 .about-section {
     padding: 60px 5%;
     background: #FFFFFF;
 }
 
+
 .about-section:nth-child(even) {
     background: #F7F8FA;
 }
+
 
 .section-header {
     text-align: center;
@@ -93,6 +104,7 @@ html, body {
     margin-left: auto;
     margin-right: auto;
 }
+
 
 .section-title {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -106,12 +118,14 @@ html, body {
     display: inline-block;
 }
 
+
 /* Remove any pseudo-element decorations */
 .section-title::before,
 .section-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 .section-subtitle {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -120,6 +134,7 @@ html, body {
     font-weight: 400;
     line-height: 1.6;
 }
+
 
 /* Platform Mission Section */
 .platform-mission {
@@ -131,6 +146,7 @@ html, body {
     margin-bottom: 40px;
 }
 
+
 .platform-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.6rem;
@@ -141,12 +157,14 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 /* Remove decorations from platform title */
 .platform-title::before,
 .platform-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 .platform-description {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -156,6 +174,7 @@ html, body {
     margin-bottom: 20px;
     text-align: left;
 }
+
 
 /* Updated Platform Highlights - Column on Mobile */
 .platform-highlights {
@@ -168,6 +187,7 @@ html, body {
     margin-right: auto;
 }
 
+
 .platform-highlight {
     text-align: center;
     padding: 30px 25px;
@@ -178,14 +198,17 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .platform-highlight:nth-child(2n) {
     border-right: none;
 }
+
 
 .platform-highlight:nth-child(3),
 .platform-highlight:nth-child(4) {
     border-bottom: none;
 }
+
 
 .platform-highlight:hover {
     transform: none;
@@ -194,11 +217,13 @@ html, body {
     box-shadow: none;
 }
 
+
 .highlight-icon {
     font-size: 2.2rem;
     color: #2C5F8D;
     margin-bottom: 15px;
 }
+
 
 .highlight-title {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -209,12 +234,14 @@ html, body {
     letter-spacing: 0.01em;
 }
 
+
 .highlight-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #6B7280;
     font-size: 0.9rem;
     line-height: 1.6;
 }
+
 
 /* Consultant Section - Blue-Black Gradient Background */
 .consultant-profile {
@@ -223,12 +250,13 @@ html, body {
     gap: 40px;
     align-items: center;
     margin: 40px 0;
-    background: linear-gradient(135deg, #1B1F24 0%, #2C5F8D 100%);
+    background: linear-gradient(135deg, #2C5F8D 0%, #1B1F24 100%);
     padding: 40px;
     border: 1px solid rgba(44, 95, 141, 0.3);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 
 .consultant-image {
     width: 100%;
@@ -238,6 +266,7 @@ html, body {
     border: 3px solid #FFFFFF;
 }
 
+
 .consultant-image img {
     width: 100%;
     height: 100%;
@@ -245,9 +274,11 @@ html, body {
     transition: transform 0.3s ease;
 }
 
+
 .consultant-image:hover img {
     transform: scale(1.05);
 }
+
 
 .consultant-info h2 {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -259,6 +290,7 @@ html, body {
     text-align: left;
 }
 
+
 .consultant-title {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
@@ -269,6 +301,7 @@ html, body {
     text-align: left;
 }
 
+
 .consultant-description {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.95rem;
@@ -278,6 +311,7 @@ html, body {
     text-align: left;
 }
 
+
 .expertise-tags {
     display: flex;
     flex-wrap: wrap;
@@ -285,6 +319,7 @@ html, body {
     margin-top: 20px;
     justify-content: flex-start;
 }
+
 
 .expertise-tag {
     background: rgba(255, 255, 255, 0.15);
@@ -299,11 +334,13 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .expertise-tag:hover {
     background: #FFFFFF;
     color: #2C5F8D;
     transform: translateY(-2px);
 }
+
 
 /* Success Metrics - White Background */
 .metrics-section {
@@ -313,9 +350,11 @@ html, body {
     text-align: center;
 }
 
+
 .metrics-section .section-header {
     margin-bottom: 45px;
 }
+
 
 .metrics-section .section-title {
     color: #1B1F24;
@@ -323,10 +362,12 @@ html, body {
     font-size: 2rem;
 }
 
+
 .metrics-section .section-subtitle {
     color: #4B5563;
     font-size: 1rem;
 }
+
 
 .metrics-grid {
     display: grid;
@@ -340,6 +381,7 @@ html, body {
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+
 .metric-box {
     background: transparent;
     padding: 35px 20px;
@@ -348,14 +390,17 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .metric-box:last-child {
     border-right: none;
 }
+
 
 .metric-box:hover {
     background: rgba(44, 95, 141, 0.02);
     transform: none;
 }
+
 
 .metric-number {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -366,6 +411,7 @@ html, body {
     color: #2C5F8D;
 }
 
+
 .metric-label {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.9rem;
@@ -374,6 +420,7 @@ html, body {
     letter-spacing: 0.05em;
     color: #6B7280;
 }
+
 
 /* Core Values - 6 items, 3 per row */
 .values-grid {
@@ -386,12 +433,14 @@ html, body {
     margin-right: auto;
 }
 
+
 .value-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     text-align: left;
 }
+
 
 .value-icon {
     font-size: 1.6rem;
@@ -400,9 +449,11 @@ html, body {
     margin-top: 3px;
 }
 
+
 .value-content {
     flex: 1;
 }
+
 
 .value-title {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -413,12 +464,14 @@ html, body {
     letter-spacing: 0.01em;
 }
 
+
 .value-description {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #6B7280;
     line-height: 1.6;
     font-size: 0.85rem;
 }
+
 
 /* Timeline - Icons moved further left on vertical line */
 .timeline {
@@ -427,6 +480,7 @@ html, body {
     position: relative;
     padding-top: 20px;
 }
+
 
 .timeline::before {
     content: '';
@@ -439,6 +493,7 @@ html, body {
     transform: translateX(-50%);
 }
 
+
 .timeline-item {
     position: relative;
     margin: 40px 0;
@@ -446,9 +501,11 @@ html, body {
     padding: 0 35px;
 }
 
+
 .timeline-item:first-child {
     margin-top: 0;
 }
+
 
 .timeline-item:nth-child(odd) {
     left: 0;
@@ -456,10 +513,12 @@ html, body {
     padding-right: 65px;
 }
 
+
 .timeline-item:nth-child(even) {
     left: 50%;
     padding-left: 65px;
 }
+
 
 .timeline-content {
     background: transparent;
@@ -471,11 +530,13 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .timeline-content:hover {
     border-color: transparent;
     transform: none;
     box-shadow: none;
 }
+
 
 .timeline-date {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -487,6 +548,7 @@ html, body {
     margin-bottom: 10px;
 }
 
+
 .timeline-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.2rem;
@@ -496,6 +558,7 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 /* Remove decorations from timeline titles */
 .timeline-title::before,
 .timeline-title::after {
@@ -503,12 +566,14 @@ html, body {
     content: none !important;
 }
 
+
 .timeline-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #4B5563;
     line-height: 1.6;
     font-size: 0.9rem;
 }
+
 
 .timeline-icon {
     position: absolute;
@@ -527,13 +592,16 @@ html, body {
     box-shadow: 0 0 0 3px #2C5F8D;
 }
 
+
 .timeline-item:nth-child(odd) .timeline-icon {
     right: -24px;
 }
 
+
 .timeline-item:nth-child(even) .timeline-icon {
     left: -24px;
 }
+
 
 /* Partner Universities - Horizontal Scroll */
 .partners-section {
@@ -547,6 +615,7 @@ html, body {
     box-shadow: none;
 }
 
+
 .partners-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.6rem;
@@ -556,12 +625,14 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 /* Remove decorations */
 .partners-title::before,
 .partners-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 .partners-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -572,6 +643,7 @@ html, body {
     margin: 0 auto 30px;
 }
 
+
 .partner-logos-wrapper {
     position: relative;
     overflow-x: auto;
@@ -581,19 +653,23 @@ html, body {
     scrollbar-color: #2C5F8D #E5E7EB;
 }
 
+
 .partner-logos-wrapper::-webkit-scrollbar {
     height: 8px;
 }
+
 
 .partner-logos-wrapper::-webkit-scrollbar-track {
     background: #E5E7EB;
     border-radius: 4px;
 }
 
+
 .partner-logos-wrapper::-webkit-scrollbar-thumb {
     background: #2C5F8D;
     border-radius: 4px;
 }
+
 
 .partner-logos {
     display: flex;
@@ -601,6 +677,7 @@ html, body {
     padding-bottom: 10px;
     width: max-content;
 }
+
 
 .partner-logo {
     min-width: 180px;
@@ -620,6 +697,7 @@ html, body {
     white-space: nowrap;
 }
 
+
 .partner-logo:hover {
     background: #2C5F8D;
     color: #FFFFFF;
@@ -627,6 +705,7 @@ html, body {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(44, 95, 141, 0.2);
 }
+
 
 /* Quote Section */
 .quote-section {
@@ -637,6 +716,7 @@ html, body {
     position: relative;
     overflow: hidden;
 }
+
 
 .quote-section::before {
     content: '"';
@@ -650,12 +730,14 @@ html, body {
     z-index: 1;
 }
 
+
 .quote-content {
     position: relative;
     z-index: 2;
     max-width: 850px;
     margin: 0 auto;
 }
+
 
 .quote-text {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -667,6 +749,7 @@ html, body {
     font-weight: 400;
 }
 
+
 .quote-author {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.95rem;
@@ -674,6 +757,7 @@ html, body {
     opacity: 0.9;
     letter-spacing: 0.05em;
 }
+
 
 /* CTA Section - Fully Curved Buttons */
 .cta-section {
@@ -683,10 +767,12 @@ html, body {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+
 .cta-content {
     max-width: 850px;
     margin: 0 auto;
 }
+
 
 .cta-content h2 {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -697,12 +783,14 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 /* Remove decorations */
 .cta-content h2::before,
 .cta-content h2::after {
     display: none !important;
     content: none !important;
 }
+
 
 .cta-content p {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -712,12 +800,14 @@ html, body {
     line-height: 1.6;
 }
 
+
 .cta-buttons {
     display: flex;
     justify-content: center;
     gap: 18px;
     flex-wrap: wrap;
 }
+
 
 .cta-btn-primary {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -737,6 +827,7 @@ html, body {
     gap: 10px;
 }
 
+
 .cta-btn-primary:hover {
     background: #1E4364;
     transform: translateY(-2px);
@@ -744,9 +835,11 @@ html, body {
     text-decoration: none;
 }
 
+
 .cta-btn-primary i {
     font-size: 0.95rem;
 }
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -779,6 +872,7 @@ html, body {
     }
 }
 
+
 @media (max-width: 900px) {
     .consultant-profile {
         grid-template-columns: 1fr;
@@ -803,6 +897,7 @@ html, body {
         justify-content: flex-start;
     }
 }
+
 
 @media (max-width: 768px) {
     .about-hero {
@@ -983,19 +1078,20 @@ html, body {
         font-size: 0.8rem;
     }
     
-    /* Timeline mobile - icons further left on line */
+    /* Timeline mobile - MOVED ICONS FURTHER LEFT */
     .timeline {
-        padding-left: 50px;
+        padding-left: 45px;
         margin-top: 25px;
     }
     
     .timeline::before {
-        left: 18px;
+        left: 13px;
     }
     
-    /* Icon moved further left - perfectly on line */
+    /* Icon moved FURTHER LEFT - on the line */
     .timeline-icon {
-        left: -1px !important;
+        left: -6px !important;
+        right: auto !important;
         width: 38px;
         height: 38px;
         font-size: 0.95rem;
@@ -1004,7 +1100,7 @@ html, body {
     }
     
     .timeline-item {
-        padding-left: 40px !important;
+        padding-left: 35px !important;
         margin: 30px 0;
     }
     
@@ -1075,6 +1171,7 @@ html, body {
     }
 }
 
+
 @media (max-width: 600px) {
     .about-hero {
         min-height: 100px;
@@ -1135,18 +1232,19 @@ html, body {
         padding: 10px 16px;
     }
     
-    /* Timeline icons even more left for small mobile */
+    /* Timeline icons EVEN MORE LEFT for small mobile */
     .timeline::before {
-        left: 18px;
+        left: 12px;
     }
     
     .timeline-icon {
-        left: 0px !important;
+        left: -6px !important;
         width: 36px;
         height: 36px;
     }
 }
 </style>
+
 
 <!-- Hero Section -->
 <section class="about-hero">
@@ -1154,6 +1252,7 @@ html, body {
         <h1>About UniPick</h1>
     </div>
 </section>
+
 
 <!-- Platform Mission Section -->
 <section class="about-section">
@@ -1211,6 +1310,7 @@ html, body {
     </div>
 </section>
 
+
 <!-- Consultant Profile Section -->
 <section class="about-section">
     <div class="section-header">
@@ -1219,7 +1319,7 @@ html, body {
     
     <div class="consultant-profile">
         <div class="consultant-image">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ravi Vajendla - Chartered Accountant & Admission Consultant">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop" alt="Ravi Vajendla - Chartered Accountant & Admission Consultant">
         </div>
         
         <div class="consultant-info">
@@ -1251,6 +1351,7 @@ html, body {
     </div>
 </section>
 
+
 <!-- Success Metrics -->
 <section class="metrics-section">
     <div class="section-header">
@@ -1280,6 +1381,7 @@ html, body {
         </div>
     </div>
 </section>
+
 
 <!-- Core Values - 6 items only -->
 <section class="about-section">
@@ -1338,6 +1440,7 @@ html, body {
         </div>
     </div>
 </section>
+
 
 <!-- Professional Journey Timeline -->
 <section class="about-section">
@@ -1405,6 +1508,7 @@ html, body {
     </div>
 </section>
 
+
 <!-- Partner Universities -->
 <section class="partners-section">
     <h3 class="partners-title">Our University Network</h3>
@@ -1428,6 +1532,7 @@ html, body {
     </div>
 </section>
 
+
 <!-- Quote Section -->
 <section class="quote-section">
     <div class="quote-content">
@@ -1440,6 +1545,7 @@ html, body {
         </div>
     </div>
 </section>
+
 
 <!-- CTA Section -->
 <section class="cta-section">
@@ -1456,5 +1562,6 @@ html, body {
         </div>
     </div>
 </section>
+
 
 <%- include('partials/footer') %>
