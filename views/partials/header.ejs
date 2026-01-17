@@ -323,21 +323,24 @@
             }
             
             /* Mobile menu container - RIGHT ALIGNED */
-            .mobile-menu {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: var(--bg-surface);
-                z-index: 1100;
-                padding: 70px 20px 30px;
-                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                overflow-y: auto;
-            }
+/* Mobile menu container - RIGHT ALIGNED */
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-surface);
+    z-index: 1100;
+    padding: 70px 20px 30px;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    justify-content: flex-start; /* ADD THIS LINE */
+    align-items: stretch; /* ADD THIS LINE */
+}
             
             .mobile-menu.active {
                 right: 0;
@@ -363,12 +366,14 @@
             }
             
             /* Mobile menu items - LEFT ALIGNED */
-            .mobile-menu ul {
-                list-style: none;
-                width: 100%;
-                margin-top: 10px;
-                text-align: left;
-            }
+/* Mobile menu items - LEFT ALIGNED */
+.mobile-menu ul {
+    list-style: none;
+    width: 100%;
+    margin: 0; /* CHANGE from margin-top: 10px */
+    padding: 0; /* ADD THIS */
+    text-align: left;
+}
             
             .mobile-menu ul li {
                 margin: 0;
@@ -695,10 +700,10 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
                                 <div class="dropdown-column">
                                     <h4>Management</h4>
                                     <a href="/courses/management/mba">MBA</a>
-                                    <a href="/courses/management/business">Business Administration</a>
+                                    <a href="/courses/management/business-administration">Business Administration</a>
                                     <a href="/courses/management/finance">Finance</a>
                                     <a href="/courses/management/marketing">Marketing</a>
-                                    <a href="/courses/management/hr">Human Resources</a>
+                                    <a href="/courses/management/human-resources">Human Resources</a>
                                 </div>
                                 <div class="dropdown-column">
                                     <h4>Science & Arts</h4>
@@ -713,7 +718,7 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
                                     <a href="/courses/health/medicine">Medicine</a>
                                     <a href="/courses/health/pharmacy">Pharmacy</a>
                                     <a href="/courses/commerce/accounting">Accounting</a>
-                                    <a href="/courses/commerce/banking">Banking & Finance</a>
+                                    <a href="/courses/commerce/banking-finance">Banking & Finance</a>
                                     <a href="/courses/diploma/certificate">Diploma Programs</a>
                                 </div>
                             </div>

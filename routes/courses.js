@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const University = require('../models/University'); // Add this import
+const University = require('../models/University');
+
 
 // Course data with programme mapping
 const coursesData = {
@@ -8,7 +9,7 @@ const coursesData = {
         {
             name: 'Computer Science Engineering',
             slug: 'computer-science',
-            programmeType: 'computer', // Maps to university.programmes
+            programmeType: 'computer',
             description: 'Learn programming, algorithms, data structures, AI, and software development',
             fullDescription: 'Computer Science Engineering is one of the most sought-after programs that combines theoretical computer science with practical engineering. Students learn programming languages, data structures, algorithms, artificial intelligence, machine learning, web development, mobile app development, database management, and software engineering principles. The curriculum includes hands-on projects, internships, and industry collaborations to prepare students for careers in technology.',
             icon: 'fas fa-laptop-code',
@@ -25,210 +26,301 @@ const coursesData = {
             slug: 'mechanical',
             programmeType: 'engineering',
             description: 'Study mechanics, thermodynamics, robotics, and manufacturing processes',
-            fullDescription: 'Mechanical Engineering deals with the design, analysis, manufacturing, and maintenance of mechanical systems. It is one of the oldest and broadest engineering disciplines covering areas like thermodynamics, fluid mechanics, materials science, structural analysis, and manufacturing processes.',
+            fullDescription: 'Mechanical Engineering deals with the design, analysis, manufacturing, and maintenance of mechanical systems. It is one of the oldest and broadest engineering disciplines covering areas like thermodynamics, fluid mechanics, materials science, structural analysis, and manufacturing processes. Students work on projects involving robotics, automation, CAD/CAM, and sustainable energy systems.',
             icon: 'fas fa-cogs',
             duration: '4 Years',
             degree: 'B.Tech/BE',
             eligibility: '10+2 with Physics, Chemistry, Mathematics (Min 60%)',
             averageFees: '₹1.5-6 Lakhs per year',
-            careerOptions: ['Mechanical Engineer', 'Automation Engineer', 'CAD Designer', 'Production Manager', 'Quality Control Engineer'],
-            topRecruiters: ['Tata Motors', 'Mahindra', 'L&T', 'Bosch', 'Siemens'],
-            skills: ['CAD', 'Thermodynamics', 'Manufacturing', 'Design', 'Analysis']
+            careerOptions: ['Mechanical Engineer', 'Automation Engineer', 'CAD Designer', 'Production Manager', 'Quality Control Engineer', 'Robotics Engineer'],
+            topRecruiters: ['Tata Motors', 'Mahindra', 'L&T', 'Bosch', 'Siemens', 'Ashok Leyland'],
+            skills: ['CAD', 'Thermodynamics', 'Manufacturing', 'Design', 'Analysis', 'Robotics']
         },
         {
             name: 'Civil Engineering',
             slug: 'civil',
             programmeType: 'engineering',
             description: 'Design and build infrastructure including buildings, bridges, and roads',
-            fullDescription: 'Civil Engineering involves the design, construction, and maintenance of physical infrastructure including roads, bridges, dams, and buildings. Students learn structural analysis, geotechnical engineering, transportation engineering, and environmental engineering.',
+            fullDescription: 'Civil Engineering involves the design, construction, and maintenance of physical infrastructure including roads, bridges, dams, buildings, and water supply systems. Students learn structural analysis, geotechnical engineering, transportation engineering, environmental engineering, and project management. The field combines technical knowledge with practical site experience.',
             icon: 'fas fa-hard-hat',
             duration: '4 Years',
             degree: 'B.Tech/BE',
             eligibility: '10+2 with Physics, Chemistry, Mathematics (Min 60%)',
             averageFees: '₹1-5 Lakhs per year',
-            careerOptions: ['Civil Engineer', 'Structural Engineer', 'Construction Manager', 'Urban Planner'],
-            topRecruiters: ['L&T', 'Shapoorji Pallonji', 'DLF', 'PWD'],
-            skills: ['AutoCAD', 'Structural Design', 'Project Management', 'Site Planning']
-        }
-    ],
-    medical: [
-        {
-            name: 'Bachelor of Medicine (MBBS)',
-            slug: 'mbbs',
-            programmeType: 'medical',
-            description: 'Comprehensive medical education to become a qualified doctor',
-            fullDescription: 'MBBS is the undergraduate medical degree for becoming a doctor. It covers anatomy, physiology, biochemistry, pharmacology, pathology, and clinical practice with extensive hospital training and patient interaction.',
-            icon: 'fas fa-stethoscope',
-            duration: '5.5 Years',
-            degree: 'MBBS',
-            eligibility: 'NEET qualification with Physics, Chemistry, Biology (Min 50%)',
-            averageFees: '₹5-25 Lakhs per year',
-            careerOptions: ['General Physician', 'Surgeon', 'Medical Officer', 'Specialist Doctor', 'Medical Researcher'],
-            topRecruiters: ['AIIMS', 'Apollo Hospitals', 'Fortis Healthcare', 'Max Healthcare'],
-            skills: ['Patient Care', 'Diagnosis', 'Medical Knowledge', 'Clinical Skills', 'Emergency Care']
+            careerOptions: ['Civil Engineer', 'Structural Engineer', 'Construction Manager', 'Urban Planner', 'Site Engineer', 'Project Manager'],
+            topRecruiters: ['L&T', 'Shapoorji Pallonji', 'DLF', 'PWD', 'NHAI', 'Tata Projects'],
+            skills: ['AutoCAD', 'Structural Design', 'Project Management', 'Site Planning', 'Construction Technology']
         },
         {
-            name: 'Bachelor of Dental Surgery',
-            slug: 'bds',
-            programmeType: 'dental',
-            description: 'Study dentistry, oral health, and dental surgery procedures',
-            fullDescription: 'BDS is an undergraduate dental program focusing on oral health, dental diseases, and surgical procedures. Students learn dental anatomy, oral pathology, periodontology, and clinical dentistry.',
-            icon: 'fas fa-tooth',
-            duration: '5 Years',
-            degree: 'BDS',
-            eligibility: 'NEET qualification with Physics, Chemistry, Biology',
-            averageFees: '₹3-15 Lakhs per year',
-            careerOptions: ['Dentist', 'Orthodontist', 'Oral Surgeon', 'Dental Consultant'],
-            topRecruiters: ['Dental Clinics', 'Hospitals', 'Private Practice'],
-            skills: ['Dental Procedures', 'Patient Care', 'Oral Surgery', 'Diagnosis']
-        },
-        {
-            name: 'Bachelor of Pharmacy',
-            slug: 'pharmacy',
-            programmeType: 'pharmacy',
-            description: 'Learn pharmaceutical sciences, drug development, and patient care',
-            fullDescription: 'B.Pharm focuses on pharmaceutical sciences, drug formulation, pharmacology, and medicinal chemistry. Students learn about drug manufacturing, quality control, and pharmaceutical marketing.',
-            icon: 'fas fa-pills',
+            name: 'Electrical Engineering',
+            slug: 'electrical',
+            programmeType: 'engineering',
+            description: 'Power systems, electrical machines, renewable energy, and control systems',
+            fullDescription: 'Electrical Engineering focuses on the study and application of electricity, electronics, and electromagnetism. Students learn about power generation, transmission, distribution, electrical machines, control systems, and renewable energy technologies. The curriculum includes circuit analysis, power electronics, and electrical design.',
+            icon: 'fas fa-bolt',
             duration: '4 Years',
-            degree: 'B.Pharm',
-            eligibility: '10+2 with Physics, Chemistry, Biology/Mathematics',
-            averageFees: '₹1-4 Lakhs per year',
-            careerOptions: ['Pharmacist', 'Drug Inspector', 'Medical Representative', 'Research Scientist'],
-            topRecruiters: ['Cipla', 'Sun Pharma', 'Dr. Reddy\'s', 'Lupin'],
-            skills: ['Pharmaceutical Knowledge', 'Drug Formulation', 'Quality Control', 'Research']
+            degree: 'B.Tech/BE',
+            eligibility: '10+2 with Physics, Chemistry, Mathematics (Min 60%)',
+            averageFees: '₹1.5-6 Lakhs per year',
+            careerOptions: ['Electrical Engineer', 'Power Systems Engineer', 'Control Systems Engineer', 'Renewable Energy Consultant', 'Electrical Designer'],
+            topRecruiters: ['NTPC', 'Power Grid', 'Siemens', 'ABB', 'Tata Power', 'L&T'],
+            skills: ['Circuit Design', 'Power Systems', 'Control Systems', 'Renewable Energy', 'Electrical Machines']
+        },
+        {
+            name: 'Electronics Engineering',
+            slug: 'electronics',
+            programmeType: 'engineering',
+            description: 'Microelectronics, embedded systems, VLSI, and communication systems',
+            fullDescription: 'Electronics Engineering deals with electronic circuits, devices, and systems including microprocessors, embedded systems, VLSI design, and communication systems. Students learn about analog and digital electronics, signal processing, microcontrollers, and IoT devices. The field is crucial for developing modern electronic gadgets and communication technologies.',
+            icon: 'fas fa-microchip',
+            duration: '4 Years',
+            degree: 'B.Tech/BE',
+            eligibility: '10+2 with Physics, Chemistry, Mathematics (Min 60%)',
+            averageFees: '₹2-7 Lakhs per year',
+            careerOptions: ['Electronics Engineer', 'VLSI Design Engineer', 'Embedded Systems Developer', 'Hardware Engineer', 'IoT Specialist'],
+            topRecruiters: ['Intel', 'Qualcomm', 'Samsung', 'Texas Instruments', 'Broadcom', 'Analog Devices'],
+            skills: ['Circuit Design', 'Embedded Systems', 'VLSI', 'Microcontrollers', 'PCB Design', 'Signal Processing']
         }
     ],
     management: [
-        {
-            name: 'Bachelor of Business Administration',
-            slug: 'bba',
-            programmeType: 'management',
-            description: 'Business fundamentals, management principles, and entrepreneurship',
-            fullDescription: 'BBA provides foundation in business management, covering marketing, finance, human resources, and operations. Students develop leadership skills and business acumen.',
-            icon: 'fas fa-briefcase',
-            duration: '3 Years',
-            degree: 'BBA',
-            eligibility: '10+2 from any stream (Min 50%)',
-            averageFees: '₹1-5 Lakhs per year',
-            careerOptions: ['Business Analyst', 'Marketing Manager', 'HR Manager', 'Entrepreneur'],
-            topRecruiters: ['Deloitte', 'KPMG', 'Amazon', 'Flipkart'],
-            skills: ['Leadership', 'Business Strategy', 'Communication', 'Analytics']
-        },
         {
             name: 'Master of Business Administration',
             slug: 'mba',
             programmeType: 'management',
             description: 'Advanced management, leadership, strategy, and business analytics',
-            fullDescription: 'MBA is a postgraduate program focusing on advanced business management, leadership, and strategic thinking. Specializations include finance, marketing, HR, operations, and consulting.',
+            fullDescription: 'MBA is a postgraduate program focusing on advanced business management, leadership, and strategic thinking. The curriculum covers finance, marketing, human resources, operations, and strategic management. Students develop leadership skills, analytical thinking, and business acumen through case studies, projects, and internships. Specializations include finance, marketing, HR, operations, consulting, and international business.',
             icon: 'fas fa-chart-line',
             duration: '2 Years',
             degree: 'MBA',
-            eligibility: 'Graduation in any discipline + CAT/MAT/XAT',
+            eligibility: 'Graduation in any discipline + CAT/MAT/XAT/GMAT',
             averageFees: '₹5-25 Lakhs per year',
-            careerOptions: ['Management Consultant', 'Business Development Manager', 'Product Manager', 'Investment Banker'],
-            topRecruiters: ['McKinsey', 'BCG', 'Bain', 'Goldman Sachs'],
-            skills: ['Strategic Thinking', 'Leadership', 'Financial Analysis', 'Consulting']
+            careerOptions: ['Management Consultant', 'Business Development Manager', 'Product Manager', 'Investment Banker', 'Marketing Manager', 'Operations Manager'],
+            topRecruiters: ['McKinsey', 'BCG', 'Bain', 'Goldman Sachs', 'Deloitte', 'KPMG'],
+            skills: ['Strategic Thinking', 'Leadership', 'Financial Analysis', 'Consulting', 'Business Strategy', 'Analytics']
+        },
+        {
+            name: 'Business Administration',
+            slug: 'business-administration',
+            programmeType: 'management',
+            description: 'Core business concepts, organizational management, and strategic planning',
+            fullDescription: 'Business Administration programs provide essential knowledge of business operations, management principles, and organizational behavior. Students learn about business strategy, operations management, financial management, and business ethics. The curriculum emphasizes practical business skills and decision-making capabilities.',
+            icon: 'fas fa-building',
+            duration: '3-4 Years',
+            degree: 'BBA/B.Com/BMS',
+            eligibility: '10+2 from any stream (Min 50%)',
+            averageFees: '₹1-4 Lakhs per year',
+            careerOptions: ['Business Manager', 'Administrative Officer', 'Operations Coordinator', 'Business Consultant', 'Project Coordinator'],
+            topRecruiters: ['Corporate Firms', 'MNCs', 'Consulting Firms', 'Banks', 'Retail Companies'],
+            skills: ['Business Management', 'Strategic Planning', 'Operations', 'Communication', 'Problem Solving']
+        },
+        {
+            name: 'Finance',
+            slug: 'finance',
+            programmeType: 'management',
+            description: 'Financial management, investment analysis, banking, and wealth management',
+            fullDescription: 'Finance programs focus on financial markets, investment analysis, corporate finance, banking operations, and financial planning. Students learn about stock markets, portfolio management, financial modeling, risk management, and investment strategies. The curriculum combines theoretical knowledge with practical applications in financial decision-making.',
+            icon: 'fas fa-coins',
+            duration: '3 Years',
+            degree: 'BBA/B.Com',
+            eligibility: '10+2 with Commerce/Mathematics (preferred)',
+            averageFees: '₹1-5 Lakhs per year',
+            careerOptions: ['Financial Analyst', 'Investment Banker', 'Portfolio Manager', 'Financial Planner', 'Risk Analyst', 'Wealth Manager'],
+            topRecruiters: ['HDFC Bank', 'ICICI Bank', 'Goldman Sachs', 'Morgan Stanley', 'JP Morgan', 'Axis Bank'],
+            skills: ['Financial Analysis', 'Investment Management', 'Risk Assessment', 'Excel', 'Financial Modeling', 'Market Research']
+        },
+        {
+            name: 'Marketing',
+            slug: 'marketing',
+            programmeType: 'management',
+            description: 'Brand management, digital marketing, consumer behavior, and sales strategy',
+            fullDescription: 'Marketing programs cover brand management, digital marketing, consumer behavior, market research, and advertising strategies. Students learn about marketing mix, social media marketing, content marketing, SEO/SEM, and marketing analytics. The curriculum emphasizes both traditional and digital marketing approaches.',
+            icon: 'fas fa-bullhorn',
+            duration: '3 Years',
+            degree: 'BBA/B.Com',
+            eligibility: '10+2 from any stream',
+            averageFees: '₹1-4 Lakhs per year',
+            careerOptions: ['Marketing Manager', 'Brand Manager', 'Digital Marketing Specialist', 'Market Research Analyst', 'Social Media Manager', 'Content Strategist'],
+            topRecruiters: ['Unilever', 'P&G', 'Amazon', 'Flipkart', 'Google', 'Facebook'],
+            skills: ['Digital Marketing', 'Brand Management', 'Market Research', 'SEO/SEM', 'Content Creation', 'Analytics']
+        },
+        {
+            name: 'Human Resources',
+            slug: 'human-resources',
+            programmeType: 'management',
+            description: 'Talent management, recruitment, employee relations, and organizational development',
+            fullDescription: 'Human Resources programs focus on talent acquisition, employee relations, performance management, compensation and benefits, and organizational development. Students learn about HR policies, labor laws, training and development, and strategic HR management. The curriculum prepares students for managing people and organizational culture.',
+            icon: 'fas fa-users',
+            duration: '3 Years',
+            degree: 'BBA/B.Com',
+            eligibility: '10+2 from any stream',
+            averageFees: '₹1-4 Lakhs per year',
+            careerOptions: ['HR Manager', 'Recruitment Specialist', 'Training Manager', 'HR Business Partner', 'Talent Acquisition Lead', 'Compensation Analyst'],
+            topRecruiters: ['TCS', 'Infosys', 'Wipro', 'Deloitte', 'Accenture', 'Cognizant'],
+            skills: ['Recruitment', 'Employee Relations', 'Performance Management', 'HR Analytics', 'Training', 'Communication']
         }
     ],
     science: [
         {
-            name: 'Data Science',
-            slug: 'data-science',
+            name: 'Computer Applications',
+            slug: 'computer-applications',
             programmeType: 'computer',
-            description: 'Analytics, machine learning, statistics, and big data technologies',
-            fullDescription: 'Data Science combines statistics, programming, and domain knowledge to extract insights from data using machine learning and analytics. Students learn Python, R, SQL, and various ML frameworks.',
-            icon: 'fas fa-database',
+            description: 'Programming, software development, database management, and IT applications',
+            fullDescription: 'Computer Applications programs focus on practical aspects of computing including programming languages, software development, database management, web technologies, and IT applications. Students learn languages like Java, Python, C++, and technologies like web development, mobile apps, and database systems. The curriculum emphasizes hands-on coding and application development.',
+            icon: 'fas fa-desktop',
+            duration: '3 Years',
+            degree: 'BCA',
+            eligibility: '10+2 with Mathematics (preferred)',
+            averageFees: '₹1-4 Lakhs per year',
+            careerOptions: ['Software Developer', 'Web Developer', 'App Developer', 'Database Administrator', 'System Analyst', 'IT Consultant'],
+            topRecruiters: ['TCS', 'Infosys', 'Wipro', 'Tech Mahindra', 'Capgemini', 'HCL'],
+            skills: ['Programming', 'Web Development', 'Database Management', 'Software Testing', 'Java', 'Python']
+        },
+        {
+            name: 'Mathematics',
+            slug: 'mathematics',
+            programmeType: 'science',
+            description: 'Pure mathematics, applied mathematics, statistics, and mathematical modeling',
+            fullDescription: 'Mathematics programs cover pure and applied mathematics including algebra, calculus, geometry, statistics, and mathematical modeling. Students develop analytical and problem-solving skills through theoretical study and practical applications. The curriculum prepares students for careers in research, teaching, data science, and quantitative analysis.',
+            icon: 'fas fa-square-root-alt',
             duration: '3 Years',
             degree: 'BSc',
             eligibility: '10+2 with Mathematics',
-            averageFees: '₹1-5 Lakhs per year',
-            careerOptions: ['Data Scientist', 'Data Analyst', 'ML Engineer', 'Business Analyst'],
-            topRecruiters: ['Google', 'Amazon', 'Flipkart', 'Microsoft'],
-            skills: ['Python', 'Machine Learning', 'Statistics', 'Data Visualization']
-        }
-    ],
-    commerce: [
+            averageFees: '₹30,000-2 Lakhs per year',
+            careerOptions: ['Data Analyst', 'Statistician', 'Mathematician', 'Teacher', 'Quantitative Analyst', 'Research Scientist', 'Actuary'],
+            topRecruiters: ['Banks', 'Insurance Companies', 'Research Institutions', 'Educational Institutions', 'Analytics Companies'],
+            skills: ['Mathematical Analysis', 'Problem Solving', 'Statistics', 'Data Analysis', 'Logical Reasoning', 'Research']
+        },
         {
-            name: 'Bachelor of Commerce',
-            slug: 'bcom',
-            programmeType: 'commerce',
-            description: 'Accounting, finance, taxation, and business economics',
-            fullDescription: 'B.Com provides comprehensive knowledge of accounting, taxation, business law, and financial management. Students learn about financial statements, auditing, and business operations.',
-            icon: 'fas fa-calculator',
+            name: 'Physics',
+            slug: 'physics',
+            programmeType: 'science',
+            description: 'Classical mechanics, quantum physics, electromagnetism, and experimental physics',
+            fullDescription: 'Physics programs explore fundamental principles of matter, energy, and their interactions. Students study classical mechanics, quantum mechanics, thermodynamics, electromagnetism, and modern physics. The curriculum includes theoretical concepts and experimental work in laboratories, preparing students for research, teaching, or technical careers.',
+            icon: 'fas fa-atom',
             duration: '3 Years',
-            degree: 'B.Com',
-            eligibility: '10+2 with Commerce (preferred)',
-            averageFees: '₹20,000-2 Lakhs per year',
-            careerOptions: ['Accountant', 'Tax Consultant', 'Financial Analyst', 'Auditor'],
-            topRecruiters: ['Big 4 Firms', 'Banks', 'Financial Institutions'],
-            skills: ['Accounting', 'Taxation', 'Financial Analysis', 'Auditing']
+            degree: 'BSc',
+            eligibility: '10+2 with Physics and Mathematics',
+            averageFees: '₹30,000-2 Lakhs per year',
+            careerOptions: ['Research Scientist', 'Physics Teacher', 'Laboratory Technician', 'Data Analyst', 'Scientific Officer', 'Astronomer'],
+            topRecruiters: ['ISRO', 'DRDO', 'BARC', 'Research Institutes', 'Universities', 'CSIR Labs'],
+            skills: ['Analytical Thinking', 'Experimental Skills', 'Mathematical Analysis', 'Research', 'Problem Solving', 'Data Interpretation']
         }
     ],
     arts: [
         {
-            name: 'Bachelor of Arts',
-            slug: 'ba',
+            name: 'Literature',
+            slug: 'literature',
             programmeType: 'arts',
-            description: 'Literature, history, sociology, psychology, and philosophy',
-            fullDescription: 'BA offers diverse specializations in humanities including literature, history, political science, sociology, and psychology. Students develop critical thinking and analytical skills.',
-            icon: 'fas fa-book',
+            description: 'English literature, poetry, drama, literary criticism, and creative writing',
+            fullDescription: 'Literature programs explore English and world literature including poetry, drama, novels, and literary criticism. Students analyze literary works, study different literary periods, develop critical thinking, and enhance creative writing skills. The curriculum covers classical to contemporary literature with focus on interpretation and analysis.',
+            icon: 'fas fa-book-open',
             duration: '3 Years',
             degree: 'BA',
             eligibility: '10+2 from any stream',
-            averageFees: '₹15,000-1.5 Lakhs per year',
-            careerOptions: ['Civil Services', 'Content Writer', 'Teacher', 'Social Worker'],
-            topRecruiters: ['Government', 'NGOs', 'Media Houses', 'Educational Institutions'],
-            skills: ['Critical Thinking', 'Writing', 'Research', 'Communication']
+            averageFees: '₹20,000-1.5 Lakhs per year',
+            careerOptions: ['Content Writer', 'Editor', 'Teacher', 'Journalist', 'Author', 'Literary Critic', 'Publishing Professional'],
+            topRecruiters: ['Publishing Houses', 'Media Companies', 'Educational Institutions', 'Content Agencies', 'NGOs'],
+            skills: ['Critical Thinking', 'Creative Writing', 'Research', 'Communication', 'Analysis', 'Editing']
         },
         {
-            name: 'Law (LLB)',
-            slug: 'law',
-            programmeType: 'law',
-            description: 'Legal studies, constitutional law, and legal practice',
-            fullDescription: 'LLB provides comprehensive legal education covering constitutional law, criminal law, corporate law, and legal procedures. Students learn legal research, argumentation, and courtroom procedures.',
-            icon: 'fas fa-gavel',
-            duration: '3-5 Years',
-            degree: 'LLB/BA-LLB',
-            eligibility: '10+2 for BA-LLB or Graduation for LLB',
-            averageFees: '₹1-5 Lakhs per year',
-            careerOptions: ['Lawyer', 'Legal Advisor', 'Judge', 'Corporate Counsel'],
-            topRecruiters: ['Law Firms', 'Corporate Legal Departments', 'Courts'],
-            skills: ['Legal Research', 'Argumentation', 'Contract Drafting', 'Litigation']
+            name: 'Psychology',
+            slug: 'psychology',
+            programmeType: 'arts',
+            description: 'Human behavior, mental health, counseling, and psychological research',
+            fullDescription: 'Psychology programs study human behavior, mental processes, cognitive functions, and emotional well-being. Students learn about developmental psychology, abnormal psychology, counseling techniques, research methods, and therapeutic approaches. The curriculum combines theoretical knowledge with practical applications in mental health and counseling.',
+            icon: 'fas fa-brain',
+            duration: '3 Years',
+            degree: 'BA/BSc',
+            eligibility: '10+2 from any stream',
+            averageFees: '₹50,000-3 Lakhs per year',
+            careerOptions: ['Clinical Psychologist', 'Counselor', 'HR Professional', 'School Psychologist', 'Research Analyst', 'Child Psychologist'],
+            topRecruiters: ['Hospitals', 'Counseling Centers', 'Schools', 'NGOs', 'Corporate HR Departments', 'Research Institutions'],
+            skills: ['Counseling', 'Research', 'Communication', 'Empathy', 'Assessment', 'Problem Solving']
         }
     ],
-    design: [
+    health: [
         {
-            name: 'Architecture',
-            slug: 'architecture',
-            programmeType: 'architecture',
-            description: 'Building design, urban planning, and architectural engineering',
-            fullDescription: 'Architecture combines art and science to design buildings and structures with focus on aesthetics, functionality, and sustainability. Students learn design principles, structural engineering, and urban planning.',
-            icon: 'fas fa-building',
-            duration: '5 Years',
-            degree: 'B.Arch',
-            eligibility: 'NATA qualification with 10+2 (Math mandatory)',
-            averageFees: '₹2-8 Lakhs per year',
-            careerOptions: ['Architect', 'Urban Planner', 'Interior Designer', 'Landscape Architect'],
-            topRecruiters: ['Architecture Firms', 'Construction Companies', 'Government'],
-            skills: ['Design', 'AutoCAD', 'Revit', '3D Modeling', 'Urban Planning']
+            name: 'Medicine',
+            slug: 'medicine',
+            programmeType: 'medical',
+            description: 'Medical sciences, clinical practice, patient care, and healthcare management',
+            fullDescription: 'Medicine encompasses the study and practice of diagnosing, treating, and preventing diseases. Students learn anatomy, physiology, pathology, pharmacology, and clinical medicine through classroom instruction and hospital rotations. The field requires dedication, compassion, and continuous learning to provide quality healthcare.',
+            icon: 'fas fa-user-md',
+            duration: '5.5 Years',
+            degree: 'MBBS/MD',
+            eligibility: 'NEET qualification with PCB (Min 50%)',
+            averageFees: '₹5-25 Lakhs per year',
+            careerOptions: ['Doctor', 'Surgeon', 'Physician', 'Medical Specialist', 'Researcher', 'Healthcare Administrator'],
+            topRecruiters: ['Hospitals', 'Clinics', 'Medical Colleges', 'Research Institutions', 'Healthcare Organizations'],
+            skills: ['Clinical Skills', 'Diagnosis', 'Patient Care', 'Medical Knowledge', 'Communication', 'Decision Making']
         },
         {
-            name: 'Fashion Design',
-            slug: 'fashion-design',
-            programmeType: 'design',
-            description: 'Clothing design, textiles, fashion merchandising, and styling',
-            fullDescription: 'Fashion Design covers clothing design, textile science, fashion illustration, and garment manufacturing. Students learn about fashion trends, design software, and fashion business.',
-            icon: 'fas fa-tshirt',
-            duration: '3-4 Years',
-            degree: 'BDes',
-            eligibility: '10+2 from any stream',
-            averageFees: '₹2-6 Lakhs per year',
-            careerOptions: ['Fashion Designer', 'Stylist', 'Fashion Merchandiser', 'Textile Designer'],
-            topRecruiters: ['Fashion Houses', 'Retail Brands', 'Design Studios'],
-            skills: ['Design', 'Pattern Making', 'Textiles', 'Fashion Illustration']
+            name: 'Pharmacy',
+            slug: 'pharmacy',
+            programmeType: 'pharmacy',
+            description: 'Pharmaceutical sciences, drug development, and patient care',
+            fullDescription: 'Pharmacy programs focus on pharmaceutical sciences, drug formulation, pharmacology, medicinal chemistry, and patient care. Students learn about drug manufacturing, quality control, pharmaceutical marketing, hospital pharmacy, and clinical pharmacy. The curriculum combines theoretical pharmaceutical knowledge with practical training in drug development and patient counseling.',
+            icon: 'fas fa-pills',
+            duration: '4 Years',
+            degree: 'B.Pharm',
+            eligibility: '10+2 with Physics, Chemistry, Biology/Mathematics',
+            averageFees: '₹1-4 Lakhs per year',
+            careerOptions: ['Pharmacist', 'Drug Inspector', 'Medical Representative', 'Research Scientist', 'Hospital Pharmacist', 'Pharmaceutical Analyst'],
+            topRecruiters: ['Cipla', 'Sun Pharma', 'Dr. Reddy\'s', 'Lupin', 'Pfizer', 'GlaxoSmithKline'],
+            skills: ['Pharmaceutical Knowledge', 'Drug Formulation', 'Quality Control', 'Research', 'Patient Counseling', 'Regulatory Affairs']
+        }
+    ],
+    commerce: [
+        {
+            name: 'Accounting',
+            slug: 'accounting',
+            programmeType: 'commerce',
+            description: 'Financial accounting, cost accounting, auditing, and taxation',
+            fullDescription: 'Accounting programs provide comprehensive knowledge of financial accounting, cost accounting, management accounting, auditing, and taxation. Students learn about financial statements, accounting standards, audit procedures, tax laws, and accounting software. The curriculum prepares students for professional accounting careers and certifications like CA, CMA, and ACCA.',
+            icon: 'fas fa-file-invoice-dollar',
+            duration: '3 Years',
+            degree: 'B.Com',
+            eligibility: '10+2 with Commerce (preferred)',
+            averageFees: '₹20,000-2 Lakhs per year',
+            careerOptions: ['Accountant', 'Auditor', 'Tax Consultant', 'Financial Analyst', 'Accounts Manager', 'Internal Auditor'],
+            topRecruiters: ['Big 4 Firms', 'Banks', 'Financial Institutions', 'Corporate Companies', 'Audit Firms'],
+            skills: ['Accounting', 'Auditing', 'Taxation', 'Financial Analysis', 'Tally/SAP', 'Excel']
+        },
+        {
+            name: 'Banking & Finance',
+            slug: 'banking-finance',
+            programmeType: 'commerce',
+            description: 'Banking operations, financial markets, investment management, and risk analysis',
+            fullDescription: 'Banking & Finance programs cover banking operations, financial markets, investment management, risk analysis, and financial planning. Students learn about retail banking, corporate banking, investment banking, financial regulations, and banking technology. The curriculum combines banking fundamentals with modern financial practices.',
+            icon: 'fas fa-university',
+            duration: '3 Years',
+            degree: 'B.Com/BBA',
+            eligibility: '10+2 with Commerce/Mathematics',
+            averageFees: '₹50,000-3 Lakhs per year',
+            careerOptions: ['Bank Manager', 'Financial Advisor', 'Investment Analyst', 'Loan Officer', 'Credit Analyst', 'Relationship Manager'],
+            topRecruiters: ['HDFC Bank', 'ICICI Bank', 'SBI', 'Axis Bank', 'Kotak Mahindra', 'Yes Bank'],
+            skills: ['Banking Operations', 'Financial Analysis', 'Investment Management', 'Risk Assessment', 'Customer Service', 'Financial Planning']
+        }
+    ],
+    diploma: [
+        {
+            name: 'Diploma Programs',
+            slug: 'certificate',
+            programmeType: 'diploma',
+            description: 'Short-term vocational and skill-based diploma courses across various fields',
+            fullDescription: 'Diploma programs offer focused, practical training in specific fields ranging from engineering, IT, design, to healthcare. These programs are shorter than degree courses and emphasize hands-on skills and industry readiness. Students can pursue diplomas after 10th or 12th grade, gaining specialized knowledge for immediate employment or as a pathway to degree programs.',
+            icon: 'fas fa-certificate',
+            duration: '1-3 Years',
+            degree: 'Diploma',
+            eligibility: '10th/10+2 depending on course',
+            averageFees: '₹30,000-2 Lakhs total',
+            careerOptions: ['Junior Engineer', 'Technician', 'Assistant', 'Operator', 'Technical Support', 'Specialist'],
+            topRecruiters: ['Manufacturing Companies', 'IT Firms', 'Hospitals', 'Service Industries', 'Government Departments'],
+            skills: ['Technical Skills', 'Practical Knowledge', 'Industry Tools', 'Problem Solving', 'Hands-on Experience']
         }
     ]
 };
+
 
 // GET /courses - Main courses listing page
 router.get('/', async (req, res) => {
@@ -253,6 +345,7 @@ router.get('/', async (req, res) => {
         res.status(500).send('Error loading courses: ' + error.message);
     }
 });
+
 
 // GET /courses/:category - Display courses by category
 router.get('/:category', async (req, res) => {
@@ -279,7 +372,7 @@ router.get('/:category', async (req, res) => {
     }
 });
 
-// GET /courses/:category/:slug - Display individual course details
+
 // GET /courses/:category/:slug - Display individual course details
 router.get('/:category/:slug', async (req, res) => {
     try {
@@ -299,7 +392,7 @@ router.get('/:category/:slug', async (req, res) => {
         // Fetch ONLY FEATURED universities offering this course
         const universities = await University.find({
             programmes: course.programmeType,
-            featured: true  // ADD THIS LINE - Only fetch featured universities
+            featured: true
         })
         .sort({ rating: -1 })
         .limit(12);
