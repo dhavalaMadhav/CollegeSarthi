@@ -57,11 +57,28 @@ router.get('/quiz', (req, res) => {
     });
 });
 
-// Quiz results page
-router.get('/quiz-results', (req, res) => {
-    res.render('quiz-results', {
-        title: 'Your Career Guidance Results - EduPath'
-    });
+// Quiz results page with database recommendations
+router.get('/quiz-results', async (req, res) => {
+    try {
+        // Get quiz data from query params or session if you want
+        // For now, we'll fetch top universities from database
+        const universities = await University.find()
+            .limit(5)
+            .sort({ createdAt: -1 }); // You can add your own sorting logic
+        
+        console.log(`📊 Fetched ${universities.length} universities for quiz results`);
+        
+        res.render('quiz-results', {
+            title: 'Your Career Guidance Results - EduPath',
+            universities: universities
+        });
+    } catch (error) {
+        console.error('❌ Error loading quiz results:', error);
+        res.status(500).render('error', {
+            title: 'Error',
+            message: 'Unable to load quiz results'
+        });
+    }
 });
 
 // Universities listing page
@@ -84,7 +101,6 @@ router.get('/universities', async (req, res) => {
         });
     }
 });
-
 
 // University detail page
 router.get('/university/:id', async (req, res) => {
@@ -122,10 +138,8 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/loading', (req, res) => {
-  res.render('loading');
+    res.render('loading');
 });
-
-
 
 // Contact page
 router.get('/contact', (req, res) => {
@@ -172,26 +186,6 @@ router.get('/admin/dashboard', authenticateToken, async (req, res) => {
 router.get('/admin/logout', (req, res) => {
     res.clearCookie('adminToken');
     res.redirect('/admin');
-});
-
-
-// University detail page
-router.get('/university/:id', async (req, res) => {
-    try {
-        const university = await University.findById(req.params.id);
-        
-        if (!university) {
-            return res.status(404).send('University not found');
-        }
-                
-        res.render('university-detail', {
-            title: university.name,
-            university: university
-        });
-    } catch (error) {
-        console.error('Error fetching university:', error);
-        res.status(500).send('Error loading university');
-    }
 });
 
 module.exports = router;
