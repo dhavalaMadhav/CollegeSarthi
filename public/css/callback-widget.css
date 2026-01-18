@@ -44,14 +44,15 @@
 }
 
 .callback-button i {
-    color: var(--white);
+    color: #FFFFFF;
 }
 
 .callback-popup {
-    position: fixed;
+    position: absolute;
     bottom: 90px;
+    right: 0;
     width: 300px;
-    height: 350px;
+    height: 420px;
     background: #FFFFFF;
     border: none;
     border-radius: 12px;
@@ -59,8 +60,6 @@
     display: none;
     animation: slideUp 0.3s ease;
     font-weight: 500;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 10002;
 }
 
@@ -117,9 +116,9 @@
     color: #FFFFFF;
     font-size: 1.125rem;
     cursor: pointer;
-    padding: 8px;
-    width: 36px;
-    height: 36px;
+    padding: 0;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,8 +128,8 @@
 }
 
 .callback-close-btn:hover {
-    background: #FFFFFF;
-    color: #2C5F8D;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
     transform: none;
 }
 
@@ -138,6 +137,21 @@
     padding: 15px;
     background: #F7F8FA;
     border-radius: 0 0 12px 12px;
+    height: calc(100% - 48px);
+    overflow-y: auto;
+}
+
+.callback-popup-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.callback-popup-body::-webkit-scrollbar-track {
+    background: #E5E7EB;
+}
+
+.callback-popup-body::-webkit-scrollbar-thumb {
+    background: #2C5F8D;
+    border-radius: 2px;
 }
 
 .callback-popup-body p {
@@ -222,9 +236,8 @@
 }
 
 .callback-submit-btn:disabled {
-    background: var(--gray-300);
-    color: var(--gray-600);
-    border-color: var(--gray-400);
+    background: #D1D5DB;
+    color: #6B7280;
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
@@ -273,10 +286,12 @@
 
     .callback-popup {
         width: calc(100vw - 40px);
-        height: 360px;
+        height: 460px;
         position: fixed;
         left: 50%;
         top: 50%;
+        bottom: auto;
+        right: auto;
         transform: translate(-50%, -50%);
         z-index: 10002;
     }
@@ -300,10 +315,12 @@
     
     .callback-popup {
         width: calc(100vw - 30px);
-        height: 340px;
+        height: 440px;
         position: fixed;
         left: 50%;
         top: 50%;
+        bottom: auto;
+        right: auto;
         transform: translate(-50%, -50%);
         z-index: 10002;
     }
