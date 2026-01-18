@@ -157,8 +157,6 @@
             position: relative;
         }
 
-
-
         /* Underline animation matching header nav - same 2px height */
         .dropdown-column a::after {
             content: '';
@@ -171,14 +169,10 @@
             transition: width 0.2s ease;
         }
 
-
-
         .dropdown-column a:hover {
             color: var(--accent-primary);
             padding-left: 8px;
         }
-
-
 
         .dropdown-column a:hover::after {
             width: 100%;
@@ -323,24 +317,23 @@
             }
             
             /* Mobile menu container - RIGHT ALIGNED */
-/* Mobile menu container - RIGHT ALIGNED */
-.mobile-menu {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: var(--bg-surface);
-    z-index: 1100;
-    padding: 70px 20px 30px;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto;
-    justify-content: flex-start; /* ADD THIS LINE */
-    align-items: stretch; /* ADD THIS LINE */
-}
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-surface);
+                z-index: 1100;
+                padding: 70px 20px 30px;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                justify-content: flex-start;
+                align-items: stretch;
+            }
             
             .mobile-menu.active {
                 right: 0;
@@ -366,14 +359,13 @@
             }
             
             /* Mobile menu items - LEFT ALIGNED */
-/* Mobile menu items - LEFT ALIGNED */
-.mobile-menu ul {
-    list-style: none;
-    width: 100%;
-    margin: 0; /* CHANGE from margin-top: 10px */
-    padding: 0; /* ADD THIS */
-    text-align: left;
-}
+            .mobile-menu ul {
+                list-style: none;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+            }
             
             .mobile-menu ul li {
                 margin: 0;
@@ -537,6 +529,55 @@
                 border-bottom: none;
             }
             
+            /* Mobile View All Button Container */
+/* Mobile View All Button Container */
+.mobile-view-all-container {
+    padding: 16px 12px 12px;
+    background: var(--bg-primary);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile View All Button - CENTERED TEXT */
+.mobile-view-all-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-body) !important;
+    font-size: 0.8rem !important;
+    font-weight: 500;
+    color: #FFFFFF !important;
+    background: var(--accent-primary);
+    text-decoration: none !important;
+    transition: all 0.25s ease;
+    padding: 11px 12px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(44, 95, 141, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 100%;
+    text-align: center !important;
+    line-height: 1.2;
+}
+
+.mobile-view-all-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 95, 141, 0.3);
+    color: #FFFFFF !important;
+}
+
+.mobile-view-all-btn i {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin: 0;
+}
+            
             /* Mobile menu close button */
             .mobile-menu-close {
                 position: absolute;
@@ -607,6 +648,21 @@
                 padding-left: 28px;
             }
             
+            /* Mobile View All Button - Smaller screens */
+            .mobile-view-all-container {
+                padding: 14px 10px 10px;
+            }
+            
+            .mobile-view-all-btn {
+                font-size: 0.75rem !important;
+                padding: 9px 18px;
+                width: 95%;
+            }
+            
+            .mobile-view-all-btn i {
+                font-size: 0.85rem;
+            }
+            
             .logo-img {
                 height: 32px !important;
             }
@@ -650,9 +706,6 @@
         }
     </style>
 
-
-
-
 </head>
 <body>
 <script>
@@ -665,10 +718,6 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
 }
 </script>
 
-
-
-
-
     <!-- Header -->
     <header>
         <div class="nav-container">
@@ -677,10 +726,6 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
                     <img src="/images/unipick-logo.png" alt="UniPick Logo" class="logo-img">
                 </a>
             </div>
-
-
-
-
 
             <nav>
                 <ul>
@@ -743,16 +788,8 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
         </div>
     </header>
 
-
-
-
-
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
-
-
-
-
 
     <!-- Mobile Menu - Nested Dropdown Structure -->
     <div class="mobile-menu" id="mobileMenu">
@@ -831,6 +868,13 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
                             <a href="/courses/diploma/certificate" onclick="closeMobileMenu()">Diploma Programs</a>
                         </div>
                     </div>
+                    
+                    <!-- View All Courses Button -->
+                    <div class="mobile-view-all-container">
+                        <a href="/courses" class="mobile-view-all-btn" onclick="closeMobileMenu()">
+                            <i class="fas fa-graduation-cap"></i> View All Courses
+                        </a>
+                    </div>
                 </div>
             </li>
             
@@ -852,10 +896,6 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
         </ul>
     </div>
 
-
-
-
-
     <!-- Floating Contact Widget -->
     <div class="floating-contact-widget">
         <div class="contact-options">
@@ -873,10 +913,6 @@ if (localStorage.getItem('hasSeenLoading') !== 'true') {
             <i class="fas fa-comment-dots"></i>
         </button>
     </div>
-
-
-
-
 
     <script>
         // Mobile menu functions

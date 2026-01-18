@@ -97,7 +97,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   HERO SECTION - ANIMATED UNIVERSITY NAMES IN BOXES WITH BACKGROUND IMAGE
+   HERO SECTION - CLEAN BACKGROUND IMAGE (NO UNIVERSITY NAME BOXES)
    ======================================== */
 
 .hero {
@@ -238,77 +238,6 @@ h1::before, h2::before, h3::before {
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
-}
-
-/* Animated University Names in Boxes */
-.university-marquee {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 5;
-    opacity: 0.3;
-}
-
-.marquee-row {
-    position: absolute;
-    white-space: nowrap;
-    transform: rotate(-45deg);
-    width: 200%;
-}
-
-.marquee-row-1 {
-    top: 20%;
-    left: -50%;
-    animation: marquee-1 40s linear infinite;
-}
-
-.marquee-row-2 {
-    bottom: 20%;
-    right: -50%;
-    animation: marquee-2 35s linear infinite;
-}
-
-.marquee-track {
-    display: inline-block;
-}
-
-.university-box {
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    margin: 0 1.5rem;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.university-box:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.university-name {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    font-family: var(--font-heading);
-    white-space: nowrap;
-}
-
-@keyframes marquee-1 {
-    0% { transform: rotate(-45deg) translateX(0); }
-    100% { transform: rotate(-45deg) translateX(-50%); }
-}
-
-@keyframes marquee-2 {
-    0% { transform: rotate(-45deg) translateX(0); }
-    100% { transform: rotate(-45deg) translateX(50%); }
 }
 
 /* ========================================
@@ -862,7 +791,7 @@ h1::before, h2::before, h3::before {
 }
 
 /* ========================================
-   FAQ SECTION
+   FAQ SECTION - FASTER TRANSITIONS
    ======================================== */
 
 .faq-section {
@@ -951,7 +880,7 @@ h1::before, h2::before, h3::before {
 
 .faq-question i {
     color: var(--accent-primary);
-    transition: transform 0.3s ease;
+    transition: transform 0.15s ease;
     font-size: 0.9rem;
     flex-shrink: 0;
     margin-left: 0.5rem;
@@ -964,7 +893,7 @@ h1::before, h2::before, h3::before {
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: max-height 0.15s ease, padding 0.15s ease;
     background: transparent;
 }
 
@@ -1108,15 +1037,6 @@ h1::before, h2::before, h3::before {
         height: 80px;
     }
     
-    .university-box {
-        padding: 0.6rem 1.2rem;
-        margin: 0 1rem;
-    }
-    
-    .university-name {
-        font-size: 1.2rem;
-    }
-    
     /* TABLET: 2 cards per section for testimonials */
     .stories-container {
         max-width: 100%;
@@ -1189,28 +1109,6 @@ h1::before, h2::before, h3::before {
         padding: 0.7rem 1.5rem;
         font-size: 0.8rem;
         border-radius: 25px;
-    }
-    
-    .university-marquee {
-        display: block;
-        opacity: 0.25;
-    }
-    
-    .university-box {
-        padding: 0.4rem 0.8rem;
-        margin: 0 0.8rem;
-    }
-    
-    .university-name {
-        font-size: 0.9rem;
-    }
-    
-    .marquee-row-1 {
-        top: 15%;
-    }
-    
-    .marquee-row-2 {
-        bottom: 15%;
     }
     
     .stats-grid {
@@ -1416,15 +1314,6 @@ h1::before, h2::before, h3::before {
         font-size: 1.2rem;
     }
     
-    .university-box {
-        padding: 0.3rem 0.6rem;
-        margin: 0 0.6rem;
-    }
-    
-    .university-name {
-        font-size: 0.8rem;
-    }
-    
     .story-card {
         padding: 0.8rem;
         gap: 0.7rem;
@@ -1507,15 +1396,6 @@ h1::before, h2::before, h3::before {
         padding: 0.5rem;
     }
     
-    .university-box {
-        padding: 0.25rem 0.5rem;
-        margin: 0 0.5rem;
-    }
-    
-    .university-name {
-        font-size: 0.75rem;
-    }
-    
     .story-card {
         padding: 0.7rem;
     }
@@ -1541,7 +1421,7 @@ h1::before, h2::before, h3::before {
 }
 </style>
 
-<!-- Hero Section with Animated University Names in Boxes -->
+<!-- Hero Section - CLEAN (NO UNIVERSITY NAME BOXES) -->
 <section class="hero">
     <div class="hero-background"></div>
     
@@ -1556,60 +1436,6 @@ h1::before, h2::before, h3::before {
             <button class="btn-bright-blue" onclick="window.location.href='/contact'">
                 <i class="fas fa-user-graduate"></i> Talk to Advisor
             </button>
-        </div>
-    </div>
-    
-    <!-- Animated University Names in Boxes -->
-    <div class="university-marquee">
-        <div class="marquee-row marquee-row-1">
-            <div class="marquee-track">
-                <div class="university-box"><span class="university-name">University of Oxford</span></div>
-                <div class="university-box"><span class="university-name">Harvard University</span></div>
-                <div class="university-box"><span class="university-name">Stanford University</span></div>
-                <div class="university-box"><span class="university-name">MIT</span></div>
-                <div class="university-box"><span class="university-name">Cambridge University</span></div>
-                <div class="university-box"><span class="university-name">Caltech</span></div>
-                <div class="university-box"><span class="university-name">Princeton University</span></div>
-                <div class="university-box"><span class="university-name">Yale University</span></div>
-                <div class="university-box"><span class="university-name">University of Chicago</span></div>
-                <div class="university-box"><span class="university-name">University of Pennsylvania</span></div>
-                <!-- Duplicate for seamless loop -->
-                <div class="university-box"><span class="university-name">University of Oxford</span></div>
-                <div class="university-box"><span class="university-name">Harvard University</span></div>
-                <div class="university-box"><span class="university-name">Stanford University</span></div>
-                <div class="university-box"><span class="university-name">MIT</span></div>
-                <div class="university-box"><span class="university-name">Cambridge University</span></div>
-                <div class="university-box"><span class="university-name">Caltech</span></div>
-                <div class="university-box"><span class="university-name">Princeton University</span></div>
-                <div class="university-box"><span class="university-name">Yale University</span></div>
-                <div class="university-box"><span class="university-name">University of Chicago</span></div>
-                <div class="university-box"><span class="university-name">University of Pennsylvania</span></div>
-            </div>
-        </div>
-        <div class="marquee-row marquee-row-2">
-            <div class="marquee-track">
-                <div class="university-box"><span class="university-name">Columbia University</span></div>
-                <div class="university-box"><span class="university-name">University of Michigan</span></div>
-                <div class="university-box"><span class="university-name">Johns Hopkins University</span></div>
-                <div class="university-box"><span class="university-name">Northwestern University</span></div>
-                <div class="university-box"><span class="university-name">Duke University</span></div>
-                <div class="university-box"><span class="university-name">UC Berkeley</span></div>
-                <div class="university-box"><span class="university-name">Cornell University</span></div>
-                <div class="university-box"><span class="university-name">UCLA</span></div>
-                <div class="university-box"><span class="university-name">NYU</span></div>
-                <div class="university-box"><span class="university-name">University of Toronto</span></div>
-                <!-- Duplicate for seamless loop -->
-                <div class="university-box"><span class="university-name">Columbia University</span></div>
-                <div class="university-box"><span class="university-name">University of Michigan</span></div>
-                <div class="university-box"><span class="university-name">Johns Hopkins University</span></div>
-                <div class="university-box"><span class="university-name">Northwestern University</span></div>
-                <div class="university-box"><span class="university-name">Duke University</span></div>
-                <div class="university-box"><span class="university-name">UC Berkeley</span></div>
-                <div class="university-box"><span class="university-name">Cornell University</span></div>
-                <div class="university-box"><span class="university-name">UCLA</span></div>
-                <div class="university-box"><span class="university-name">NYU</span></div>
-                <div class="university-box"><span class="university-name">University of Toronto</span></div>
-            </div>
         </div>
     </div>
 </section>
@@ -1916,7 +1742,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(statsSection);
 
-// FAQ Toggle
+// FAQ Toggle - FASTER TRANSITIONS
 function toggleFAQ(element) {
     const faqItem = element.parentElement;
     const isActive = faqItem.classList.contains('active');
