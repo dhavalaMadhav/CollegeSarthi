@@ -79,7 +79,7 @@ router.post('/contact', async (req, res) => {
                     subject: '🎓 NEW LEAD - Contact Form',
                     html: `
                         <div style="font-family: Arial, sans-serif;">
-                            <h2 style="color: #2c5282;">New Lead from EduPath</h2>
+                            <h2 style="color: #2c5282;">New Lead from UniPick</h2>
                             <table style="width: 100%; border-collapse: collapse;">
                                 <tr>
                                     <td style="padding: 10px; font-weight: bold; border-bottom: 1px solid #ddd;">Name:</td>
@@ -145,7 +145,7 @@ router.post('/contact', async (req, res) => {
                 await transporter.sendMail({
                     from: process.env.EMAIL_USER,
                     to: email,
-                    subject: '✅ Thank You for Contacting EduPath!',
+                    subject: '✅ Thank You for Contacting UniPick!',
                     html: `
                         <div style="font-family: Arial, sans-serif; max-width: 600px;">
                             <h2 style="background: #2c5282; color: white; padding: 20px; text-align: center;">
@@ -174,7 +174,7 @@ router.post('/contact', async (req, res) => {
                                 </div>
                             </div>
                             <div style="background: #1a365d; color: white; padding: 20px; text-align: center;">
-                                <p style="margin: 0;">Best regards,<br><strong>EduPath Team</strong></p>
+                                <p style="margin: 0;">Best regards,<br><strong>UniPick Team</strong></p>
                             </div>
                         </div>
                     `

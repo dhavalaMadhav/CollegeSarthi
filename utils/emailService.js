@@ -104,7 +104,7 @@ const sendConfirmationToStudent = async (leadData) => {
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: leadData.email,
-        subject: 'Your Career Guidance Request - EduPath',
+        subject: 'Your Career Guidance Request - UniPick',
         html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 2px solid #2c5282;">
                 <div style="background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 30px; text-align: center;">
@@ -156,12 +156,12 @@ const sendConfirmationToStudent = async (leadData) => {
                     <p style="font-size: 14px; color: #666; line-height: 1.6; margin-top: 30px;">
                         Best regards,<br>
                         <strong>Career Guidance Team</strong><br>
-                        EduPath
+                        UniPick
                     </p>
                 </div>
                 
                 <div style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 12px; color: #666;">
-                    <p style="margin: 0;">© 2025 EduPath. All rights reserved.</p>
+                    <p style="margin: 0;">© 2025 UniPick. All rights reserved.</p>
                     <p style="margin: 5px 0 0 0;">Your trusted partner in education guidance</p>
                 </div>
             </div>

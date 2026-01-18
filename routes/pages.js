@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
         res.render('index', { 
             universities,
             testimonials,
-            title: 'EduPath - Your Career Guidance Partner'
+            title: 'UniPick - Your Career Guidance Partner'
         });
     } catch (error) {
         console.error('Error loading homepage:', error);
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 // Quiz page
 router.get('/quiz', (req, res) => {
     res.render('quiz', {
-        title: 'Career Assessment Quiz - EduPath'
+        title: 'Career Assessment Quiz - UniPick'
     });
 });
 
@@ -69,7 +69,7 @@ router.get('/quiz-results', async (req, res) => {
         console.log(`📊 Fetched ${universities.length} universities for quiz results`);
         
         res.render('quiz-results', {
-            title: 'Your Career Guidance Results - EduPath',
+            title: 'Your Career Guidance Results - UniPick',
             universities: universities
         });
     } catch (error) {
@@ -90,7 +90,7 @@ router.get('/universities', async (req, res) => {
         console.log(`📚 Fetched ${universities.length} universities from database`);
         
         res.render('universities', {
-            title: 'Universities - EduPath',
+            title: 'Universities - UniPick',
             universities: universities
         });
     } catch (error) {
@@ -132,7 +132,7 @@ router.get('/university/:id', async (req, res) => {
 // GET /about - About Page
 router.get('/about', (req, res) => {
     res.render('about', { 
-        title: 'About - Rahul Sharma | CA & Admission Consultant',
+        title: 'About -Ravi Vajendla | CA & Admission Consultant',
         page: 'about'
     });
 });
@@ -144,14 +144,14 @@ router.get('/loading', (req, res) => {
 // Contact page
 router.get('/contact', (req, res) => {
     res.render('contact', {
-        title: 'Contact Us - EduPath'
+        title: 'Contact Us - UniPick'
     });
 });
 
 // Admin login page
 router.get('/admin', checkAuthenticated, (req, res) => {
     res.render('admin/login', {
-        title: 'Admin Login - EduPath',
+        title: 'Admin Login - UniPick',
         error: null
     });
 });
@@ -172,7 +172,7 @@ router.get('/admin/dashboard', authenticateToken, async (req, res) => {
         };
         
         res.render('admin/dashboard', {
-            title: 'Admin Dashboard - EduPath',
+            title: 'Admin Dashboard - UniPick',
             leads,
             stats
         });

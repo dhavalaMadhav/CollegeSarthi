@@ -17,7 +17,7 @@ router.post('/session/create', async (req, res) => {
             studentPhone,
             messages: [{
                 sender: 'bot',
-                message: `Hi ${studentName}! 👋 Welcome to EduPath Career Guidance.\n\nI'm here to help you with:\n✅ University recommendations\n✅ Career guidance\n✅ Scholarship information\n✅ Course details\n\nHow can I assist you today?`,
+                message: `Hi ${studentName}! 👋 Welcome to UniPick Career Guidance.\n\nI'm here to help you with:\n✅ University recommendations\n✅ Career guidance\n✅ Scholarship information\n✅ Course details\n\nHow can I assist you today?`,
                 timestamp: new Date()
             }]
         });
@@ -163,7 +163,7 @@ function getAutoReply(message) {
     
     // Greetings
     if (msg.match(/^(hi|hello|hey|good morning|good evening|namaste)/)) {
-        return "Hello! 😊 I'm your EduPath assistant. I can help you with:\n\n📚 University recommendations\n💰 Scholarship information\n📊 Career guidance\n📝 Admission process\n\nWhat would you like to know?";
+        return "Hello! 😊 I'm your UniPick assistant. I can help you with:\n\n📚 University recommendations\n💰 Scholarship information\n📊 Career guidance\n📝 Admission process\n\nWhat would you like to know?";
     }
     
     // Quiz/Assessment
@@ -188,7 +188,7 @@ function getAutoReply(message) {
     
     // Contact
     if (msg.includes('contact') || msg.includes('phone') || msg.includes('call') || msg.includes('number')) {
-        return "📞 Contact our counselling team:\n\n☎️ Phone: " + (process.env.CA_PHONE || '+91-XXXXXXXXXX') + "\n📧 Email: " + (process.env.CA_EMAIL || 'guidance@edupath.com') + "\n💬 WhatsApp: " + (process.env.CA_PHONE || '+91-XXXXXXXXXX') + "\n\n⏰ Available: Mon-Sat, 9:00 AM - 7:00 PM\n\nYou can also continue chatting here - I'm available 24/7!";
+        return "📞 Contact our counselling team:\n\n☎️ Phone: " + (process.env.CA_PHONE || '+91-XXXXXXXXXX') + "\n📧 Email: " + (process.env.CA_EMAIL || 'guidance@UniPick.com') + "\n💬 WhatsApp: " + (process.env.CA_PHONE || '+91-XXXXXXXXXX') + "\n\n⏰ Available: Mon-Sat, 9:00 AM - 7:00 PM\n\nYou can also continue chatting here - I'm available 24/7!";
     }
     
     // Eligibility
@@ -208,7 +208,7 @@ function getAutoReply(message) {
     
     // How it works
     if (msg.includes('how') || msg.includes('process') || msg.includes('work')) {
-        return "Here's how EduPath works: 📋\n\n1️⃣ **Career Assessment**\n   Take our 5-min quiz\n\n2️⃣ **Get Recommendations**\n   Personalized university matches\n\n3️⃣ **Expert Counselling**\n   Talk to our advisors\n\n4️⃣ **Apply & Enroll**\n   We guide you end-to-end\n\n5️⃣ **Scholarship Support**\n   Maximize financial aid\n\n🚀 Ready to start? Take the quiz or ask me anything!";
+        return "Here's how UniPick works: 📋\n\n1️⃣ **Career Assessment**\n   Take our 5-min quiz\n\n2️⃣ **Get Recommendations**\n   Personalized university matches\n\n3️⃣ **Expert Counselling**\n   Talk to our advisors\n\n4️⃣ **Apply & Enroll**\n   We guide you end-to-end\n\n5️⃣ **Scholarship Support**\n   Maximize financial aid\n\n🚀 Ready to start? Take the quiz or ask me anything!";
     }
     
     // Default: Forward to counsellor

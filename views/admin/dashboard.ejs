@@ -573,7 +573,7 @@
 </head>
 <body>
     <div class="admin-header">
-        <h1><i class="fas fa-shield-alt"></i> Admin Dashboard - EduPath</h1>
+        <h1><i class="fas fa-shield-alt"></i> Admin Dashboard - UniPick</h1>
         <div class="header-actions">
             <button class="refresh-btn" onclick="location.reload()">
                 <i class="fas fa-sync-alt"></i> Refresh
@@ -1034,7 +1034,7 @@
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'edupath-leads-' + new Date().toISOString().split('T')[0] + '.csv';
+        a.download = 'UniPick-leads-' + new Date().toISOString().split('T')[0] + '.csv';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
