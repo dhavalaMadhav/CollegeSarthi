@@ -1,9 +1,21 @@
 <%- include('partials/header') %>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="Contact UniPick for expert university admissions guidance. Reach out via phone, email, or our online form and let us help you navigate your educational journey.">
+<meta name="keywords" content="contact university admissions consultant, get university admissions help, reach out to UniPick, university counseling contact">
+<meta property="og:title" content="Contact UniPick - Get University Admissions Help">
+<meta property="og:description" content="Contact UniPick for expert university admissions guidance. Reach out via phone, email, or our online form and let us help you navigate your educational journey.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contact UniPick - Get University Admissions Help">
+<meta name="twitter:description" content="Contact UniPick for expert university admissions guidance. Reach out via phone, email, or our online form and let us help you navigate your educational journey.">
+
+
 <style>
 /* ========================================
    CONTACT PAGE - ACADEMIC THEME
 ========================================= */
+
 
 /* Global Scrollbar Hide */
 html, body {
@@ -12,9 +24,11 @@ html, body {
     -ms-overflow-style: none;
 }
 
+
 ::-webkit-scrollbar {
     display: none;
 }
+
 
 /* Hero Section - Reduced Height */
 .contact-hero {
@@ -28,6 +42,7 @@ html, body {
     align-items: center;
     border-bottom: none;
 }
+
 
 /* Background Image */
 .contact-hero::before {
@@ -44,6 +59,7 @@ html, body {
     z-index: 0;
 }
 
+
 /* Black Overlay */
 .contact-hero::after {
     content: '';
@@ -56,6 +72,7 @@ html, body {
     z-index: 1;
 }
 
+
 .contact-hero-content {
     max-width: 1200px;
     width: 100%;
@@ -64,6 +81,7 @@ html, body {
     z-index: 2;
     text-align: left;
 }
+
 
 .contact-hero h1 {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -75,6 +93,7 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 .contact-hero-subtitle {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
@@ -84,11 +103,13 @@ html, body {
     max-width: 650px;
 }
 
+
 /* Main Contact Section */
 .contact-main {
     padding: 60px 5%;
     background: #F9FAFB;
 }
+
 
 .contact-container {
     max-width: 1200px;
@@ -99,6 +120,7 @@ html, body {
     align-items: start;
 }
 
+
 /* Contact Information */
 .contact-info-section {
     background: #FFFFFF;
@@ -107,6 +129,7 @@ html, body {
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
+
 
 .contact-info-title {
     font-family: 'Libre Baskerville', Georgia, serif;
@@ -117,6 +140,7 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 .contact-info-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.9rem;
@@ -124,6 +148,7 @@ html, body {
     line-height: 1.6;
     margin-bottom: 30px;
 }
+
 
 /* UPDATED: Contact info items - removed bottom border, only ONE line at top of social */
 .contact-info-item {
@@ -133,9 +158,11 @@ html, body {
     margin-bottom: 25px;
 }
 
+
 .contact-info-item:last-child {
     margin-bottom: 0;
 }
+
 
 /* UPDATED: Contact info icons - transparent background with blue icon */
 .contact-info-icon {
@@ -153,9 +180,11 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .contact-info-icon:hover {
     background: rgba(44, 95, 141, 0.1); /* Subtle background on hover */
 }
+
 
 .contact-info-details h4 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -167,6 +196,7 @@ html, body {
     letter-spacing: 0.05em;
 }
 
+
 .contact-info-details p {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.95rem;
@@ -175,15 +205,18 @@ html, body {
     margin: 0;
 }
 
+
 .contact-info-details a {
     color: #1B1F24;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
+
 .contact-info-details a:hover {
     color: #2C5F8D;
 }
+
 
 /* Social Links - ONLY ONE LINE at top */
 .social-links {
@@ -193,6 +226,7 @@ html, body {
     padding-top: 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.08); /* Only ONE line here */
 }
+
 
 .social-link {
     width: 40px;
@@ -208,10 +242,12 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .social-link:hover {
     color: #1E4364;
     transform: translateY(-3px);
 }
+
 
 /* Contact Form - Boxed with Shadow */
 .contact-form-section {
@@ -222,6 +258,7 @@ html, body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
+
 .form-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.8rem;
@@ -231,6 +268,7 @@ html, body {
     letter-spacing: -0.01em;
 }
 
+
 .form-subtitle {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.9rem;
@@ -239,11 +277,13 @@ html, body {
     line-height: 1.6;
 }
 
+
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
+
 
 .form-row {
     display: grid;
@@ -251,10 +291,12 @@ html, body {
     gap: 20px;
 }
 
+
 .form-group {
     display: flex;
     flex-direction: column;
 }
+
 
 .form-group label {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -265,9 +307,11 @@ html, body {
     letter-spacing: 0.005em;
 }
 
+
 .form-group label span {
     color: #DC2626;
 }
+
 
 .form-group input,
 .form-group select,
@@ -282,6 +326,7 @@ html, body {
     transition: all 0.3s ease;
 }
 
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -290,11 +335,13 @@ html, body {
     box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
 }
 
+
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 
 .form-submit-btn {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -313,15 +360,18 @@ html, body {
     gap: 10px;
 }
 
+
 .form-submit-btn:hover {
     background: #1E4364;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(44, 95, 141, 0.3);
 }
 
+
 .form-submit-btn i {
     font-size: 0.95rem;
 }
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -331,75 +381,76 @@ html, body {
     }
 }
 
+
 @media (max-width: 768px) {
     .contact-hero {
         min-height: 120px;
         padding: 40px 5% 30px;
     }
-    
+
     .contact-hero h1 {
         font-size: 1.6rem;
         margin-bottom: 8px;
     }
-    
+
     .contact-hero-subtitle {
         font-size: 0.9rem;
     }
-    
+
     .contact-main {
         padding: 40px 5%;
     }
-    
+
     /* Hide contact info on mobile */
     .contact-info-section {
         display: none;
     }
-    
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 0;
     }
-    
+
     .contact-form-section {
         padding: 25px 20px;
     }
-    
+
     .form-title {
         font-size: 1.4rem;
         margin-bottom: 8px;
     }
-    
+
     .form-subtitle {
         font-size: 0.8rem;
         margin-bottom: 20px;
     }
-    
+
     .contact-form {
         gap: 15px;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .form-group label {
         font-size: 0.85rem;
         font-weight: 500;
         margin-bottom: 6px;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
         padding: 10px 12px;
         font-size: 0.85rem;
     }
-    
+
     .form-group textarea {
         min-height: 100px;
     }
-    
+
     .form-submit-btn {
         padding: 11px 24px;
         font-size: 0.85rem;
@@ -408,60 +459,61 @@ html, body {
     }
 }
 
+
 @media (max-width: 600px) {
     .contact-hero {
         min-height: 100px;
         padding: 35px 5% 25px;
     }
-    
+
     .contact-hero h1 {
         font-size: 1.4rem;
     }
-    
+
     .contact-hero-subtitle {
         font-size: 0.85rem;
     }
-    
+
     .contact-main {
         padding: 30px 18px;
     }
-    
+
     .contact-form-section {
         padding: 20px 15px;
     }
-    
+
     .form-title {
         font-size: 1.3rem;
     }
-    
+
     .form-subtitle {
         font-size: 0.75rem;
     }
-    
+
     .contact-form {
         gap: 12px;
     }
-    
+
     .form-row {
         gap: 12px;
     }
-    
+
     .form-group label {
         font-size: 0.8rem;
         font-weight: 500;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
         padding: 9px 11px;
         font-size: 0.8rem;
     }
-    
+
     .form-group textarea {
         min-height: 90px;
     }
-    
+
     .form-submit-btn {
         padding: 10px 20px;
         font-size: 0.8rem;
@@ -469,114 +521,129 @@ html, body {
 }
 </style>
 
+
 <!-- Hero Section -->
 <section class="contact-hero">
     <div class="contact-hero-content">
-        <h1>Get In Touch</h1>
-        <p class="contact-hero-subtitle">Have questions about university admissions? Our expert team is here to guide you through every step of your educational journey.</p>
+        <h1>Contact University Admissions Consultant - Get in Touch with UniPick</h1>
+        <p class="contact-hero-subtitle">Have questions about university admissions? Our expert team is here to provide university admissions help and guide you through every step of your educational journey.</p>
     </div>
 </section>
+
 
 <!-- Main Contact Section -->
 <section class="contact-main">
     <div class="contact-container">
-        <!-- Contact Information (Hidden on Mobile) -->
-        <div class="contact-info-section">
-            <h2 class="contact-info-title">Contact Information</h2>
-            <p class="contact-info-text">Reach out to us through any of these channels. We're here to help you make informed decisions about your future.</p>
-            
+        <!-- Contact Information (Hidden on Mobile) - WITH SCHEMA.ORG MARKUP -->
+        <div class="contact-info-section" itemscope itemtype="http://schema.org/LocalBusiness">
+            <h2 class="contact-info-title" itemprop="name">UniPick Education Consultancy</h2>
+            <p class="contact-info-text">Reach out to UniPick for expert university admissions help through any of these channels. We're here to help you make informed decisions about your future.</p>
+
             <div class="contact-info-item">
                 <div class="contact-info-icon">
                     <i class="fas fa-phone-alt"></i>
                 </div>
                 <div class="contact-info-details">
                     <h4>Phone</h4>
-                    <p><a href="tel:+97207127948">+91 7207127948</a></p>
+                    <p><a href="tel:+917207127948" itemprop="telephone">+91 7207127948</a></p>
                 </div>
             </div>
-            
+
             <div class="contact-info-item">
                 <div class="contact-info-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="contact-info-details">
                     <h4>Email</h4>
-                    <p><a href="mailto:unipick.org@gmail.com">unipick.org@gmail.com</a></p>
+                    <p><a href="mailto:unipick.org@gmail.com" itemprop="email">unipick.org@gmail.com</a></p>
                 </div>
             </div>
-            
+
             <div class="contact-info-item">
                 <div class="contact-info-icon">
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="contact-info-details">
                     <h4>Office Address</h4>
-                    <p>UniPick Education Consultancy<br>
-                    2-88, Balijepalli, Vemuru Mandal, <br>
-                    Bapatla Dst, AP 522261</p>
+                    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <p>
+                            <span itemprop="name">UniPick Education Consultancy</span><br>
+                            <span itemprop="streetAddress">2-88, Balijepalli, Vemuru Mandal</span><br>
+                            <span itemprop="addressLocality">Bapatla</span>, 
+                            <span itemprop="addressRegion">AP</span> 
+                            <span itemprop="postalCode">522261</span><br>
+                            <span itemprop="addressCountry">India</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="contact-info-item">
                 <div class="contact-info-icon">
                     <i class="fas fa-clock"></i>
                 </div>
                 <div class="contact-info-details">
                     <h4>Working Hours</h4>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                    Saturday: 10:00 AM - 4:00 PM<br>
-                    Sunday: Closed</p>
+                    <div itemprop="openingHours" content="Mo-Fr 09:00-18:00">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 10:00 AM - 4:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="social-links">
-                <a href="#" class="social-link" aria-label="Facebook">
+                <a href="#" class="social-link" aria-label="Facebook" itemprop="sameAs">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-link" aria-label="Twitter">
+                <a href="#" class="social-link" aria-label="Twitter" itemprop="sameAs">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="social-link" aria-label="LinkedIn">
+                <a href="#" class="social-link" aria-label="LinkedIn" itemprop="sameAs">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" class="social-link" aria-label="Instagram">
+                <a href="#" class="social-link" aria-label="Instagram" itemprop="sameAs">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
+
+            <!-- Hidden Schema.org properties -->
+            <meta itemprop="image" content="https://unipick.org/logo.png">
+            <meta itemprop="priceRange" content="Contact for pricing">
         </div>
-        
+
         <!-- Contact Form -->
         <div class="contact-form-section">
-            <h2 class="form-title">Send Us a Message</h2>
-            <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
-            
+            <h2 class="form-title">Send Us a Message to Get University Admissions Help</h2>
+            <p class="form-subtitle">Fill out the form below to reach out to UniPick and we'll provide expert university admissions guidance within 24 hours</p>
+
             <form class="contact-form" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name <span>*</span></label>
-                        <input type="text" id="firstName" name="firstName" required>
+                        <input type="text" id="firstName" name="firstName" required aria-label="First Name">
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name <span>*</span></label>
-                        <input type="text" id="lastName" name="lastName" required>
+                        <input type="text" id="lastName" name="lastName" required aria-label="Last Name">
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="email">Email Address <span>*</span></label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required aria-label="Email Address">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number <span>*</span></label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone" required aria-label="Phone Number">
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="course">Interested Course</label>
-                        <select id="course" name="course">
+                        <select id="course" name="course" aria-label="Interested Course">
                             <option value="">Select a course</option>
                             <option value="btech">B.Tech</option>
                             <option value="mba">MBA</option>
@@ -588,15 +655,15 @@ html, body {
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject <span>*</span></label>
-                        <input type="text" id="subject" name="subject" required>
+                        <input type="text" id="subject" name="subject" required aria-label="Subject">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">Message <span>*</span></label>
-                    <textarea id="message" name="message" required></textarea>
+                    <textarea id="message" name="message" required aria-label="Your Message" placeholder="Tell us how we can help with your university admissions"></textarea>
                 </div>
-                
+
                 <button type="submit" class="form-submit-btn">
                     <i class="fas fa-paper-plane"></i>
                     Send Message
@@ -606,11 +673,12 @@ html, body {
     </div>
 </section>
 
+
 <script>
 // Form Submission Handler
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     // Get form data
     const formData = {
         firstName: document.getElementById('firstName').value,
@@ -621,16 +689,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         subject: document.getElementById('subject').value,
         message: document.getElementById('message').value
     };
-    
+
     // Here you would typically send the data to your backend
     console.log('Form submitted:', formData);
-    
+
     // Show success message (you can customize this)
-    alert('Thank you for contacting us! We will get back to you within 24 hours.');
-    
+    alert('Thank you for contacting UniPick! Our university admissions consultants will get back to you within 24 hours.');
+
     // Reset form
     this.reset();
 });
 </script>
+
 
 <%- include('partials/footer') %>

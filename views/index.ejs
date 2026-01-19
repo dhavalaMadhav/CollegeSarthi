@@ -1,5 +1,16 @@
 <%- include('partials/header') %>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="UniPick connects students with top universities, offering expert guidance for a smooth admission process and career success.">
+<meta name="keywords" content="University Admissions Consultant, admission guidance, university admissions, college counseling, education consultant, career guidance">
+<meta property="og:title" content="UniPick - Expert University Admissions Consultant & Guidance">
+<meta property="og:description" content="UniPick connects students with top universities, offering expert guidance for a smooth admission process and career success.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UniPick - Expert University Admissions Consultant & Guidance">
+<meta name="twitter:description" content="UniPick connects students with top universities, offering expert guidance for a smooth admission process and career success.">
+
+
 <!-- Import Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1422,11 +1433,11 @@ h1::before, h2::before, h3::before {
 </style>
 
 <!-- Hero Section - CLEAN (NO UNIVERSITY NAME BOXES) -->
-<section class="hero">
+<section class="hero" itemscope itemtype="http://schema.org/LocalBusiness">
     <div class="hero-background"></div>
     
     <div class="hero-content">
-        <h1>Discover Your Academic Future</h1>
+        <h1 itemprop="name">Discover Your Academic Future with UniPick's University Admissions Guidance</h1>
         <div class="university-title">UniPick University Partners</div>
         <p>Connect with premier universities and shape your career with expert guidance tailored to your aspirations</p>
         <div class="hero-buttons">
@@ -1473,7 +1484,7 @@ h1::before, h2::before, h3::before {
 <section class="why-choose-us">
     <div class="section-header">
         <h2 class="section-title">Why Choose UniPick</h2>
-        <p class="section-subtitle">Your trusted partner in academic excellence and career success</p>
+        <p class="section-subtitle">Your trusted partner in university admissions and career success through expert admission guidance</p>
     </div>
     
     <div class="why-choose-grid">
@@ -1526,7 +1537,7 @@ h1::before, h2::before, h3::before {
 <section class="featured-universities">
     <div class="section-header">
         <h2 class="section-title">Our Partner Universities</h2>
-        <p class="section-subtitle">UniPick carefully selects and partners with the finest educational institutions</p>
+        <p class="section-subtitle">UniPick carefully selects partner universities to provide the best admission guidance for your academic journey</p>
     </div>
     
     <p class="featured-description">
@@ -1549,7 +1560,7 @@ h1::before, h2::before, h3::before {
                             </div>
                             
                             <div class="university-logo-box">
-                                <img src="<%= university.logo %>" alt="<%= university.name %> Logo">
+                                <img src="<%= university.logo %>" alt="University Logo - <%= university.name %> - Top university for admission guidance">
                             </div>
                         </div>
                         
@@ -1579,17 +1590,17 @@ h1::before, h2::before, h3::before {
 <section id="stories" class="student-stories">
     <div class="section-header">
         <h2 class="section-title">Student Success Stories</h2>
-        <p class="section-subtitle">Hear from students who achieved their dreams with our career guidance and university counseling</p>
+        <p class="section-subtitle">Hear from students who achieved their dreams with our university admissions consultant services and career guidance</p>
     </div>
     
     <div class="stories-container">
         <div class="stories-carousel" id="testimonialsCarousel">
             <% testimonials.forEach(testimonial => { %>
-                <div class="story-card">
+                <div class="story-card" itemscope itemtype="http://schema.org/Review">
                     <div class="story-card-top">
                         <div class="student-info-left">
                             <!-- Rating Stars -->
-                            <div class="student-rating">
+                            <div class="student-rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                                 <% for(let i = 1; i <= 5; i++) { %>
                                     <% if(i <= Math.floor(testimonial.rating || 5)) { %>
                                         <span class="star">★</span>
@@ -1599,12 +1610,12 @@ h1::before, h2::before, h3::before {
                                         <span class="star empty">☆</span>
                                     <% } %>
                                 <% } %>
-                                <span class="rating-text"><%= (testimonial.rating || 5).toFixed(1) %></span>
+                                <span class="rating-text"><meta itemprop="ratingValue" content="<%= (testimonial.rating || 5).toFixed(1) %>"><%= (testimonial.rating || 5).toFixed(1) %></span>
                             </div>
                             
                             <!-- Student Details -->
                             <div class="student-details">
-                                <div class="student-name"><%= testimonial.name %></div>
+                                <div class="student-name" itemprop="author"><%= testimonial.name %></div>
                                 <div class="student-course"><%= testimonial.course %></div>
                                 <div class="student-university"><%= testimonial.university %></div>
                             </div>
@@ -1612,13 +1623,13 @@ h1::before, h2::before, h3::before {
                         
                         <!-- Student Image -->
                         <div class="student-image">
-                            <img src="<%= testimonial.image || 'https://via.placeholder.com/70' %>" alt="<%= testimonial.name %>">
+                            <img src="<%= testimonial.image || 'https://via.placeholder.com/70' %>" alt="Student Success Story - <%= testimonial.name %> - University admissions testimonial">
                         </div>
                     </div>
                     
                     <!-- Review Text -->
                     <div class="story-card-bottom">
-                        <p class="review-text">"<%= testimonial.review %>"</p>
+                        <p class="review-text" itemprop="reviewBody">"<%= testimonial.review %>"</p>
                     </div>
                 </div>
             <% }) %>
@@ -1643,7 +1654,7 @@ h1::before, h2::before, h3::before {
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>We conduct thorough evaluations of universities based on academic reputation, faculty quality, placement records, infrastructure, and student support services. Only institutions meeting our rigorous standards are included in our network.</p>
+                <p>We conduct thorough evaluations of universities based on academic reputation, faculty quality, placement records, infrastructure, and student support services. Our university admissions consultants ensure only institutions meeting our rigorous standards for quality admission guidance are included in our network.</p>
             </div>
         </div>
         
@@ -1692,8 +1703,8 @@ h1::before, h2::before, h3::before {
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
-        <h2>Ready to Start Your Academic Journey?</h2>
-        <p>Take the first step towards your dream university with expert guidance from UniPick</p>
+        <h2>Ready to Start Your Academic Journey with Expert University Admissions Guidance?</h2>
+        <p>Take the first step towards your dream university with expert admission guidance from UniPick's university admissions consultants</p>
         <div class="cta-buttons">
             <button class="btn-bright-blue large" onclick="window.location.href='/contact'">
                 <i class="fas fa-comments"></i> Schedule Free Consultation

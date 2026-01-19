@@ -1,10 +1,22 @@
 <%- include('partials/header') %>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="Learn about UniPick's mission to connect students with the best-fit universities. Meet our lead consultant and understand how we help shape your academic future.">
+<meta name="keywords" content="about our university admissions consultant, UniPick's mission, meet our education consultant, university counseling expert, Ravi Vajendla CA consultant">
+<meta property="og:title" content="About UniPick - Meet Our University Admissions Consultant">
+<meta property="og:description" content="Learn about UniPick's mission to connect students with the best-fit universities. Meet our lead consultant and understand how we help shape your academic future.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://unipick.org/about-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About UniPick - Meet Our University Admissions Consultant">
+<meta name="twitter:description" content="Learn about UniPick's mission to connect students with the best-fit universities. Meet our lead consultant and understand how we help shape your academic future.">
+
 
 <style>
 /* ========================================
    ABOUT PAGE - ACADEMIC THEME
 ========================================= */
+
 
 
 /* Global Scrollbar Hide */
@@ -15,9 +27,11 @@ html, body {
 }
 
 
+
 ::-webkit-scrollbar {
     display: none;
 }
+
 
 
 /* Hero Section - Reduced Height */
@@ -32,6 +46,7 @@ html, body {
     align-items: center;
     border-bottom: none;
 }
+
 
 
 /* Background Image */
@@ -50,6 +65,7 @@ html, body {
 }
 
 
+
 /* Black Overlay */
 .about-hero::after {
     content: '';
@@ -63,6 +79,7 @@ html, body {
 }
 
 
+
 .about-hero-content {
     max-width: 1200px;
     width: 100%;
@@ -71,6 +88,7 @@ html, body {
     z-index: 2;
     text-align: left;
 }
+
 
 
 .about-hero h1 {
@@ -85,6 +103,7 @@ html, body {
 }
 
 
+
 /* Content Sections - Reduced Padding */
 .about-section {
     padding: 60px 5%;
@@ -92,9 +111,11 @@ html, body {
 }
 
 
+
 .about-section:nth-child(even) {
     background: #F7F8FA;
 }
+
 
 
 .section-header {
@@ -104,6 +125,7 @@ html, body {
     margin-left: auto;
     margin-right: auto;
 }
+
 
 
 .section-title {
@@ -119,12 +141,14 @@ html, body {
 }
 
 
+
 /* Remove any pseudo-element decorations */
 .section-title::before,
 .section-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 
 .section-subtitle {
@@ -134,6 +158,7 @@ html, body {
     font-weight: 400;
     line-height: 1.6;
 }
+
 
 
 /* Platform Mission Section */
@@ -147,6 +172,7 @@ html, body {
 }
 
 
+
 .platform-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.6rem;
@@ -158,12 +184,14 @@ html, body {
 }
 
 
+
 /* Remove decorations from platform title */
 .platform-title::before,
 .platform-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 
 .platform-description {
@@ -174,6 +202,7 @@ html, body {
     margin-bottom: 20px;
     text-align: left;
 }
+
 
 
 /* Updated Platform Highlights - Column on Mobile */
@@ -188,6 +217,7 @@ html, body {
 }
 
 
+
 .platform-highlight {
     text-align: center;
     padding: 30px 25px;
@@ -199,15 +229,18 @@ html, body {
 }
 
 
+
 .platform-highlight:nth-child(2n) {
     border-right: none;
 }
+
 
 
 .platform-highlight:nth-child(3),
 .platform-highlight:nth-child(4) {
     border-bottom: none;
 }
+
 
 
 .platform-highlight:hover {
@@ -218,11 +251,13 @@ html, body {
 }
 
 
+
 .highlight-icon {
     font-size: 2.2rem;
     color: #2C5F8D;
     margin-bottom: 15px;
 }
+
 
 
 .highlight-title {
@@ -235,12 +270,14 @@ html, body {
 }
 
 
+
 .highlight-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #6B7280;
     font-size: 0.9rem;
     line-height: 1.6;
 }
+
 
 
 /* Consultant Section - Blue-Black Gradient Background */
@@ -258,6 +295,7 @@ html, body {
 }
 
 
+
 .consultant-image {
     width: 100%;
     height: 300px;
@@ -265,6 +303,7 @@ html, body {
     overflow: hidden;
     border: 3px solid #FFFFFF;
 }
+
 
 
 .consultant-image img {
@@ -275,9 +314,11 @@ html, body {
 }
 
 
+
 .consultant-image:hover img {
     transform: scale(1.05);
 }
+
 
 
 .consultant-info h2 {
@@ -291,6 +332,7 @@ html, body {
 }
 
 
+
 .consultant-title {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
@@ -300,6 +342,7 @@ html, body {
     letter-spacing: 0.01em;
     text-align: left;
 }
+
 
 
 .consultant-description {
@@ -312,6 +355,7 @@ html, body {
 }
 
 
+
 .expertise-tags {
     display: flex;
     flex-wrap: wrap;
@@ -319,6 +363,7 @@ html, body {
     margin-top: 20px;
     justify-content: flex-start;
 }
+
 
 
 .expertise-tag {
@@ -335,11 +380,13 @@ html, body {
 }
 
 
+
 .expertise-tag:hover {
     background: #FFFFFF;
     color: #2C5F8D;
     transform: translateY(-2px);
 }
+
 
 
 /* Success Metrics - White Background */
@@ -351,9 +398,11 @@ html, body {
 }
 
 
+
 .metrics-section .section-header {
     margin-bottom: 45px;
 }
+
 
 
 .metrics-section .section-title {
@@ -363,10 +412,12 @@ html, body {
 }
 
 
+
 .metrics-section .section-subtitle {
     color: #4B5563;
     font-size: 1rem;
 }
+
 
 
 .metrics-grid {
@@ -382,6 +433,7 @@ html, body {
 }
 
 
+
 .metric-box {
     background: transparent;
     padding: 35px 20px;
@@ -391,15 +443,18 @@ html, body {
 }
 
 
+
 .metric-box:last-child {
     border-right: none;
 }
+
 
 
 .metric-box:hover {
     background: rgba(44, 95, 141, 0.02);
     transform: none;
 }
+
 
 
 .metric-number {
@@ -412,6 +467,7 @@ html, body {
 }
 
 
+
 .metric-label {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.9rem;
@@ -420,6 +476,7 @@ html, body {
     letter-spacing: 0.05em;
     color: #6B7280;
 }
+
 
 
 /* Core Values - 6 items, 3 per row */
@@ -434,12 +491,14 @@ html, body {
 }
 
 
+
 .value-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     text-align: left;
 }
+
 
 
 .value-icon {
@@ -450,9 +509,11 @@ html, body {
 }
 
 
+
 .value-content {
     flex: 1;
 }
+
 
 
 .value-title {
@@ -465,12 +526,14 @@ html, body {
 }
 
 
+
 .value-description {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #6B7280;
     line-height: 1.6;
     font-size: 0.85rem;
 }
+
 
 
 /* Timeline - Icons moved further left on vertical line */
@@ -480,6 +543,7 @@ html, body {
     position: relative;
     padding-top: 20px;
 }
+
 
 
 .timeline::before {
@@ -494,6 +558,7 @@ html, body {
 }
 
 
+
 .timeline-item {
     position: relative;
     margin: 40px 0;
@@ -502,9 +567,11 @@ html, body {
 }
 
 
+
 .timeline-item:first-child {
     margin-top: 0;
 }
+
 
 
 .timeline-item:nth-child(odd) {
@@ -514,10 +581,12 @@ html, body {
 }
 
 
+
 .timeline-item:nth-child(even) {
     left: 50%;
     padding-left: 65px;
 }
+
 
 
 .timeline-content {
@@ -531,11 +600,13 @@ html, body {
 }
 
 
+
 .timeline-content:hover {
     border-color: transparent;
     transform: none;
     box-shadow: none;
 }
+
 
 
 .timeline-date {
@@ -549,6 +620,7 @@ html, body {
 }
 
 
+
 .timeline-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.2rem;
@@ -559,6 +631,7 @@ html, body {
 }
 
 
+
 /* Remove decorations from timeline titles */
 .timeline-title::before,
 .timeline-title::after {
@@ -567,12 +640,14 @@ html, body {
 }
 
 
+
 .timeline-text {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #4B5563;
     line-height: 1.6;
     font-size: 0.9rem;
 }
+
 
 
 .timeline-icon {
@@ -593,14 +668,17 @@ html, body {
 }
 
 
+
 .timeline-item:nth-child(odd) .timeline-icon {
     right: -24px;
 }
 
 
+
 .timeline-item:nth-child(even) .timeline-icon {
     left: -24px;
 }
+
 
 
 /* Partner Universities - Horizontal Scroll */
@@ -616,6 +694,7 @@ html, body {
 }
 
 
+
 .partners-title {
     font-family: 'Libre Baskerville', Georgia, serif;
     font-size: 1.6rem;
@@ -626,12 +705,14 @@ html, body {
 }
 
 
+
 /* Remove decorations */
 .partners-title::before,
 .partners-title::after {
     display: none !important;
     content: none !important;
 }
+
 
 
 .partners-text {
@@ -644,6 +725,7 @@ html, body {
 }
 
 
+
 .partner-logos-wrapper {
     position: relative;
     overflow-x: auto;
@@ -654,9 +736,11 @@ html, body {
 }
 
 
+
 .partner-logos-wrapper::-webkit-scrollbar {
     height: 8px;
 }
+
 
 
 .partner-logos-wrapper::-webkit-scrollbar-track {
@@ -665,10 +749,12 @@ html, body {
 }
 
 
+
 .partner-logos-wrapper::-webkit-scrollbar-thumb {
     background: #2C5F8D;
     border-radius: 4px;
 }
+
 
 
 .partner-logos {
@@ -677,6 +763,7 @@ html, body {
     padding-bottom: 10px;
     width: max-content;
 }
+
 
 
 .partner-logo {
@@ -698,6 +785,7 @@ html, body {
 }
 
 
+
 .partner-logo:hover {
     background: #2C5F8D;
     color: #FFFFFF;
@@ -705,6 +793,7 @@ html, body {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(44, 95, 141, 0.2);
 }
+
 
 
 /* Quote Section */
@@ -716,6 +805,7 @@ html, body {
     position: relative;
     overflow: hidden;
 }
+
 
 
 .quote-section::before {
@@ -731,12 +821,14 @@ html, body {
 }
 
 
+
 .quote-content {
     position: relative;
     z-index: 2;
     max-width: 850px;
     margin: 0 auto;
 }
+
 
 
 .quote-text {
@@ -750,6 +842,7 @@ html, body {
 }
 
 
+
 .quote-author {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.95rem;
@@ -757,6 +850,7 @@ html, body {
     opacity: 0.9;
     letter-spacing: 0.05em;
 }
+
 
 
 /* CTA Section - Fully Curved Buttons */
@@ -768,10 +862,12 @@ html, body {
 }
 
 
+
 .cta-content {
     max-width: 850px;
     margin: 0 auto;
 }
+
 
 
 .cta-content h2 {
@@ -784,12 +880,14 @@ html, body {
 }
 
 
+
 /* Remove decorations */
 .cta-content h2::before,
 .cta-content h2::after {
     display: none !important;
     content: none !important;
 }
+
 
 
 .cta-content p {
@@ -801,12 +899,14 @@ html, body {
 }
 
 
+
 .cta-buttons {
     display: flex;
     justify-content: center;
     gap: 18px;
     flex-wrap: wrap;
 }
+
 
 
 .cta-btn-primary {
@@ -828,6 +928,7 @@ html, body {
 }
 
 
+
 .cta-btn-primary:hover {
     background: #1E4364;
     transform: translateY(-2px);
@@ -836,9 +937,11 @@ html, body {
 }
 
 
+
 .cta-btn-primary i {
     font-size: 0.95rem;
 }
+
 
 
 /* Responsive Design */
@@ -847,30 +950,31 @@ html, body {
         padding-left: 70px;
         padding-top: 15px;
     }
-    
+
     .timeline::before {
         left: 25px;
         top: 15px;
     }
-    
+
     .timeline-item {
         width: 100%;
         left: 0 !important;
         text-align: left !important;
         padding: 0 0 0 55px !important;
     }
-    
+
     /* Icon on left line - moved further left */
     .timeline-icon {
         left: 1px !important;
         right: auto !important;
         top: 5px;
     }
-    
+
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 
 
 @media (max-width: 900px) {
@@ -879,24 +983,25 @@ html, body {
         gap: 30px;
         text-align: left;
     }
-    
+
     .consultant-image {
         margin: 0;
         max-width: 280px;
     }
-    
+
     .consultant-info h2 {
         text-align: left;
     }
-    
+
     .consultant-title {
         text-align: left;
     }
-    
+
     .expertise-tags {
         justify-content: flex-start;
     }
 }
+
 
 
 @media (max-width: 768px) {
@@ -904,83 +1009,83 @@ html, body {
         min-height: 120px;
         padding: 40px 5% 30px;
     }
-    
+
     .about-hero h1 {
         font-size: 1.6rem;
     }
-    
+
     .section-title {
         font-size: 1.5rem;
     }
-    
+
     .section-subtitle {
         font-size: 0.9rem;
     }
-    
+
     .about-section {
         padding: 40px 5%;
     }
-    
+
     .section-header {
         margin-bottom: 30px;
     }
-    
+
     .platform-mission {
         padding: 25px 18px;
         margin-bottom: 30px;
     }
-    
+
     .platform-title {
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
-    
+
     .platform-description {
         font-size: 0.9rem;
         margin-bottom: 15px;
     }
-    
+
     .consultant-profile {
         padding: 25px 18px;
         gap: 25px;
     }
-    
+
     .consultant-image {
         height: 250px;
         max-width: 250px;
     }
-    
+
     .consultant-info h2 {
         font-size: 1.5rem;
     }
-    
+
     .consultant-title {
         font-size: 0.9rem;
         margin-bottom: 15px;
     }
-    
+
     .consultant-description {
         font-size: 0.9rem;
         margin-bottom: 15px;
     }
-    
+
     .expertise-tags {
         margin-top: 15px;
         gap: 8px;
     }
-    
+
     .expertise-tag {
         font-size: 0.75rem;
         padding: 6px 12px;
     }
-    
+
     /* Platform highlights mobile - column layout */
     .platform-highlights {
         grid-template-columns: 1fr;
         gap: 0;
         margin-top: 25px;
     }
-    
+
     .platform-highlight {
         display: flex;
         align-items: center;
@@ -990,104 +1095,104 @@ html, body {
         border-right: none;
         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     }
-    
+
     .platform-highlight:last-child {
         border-bottom: none;
     }
-    
+
     .highlight-icon {
         font-size: 1.6rem;
         margin-bottom: 0;
         flex-shrink: 0;
     }
-    
+
     .highlight-content {
         flex: 1;
     }
-    
+
     .highlight-title {
         font-size: 0.9rem;
         margin-bottom: 5px;
     }
-    
+
     .highlight-text {
         font-size: 0.8rem;
     }
-    
+
     /* Metrics mobile - 2 per row */
     .metrics-section {
         padding: 40px 5%;
     }
-    
+
     .metrics-section .section-title {
         font-size: 1.5rem;
     }
-    
+
     .metrics-section .section-subtitle {
         font-size: 0.9rem;
     }
-    
+
     .metrics-section .section-header {
         margin-bottom: 30px;
     }
-    
+
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
     }
-    
+
     .metric-box {
         border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         padding: 25px 15px;
     }
-    
+
     .metric-box:nth-child(2n) {
         border-right: none;
     }
-    
+
     .metric-box:nth-child(3),
     .metric-box:nth-child(4) {
         border-bottom: none;
     }
-    
+
     .metric-number {
         font-size: 2.3rem;
     }
-    
+
     .metric-label {
         font-size: 0.8rem;
     }
-    
+
     /* Values mobile */
     .values-grid {
         grid-template-columns: 1fr;
         gap: 18px;
         margin-top: 30px;
     }
-    
+
     .value-icon {
         font-size: 1.4rem;
     }
-    
+
     .value-title {
         font-size: 0.9rem;
         margin-bottom: 5px;
     }
-    
+
     .value-description {
         font-size: 0.8rem;
     }
-    
+
     /* Timeline mobile - MOVED ICONS FURTHER LEFT */
     .timeline {
         padding-left: 45px;
         margin-top: 25px;
     }
-    
+
     .timeline::before {
         left: 13px;
     }
-    
+
     /* Icon moved FURTHER LEFT - on the line */
     .timeline-icon {
         left: -6px !important;
@@ -1098,73 +1203,73 @@ html, body {
         border: 3px solid #FFFFFF;
         box-shadow: 0 0 0 2px #2C5F8D;
     }
-    
+
     .timeline-item {
         padding-left: 35px !important;
         margin: 30px 0;
     }
-    
+
     .timeline-date {
         font-size: 0.72rem;
         margin-bottom: 8px;
     }
-    
+
     .timeline-title {
         font-size: 1.05rem;
         margin-bottom: 8px;
     }
-    
+
     .timeline-text {
         font-size: 0.8rem;
     }
-    
+
     .cta-section {
         padding: 45px 5%;
     }
-    
+
     .cta-content h2 {
         font-size: 1.7rem;
         margin-bottom: 15px;
     }
-    
+
     .cta-content p {
         font-size: 0.9rem;
         margin-bottom: 28px;
     }
-    
+
     .cta-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .cta-btn-primary {
         width: 100%;
         max-width: 300px;
         padding: 12px 24px;
         font-size: 0.85rem;
     }
-    
+
     .quote-section {
         padding: 55px 5%;
     }
-    
+
     .quote-text {
         font-size: 1.15rem;
     }
-    
+
     .quote-author {
         font-size: 0.85rem;
     }
-    
+
     .partners-section {
         padding: 40px 5%;
     }
-    
+
     .partners-title {
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
-    
+
     .partners-text {
         font-size: 0.9rem;
         margin-bottom: 25px;
@@ -1172,71 +1277,72 @@ html, body {
 }
 
 
+
 @media (max-width: 600px) {
     .about-hero {
         min-height: 100px;
         padding: 35px 5% 25px;
     }
-    
+
     .about-hero h1 {
         font-size: 1.4rem;
     }
-    
+
     .section-title {
         font-size: 1.3rem;
     }
-    
+
     .about-section {
         padding: 35px 18px;
     }
-    
+
     .platform-mission {
         padding: 20px 15px;
     }
-    
+
     .platform-title {
         font-size: 1.2rem;
     }
-    
+
     .consultant-profile {
         padding: 20px 15px;
     }
-    
+
     .consultant-info h2 {
         font-size: 1.3rem;
     }
-    
+
     .quote-section {
         padding: 45px 18px;
     }
-    
+
     .quote-text {
         font-size: 1.05rem;
     }
-    
+
     .cta-section {
         padding: 40px 18px;
     }
-    
+
     .cta-content h2 {
         font-size: 1.5rem;
     }
-    
+
     .partner-logos {
         gap: 12px;
     }
-    
+
     .partner-logo {
         min-width: 150px;
         font-size: 0.8rem;
         padding: 10px 16px;
     }
-    
+
     /* Timeline icons EVEN MORE LEFT for small mobile */
     .timeline::before {
         left: 12px;
     }
-    
+
     .timeline-icon {
         left: -6px !important;
         width: 36px;
@@ -1246,34 +1352,36 @@ html, body {
 </style>
 
 
+
 <!-- Hero Section -->
 <section class="about-hero">
     <div class="about-hero-content">
-        <h1>About UniPick</h1>
+        <h1>About Our University Admissions Consultant - UniPick</h1>
     </div>
 </section>
 
 
-<!-- Platform Mission Section -->
-<section class="about-section">
+
+<!-- Platform Mission Section with Schema.org AboutPage markup -->
+<section class="about-section" itemscope itemtype="http://schema.org/AboutPage">
     <div class="section-header">
-        <h2 class="section-title">Our Platform Mission</h2>
-        <p class="section-subtitle">Transforming how students discover and choose their ideal universities</p>
+        <h2 class="section-title" itemprop="name">UniPick's Mission - Connecting Students with Best-Fit Universities</h2>
+        <p class="section-subtitle" itemprop="description">Transforming how students discover and choose their ideal universities through expert university admissions guidance</p>
     </div>
-    
+
     <div class="platform-mission">
         <h3 class="platform-title">What is UniPick?</h3>
-        <p class="platform-description">
+        <p class="platform-description" itemprop="about">
             UniPick is India's most comprehensive and transparent university selection platform, designed to empower students 
             and parents with the information and guidance needed to make confident higher education decisions. We bridge the 
-            gap between aspirations and opportunities through verified data, expert insights, and personalized support.
+            gap between aspirations and opportunities through verified data, expert insights, and personalized university admissions help.
         </p>
-        
+
         <p class="platform-description">
             Unlike traditional admission consultancies, we prioritize long-term student success over commissions, providing 
-            unbiased recommendations based on academic fit, career prospects, and individual goals.
+            unbiased recommendations based on academic fit, career prospects, and individual goals with our expert education consultant team.
         </p>
-        
+
         <div class="platform-highlights">
             <div class="platform-highlight">
                 <i class="fas fa-database highlight-icon"></i>
@@ -1282,7 +1390,7 @@ html, body {
                     <p class="highlight-text">Compare universities using verified placement records, ROI analysis, and real student outcomes</p>
                 </div>
             </div>
-            
+
             <div class="platform-highlight">
                 <i class="fas fa-user-check highlight-icon"></i>
                 <div class="highlight-content">
@@ -1290,7 +1398,7 @@ html, body {
                     <p class="highlight-text">Every university listing verified by experienced education consultants and industry professionals</p>
                 </div>
             </div>
-            
+
             <div class="platform-highlight">
                 <i class="fas fa-chart-line highlight-icon"></i>
                 <div class="highlight-content">
@@ -1298,7 +1406,7 @@ html, body {
                     <p class="highlight-text">We evaluate programs based on future employability and industry alignment, not just rankings</p>
                 </div>
             </div>
-            
+
             <div class="platform-highlight">
                 <i class="fas fa-handshake highlight-icon"></i>
                 <div class="highlight-content">
@@ -1311,70 +1419,74 @@ html, body {
 </section>
 
 
-<!-- Consultant Profile Section -->
+
+<!-- Consultant Profile Section with Schema.org Person markup -->
 <section class="about-section">
     <div class="section-header">
-        <h2 class="section-title">Meet Your Expert Guide</h2>
+        <h2 class="section-title">Meet Our Education Consultant - Your Expert Guide</h2>
     </div>
-    
-    <div class="consultant-profile">
+
+    <div class="consultant-profile" itemscope itemtype="http://schema.org/Person">
         <div class="consultant-image">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop" alt="Ravi Vajendla - Chartered Accountant & Admission Consultant">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop" alt="Ravi Vajendla, UniPick Founder and Lead University Admissions Consultant" itemprop="image">
         </div>
-        
+
         <div class="consultant-info">
-            <h2>Ravi Vajendla</h2>
-            <p class="consultant-title">Chartered Accountant & Senior Admission Consultant</p>
-            
-            <p class="consultant-description">
+            <h2 itemprop="name">Ravi Vajendla</h2>
+            <p class="consultant-title" itemprop="jobTitle">Chartered Accountant & Senior University Admissions Consultant</p>
+            <meta itemprop="worksFor" content="UniPick Education Consultancy">
+            <meta itemprop="alumniOf" content="Institute of Chartered Accountants of India">
+
+            <p class="consultant-description" itemprop="description">
                 With over 15 years of experience spanning finance and education consulting, Ravi brings a unique analytical 
                 lens to university admissions. As a qualified Chartered Accountant, he understands the financial implications 
                 and return on investment of education decisions—ensuring families make choices that are both academically sound 
-                and financially sustainable.
+                and financially sustainable through expert university admissions help.
             </p>
-            
+
             <p class="consultant-description">
                 His transition from corporate finance to education consulting was driven by witnessing the impact of ill-informed 
                 admission decisions on students' careers. Having personally guided over 800 students with a 97% success rate, 
                 Ravi specializes in matching student profiles with institutions where they can genuinely thrive—considering 
                 academic excellence, cultural fit, and long-term career trajectories.
             </p>
-            
+
             <div class="expertise-tags">
-                <span class="expertise-tag">University Selection Strategy</span>
-                <span class="expertise-tag">ROI & Financial Analysis</span>
-                <span class="expertise-tag">Career Path Planning</span>
-                <span class="expertise-tag">Education Financing</span>
-                <span class="expertise-tag">Admission Process Management</span>
+                <span class="expertise-tag" itemprop="knowsAbout">University Selection Strategy</span>
+                <span class="expertise-tag" itemprop="knowsAbout">ROI & Financial Analysis</span>
+                <span class="expertise-tag" itemprop="knowsAbout">Career Path Planning</span>
+                <span class="expertise-tag" itemprop="knowsAbout">Education Financing</span>
+                <span class="expertise-tag" itemprop="knowsAbout">Admission Process Management</span>
             </div>
         </div>
     </div>
 </section>
 
 
+
 <!-- Success Metrics -->
 <section class="metrics-section">
     <div class="section-header">
         <h2 class="section-title">Our Impact in Numbers</h2>
-        <p class="section-subtitle">Measurable success built on trust and expertise</p>
+        <p class="section-subtitle">Measurable success built on trust and expert university admissions guidance</p>
     </div>
-    
+
     <div class="metrics-grid">
         <div class="metric-box">
             <div class="metric-number">800+</div>
             <div class="metric-label">Students Guided</div>
         </div>
-        
+
         <div class="metric-box">
             <div class="metric-number">97%</div>
             <div class="metric-label">Success Rate</div>
         </div>
-        
+
         <div class="metric-box">
             <div class="metric-number">15+</div>
             <div class="metric-label">Years Experience</div>
         </div>
-        
+
         <div class="metric-box">
             <div class="metric-number">50+</div>
             <div class="metric-label">Partner Universities</div>
@@ -1383,13 +1495,14 @@ html, body {
 </section>
 
 
+
 <!-- Core Values - 6 items only -->
 <section class="about-section">
     <div class="section-header">
         <h2 class="section-title">Our Core Values</h2>
-        <p class="section-subtitle">The principles that guide every student interaction</p>
+        <p class="section-subtitle">The principles that guide every student interaction at our university admissions consultant practice</p>
     </div>
-    
+
     <div class="values-grid">
         <div class="value-item">
             <i class="fas fa-balance-scale value-icon"></i>
@@ -1398,7 +1511,7 @@ html, body {
                 <p class="value-description">Complete disclosure of all university metrics and performance data</p>
             </div>
         </div>
-        
+
         <div class="value-item">
             <i class="fas fa-graduation-cap value-icon"></i>
             <div class="value-content">
@@ -1406,7 +1519,7 @@ html, body {
                 <p class="value-description">Recommendations tailored to individual goals and circumstances</p>
             </div>
         </div>
-        
+
         <div class="value-item">
             <i class="fas fa-chart-pie value-icon"></i>
             <div class="value-content">
@@ -1414,7 +1527,7 @@ html, body {
                 <p class="value-description">Decisions based on verified statistics and ROI analysis</p>
             </div>
         </div>
-        
+
         <div class="value-item">
             <i class="fas fa-shield-alt value-icon"></i>
             <div class="value-content">
@@ -1422,7 +1535,7 @@ html, body {
                 <p class="value-description">Zero commission-based recommendations, only merit-based guidance</p>
             </div>
         </div>
-        
+
         <div class="value-item">
             <i class="fas fa-award value-icon"></i>
             <div class="value-content">
@@ -1430,7 +1543,7 @@ html, body {
                 <p class="value-description">Partnerships only with verified, high-performing institutions</p>
             </div>
         </div>
-        
+
         <div class="value-item">
             <i class="fas fa-lightbulb value-icon"></i>
             <div class="value-content">
@@ -1442,13 +1555,14 @@ html, body {
 </section>
 
 
+
 <!-- Professional Journey Timeline -->
 <section class="about-section">
     <div class="section-header">
         <h2 class="section-title">Professional Journey</h2>
         <p class="section-subtitle">From Chartered Accountant to Education Innovation Leader</p>
     </div>
-    
+
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-icon">
@@ -1463,7 +1577,7 @@ html, body {
                 </p>
             </div>
         </div>
-        
+
         <div class="timeline-item">
             <div class="timeline-icon">
                 <i class="fas fa-briefcase"></i>
@@ -1477,7 +1591,7 @@ html, body {
                 </p>
             </div>
         </div>
-        
+
         <div class="timeline-item">
             <div class="timeline-icon">
                 <i class="fas fa-lightbulb"></i>
@@ -1491,7 +1605,7 @@ html, body {
                 </p>
             </div>
         </div>
-        
+
         <div class="timeline-item">
             <div class="timeline-icon">
                 <i class="fas fa-rocket"></i>
@@ -1509,6 +1623,7 @@ html, body {
 </section>
 
 
+
 <!-- Partner Universities -->
 <section class="partners-section">
     <h3 class="partners-title">Our University Network</h3>
@@ -1516,7 +1631,7 @@ html, body {
         We maintain strategic partnerships with carefully vetted universities across India that meet rigorous 
         standards for academic quality, faculty credentials, infrastructure excellence, and documented student success.
     </p>
-    
+
     <div class="partner-logos-wrapper">
         <div class="partner-logos">
             <div class="partner-logo">Swarrnim University</div>
@@ -1533,6 +1648,7 @@ html, body {
 </section>
 
 
+
 <!-- Quote Section -->
 <section class="quote-section">
     <div class="quote-content">
@@ -1547,11 +1663,12 @@ html, body {
 </section>
 
 
+
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
         <h2>Ready to Begin Your Journey?</h2>
-        <p>Schedule a personalized consultation with Ravi Vajendla and discover the universities that align perfectly with your academic goals and career aspirations</p>
+        <p>Schedule a personalized consultation with Ravi Vajendla, our lead education consultant, and discover the universities that align perfectly with your academic goals and career aspirations</p>
         <div class="cta-buttons">
             <a href="/contact" class="cta-btn-primary">
                 <i class="fas fa-calendar-check"></i> Book Your Consultation
@@ -1562,6 +1679,7 @@ html, body {
         </div>
     </div>
 </section>
+
 
 
 <%- include('partials/footer') %>

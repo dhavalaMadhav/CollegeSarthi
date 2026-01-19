@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
         res.render('index', { 
             universities,
             testimonials,
-            title: 'UniPick - Your Career Guidance Partner'
+            title: 'UniPick - Your Trusted University Admissions Consultant'
         });
     } catch (error) {
         console.error('Error loading homepage:', error);

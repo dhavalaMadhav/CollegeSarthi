@@ -1,22 +1,36 @@
 <%- include('partials/header') %>
 
+<!-- SEO Meta Tags -->
+<meta name="description" content="Explore the details of <%= course.name %> including duration, degree, and top universities offering this program. Find the perfect fit for your academic goals with UniPick.">
+<meta name="keywords" content="<%= course.name %> program details, top universities for <%= course.name %>, <%= course.name %> degree and duration, <%= course.name %> admission, best <%= course.name %> colleges">
+<meta property="og:title" content="<%= course.name %> - Program Details & Top Universities | UniPick">
+<meta property="og:description" content="Explore the details of <%= course.name %> including duration, degree, and top universities offering this program. Find the perfect fit for your academic goals with UniPick.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://unipick.org/courses/<%= course.slug %>.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= course.name %> - Program Details & Top Universities">
+<meta name="twitter:description" content="Explore the details of <%= course.name %> including duration, degree, and top universities offering this program. Find the perfect fit for your academic goals with UniPick.">
+
 <!-- Import Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+
 <style>
     /* Course Detail Page - Academic Theme with Background Image Hero */
-    
+
     html, body {
         overflow-x: hidden;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
+
     ::-webkit-scrollbar {
         display: none;
     }
+
 
     /* Hero Section - Background Image with Black Overlay - IMPROVED */
     .course-hero {
@@ -30,6 +44,7 @@
         align-items: center;
         border-bottom: 2px solid #000000;
     }
+
 
     /* Background Image - Multiple fallbacks */
     .course-hero::before {
@@ -47,6 +62,7 @@
         z-index: 0;
     }
 
+
     /* Black Overlay - Darker for better text contrast */
     .course-hero::after {
         content: '';
@@ -63,10 +79,12 @@
         z-index: 1;
     }
 
+
     /* Remove the grid background */
     .course-hero-grid {
         display: none !important;
     }
+
 
     .course-hero-content {
         max-width: 1200px;
@@ -76,6 +94,7 @@
         z-index: 2;
         text-align: left;
     }
+
 
     /* Elevated Breadcrumb with Rounded Box and Full-Height Dividers - FIXED */
     .breadcrumb {
@@ -98,6 +117,7 @@
         z-index: 2;
     }
 
+
     .breadcrumb a,
     .breadcrumb span {
         color: rgba(255, 255, 255, 0.9);
@@ -109,9 +129,11 @@
         align-items: center;
     }
 
+
     .breadcrumb a:hover {
         color: #FFFFFF;
     }
+
 
     /* Full-height vertical divider lines - Add to ALL items */
     .breadcrumb a::after,
@@ -126,15 +148,18 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
+
     /* Remove line after the LAST item only (span) */
     .breadcrumb span::after {
         display: none;
     }
 
+
     .breadcrumb span {
         font-weight: 600;
         color: #FFFFFF;
     }
+
 
     /* Hero Title - No underline, left-aligned */
     .course-hero h1 {
@@ -153,11 +178,13 @@
         z-index: 2;
     }
 
+
     /* Remove all decorative elements */
     .course-hero h1::after,
     .course-hero h1::before {
         display: none !important;
     }
+
 
     .course-hero p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -171,6 +198,7 @@
         position: relative;
         z-index: 2;
     }
+
 
     .course-meta {
         display: flex;
@@ -186,9 +214,11 @@
         z-index: 2;
     }
 
+
     .course-meta::-webkit-scrollbar {
         display: none;
     }
+
 
     .course-meta-item {
         display: flex;
@@ -202,16 +232,19 @@
         flex-shrink: 0;
     }
 
+
     .course-meta-item i {
         font-size: 1.3rem;
         color: rgba(255, 255, 255, 0.8);
     }
+
 
     /* Universities Section */
     .universities-section {
         padding: 60px 5%;
         background: #F7F8FA;
     }
+
 
     .section-title {
         text-align: center;
@@ -228,11 +261,13 @@
         padding-bottom: 0;
     }
 
+
     /* Remove underline and circle decoration */
     .section-title::after,
     .section-title::before {
         display: none !important;
     }
+
 
     /* Top Pick Card Styling - SMALLER SIZE */
     .top-picks-grid {
@@ -242,6 +277,7 @@
         max-width: 1400px;
         margin: 0 auto;
     }
+
 
     .top-pick-card {
         background: #FFFFFF;
@@ -254,10 +290,12 @@
         position: relative;
     }
 
+
     .top-pick-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
+
 
     .top-pick-image {
         width: 100%;
@@ -267,6 +305,7 @@
         background: #F1F3F6;
     }
 
+
     .top-pick-image img {
         width: 100%;
         height: 100%;
@@ -274,14 +313,17 @@
         transition: transform 0.3s ease;
     }
 
+
     .top-pick-card:hover .top-pick-image img {
         transform: scale(1.05);
     }
+
 
     .top-pick-content {
         padding: 20px;
         position: relative;
     }
+
 
     .top-pick-rank-number {
         position: absolute;
@@ -296,6 +338,7 @@
         z-index: 1;
     }
 
+
     .top-pick-name {
         font-family: 'Libre Baskerville', Georgia, serif;
         font-size: 1.1rem;
@@ -306,6 +349,7 @@
         position: relative;
         z-index: 2;
     }
+
 
     .top-pick-location {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -320,10 +364,12 @@
         z-index: 2;
     }
 
+
     .top-pick-location i {
         color: #2C5F8D;
         font-size: 0.75rem;
     }
+
 
     .top-pick-highlight {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -340,9 +386,11 @@
         z-index: 2;
     }
 
+
     .top-pick-highlight i {
         font-size: 0.75rem;
     }
+
 
     .top-pick-stats {
         display: flex;
@@ -352,6 +400,7 @@
         z-index: 2;
     }
 
+
     .top-pick-stat {
         display: flex;
         flex-direction: column;
@@ -359,10 +408,12 @@
         gap: 4px;
     }
 
+
     .top-pick-stat-icon {
         font-size: 1.1rem;
         color: #2C5F8D;
     }
+
 
     .top-pick-stat-value {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -371,12 +422,14 @@
         color: #1B1F24;
     }
 
+
     .top-pick-stat-label {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 0.65rem;
         color: #6B7280;
         font-weight: 500;
     }
+
 
     .featured-badge {
         position: absolute;
@@ -392,6 +445,7 @@
         z-index: 3;
     }
 
+
     /* CTA Section */
     .cta-section {
         background: #FFFFFF;
@@ -399,6 +453,7 @@
         text-align: center;
         border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
+
 
     .cta-content h2 {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -414,11 +469,13 @@
         padding-bottom: 0;
     }
 
+
     /* Remove decorative elements */
     .cta-content h2::after,
     .cta-content h2::before {
         display: none !important;
     }
+
 
     .cta-content p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -427,12 +484,14 @@
         color: #4B5563;
     }
 
+
     .cta-buttons {
         display: flex;
         justify-content: center;
         gap: 16px;
         flex-wrap: wrap;
     }
+
 
     .cta-btn-primary, .cta-btn-secondary {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -449,10 +508,12 @@
         border: none;
     }
 
+
     .cta-btn-primary {
         background-color: #2C5F8D;
         color: #FFFFFF;
     }
+
 
     .cta-btn-secondary {
         background-color: transparent;
@@ -460,11 +521,13 @@
         border: 2px solid #2C5F8D;
     }
 
+
     .cta-btn-primary:hover {
         background-color: #1E4364;
         transform: translateY(-2px);
         text-decoration: none;
     }
+
 
     .cta-btn-secondary:hover {
         background-color: rgba(44, 95, 141, 0.08);
@@ -472,10 +535,12 @@
         text-decoration: none;
     }
 
+
     .cta-btn-primary i, .cta-btn-secondary i {
         margin-right: 8px;
         font-size: 0.85rem;
     }
+
 
     /* Empty State */
     .no-universities {
@@ -488,11 +553,13 @@
         margin: 0 auto;
     }
 
+
     .no-universities i {
         font-size: 3.5rem;
         color: #E5E7EB;
         margin-bottom: 16px;
     }
+
 
     .no-universities h3 {
         font-family: 'Libre Baskerville', Georgia, serif;
@@ -502,12 +569,14 @@
         margin-bottom: 12px;
     }
 
+
     .no-universities p {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 0.85rem;
         color: #4B5563;
         margin-bottom: 24px;
     }
+
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -516,13 +585,16 @@
             min-height: 350px;
         }
 
+
         .course-hero h1 {
             font-size: 1.9rem;
         }
 
+
         .course-hero p {
             font-size: 0.9rem;
         }
+
 
         /* Smaller breadcrumb on mobile */
         .breadcrumb {
@@ -531,54 +603,66 @@
             min-height: 32px;
         }
 
+
         .breadcrumb a,
         .breadcrumb span {
             padding: 0 10px;
         }
+
 
         .course-meta {
             gap: 20px;
             flex-wrap: nowrap;
         }
 
+
         .course-meta-item {
             font-size: 0.75rem;
         }
 
+
         .course-meta-item i {
             font-size: 1.1rem;
         }
+
 
         .section-title {
             font-size: 1.3rem;
             margin-bottom: 30px;
         }
 
+
         .top-picks-grid {
             grid-template-columns: 1fr;
             gap: 20px;
         }
 
+
         .universities-section {
             padding: 50px 5%;
         }
+
 
         .cta-section {
             padding: 50px 5%;
         }
 
+
         .cta-content h2 {
             font-size: 1.4rem;
         }
+
 
         .cta-content p {
             font-size: 0.85rem;
         }
 
+
         .cta-buttons {
             flex-direction: column;
             align-items: center;
         }
+
 
         .cta-btn-primary, .cta-btn-secondary {
             width: 100%;
@@ -586,19 +670,23 @@
         }
     }
 
+
     @media (max-width: 600px) {
         .course-hero {
             padding: 80px 5% 30px;
             min-height: 300px;
         }
 
+
         .course-hero h1 {
             font-size: 1.6rem;
         }
 
+
         .course-hero p {
             font-size: 0.85rem;
         }
+
 
         /* Extra small breadcrumb on very small screens */
         .breadcrumb {
@@ -607,10 +695,12 @@
             min-height: 28px;
         }
 
+
         .breadcrumb a,
         .breadcrumb span {
             padding: 0 8px;
         }
+
 
         /* Keep meta items in one line */
         .course-meta {
@@ -618,46 +708,57 @@
             flex-wrap: nowrap;
         }
 
+
         .course-meta-item {
             font-size: 0.7rem;
         }
 
+
         .course-meta-item i {
             font-size: 1rem;
         }
+
 
         .section-title {
             font-size: 1.2rem;
             margin-bottom: 25px;
         }
 
+
         .top-pick-card {
             border-radius: 8px;
         }
+
 
         .top-pick-content {
             padding: 16px;
         }
 
+
         .top-pick-name {
             font-size: 1rem;
         }
+
 
         .top-pick-rank-number {
             font-size: 2.5rem;
         }
 
+
         .top-pick-image {
             height: 130px;
         }
+
 
         .no-universities {
             padding: 50px 25px;
         }
 
+
         .no-universities h3 {
             font-size: 1.2rem;
         }
+
 
         .no-universities i {
             font-size: 3rem;
@@ -665,8 +766,9 @@
     }
 </style>
 
-<!-- Hero Section -->
-<section class="course-hero">
+
+<!-- Hero Section with Schema.org Course markup -->
+<section class="course-hero" itemscope itemtype="http://schema.org/Course">
     <div class="course-hero-content">
         <div class="breadcrumb">
             <a href="/">Home</a>
@@ -674,70 +776,81 @@
             <a href="/courses/<%= category %>"><%= categoryName %></a>
             <span><%= course.name %></span>
         </div>
-        
-        <h1><%= course.name %></h1>
-        <p><%= course.description %></p>
-        
+
+        <h1 itemprop="name"><%= course.name %> Program Details - Top Universities & Degree Information</h1>
+        <p itemprop="description"><%= course.description %></p>
+
         <div class="course-meta">
             <div class="course-meta-item">
                 <i class="fas fa-clock"></i>
-                <span><%= course.duration %></span>
+                <span itemprop="timeRequired"><%= course.duration %></span>
             </div>
             <div class="course-meta-item">
                 <i class="fas fa-graduation-cap"></i>
-                <span><%= course.degree %></span>
+                <span itemprop="educationalCredentialAwarded"><%= course.degree %></span>
             </div>
             <div class="course-meta-item">
                 <i class="fas fa-university"></i>
                 <span><%= universities.length %>+ Universities</span>
             </div>
         </div>
+
+        <!-- Hidden Schema.org properties -->
+        <meta itemprop="courseCode" content="<%= course.code || course.name.replace(/\s+/g, '-').toUpperCase() %>">
+        <meta itemprop="educationalLevel" content="<%= course.level || 'Undergraduate' %>">
     </div>
 </section>
 
+
 <!-- Universities Section -->
 <section class="universities-section">
-    <h2 class="section-title">Top Universities Offering <%= course.name %></h2>
-    
+    <h2 class="section-title">Top Universities for <%= course.name %> - Find the Best <%= course.degree %> Programs</h2>
+
     <% if (universities && universities.length > 0) { %>
         <div class="top-picks-grid">
             <% universities.forEach((university, index) => { %>
-                <div class="top-pick-card" onclick="window.location.href='/university/<%= university._id %>'">
+                <div class="top-pick-card" onclick="window.location.href='/university/<%= university._id %>'" itemscope itemtype="http://schema.org/EducationalOrganization">
                     <div class="top-pick-image">
-                        <img src="<%= university.bannerImage || 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop&auto=format' %>" alt="<%= university.name %> Campus">
+                        <img src="<%= university.bannerImage || 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop&auto=format' %>" 
+                             alt="<%= university.name %> Campus - Top University for <%= course.name %> Degree and <%= course.duration %> Duration" 
+                             itemprop="image">
                         <% if (university.featured) { %>
                             <div class="featured-badge">Featured</div>
                         <% } %>
                     </div>
-                    
+
                     <div class="top-pick-content">
                         <div class="top-pick-rank-number"><%= index + 1 %></div>
-                        
-                        <h3 class="top-pick-name"><%= university.name %></h3>
-                        
-                        <div class="top-pick-location">
+
+                        <h3 class="top-pick-name" itemprop="name"><%= university.name %></h3>
+
+                        <div class="top-pick-location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                             <i class="fas fa-map-marker-alt"></i>
-                            <%= university.location %>, <%= university.state %>
+                            <span itemprop="addressLocality"><%= university.location %></span>, 
+                            <span itemprop="addressRegion"><%= university.state %></span>
                         </div>
-                        
+
                         <div class="top-pick-highlight">
                             <i class="fas fa-university"></i>
                             <%= university.type || 'Private' %> University
                         </div>
-                        
+
                         <div class="top-pick-stats">
                             <div class="top-pick-stat">
                                 <i class="fas fa-globe-asia top-pick-stat-icon"></i>
                                 <div class="top-pick-stat-value">#<%= university.globalRanking || Math.floor(Math.random() * 200) + 1 %></div>
                                 <div class="top-pick-stat-label">Global Rank</div>
                             </div>
-                            
+
                             <div class="top-pick-stat">
                                 <i class="fas fa-star top-pick-stat-icon"></i>
-                                <div class="top-pick-stat-value"><%= university.rating || 4.0 %></div>
+                                <div class="top-pick-stat-value" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                                    <span itemprop="ratingValue"><%= university.rating || 4.0 %></span>
+                                    <meta itemprop="bestRating" content="5">
+                                </div>
                                 <div class="top-pick-stat-label">Rating</div>
                             </div>
-                            
+
                             <div class="top-pick-stat">
                                 <i class="fas fa-rupee-sign top-pick-stat-icon"></i>
                                 <div class="top-pick-stat-value">
@@ -750,6 +863,10 @@
                                 <div class="top-pick-stat-label">Fees</div>
                             </div>
                         </div>
+
+                        <!-- Hidden Schema.org properties -->
+                        <meta itemprop="url" content="https://unipick.org/university/<%= university._id %>">
+                        <link itemprop="provider" href="http://schema.org/EducationalOrganization">
                     </div>
                 </div>
             <% }) %>
@@ -757,8 +874,8 @@
     <% } else { %>
         <div class="no-universities">
             <i class="fas fa-university"></i>
-            <h3>No Universities Available</h3>
-            <p>We're currently updating our database with universities offering this program. Check back soon!</p>
+            <h3>No Universities Available for <%= course.name %></h3>
+            <p>We're currently updating our database with top universities offering <%= course.name %> programs with <%= course.duration %> duration. Check back soon!</p>
             <a href="/contact" class="cta-btn-primary">
                 <i class="fas fa-phone"></i> Contact Us for More Information
             </a>
@@ -766,11 +883,12 @@
     <% } %>
 </section>
 
+
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
-        <h2>Ready to Pursue <%= course.name %>?</h2>
-        <p>Get personalized guidance from our expert counsellors to find the best university for you</p>
+        <h2>Ready to Pursue <%= course.name %> Degree?</h2>
+        <p>Get personalized guidance on <%= course.name %> program details, top universities, and degree requirements from our expert counsellors to find the best university for your <%= course.duration %> <%= course.degree %> program</p>
         <div class="cta-buttons">
             <a href="/quiz" class="cta-btn-primary">
                 <i class="fas fa-clipboard-list"></i> Take Career Quiz
@@ -781,5 +899,6 @@
         </div>
     </div>
 </section>
+
 
 <%- include('partials/footer') %>
